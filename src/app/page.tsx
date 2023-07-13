@@ -1,6 +1,11 @@
+import { Button } from "@/elements";
+
 const Home = () => {
   return (
-    <h1>Home page</h1>
+    <>
+       <h1>Home page</h1>
+       <Button />
+    </>
   )
 }
 
