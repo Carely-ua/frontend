@@ -7,6 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
+    "lint:ts": "tsc --skipLibCheck --noEmit",
+    "lint:ci": "npm run lint && npm run lint:ts",
     "prettier": "prettier"
   },
   "dependencies": {
