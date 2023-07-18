@@ -1,0 +1,58 @@
+@use '@/scss/abstracts' as *;
+
+.main {
+  display: flex;
+  padding: customGap(15) 0;
+  border-bottom: 1px solid $grey;
+  margin-bottom: customGap(10);
+}
+
+.paymentsWrap {
+  margin-right: customGap(25);
+}
+
+.menu {
+  margin-right: customGap(40);
+}
+
+.logo {
+  margin-bottom: customGap(10);
+}
+
+.payments {
+  display: flex;
+  align-items: center;
+}
+
+.secondaryMenu {
+  margin-right: customGap(15);
+
+  &List {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  &Link {
+    text-decoration: none;
+    text-transform: uppercase;
+
+    :hover {
+      color: $primary;
+    }
+  }
+}
+
+.contacts {
+  margin-right: customGap(38);
+}
+
+.copyright {
+  display: flex;
+
+  &Link {
+    display: inline-block;
+    margin-left: customGap(10);
+    text-decoration: none;
+  }
+}

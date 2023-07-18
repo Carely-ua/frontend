@@ -58,7 +58,32 @@
     font-weight: 700;
   }
 
+  &--medium {
+    font-weight: 500;
+  }
+
   &--normal {
     font-weight: 400;
+  }
+
+  //bottom gaps
+  &--gap-xs {
+    margin-bottom: $gap-xs;
+  }
+
+  &--gap-sm {
+    margin-bottom: $gap-sm;
+  }
+
+  &--gap-md {
+    margin-bottom: $gap-md;
+  }
+
+  &--gap-lg {
+    margin-bottom: $gap-lg;
+  }
+
+  &--gap-xlg {
+    margin-bottom: $gap-xlg;
   }
 }

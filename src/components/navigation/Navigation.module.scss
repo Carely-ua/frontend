@@ -5,6 +5,10 @@
   list-style: none;
   padding: 0;
   margin: 0;
+
+  &--vertical {
+    flex-direction: column;
+  }
 }
 
 .link {
@@ -12,6 +16,10 @@
   padding: 0 $gap-sm;
   text-decoration: none;
   text-transform: uppercase;
+
+  &--vertical {
+    padding: 0 0 $gap-xlg;
+  }
 
   :hover {
     color: $primary;
