@@ -1,5 +1,17 @@
 @use '@/scss/abstracts' as *;
 
+.wrapper {
+  box-shadow: 0px 5px 20px 0px rgba(0, 88, 193, 0.10), 0px 2px 8px 0px rgba(0, 113, 83, 0.04);
+}
+
 .header {
-  background-color: $primary;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: $gap-sm;
+}
+
+.section {
+  display: flex;
+  align-items: center;
 }

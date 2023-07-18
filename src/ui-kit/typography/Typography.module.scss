@@ -31,6 +31,11 @@
     line-height: 24px;
   }
 
+  &-span {
+    font-size: 12px;
+    font-weight: 400;
+  }
+
   //colors
   &--primary {
     color: $primary;
@@ -42,6 +47,10 @@
 
   &--white {
     color: $white;
+  }
+
+  &--dark-grey {
+    color: $dark-grey;
   }
 
   //font weight
