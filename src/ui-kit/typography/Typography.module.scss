@@ -1,0 +1,55 @@
+@use '@/scss/abstracts' as *;
+
+.typography {
+  color: $black;
+  margin: 0;
+  
+  //elements
+  &-h1 {
+    font-size: 46px;
+    font-weight: 700;
+  }
+
+  &-h2 {
+    font-size: 32px;
+    font-weight: 700;
+  }
+
+  &-h3 {
+    font-size: 24px;
+    font-weight: 700;
+  }
+
+  &-h4 {
+    font-size: 18px;
+    font-weight: 400;
+  }
+
+  &-p {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+  }
+
+  //colors
+  &--primary {
+    color: $primary;
+  }
+
+  &--secondary {
+    color: $secondary;
+  }
+
+  &--white {
+    color: $white;
+  }
+
+  //font weight
+  &--bold {
+    font-weight: 700;
+  }
+
+  &--normal {
+    font-weight: 400;
+  }
+}
