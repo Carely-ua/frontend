@@ -9,9 +9,12 @@
     "lint": "next lint",
     "lint:ts": "tsc --skipLibCheck --noEmit",
     "lint:ci": "npm run lint && npm run lint:ts",
-    "prettier": "prettier"
+    "prettier": "prettier",
+    "fetch-schema": "npx rover graph introspect https://backend.carely.com.ua/graphql > schema.graphql"
   },
   "dependencies": {
+    "@apollo/client": "^3.8.0-rc.1",
+    "@apollo/experimental-nextjs-app-support": "^0.0.0-commit-7dad495",
     "@mui/base": "^5.0.0-beta.7",
     "@types/node": "20.4.1",
     "@types/react": "18.2.14",

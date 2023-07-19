@@ -1,0 +1,73 @@
+schema {
+  query: Query
+  mutation: Mutation
+}
+scalar Date
+scalar JSON
+scalar Upload
+type Clinic {
+  id: ID!
+  name: String!
+  email: String!
+  address: String!
+  phone: String!
+  mapCoordinates: String!
+  clinicType: ClinicType!
+  city: String!
+  description: String!
+  image: String!
+  rating: Float
+}
+type Query {
+  clinic(filters: ClinicFilterInputType!): Clinic
+  getClinics(filters: ClinicFilterInputType!): [Clinic]
+  health: Boolean!
+  me: String!
+}
+type Mutation {
+  createClinic(input: ClinicCreateInputType!): Clinic
+  updateClinic(input: ClinicUpdateInputType!): Clinic
+  destroyClinic(id: ID!): Boolean!
+}
+enum ClinicType {
+  clinic
+  laboratory
+}
+input ClinicFilterInputType {
+  city: String
+  address: String
+  name: String
+  mapCoordinates: String
+  id: ID
+  clinicType: ClinicType
+}
+input ClinicCreateInputType {
+  name: String!
+  email: String!
+  address: String!
+  phone: String!
+  mapCoordinates: String!
+  clinicType: ClinicType!
+  city: String!
+  description: String!
+  image: String!
+  rating: Float
+}
+input ClinicUpdateInputType {
+  id: ID!
+  name: String
+  email: String
+  address: String
+  phone: String
+  mapCoordinates: String
+  clinicType: ClinicType
+  city: String
+  description: String
+  image: String
+  rating: Float
+}
+"Exposes a URL that specifies the behavior of this scalar."
+directive @specifiedBy(
+    "The URL that specifies the behavior of this scalar."
+    url: String!
+  ) on SCALAR

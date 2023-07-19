@@ -1,7 +1,20 @@
-import { Button, Typography } from '@/ui-kit';
+import { gql } from '@apollo/client';
+import { Typography } from '@/ui-kit';
+import { getClient } from '@/utils';
 
-const Home = () => {
-  const hello = 'fsdfds';
+const GET_CLINICS = gql`
+  query GetClinics($filters: ClinicFilterInputType!) {
+    getClinics(filters: $filters) {
+      id
+      name
+    }
+  }
+`;
+
+const Home = async () => {
+  const { data } = await getClient().query({ query: GET_CLINICS, variables: { filters: {} } });
+  console.log('data', data);
+
   return (
     <>
       <Typography color="primary" component="h1">
