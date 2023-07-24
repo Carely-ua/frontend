@@ -1,0 +1,23 @@
+@use '@/scss/abstracts' as *;
+
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: $gap-sm $gap-sm $gap-sm $gap-xlg;
+  border: 1px solid var(--5, $light-grey);
+  border-radius: 100px;
+  margin-left: $gap-sm;
+  cursor: pointer;
+}
+
+.icon {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: $secondary;
+  margin-left: $gap-sm;
+  border-radius: 50%;
+}

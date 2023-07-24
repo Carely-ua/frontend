@@ -1,0 +1,29 @@
+@use '@/scss/abstracts' as *;
+
+.container {
+  position: relative;
+}
+
+.cartButton {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: $primary;
+}
+
+.count {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: $secondary;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
