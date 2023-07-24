@@ -1,7 +1,7 @@
 import { gql } from '@apollo/client';
 import { Typography } from '@/ui-kit';
 import { getClient } from '@/utils';
-import { Sections } from './home-components';
+import { NavigationSections } from './home-components';
 
 const GET_CLINICS = gql`
   query GetClinics($filters: ClinicFilterInputType!) {
@@ -28,7 +28,7 @@ const Home = async () => {
         Home page
       </Typography>
       <Typography component="p">Home page</Typography>
-      <Sections />
+      <NavigationSections />
     </>
   );
 };

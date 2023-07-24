@@ -5,7 +5,7 @@ import Link from 'next/link';
 import classNames from 'classnames';
 import { useTranslations } from 'next-intl';
 import { Typography } from '@/ui-kit';
-import styles from './Sections.module.scss';
+import styles from './NavigationSections.module.scss';
 
 const items = [
   {
@@ -134,7 +134,7 @@ const Item: FC<ItemProps> = ({
   );
 };
 
-export const Sections = () => {
+export const NavigationSections = () => {
   return (
     <Grid container spacing={3} columns={{ xs: 6 }}>
       {items.map((items, index) => (
