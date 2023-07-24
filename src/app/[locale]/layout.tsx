@@ -17,7 +17,7 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
       <body className={inter.className}>
         <ApolloWrapper>
           <Header />
-          {children}
+          <main className="container">{children}</main>
           <Footer />
         </ApolloWrapper>
       </body>

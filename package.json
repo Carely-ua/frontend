@@ -15,7 +15,10 @@
   "dependencies": {
     "@apollo/client": "^3.8.0-rc.1",
     "@apollo/experimental-nextjs-app-support": "^0.0.0-commit-7dad495",
+    "@emotion/react": "^11.11.1",
+    "@emotion/styled": "^11.11.0",
     "@mui/base": "^5.0.0-beta.7",
+    "@mui/material": "^5.14.1",
     "@types/node": "20.4.1",
     "@types/react": "18.2.14",
     "@types/react-dom": "18.2.6",

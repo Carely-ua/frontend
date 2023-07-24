@@ -25,5 +25,37 @@
   "Copyright": {
     "text": "© 2021 Всі права захищені Carely",
     "link": "Політика конфіденційності"
+  },
+  "Sections": {
+    "Clinics": {
+      "title": "Клініки",
+      "text": "Lorem ipsum dolor sit amet consectetur. Aliquam urna egestas est lectus. Magna eu sapien in nisl tempor faucibus eget amet aliquam.  ",
+      "label": "800 клінік",
+      "buttonText": "Знайти клініку"
+    },
+    "Labs": {
+      "title": "Лабораторії",
+      "text": "Lorem ipsum dolor sit amet consectetur. Aliquam urna egestas est lectus. Magna eu sapien in nisl tempor faucibus eget amet aliquam.  ",
+      "label": "600 лабораторій",
+      "buttonText": "Знайти лабораторію"
+    },
+    "Analyzes": {
+      "title": "Аналізи",
+      "text": "Lorem ipsum dolor sit amet consectetur. Aliquam urna egestas est lectus. Magna eu sapien in nisl tempor faucibus eget amet aliquam.  ",
+      "label": "25 500 варіантів",
+      "buttonText": "Знайти аналіз"
+    },
+    "Consultations": {
+      "title": "Консультації",
+      "text": "Lorem ipsum dolor sit amet consectetur. Aliquam urna egestas est lectus. Magna eu sapien in nisl tempor faucibus eget amet aliquam.  ",
+      "label": "255 500 лікарів",
+      "buttonText": "Обрати лікаря"
+    },
+    "Diagnostics": {
+      "title": "Діагностика",
+      "text": "Lorem ipsum dolor sit amet consectetur. Aliquam urna egestas est lectus. Magna eu sapien in nisl tempor faucibus eget amet aliquam.  ",
+      "label": "28 000 варіантів",
+      "buttonText": "Обрати діагностику"
+    }
   }
 }
