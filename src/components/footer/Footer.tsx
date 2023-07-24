@@ -1,20 +1,23 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import { useTranslations } from 'next-intl';
 import { Typography } from '@/ui-kit';
 import { Logo } from '../logo';
 import { Navigation } from '../navigation';
 import styles from './Footer.module.scss';
 
 const links = [
-  { href: '/', label: 'Сeрвіс' },
-  { href: '/', label: 'Про нас' },
-  { href: '/', label: 'Про рейтинг' },
-  { href: '/', label: 'Партнерам' },
-  { href: '/', label: 'Корпоративна програма' },
-  { href: '/', label: 'Правила сервісу' },
+  { href: '/', label: 'Services' },
+  { href: '/', label: 'AboutUs' },
+  { href: '/', label: 'Rating' },
+  { href: '/', label: 'Partners' },
+  { href: '/', label: 'CorporateProgram' },
+  { href: '/', label: 'Rules' },
 ];
 
 const Payments = () => {
+  const t = useTranslations('Footer');
+
   return (
     <div className={styles.paymentsWrap}>
       <div className={styles.logo}>
@@ -22,7 +25,7 @@ const Payments = () => {
       </div>
       <div>
         <Typography component="p" color="dark-grey" gutterBottom="xlg">
-          Ми приймаємо
+          {t('Payments')}
         </Typography>
         <div className={styles.payments}>
           <div>
@@ -37,7 +40,9 @@ const Payments = () => {
   );
 };
 
-const SecondaryMenu = () => {
+const SecondaryNavigation = () => {
+  const t = useTranslations('SecondaryNavigation');
+
   return (
     <nav className={styles.secondaryMenu}>
       <ul className={styles.secondaryMenuList}>
@@ -45,7 +50,7 @@ const SecondaryMenu = () => {
           <li key={label}>
             <Link href={href} className={styles.secondaryMenuLink}>
               <Typography component="h4" gutterBottom="xlg">
-                {label}
+                {t(label)}
               </Typography>
             </Link>
           </li>
@@ -56,10 +61,12 @@ const SecondaryMenu = () => {
 };
 
 const Contacts = () => {
+  const t = useTranslations('Footer');
+
   return (
     <div className={styles.contacts}>
       <Typography component="p" color="dark-grey" gutterBottom="xlg">
-        Контакти
+        {t('Contacts')}
       </Typography>
       <Typography component="h4" weight="medium" gutterBottom="xlg">
         068 000 11 22
@@ -75,24 +82,28 @@ const Contacts = () => {
 };
 
 const Social = () => {
+  const t = useTranslations('Footer');
+
   return (
     <div>
       <Typography component="p" color="dark-grey" gutterBottom="xlg">
-        Ми у соцмережаї
+        {t('Social')}
       </Typography>
     </div>
   );
 };
 
 const Copyright = () => {
+  const t = useTranslations('Copyright');
+
   return (
     <div className={styles.copyright}>
       <Typography component="h4" weight="medium" color="dark-grey">
-        © 2021 Всі права захищені Carely
+        {t('text')}
       </Typography>
       <Link href="/" className={styles.copyrightLink}>
         <Typography component="h4" weight="medium" color="dark-grey">
-          Політика конфіденційності
+          {t('link')}
         </Typography>
       </Link>
     </div>
@@ -108,7 +119,7 @@ export const Footer = () => {
           <div className={styles.menu}>
             <Navigation type="vertical" />
           </div>
-          <SecondaryMenu />
+          <SecondaryNavigation />
           <Contacts />
           <Social />
         </div>

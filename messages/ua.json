@@ -1,0 +1,29 @@
+{
+  "Index": {
+    "title": "Hello world!1"
+  },
+  "Navigation": {
+    "Clinics": "Клініки",
+    "Labs": "Лабораторії",
+    "Analyzes": "Аналізи",
+    "Consultations": "Консультації",
+    "Diagnostics": "Діагностика"
+  },
+  "SecondaryNavigation": {
+    "Services": "Сeрвіс",
+    "AboutUs": "Про нас",
+    "Rating": "Про рейтинг",
+    "Partners": "Партнерам",
+    "CorporateProgram": "Корпоративна програма",
+    "Rules": "Правила сервісу"
+  },
+  "Footer": {
+    "Payments": "Ми приймаємо",
+    "Contacts": "Контакти",
+    "Social": "Ми у соцмережаї"
+  },
+  "Copyright": {
+    "text": "© 2021 Всі права захищені Carely",
+    "link": "Політика конфіденційності"
+  }
+}
