@@ -1,7 +1,7 @@
 import ButtonMUI from '@mui/base/Button';
 import { memo } from 'react';
 
-const ButtonComponent = ({ children }) => {
+const ButtonComponent = ({ children }: { children: React.ReactNode }) => {
   return <ButtonMUI>{children}</ButtonMUI>;
 };
 

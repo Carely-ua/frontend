@@ -1,0 +1,9 @@
+@use '@/scss/abstracts' as *;
+
+.footerSearch {
+  border-radius: 40px;
+  background: linear-gradient(134deg, $primary 0%, $secondary 100%);
+  padding: customGap(26);
+  display: flex;
+  justify-content: center;
+}

@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
-import { Footer, Header } from '@/components';
+import { Footer, FooterSearch, Header } from '@/components';
 import '@/scss/main.scss';
 import { ApolloWrapper } from '@/utils';
 
@@ -17,7 +17,8 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
       <body className={inter.className}>
         <ApolloWrapper>
           <Header />
-          <main className="container">{children}</main>
+          <main className="container main">{children}</main>
+          <FooterSearch />
           <Footer />
         </ApolloWrapper>
       </body>
