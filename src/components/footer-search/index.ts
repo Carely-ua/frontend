@@ -1,0 +1,1 @@
+export { FooterSearch } from './FooterSearch';

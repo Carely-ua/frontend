@@ -1,3 +1,5 @@
+@use '@/scss/abstracts' as *;
+
 /* Preferred box-sizing value */
 *,
 *::before,
@@ -9,4 +11,8 @@
   max-width: 1720px;
   width: 100%;
   margin: 0 auto;
+}
+
+.main {
+  margin-bottom: customGap(25);
 }
