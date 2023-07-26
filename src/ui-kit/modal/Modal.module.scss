@@ -1,0 +1,21 @@
+@use '@/scss/abstracts' as *;
+
+.modal {
+  position: fixed;
+  z-index: 1300;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  div {
+    outline: none;
+  }
+}
+
+.backdrop {
+  z-index: -1;
+  position: fixed;
+  inset: 0;
+  background-color: rgb($black, 0.7);
+}

@@ -1,12 +1,16 @@
 'use client';
 
+import { useContext } from 'react';
 import Image from 'next/image';
 import { Typography } from '@/ui-kit';
+import { ModalContext } from '@/utils/providers/modal-provider/ModalProvider';
 import styles from './ProfileButton.module.scss';
 
 export const ProfileButton = () => {
+  const { openModal } = useContext(ModalContext);
+
   const clickHandler = () => {
-    console.log('clickHandler');
+    openModal('SingInModal');
   };
 
   return (

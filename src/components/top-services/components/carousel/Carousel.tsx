@@ -31,8 +31,7 @@ export const Carousel = () => {
       spaceBetween={20}
       slidesPerView={6}
       pagination={{ clickable: true }}
-      onSlideChange={() => console.log('slide change')}
-      onSwiper={swiper => console.log(swiper)}>
+      onSlideChange={() => console.log('slide change')}>
       <SwiperSlide>
         <Slide />
       </SwiperSlide>
