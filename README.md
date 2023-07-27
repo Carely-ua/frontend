@@ -35,3 +35,4 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 
 Technical debt:
 1. We need to improve eslint configuration
+2. Check how we can improve codegen configuration

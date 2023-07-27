@@ -1,0 +1,25 @@
+overwrite: true
+schema: 
+  - schema.graphql:
+      skipGraphQLImport: false
+      assumeValidSDL: true
+      commentDescriptions: true
+      assumeValid: true
+documents: './src/**/*.graphql'
+hooks:
+  afterOneFileWrite:
+    - prettier --write
+    - eslint --fix
+generates:
+  src/utils/graphql/__generated__/types.ts:
+    plugins:
+      - typescript
+  src/:
+    preset: near-operation-file
+    presetConfig:
+      folder: __generated__
+      extension: .ts
+      baseTypesPath: utils/graphql/__generated__/types.ts
+    plugins:
+      - typescript-operations
+      - typed-document-node

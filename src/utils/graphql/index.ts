@@ -1,2 +1,2 @@
 export { ApolloWrapper } from './ApolloProvider';
-export { getClient } from './client';
+export { query } from './client';
