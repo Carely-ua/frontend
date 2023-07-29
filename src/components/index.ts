@@ -11,3 +11,4 @@ export * from './close-button';
 export * from './modal-layout';
 export * from './map';
 export * from './search-result';
+export * from './clinic-card';

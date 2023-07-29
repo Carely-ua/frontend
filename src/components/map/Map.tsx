@@ -3,12 +3,13 @@ import { useRef, useCallback } from 'react';
 import { GoogleMap, useJsApiLoader } from '@react-google-maps/api';
 import { theme } from './theme';
 import { Marker } from './components';
+import styles from './Map.module.scss';
 
 const API_KEY = 'AIzaSyBLk8kSHT1YRxxb2H-e51HPxLNMM9rkRjM';
 
 const containerStyle = {
   width: '100%',
-  height: '600px',
+  height: '640px',
 };
 
 const center = {
@@ -45,7 +46,7 @@ export const Map = () => {
   }, []);
 
   return (
-    <div>
+    <div className={styles.mapWrapper}>
       {isLoaded ? (
         <GoogleMap
           mapContainerStyle={containerStyle}

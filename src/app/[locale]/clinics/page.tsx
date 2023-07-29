@@ -8,7 +8,7 @@ const Clinics = async () => {
   return (
     <div>
       <h1>Clinics</h1>
-      <SearchResult />
+      {!!data.getClinics && data.getClinics.length > 0 && <SearchResult items={data.getClinics} />}
     </div>
   );
 };
