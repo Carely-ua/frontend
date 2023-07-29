@@ -1,0 +1,15 @@
+@use '@/scss/abstracts' as *;
+
+.wrapper {
+  display: flex;
+  gap: $gap-xlg;
+}
+
+.item {
+  flex: 50%;
+  height: 600px;
+
+  & > div {
+    height: 600px;
+  }
+}

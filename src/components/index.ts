@@ -9,3 +9,5 @@ export * from './top-services';
 export * from './sign-in-modal';
 export * from './close-button';
 export * from './modal-layout';
+export * from './map';
+export * from './search-result';

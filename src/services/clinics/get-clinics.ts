@@ -8,5 +8,5 @@ export const getClinics = async () => {
     variables: { filters: {} },
   });
 
-  return data;
+  return { data };
 };
