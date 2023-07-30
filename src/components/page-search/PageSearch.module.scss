@@ -1,0 +1,32 @@
+@use '@/scss/abstracts' as *;
+
+.pageSearch {
+  border-radius: 20px;
+  background: linear-gradient(134deg, $primary 0%, $secondary 100%);
+  padding: $gap-xlg $gap-lg 0 customGap(10);
+  height: 150px;
+  margin-bottom: customGap(18);
+}
+
+.topSection {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.icon {
+  width: 80px;
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: $white;
+  border-radius: 50%;
+}
+
+.searchField {
+  position: relative;
+  bottom: -20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}

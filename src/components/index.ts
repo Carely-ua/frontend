@@ -12,3 +12,4 @@ export * from './modal-layout';
 export * from './map';
 export * from './search-result';
 export * from './clinic-card';
+export * from './page-search';
