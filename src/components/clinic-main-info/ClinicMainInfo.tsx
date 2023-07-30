@@ -17,6 +17,7 @@ export const ClinicMainInfo: FC<ClinicMainInfoProps> = ({
   address,
   workingHours,
 }) => {
+  console.log('HELLO');
   return (
     <div className={styles.clinicMainInfo}>
       <div className={styles.item}>

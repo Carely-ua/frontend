@@ -3,6 +3,7 @@
 .clinicMainInfo {
   display: flex;
   gap: $gap-xlg;
+  margin-bottom: customGap(10);
 }
 
 .item {

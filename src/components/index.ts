@@ -16,3 +16,5 @@ export * from './page-search';
 export * from './rating';
 export * from './clinic-extra-info';
 export * from './clinic-main-info';
+export * from './clinic-services';
+export * from './sidebar-navigation';

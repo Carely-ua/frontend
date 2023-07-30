@@ -1,0 +1,33 @@
+@use '@/scss/abstracts' as *;
+
+.sidebar {
+  box-shadow: 0px 5px 20px 0px rgba(0, 88, 193, 0.10), 0px 2px 8px 0px rgba(0, 113, 83, 0.04);
+  width: 560px;
+
+  &Header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(134deg, $primary 0%, $secondary 100%);
+    border-radius: 20px 20px 0 0;
+    padding: $gap-xlg;
+  }
+
+  &Items {
+    border-radius: 0 0 20px 20px;
+    border: 1px solid $light-grey;
+    padding: 0 $gap-xlg 0 $gap-xlg;
+  }
+
+  &Item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: $gap-md 0;
+    cursor: pointer;
+
+    &:not(:last-child) {
+      border-bottom: 1px solid $light-grey;
+    }
+  }
+}

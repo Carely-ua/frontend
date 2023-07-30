@@ -1,11 +1,8 @@
-import { ClinicMainInfo } from '@/components';
-import { getClinic, getClinics } from '@/services';
+import { ClinicMainInfo, ClinicServices, SidebarNavigation } from '@/components';
 
-const Clinic = async () => {
-  const { data } = await getClinic();
-
+const ClinicLayout = ({ params, children }) => {
   return (
-    <div>
+    <>
       <ClinicMainInfo
         image={''}
         name='Багатопрофільний комплекс психіатрії та наркології "РЕНЕСАНС"'
@@ -14,8 +11,11 @@ const Clinic = async () => {
         address="вулиця Пирогова, 34, Вінниця, Вінницька область, 21000"
         workingHours="з 9:00-17:00"
       />
-    </div>
+      <ClinicServices clinicId={params.clinicId} />
+      <SidebarNavigation>null</SidebarNavigation>
+      {children}
+    </>
   );
 };
 
-export default Clinic;
+export default ClinicLayout;
