@@ -1,0 +1,25 @@
+@use '@/scss/abstracts' as *;
+
+.extraInfo {
+  display: flex;
+  align-items: center;
+
+  &:not(:last-child) {
+    margin-bottom: $gap-sm;
+  }
+
+  p {
+    max-width: 320px;
+  }
+}
+
+.icon {
+  width: 24px;
+  height: 24px;
+  border-radius: 4px;
+  background: rgb($primary, 0.20);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: $gap-xs;
+}

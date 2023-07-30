@@ -2,5 +2,7 @@ query GetClinics($filters: ClinicFilterInputType!) {
   getClinics(filters: $filters) {
     id
     name
+    address
+    rating
   }
 }

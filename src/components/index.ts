@@ -13,3 +13,6 @@ export * from './map';
 export * from './search-result';
 export * from './clinic-card';
 export * from './page-search';
+export * from './rating';
+export * from './clinic-extra-info';
+export * from './clinic-main-info';

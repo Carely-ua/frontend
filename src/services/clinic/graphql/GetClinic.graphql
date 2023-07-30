@@ -1,0 +1,17 @@
+query GetClinic($filters: ClinicFilterInputType!) {
+  clinic(filters: $filters) {
+    id
+    name
+    address
+    rating
+    image
+    services {
+      id
+      name
+      serviceType
+      description
+      price
+    }
+    clinicType
+  }
+}

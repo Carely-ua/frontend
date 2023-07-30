@@ -5,6 +5,28 @@ schema {
 scalar Date
 scalar JSON
 scalar Upload
+type Mutation {
+  register(login: String!, password: String!): Boolean
+  auth(login: String!, password: String!): String
+  createClinic(input: ClinicCreateInputType!): Clinic
+  updateClinic(input: ClinicUpdateInputType!): Clinic
+  destroyClinic(id: ID!): Boolean!
+  createDoctor(input: DoctorCreateInputType!): Doctor
+  updateDoctor(input: DoctorUpdateInputType!): Doctor
+  destroyDoctor(id: ID!): Boolean!
+  createDoctorsService(input: createDoctorService): Boolean!
+  doctorsService(input: createDoctorService): Boolean!
+  destroyDoctorService(doctorId: ID!, serviceId: ID!): Boolean!
+  createService(input: ServiceCreateInputType!): Service
+  updateService(input: ServiceUpdateInputType!): Service
+  destroyService(id: ID!): Boolean!
+  verifySms(phone: String!, code: String!): Boolean!
+  sendSms(phone: String!): String
+  signIn(input: SignInInput!): String
+  signUp(input: SignUpInput!): User
+  editUser(input: EditUser): User
+  recoverPassword(input: RecoverPasswordInput!): Boolean
+}
 type Clinic {
   id: ID!
   name: String!
@@ -17,21 +39,74 @@ type Clinic {
   description: String!
   image: String!
   rating: Float
+  services: [Service]
 }
 type Query {
   clinic(filters: ClinicFilterInputType!): Clinic
   getClinics(filters: ClinicFilterInputType!): [Clinic]
   health: Boolean!
-  me: String!
+  doctor(filters: DoctorFilterInputType!): Doctor
+  getDoctors(filters: DoctorFilterInputType!): [Doctor]
+  service(filters: ServiceFilterInputType!): Service
+  getServices(filters: ServiceFilterInputType!): [Service]
+  user: User
 }
-type Mutation {
-  createClinic(input: ClinicCreateInputType!): Clinic
-  updateClinic(input: ClinicUpdateInputType!): Clinic
-  destroyClinic(id: ID!): Boolean!
+type Doctor {
+  id: ID!
+  phone: String!
+  name: String!
+  description: String!
+  image: String!
+  rating: Float
+  clinicId: String!
+  price: Float
+  clinic: Clinic
+  services: [Service]
+}
+type DoctorService {
+  price: Float
+  doctorId: ID!
+  serviceId: ID!
+}
+type Service {
+  id: ID!
+  name: String!
+  serviceType: ServiceType!
+  description: String!
+  price: Float
+  clinicId: String!
+  clinic: Clinic
+}
+type SmsSend {
+  id: ID!
+  code: String!
+  phone: String!
+  expiresAt: Date!
+}
+type User {
+  id: ID!
+  name: String!
+  surname: String!
+  middleName: String!
+  city: String
+  birthday: Date
+  sex: Sex
+  phone: String!
+  email: String
+  phoneConfirmed: Boolean!
 }
 enum ClinicType {
   clinic
   laboratory
+}
+enum ServiceType {
+  analyse
+  diagnostic
+  consultations
+}
+enum Sex {
+  male
+  female
 }
 input ClinicFilterInputType {
   city: String
@@ -65,6 +140,86 @@ input ClinicUpdateInputType {
   description: String
   image: String
   rating: Float
+}
+input DoctorFilterInputType {
+  name: String
+  id: ID
+  clinicId: ID
+}
+input DoctorCreateInputType {
+  name: String!
+  phone: String!
+  clinicId: String!
+  description: String!
+  image: String!
+  rating: Float
+}
+input DoctorUpdateInputType {
+  id: ID!
+  name: String
+  phone: String
+  clinicId: String
+  description: String
+  image: String
+  rating: Float
+}
+input createDoctorService {
+  doctorId: ID!
+  serviceId: ID!
+  price: Float
+}
+input ServiceFilterInputType {
+  city: String
+  address: String
+  name: String
+  description: String
+  id: ID
+  clinicId: String
+  serviceType: ServiceType
+}
+input ServiceCreateInputType {
+  name: String!
+  serviceType: ServiceType!
+  description: String!
+  price: Float
+  clinicId: String!
+}
+input ServiceUpdateInputType {
+  id: ID!
+  name: String
+  serviceType: ServiceType
+  description: String
+  price: Float
+  clinicId: String
+}
+input SignInInput {
+  phone: String!
+  password: String!
+}
+input SignUpInput {
+  phone: String!
+  password: String!
+  email: String
+  name: String!
+  code: String!
+  surname: String!
+  middleName: String!
+  birthday: String!
+  sex: Sex!
+}
+input RecoverPasswordInput {
+  code: String!
+  phone: String!
+  newPassword: String!
+}
+input EditUser {
+  password: String
+  email: String
+  name: String
+  surname: String
+  middleName: String
+  birthday: String
+  sex: Sex
 }
 "Exposes a URL that specifies the behavior of this scalar."
 directive @specifiedBy(

@@ -1,0 +1,36 @@
+@use '@/scss/abstracts' as *;
+
+.clinicMainInfo {
+  display: flex;
+  gap: $gap-xlg;
+}
+
+.item {
+  flex: 50%;
+  display: flex;
+}
+
+.image {
+  flex: 270px 0;
+  height: 270px;
+  border-radius: 10px;
+  border: 1px solid $light-grey;
+  overflow: hidden;
+  margin-right: $gap-xlg;
+  
+  img {
+    object-fit: contain;
+  }
+}
+
+.clinicInfo {
+  flex: 1;
+}
+
+.rating {
+  margin-bottom: $gap-xlg;
+}
+
+.name {
+  margin-bottom: customGap(6);
+}
