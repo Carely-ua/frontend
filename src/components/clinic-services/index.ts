@@ -1,1 +1,0 @@
-export { ClinicServices } from './ClinicServices';

@@ -16,5 +16,7 @@ export * from './page-search';
 export * from './rating';
 export * from './clinic-extra-info';
 export * from './clinic-main-info';
-export * from './clinic-services';
 export * from './sidebar-navigation';
+export * from './service-panel';
+export * from './price-block';
+export * from './clinic-services-navigation';

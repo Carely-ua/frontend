@@ -1,4 +1,4 @@
-import { FC, ReactNode } from 'react';
+import { FC } from 'react';
 import Image from 'next/image';
 import { Typography } from '@/ui-kit';
 import styles from './SidebarNavigation.module.scss';
@@ -16,11 +16,11 @@ const SidebarItems = [
   { name: 'Панель патогістологічних досліджень' },
 ];
 
-interface SidebarProps {
+interface SidebarNavigationProps {
   title: string;
 }
 
-const Sidebar: FC<SidebarProps> = ({ title }) => {
+export const SidebarNavigation: FC<SidebarNavigationProps> = ({ title }) => {
   return (
     <div className={styles.sidebar}>
       <div className={styles.sidebarHeader}>
@@ -38,19 +38,6 @@ const Sidebar: FC<SidebarProps> = ({ title }) => {
           </div>
         ))}
       </div>
-    </div>
-  );
-};
-
-interface SidebarNavigationProps {
-  children: ReactNode;
-}
-
-export const SidebarNavigation: FC<SidebarNavigationProps> = ({ children }) => {
-  return (
-    <div>
-      <Sidebar title="Аналізи" />
-      <div>{children}</div>
     </div>
   );
 };

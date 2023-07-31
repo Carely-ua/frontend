@@ -1,6 +1,11 @@
-import { ClinicMainInfo, ClinicServices, SidebarNavigation } from '@/components';
+import { ReactNode, FC } from 'react';
+import { ClinicMainInfo } from '@/components';
 
-const ClinicLayout = ({ params, children }) => {
+interface ClinicLayoutProps {
+  children: ReactNode;
+}
+
+const ClinicLayout: FC<ClinicLayoutProps> = ({ children }) => {
   return (
     <>
       <ClinicMainInfo
@@ -11,8 +16,6 @@ const ClinicLayout = ({ params, children }) => {
         address="вулиця Пирогова, 34, Вінниця, Вінницька область, 21000"
         workingHours="з 9:00-17:00"
       />
-      <ClinicServices clinicId={params.clinicId} />
-      <SidebarNavigation>null</SidebarNavigation>
       {children}
     </>
   );

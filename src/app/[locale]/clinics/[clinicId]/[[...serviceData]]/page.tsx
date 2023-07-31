@@ -1,7 +1,5 @@
-import { ClinicMainInfo, ClinicServices } from '@/components';
-import { getClinic, getClinics } from '@/services';
-
-type ServiceType = 'analyzes' | 'consultations' | 'diagnostics';
+import { ClinicServicesNavigation, ServicePanel } from '@/components';
+import { ServiceType } from '@/utils/graphql/__generated__/types';
 
 interface ClinicParams {
   params: {
@@ -12,9 +10,14 @@ interface ClinicParams {
 
 const ServicesSection = async ({ params }: ClinicParams) => {
   // const { data } = await getClinic(params.clinicId);
-  console.log('params', params);
+  const serviceType = params.serviceData?.[0] || ServiceType.Analyse;
 
-  return <>{params.serviceData?.[0]}</>;
+  return (
+    <>
+      <ClinicServicesNavigation clinicId={params.clinicId} serviceType={serviceType} />
+      <ServicePanel serviceType={serviceType} />
+    </>
+  );
 };
 
 export default ServicesSection;

@@ -1,0 +1,25 @@
+@use '@/scss/abstracts' as *;
+
+.items {
+  display: flex;
+  gap: $gap-xlg;
+  margin-bottom: customGap(10);
+}
+
+.item {
+  border-radius: 40px;
+  border: 1px solid $light-grey;
+  background: $light-grey;
+  flex: 1;
+  padding: $gap-lg; 
+  text-align: center;
+  text-decoration: none;
+
+  &Active {
+    background: $secondary; 
+  }
+
+  h4 {
+    text-transform: uppercase;
+  }
+}

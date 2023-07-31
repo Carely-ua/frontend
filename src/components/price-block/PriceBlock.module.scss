@@ -1,0 +1,19 @@
+@use '@/scss/abstracts' as *;
+
+.priceItem {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: $gap-sm;
+
+  &:first-child {
+    h4 {
+      text-decoration: line-through;
+    }
+  }
+
+  &:not(:last-child) {
+    margin-bottom: $gap-xs;
+  }
+}
+

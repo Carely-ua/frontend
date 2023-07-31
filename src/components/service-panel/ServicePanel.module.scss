@@ -1,0 +1,20 @@
+@use '@/scss/abstracts' as *;
+
+.servicePanel {
+  display: flex;
+  gap: $gap-xlg;
+}
+
+.serviceItem {
+  border-radius: 20px;
+  border: 1px solid $light-grey;
+  padding: $gap-md $gap-md $gap-md $gap-xlg;
+  margin-bottom: $gap-xlg;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.servicesSections {
+  flex: 66.6%;
+}

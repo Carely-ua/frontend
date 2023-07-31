@@ -1,8 +1,7 @@
 @use '@/scss/abstracts' as *;
 
 .sidebar {
-  box-shadow: 0px 5px 20px 0px rgba(0, 88, 193, 0.10), 0px 2px 8px 0px rgba(0, 113, 83, 0.04);
-  width: 560px;
+  flex: 33.3%;
 
   &Header {
     display: flex;
@@ -17,6 +16,7 @@
     border-radius: 0 0 20px 20px;
     border: 1px solid $light-grey;
     padding: 0 $gap-xlg 0 $gap-xlg;
+    box-shadow: 0px 5px 20px 0px rgba(0, 88, 193, 0.10), 0px 2px 8px 0px rgba(0, 113, 83, 0.04);
   }
 
   &Item {
