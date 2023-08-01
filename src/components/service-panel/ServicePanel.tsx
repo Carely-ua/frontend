@@ -60,8 +60,23 @@ const ServiceSection = ({ title, items }) => {
   );
 };
 
+//TODO: replace it to backend data
+const navigationSections = [
+  { name: 'Гормональна панель', id: '1' },
+  { name: 'Панель пренатальної діагностики', id: '2' },
+  { name: 'Панель каріотипування', id: '3' },
+  { name: 'Онкологічна панель', id: '4' },
+  { name: 'Інфекційна панель', id: '5' },
+  { name: 'Панель імунологіїи', id: '6' },
+  { name: 'Панель бактеріологічних досліджень', id: '7' },
+  { name: 'Панель цитологічних досліджень', id: '8' },
+  { name: 'Панель патогістологічних досліджень', id: '9' },
+];
+
 interface ServicePanelProps {
   serviceType: ServiceType;
+  clinicId: string;
+  categoryId: string;
 }
 
 const titles = {
@@ -70,10 +85,17 @@ const titles = {
   [ServiceType.Diagnostic]: 'Діагностика',
 };
 
-export const ServicePanel: FC<ServicePanelProps> = ({ serviceType }) => {
+export const ServicePanel: FC<ServicePanelProps> = ({ serviceType, clinicId, categoryId }) => {
+  const baseUrl = `/clinics/${clinicId}/${serviceType}`;
+
   return (
     <div className={styles.servicePanel}>
-      <SidebarNavigation title={titles[serviceType]} />
+      <SidebarNavigation
+        title={titles[serviceType]}
+        baseUrl={baseUrl}
+        categoryId={categoryId}
+        sections={navigationSections}
+      />
       <div className={styles.servicesSections}>
         {DATA.map(item => (
           <ServiceSection key={item.title} {...item} />

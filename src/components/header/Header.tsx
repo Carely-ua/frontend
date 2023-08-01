@@ -15,7 +15,7 @@ export const Header = () => {
         </div>
         <div className={styles.section}>
           <CartButton />
-          {/* <ProfileButton /> */}
+          <ProfileButton />
         </div>
       </div>
     </header>
