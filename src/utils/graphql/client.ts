@@ -3,7 +3,9 @@ import {
   NextSSRInMemoryCache,
   NextSSRApolloClient,
 } from '@apollo/experimental-nextjs-app-support/ssr';
+import { getServerSession } from 'next-auth/next';
 import { registerApolloClient } from '@apollo/experimental-nextjs-app-support/rsc';
+import { authOptions } from '@/app/api/auth/[...nextauth]/route';
 
 const { getClient } = registerApolloClient(() => {
   return new NextSSRApolloClient({
@@ -14,6 +16,29 @@ const { getClient } = registerApolloClient(() => {
   });
 });
 
-export const query: ApolloClient<any>['query'] = async (...args) => {
-  return await getClient().query(...args);
+export const query: ApolloClient<any>['query'] = async options => {
+  const session = await getServerSession(authOptions);
+
+  return await getClient().query({
+    ...options,
+    context: {
+      headers: {
+        Authorization: `Bearer ${session?.user?.token}`,
+      },
+    },
+  });
+};
+
+export const mutate: ApolloClient<any>['mutate'] = async options => {
+  const session = await getServerSession(authOptions);
+
+  return await getClient().mutate({
+    ...options,
+    //@ts-ignore
+    context: {
+      headers: {
+        Authorization: `Bearer ${session?.user?.token}`,
+      },
+    },
+  });
 };

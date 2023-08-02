@@ -1,9 +1,11 @@
 import { Typography } from '@/ui-kit';
+import { MainBanner } from '@/components';
 import { NavigationSections } from './home-components';
 
 const Home = async () => {
   return (
     <>
+      <MainBanner />
       <NavigationSections />
     </>
   );

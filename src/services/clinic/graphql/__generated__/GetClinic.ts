@@ -15,14 +15,6 @@ export type GetClinicQuery = {
     rating?: number | null;
     image: string;
     clinicType: Types.ClinicType;
-    services?: Array<{
-      __typename?: 'Service';
-      id: string;
-      name: string;
-      serviceType: Types.ServiceType;
-      description: string;
-      price?: number | null;
-    } | null> | null;
   } | null;
 };
 
@@ -64,20 +56,6 @@ export const GetClinicDocument = {
                 { kind: 'Field', name: { kind: 'Name', value: 'address' } },
                 { kind: 'Field', name: { kind: 'Name', value: 'rating' } },
                 { kind: 'Field', name: { kind: 'Name', value: 'image' } },
-                {
-                  kind: 'Field',
-                  name: { kind: 'Name', value: 'services' },
-                  selectionSet: {
-                    kind: 'SelectionSet',
-                    selections: [
-                      { kind: 'Field', name: { kind: 'Name', value: 'id' } },
-                      { kind: 'Field', name: { kind: 'Name', value: 'name' } },
-                      { kind: 'Field', name: { kind: 'Name', value: 'serviceType' } },
-                      { kind: 'Field', name: { kind: 'Name', value: 'description' } },
-                      { kind: 'Field', name: { kind: 'Name', value: 'price' } },
-                    ],
-                  },
-                },
                 { kind: 'Field', name: { kind: 'Name', value: 'clinicType' } },
               ],
             },

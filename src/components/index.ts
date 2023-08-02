@@ -20,3 +20,4 @@ export * from './sidebar-navigation';
 export * from './service-panel';
 export * from './price-block';
 export * from './clinic-services-navigation';
+export * from './main-banner';

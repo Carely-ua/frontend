@@ -8,6 +8,9 @@ scalar Upload
 type Mutation {
   register(login: String!, password: String!): Boolean
   auth(login: String!, password: String!): String
+  createCategory(input: CategoryCreateInputType!): Category
+  updateCategory(input: CategoryUpdateInputType!): Category
+  destroyCategory(id: ID!): Boolean!
   createClinic(input: ClinicCreateInputType!): Clinic
   updateClinic(input: ClinicUpdateInputType!): Clinic
   destroyClinic(id: ID!): Boolean!
@@ -23,9 +26,29 @@ type Mutation {
   verifySms(phone: String!, code: String!): Boolean!
   sendSms(phone: String!): String
   signIn(input: SignInInput!): String
-  signUp(input: SignUpInput!): User
   editUser(input: EditUser): User
-  recoverPassword(input: RecoverPasswordInput!): Boolean
+}
+type Category {
+  id: ID!
+  title: String!
+  subTitle: String!
+  services: [Service]
+}
+type Query {
+  category(filters: CategoryFilterInputType!): Category
+  getCategories(filters: CategoryFilterInputType!): [Category]
+  clinic(filters: ClinicFilterInputType!): Clinic
+  getClinics(filters: ClinicFilterInputType!): [Clinic]
+  health: Boolean!
+  doctor(filters: DoctorFilterInputType!): Doctor
+  getDoctors(filters: DoctorFilterInputType!): [Doctor]
+  service(filters: ServiceFilterInputType!): Service
+  getServices(filters: ServiceFilterInputType!): [Category]
+  user: User
+}
+type MapCoordinates {
+  lat: Float!
+  lng: Float!
 }
 type Clinic {
   id: ID!
@@ -33,23 +56,13 @@ type Clinic {
   email: String!
   address: String!
   phone: String!
-  mapCoordinates: String!
+  mapCoordinates: MapCoordinates!
   clinicType: ClinicType!
   city: String!
   description: String!
   image: String!
   rating: Float
-  services: [Service]
-}
-type Query {
-  clinic(filters: ClinicFilterInputType!): Clinic
-  getClinics(filters: ClinicFilterInputType!): [Clinic]
-  health: Boolean!
-  doctor(filters: DoctorFilterInputType!): Doctor
-  getDoctors(filters: DoctorFilterInputType!): [Doctor]
-  service(filters: ServiceFilterInputType!): Service
-  getServices(filters: ServiceFilterInputType!): [Service]
-  user: User
+  servicesWithCategories(input: ServiceFilterInputType): [Category]!
 }
 type Doctor {
   id: ID!
@@ -76,6 +89,8 @@ type Service {
   price: Float
   clinicId: String!
   clinic: Clinic
+  categoryId: String
+  category: Category
 }
 type SmsSend {
   id: ID!
@@ -85,9 +100,9 @@ type SmsSend {
 }
 type User {
   id: ID!
-  name: String!
-  surname: String!
-  middleName: String!
+  name: String
+  surname: String
+  middleName: String
   city: String
   birthday: Date
   sex: Sex
@@ -108,11 +123,29 @@ enum Sex {
   male
   female
 }
+input CategoryFilterInputType {
+  title: String
+  subTitle: String
+  id: ID
+}
+input CategoryCreateInputType {
+  title: String!
+  subTitle: String!
+}
+input CategoryUpdateInputType {
+  id: ID!
+  title: String
+  subTitle: String
+}
+input MapCoordinatesInput {
+  lat: Float!
+  lng: Float!
+}
 input ClinicFilterInputType {
   city: String
   address: String
   name: String
-  mapCoordinates: String
+  mapCoordinates: MapCoordinatesInput
   id: ID
   clinicType: ClinicType
 }
@@ -121,7 +154,7 @@ input ClinicCreateInputType {
   email: String!
   address: String!
   phone: String!
-  mapCoordinates: String!
+  mapCoordinates: MapCoordinatesInput!
   clinicType: ClinicType!
   city: String!
   description: String!
@@ -134,7 +167,7 @@ input ClinicUpdateInputType {
   email: String
   address: String
   phone: String
-  mapCoordinates: String
+  mapCoordinates: MapCoordinatesInput
   clinicType: ClinicType
   city: String
   description: String
@@ -175,6 +208,8 @@ input ServiceFilterInputType {
   description: String
   id: ID
   clinicId: String
+  categoryTitle: String
+  categorySubtitle: String
   serviceType: ServiceType
 }
 input ServiceCreateInputType {
@@ -183,6 +218,7 @@ input ServiceCreateInputType {
   description: String!
   price: Float
   clinicId: String!
+  categoryId: String
 }
 input ServiceUpdateInputType {
   id: ID!
@@ -191,29 +227,13 @@ input ServiceUpdateInputType {
   description: String
   price: Float
   clinicId: String
+  categoryId: String
 }
 input SignInInput {
   phone: String!
-  password: String!
-}
-input SignUpInput {
-  phone: String!
-  password: String!
-  email: String
-  name: String!
   code: String!
-  surname: String!
-  middleName: String!
-  birthday: String!
-  sex: Sex!
-}
-input RecoverPasswordInput {
-  code: String!
-  phone: String!
-  newPassword: String!
 }
 input EditUser {
-  password: String
   email: String
   name: String
   surname: String

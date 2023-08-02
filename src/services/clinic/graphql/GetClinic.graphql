@@ -5,13 +5,6 @@ query GetClinic($filters: ClinicFilterInputType!) {
     address
     rating
     image
-    services {
-      id
-      name
-      serviceType
-      description
-      price
-    }
     clinicType
   }
 }
