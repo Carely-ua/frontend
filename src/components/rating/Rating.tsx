@@ -4,11 +4,11 @@ import { Typography } from '@/ui-kit';
 import styles from './Rating.module.scss';
 
 export interface RatingProps {
-  rating: number;
+  rating?: number | null;
   reviewAmount: number;
 }
 
-export const Rating: FC<RatingProps> = ({ rating, reviewAmount }) => {
+export const Rating: FC<RatingProps> = ({ rating = 0, reviewAmount }) => {
   return (
     <div className={styles.ratingWrap}>
       <div className={styles.rating}>

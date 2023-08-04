@@ -23,3 +23,4 @@ export * from './clinic-services-navigation';
 export * from './main-banner';
 export * from './add-to-bag-auth-modal';
 export * from './auth-form';
+export * from './section-icon';

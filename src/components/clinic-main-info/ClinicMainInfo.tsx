@@ -5,12 +5,15 @@ import { Rating, RatingProps } from '../rating';
 import { ClinicExtraInfo, ClinicExtraInfoProps } from '../clinic-extra-info';
 import styles from './ClinicMainInfo.module.scss';
 
+const defaultImage = '/images/test-clinic-image.png';
+
 interface ClinicMainInfoProps extends RatingProps, ClinicExtraInfoProps {
   image: string;
   name: string;
 }
 
 export const ClinicMainInfo: FC<ClinicMainInfoProps> = ({
+  image,
   rating,
   reviewAmount,
   name,
@@ -21,7 +24,7 @@ export const ClinicMainInfo: FC<ClinicMainInfoProps> = ({
     <div className={styles.clinicMainInfo}>
       <div className={styles.item}>
         <div className={styles.image}>
-          <Image src="/images/test-clinic-image.png" alt="clinic" width={270} height={270} />
+          <Image src={image || defaultImage} alt="clinic" width={270} height={270} />
         </div>
         <div className={styles.clinicInfo}>
           <div className={styles.rating}>

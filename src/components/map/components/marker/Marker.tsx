@@ -28,7 +28,7 @@ export const Marker: FC<MarkerProps> = ({ rating = 5 }) => {
           {rating}
         </div>
         <div className={styles.image}>
-          <Image src="/images/clinic-image.png" alt="clinic" width="50" height="50" />
+          <Image src="/images/test-clinic-image.png" alt="clinic" width="50" height="50" />
         </div>
       </div>
     </OverlayView>

@@ -2,23 +2,21 @@ import { FC } from 'react';
 import Image from 'next/image';
 import { Typography } from '@/ui-kit';
 import { SearchInput } from '../search-input';
+import { SectionIcon, SectionIconProps } from '../section-icon';
 import styles from './PageSearch.module.scss';
 
-interface PageSearch {
+interface PageSearch extends SectionIconProps {
   title: string;
-  icon: string;
 }
 
-export const PageSearch: FC<PageSearch> = ({ title, icon = 'clinic' }) => {
+export const PageSearch: FC<PageSearch> = ({ icon, title }) => {
   return (
     <div className={styles.pageSearch}>
       <div className={styles.topSection}>
         <Typography component="h2" color="white">
-          Приватні клініки Києва
+          {title}
         </Typography>
-        <div className={styles.icon}>
-          <Image src={`/icons/${icon}.svg`} alt="icon" width={32} height={32} />
-        </div>
+        <SectionIcon icon={icon} />
       </div>
       <div className={styles.searchField}>
         <SearchInput

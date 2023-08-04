@@ -6,7 +6,7 @@ const Clinics = async () => {
 
   return (
     <div>
-      <PageSearch />
+      <PageSearch title="Приватні клініки Києва" icon="clinic" />
       {!!data.getClinics && data.getClinics.length > 0 && <SearchResult items={data.getClinics} />}
     </div>
   );

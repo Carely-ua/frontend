@@ -11,10 +11,11 @@ export type GetClinicQuery = {
     __typename?: 'Clinic';
     id: string;
     name: string;
-    address: string;
     rating?: number | null;
+    address: string;
     image: string;
     clinicType: Types.ClinicType;
+    mapCoordinates: { __typename?: 'MapCoordinates'; lat: number; lng: number };
   } | null;
 };
 
@@ -53,10 +54,21 @@ export const GetClinicDocument = {
               selections: [
                 { kind: 'Field', name: { kind: 'Name', value: 'id' } },
                 { kind: 'Field', name: { kind: 'Name', value: 'name' } },
-                { kind: 'Field', name: { kind: 'Name', value: 'address' } },
                 { kind: 'Field', name: { kind: 'Name', value: 'rating' } },
+                { kind: 'Field', name: { kind: 'Name', value: 'address' } },
                 { kind: 'Field', name: { kind: 'Name', value: 'image' } },
                 { kind: 'Field', name: { kind: 'Name', value: 'clinicType' } },
+                {
+                  kind: 'Field',
+                  name: { kind: 'Name', value: 'mapCoordinates' },
+                  selectionSet: {
+                    kind: 'SelectionSet',
+                    selections: [
+                      { kind: 'Field', name: { kind: 'Name', value: 'lat' } },
+                      { kind: 'Field', name: { kind: 'Name', value: 'lng' } },
+                    ],
+                  },
+                },
               ],
             },
           },

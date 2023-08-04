@@ -2,7 +2,13 @@ query GetClinics($filters: ClinicFilterInputType!) {
   getClinics(filters: $filters) {
     id
     name
-    address
     rating
+    address
+    image
+    clinicType
+    mapCoordinates {
+      lat
+      lng
+    }
   }
 }

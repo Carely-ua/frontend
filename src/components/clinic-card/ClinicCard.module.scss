@@ -20,7 +20,18 @@
 }
 
 .image {
+  flex-basis: 160px;
+	flex-grow: 0;
+	flex-shrink: 0;
+  height: 160px;
   margin-right: $gap-xlg;
+  border-radius: 10px;
+  border: 1px solid $light-grey;
+  overflow: hidden;
+
+  img {
+    object-fit: contain;
+  }
 }
 
 .header {
@@ -33,4 +44,9 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
+}
+
+.link {
+  display: inline-block;
+  width: 160px;
 }

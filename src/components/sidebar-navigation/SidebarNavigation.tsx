@@ -2,6 +2,7 @@ import { FC } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Typography } from '@/ui-kit';
+import { SectionIcon } from '../section-icon';
 import styles from './SidebarNavigation.module.scss';
 
 interface SidebarNavigationProps {
@@ -23,6 +24,7 @@ export const SidebarNavigation: FC<SidebarNavigationProps> = ({
         <Typography component="h2" color="white">
           {title}
         </Typography>
+        <SectionIcon icon="clinic" size="sm" />
       </div>
       <div className={styles.sidebarItems}>
         {sections.map(({ name, id }) => {

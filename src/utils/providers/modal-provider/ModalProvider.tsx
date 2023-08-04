@@ -28,7 +28,7 @@ interface ModalProviderProps {
 }
 
 export const ModalProvider: FC<ModalProviderProps> = ({ children }) => {
-  const [modalId, setModalId] = useState<ModalId | null>('AddToBagAuthModal');
+  const [modalId, setModalId] = useState<ModalId | null>(null);
 
   const CurrentModal = !!modalId && modals[modalId];
 

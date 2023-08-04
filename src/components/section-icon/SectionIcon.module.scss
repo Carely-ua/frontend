@@ -1,0 +1,25 @@
+@use '@/scss/abstracts' as *;
+
+.sectionIcon {
+  display: flex;
+  align-items: center;
+  gap: $gap-md;
+}
+
+.icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: $white;
+  border-radius: 50%;
+
+  &-sm {
+    width: 60px;
+    height: 60px;
+  }
+
+  &-lg {
+    width: 80px;
+    height: 80px;
+  }
+}
