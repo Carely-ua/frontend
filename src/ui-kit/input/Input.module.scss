@@ -1,0 +1,22 @@
+@use '@/scss/abstracts' as *;
+
+.inputWrap {
+  margin-bottom: $gap-xlg;
+}
+
+.input {
+  input {
+    border-radius: 20px;
+    border: 1px solid $light-grey;
+    background: $white;
+    height: 44px;
+    outline: none;
+    padding: 0 $gap-lg;
+    color: $dark-grey;
+    width: 100%;
+  }
+}
+
+.label {
+  margin-bottom: customGap(2.5);
+}

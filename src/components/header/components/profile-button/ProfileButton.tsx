@@ -1,16 +1,15 @@
 'use client';
 
-import { useContext } from 'react';
 import Image from 'next/image';
 import { Typography } from '@/ui-kit';
-import { ModalContext } from '../../../../utils/providers/modal-provider/ModalProvider';
+import { useModalContext } from '../../../../utils/providers/modal-provider/ModalProvider';
 import styles from './ProfileButton.module.scss';
 
 export const ProfileButton = () => {
-  const { openModal } = useContext(ModalContext);
+  const { openModal } = useModalContext();
 
   const clickHandler = () => {
-    openModal('SingInModal');
+    openModal('AddToBagAuthModal');
   };
 
   return (

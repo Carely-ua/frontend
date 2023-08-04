@@ -1,0 +1,34 @@
+@use '@/scss/abstracts' as *;
+
+.button {
+  border-radius: 40px;
+  padding: customGap(2.5);
+  width: 100%;
+  outline: none;
+  border: none;
+  cursor: pointer;
+}
+
+.primary {
+  background-color: $primary;
+  
+  p {
+    color: $white;
+  }
+}
+
+.secondary {
+  background-color: $secondary;
+
+  p {
+    color: $white;
+  }
+}
+
+.white {
+  background-color: $white;
+
+  p {
+    color: $black;
+  }
+}

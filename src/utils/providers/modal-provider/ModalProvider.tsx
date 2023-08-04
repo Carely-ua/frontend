@@ -1,11 +1,12 @@
 'use client';
 
-import { createContext, ReactNode, FC, useState, useCallback, useMemo, useEffect } from 'react';
+import { createContext, ReactNode, FC, useState, useCallback, useMemo, useContext } from 'react';
 import { Modal } from '@/ui-kit';
-import { SingInModal } from '@/components';
+import { AddToBagAuthModal, SingInModal } from '@/components';
 
 const modals = {
   SingInModal: SingInModal,
+  AddToBagAuthModal: AddToBagAuthModal,
 };
 
 type ModalId = keyof typeof modals;
@@ -15,17 +16,19 @@ interface ModalContextType {
   closeModal: () => void;
 }
 
-export const ModalContext = createContext<ModalContextType>({
+const ModalContext = createContext<ModalContextType>({
   openModal: () => null,
   closeModal: () => null,
 });
+
+export const useModalContext = () => useContext(ModalContext);
 
 interface ModalProviderProps {
   children: ReactNode;
 }
 
 export const ModalProvider: FC<ModalProviderProps> = ({ children }) => {
-  const [modalId, setModalId] = useState<ModalId | null>(null);
+  const [modalId, setModalId] = useState<ModalId | null>('AddToBagAuthModal');
 
   const CurrentModal = !!modalId && modals[modalId];
 

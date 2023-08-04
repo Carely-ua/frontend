@@ -1,0 +1,5 @@
+@use '@/scss/abstracts' as *;
+
+.authForm {
+  padding: customGap(18) $gap-xlg 0;
+}

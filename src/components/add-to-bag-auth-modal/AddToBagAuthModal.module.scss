@@ -1,0 +1,33 @@
+@use '@/scss/abstracts' as *;
+
+.modal {
+  width: 740px;
+  height: 474px;
+  border-radius: 20px;
+  background: $white;
+  display: flex;
+  position: relative;
+  overflow: hidden;
+}
+
+.section {
+  flex: 50%;
+}
+
+.contentSection {
+  position: relative;
+  background: linear-gradient(134deg, $primary 0%, $secondary 100%);
+  padding: $gap-lg $gap-xlg;
+}
+
+.description {
+  line-height: 27px;
+}
+
+.image {
+  position: absolute;
+  bottom: 0;
+  transform: translate(-50%, 0);
+  left: 50%;
+  object-fit: contain;
+}
