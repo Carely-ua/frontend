@@ -1,5 +1,4 @@
 import { FC } from 'react';
-import Image from 'next/image';
 import { Typography } from '@/ui-kit';
 import { SearchInput } from '../search-input';
 import { SectionIcon, SectionIconProps } from '../section-icon';

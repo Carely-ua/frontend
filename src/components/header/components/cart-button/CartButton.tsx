@@ -7,16 +7,13 @@ import styles from './CartButton.module.scss';
 
 export const CartButton = () => {
   const { data: session } = useSession();
-  console.log('session', session);
 
   const clickHandler = async () => {
     const res = await signIn('credentials', { phone: '380637362980', code: '4324' });
-    console.log('res1', res);
   };
 
   const logoutHandler = async () => {
     const res = await signOut();
-    console.log('res2', res);
   };
 
   return (

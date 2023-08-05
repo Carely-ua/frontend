@@ -1,0 +1,38 @@
+import { FC } from 'react';
+import { useTranslations } from 'next-intl';
+import { PageSearch, SearchResult } from '@/components';
+import { getClinics, ClinicTypes } from '@/services';
+import { checkClinicType, getClinicType } from '@/utils';
+import { ClinicType } from '@/utils/graphql/__generated__/types';
+
+interface ClinicsWrapperParams {
+  params: {
+    clinicType: string;
+  };
+}
+
+const ClinicsWrapper: FC<ClinicsWrapperParams> = async ({ params }) => {
+  checkClinicType(params.clinicType);
+  const clinicType = getClinicType(params.clinicType);
+
+  const { data } = await getClinics({ clinicType });
+
+  return <Clinics clinicType={clinicType} clinics={data.getClinics || []} />;
+};
+
+interface ClinicsProps {
+  clinicType: ClinicType;
+  clinics: Array<ClinicTypes.Clinic>;
+}
+
+const Clinics: FC<ClinicsProps> = ({ clinicType, clinics }) => {
+  const t = useTranslations(clinicType);
+  return (
+    <div>
+      <PageSearch title={t('title')} icon="clinic" />
+      {clinics.length > 0 && <SearchResult items={clinics} />}
+    </div>
+  );
+};
+
+export default ClinicsWrapper;
