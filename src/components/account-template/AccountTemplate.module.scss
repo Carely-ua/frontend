@@ -1,0 +1,6 @@
+@use '@/scss/abstracts' as *;
+
+.accountTemplate {
+  display: flex;
+  gap: $gap-xlg;
+}

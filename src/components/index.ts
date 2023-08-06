@@ -24,3 +24,5 @@ export * from './main-banner';
 export * from './add-to-bag-auth-modal';
 export * from './auth-form';
 export * from './section-icon';
+export * from './account-navigation';
+export * from './account-template';

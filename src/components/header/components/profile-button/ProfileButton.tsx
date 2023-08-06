@@ -1,15 +1,25 @@
 'use client';
 
 import Image from 'next/image';
+import { useSession } from 'next-auth/react';
+import { useRouter } from 'next/navigation';
 import { Typography } from '@/ui-kit';
 import { useModalContext } from '../../../../utils/providers/modal-provider/ModalProvider';
 import styles from './ProfileButton.module.scss';
 
 export const ProfileButton = () => {
   const { openModal } = useModalContext();
+  const { data: session } = useSession();
+  const router = useRouter();
+
+  console.log('session', session);
 
   const clickHandler = () => {
-    openModal('AddToBagAuthModal');
+    if (session) {
+      router.push('/account');
+    } else {
+      openModal('AddToBagAuthModal');
+    }
   };
 
   return (
