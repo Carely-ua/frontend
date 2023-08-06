@@ -9,7 +9,9 @@ interface AccountTemplateProps {
 export const AccountTemplate: FC<AccountTemplateProps> = ({ children }) => {
   return (
     <div className={styles.accountTemplate}>
-      <AccountNavigation />
+      <div>
+        <AccountNavigation />
+      </div>
       <div className={styles.content}>{children}</div>
     </div>
   );
