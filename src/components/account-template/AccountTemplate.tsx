@@ -10,7 +10,7 @@ export const AccountTemplate: FC<AccountTemplateProps> = ({ children }) => {
   return (
     <div className={styles.accountTemplate}>
       <AccountNavigation />
-      <div>{children}</div>
+      <div className={styles.content}>{children}</div>
     </div>
   );
 };

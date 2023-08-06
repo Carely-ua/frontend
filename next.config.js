@@ -3,6 +3,15 @@ const nextConfig = {
   experimental: {
     serverActions: true,
   },
+  async redirects() {
+    return [
+      {
+        source: '/account',
+        destination: '/account/profile',
+        permanent: true,
+      },
+    ];
+  },
 };
 
 const withNextIntl = require('next-intl/plugin')(
