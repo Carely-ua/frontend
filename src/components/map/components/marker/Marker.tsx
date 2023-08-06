@@ -1,6 +1,7 @@
 import { FC } from 'react';
 import { OverlayView } from '@react-google-maps/api';
 import Image from 'next/image';
+import { SVG } from '@/components/svg';
 import styles from './Marker.module.scss';
 
 const center = {
@@ -18,13 +19,7 @@ export const Marker: FC<MarkerProps> = ({ rating = 5 }) => {
     <OverlayView mapPaneName={OverlayView.OVERLAY_MOUSE_TARGET} position={center}>
       <div className={styles.marker}>
         <div className={styles.rating}>
-          <Image
-            className={styles.icon}
-            src="/icons/star.svg"
-            alt="rating"
-            width="10"
-            height="10"
-          />
+          <SVG.Star className={styles.icon} width="10" height="10" />
           {rating}
         </div>
         <div className={styles.image}>

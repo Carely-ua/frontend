@@ -19,8 +19,8 @@ export const PageSearch: FC<PageSearch> = ({ icon, title }) => {
       </div>
       <div className={styles.searchField}>
         <SearchInput
-          leftIcon="hospital"
-          rightIcon="search"
+          leftIcon="Hospital"
+          rightIcon="Search"
           placeholder="Введіть/виберіть напрямок або назву клініки"
         />
       </div>

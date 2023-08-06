@@ -28,6 +28,13 @@
   &Content {
     display: flex;
     align-items: center;
+
+    svg {
+      path {
+        color: $dark-grey;
+        fill: $dark-grey;
+      }
+    }
   }
 }
 

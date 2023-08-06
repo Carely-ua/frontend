@@ -5,6 +5,7 @@ import Link from 'next/link';
 import classNames from 'classnames';
 import { useTranslations } from 'next-intl';
 import { Typography } from '@/ui-kit';
+import { SVG, SVGType } from '@/components/svg';
 import styles from './NavigationSections.module.scss';
 
 const items = [
@@ -14,7 +15,7 @@ const items = [
     label: 'Clinics.label',
     buttonText: 'Clinics.buttonText',
     linkUrl: '/clinics',
-    icon: 'clinic',
+    Icon: SVG.Clinic,
     image: 'clinics-item',
     size: 3,
     hasGradient: true,
@@ -26,7 +27,7 @@ const items = [
     label: 'Labs.label',
     buttonText: 'Labs.buttonText',
     linkUrl: '/labs',
-    icon: 'lab',
+    Icon: SVG.Lab,
     image: 'labs-item',
     size: 3,
     hasGradient: true,
@@ -40,7 +41,7 @@ const items = [
     label: 'Analyzes.label',
     buttonText: 'Analyzes.buttonText',
     linkUrl: '/analyzes',
-    icon: 'analyze',
+    Icon: SVG.Analyze,
     image: 'analyzes-item',
     size: 6,
     hasGradient: false,
@@ -52,7 +53,7 @@ const items = [
     label: 'Consultations.label',
     buttonText: 'Consultations.buttonText',
     linkUrl: '/consultations',
-    icon: 'doctor',
+    Icon: SVG.Doctor,
     image: 'consultations-item',
     size: 4,
     hasGradient: true,
@@ -64,7 +65,7 @@ const items = [
     label: 'Diagnostics.label',
     buttonText: 'Diagnostics.buttonText',
     linkUrl: '/diagnostics',
-    icon: 'diagnostic',
+    Icon: SVG.Diagnostic,
     image: 'diagnostics-item',
     size: 2,
     hasGradient: true,
@@ -78,7 +79,7 @@ interface ItemProps {
   label: string;
   buttonText: string;
   linkUrl: string;
-  icon: string;
+  Icon: SVGType;
   image: string;
   size: number;
   gradient: string;
@@ -89,7 +90,7 @@ interface ItemProps {
 const Item: FC<ItemProps> = ({
   label,
   image,
-  icon,
+  Icon,
   title,
   text,
   buttonText,
@@ -111,12 +112,7 @@ const Item: FC<ItemProps> = ({
               {t(label)}
             </Typography>
             <div className={styles.icon}>
-              <Image
-                src={`/icons/${icon}.svg`}
-                alt="icon"
-                width={width || 32}
-                height={height || 32}
-              />
+              <Icon width={width || 32} height={height || 32} />
             </div>
           </div>
           <div>

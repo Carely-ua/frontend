@@ -1,9 +1,9 @@
 'use client';
 
 import { FC, useState } from 'react';
-import Image from 'next/image';
 import InputMUI from '@mui/base/Input';
 import { Typography } from '@/ui-kit';
+import { SVG, SVGNameType } from '../svg';
 import styles from './SearchInput.module.scss';
 
 const items = [
@@ -31,7 +31,7 @@ const SuggestionList: FC<SuggestionList> = ({ items }) => {
           <Typography component="p" color="dark-grey">
             {title}
           </Typography>
-          <Image src="/icons/right-arrow.svg" alt="icon" width={10} height={18} />
+          <SVG.Arrow />
         </div>
       ))}
     </div>
@@ -39,20 +39,23 @@ const SuggestionList: FC<SuggestionList> = ({ items }) => {
 };
 
 interface SearchInputProps {
-  leftIcon?: string;
-  rightIcon?: string;
+  leftIcon?: SVGNameType;
+  rightIcon?: SVGNameType;
   placeholder?: string;
 }
 
 export const SearchInput: FC<SearchInputProps> = ({ placeholder, leftIcon, rightIcon }) => {
   const [isFocused, setIsFocused] = useState(false);
 
+  const LeftIcon = leftIcon ? SVG[leftIcon] : null;
+  const RightIcon = rightIcon ? SVG[rightIcon] : null;
+
   return (
     <div className={styles.searchInputWrap}>
       <div className={styles.searchInput}>
-        {!!leftIcon && (
+        {!!LeftIcon && (
           <div className={styles.leftIcon}>
-            <Image src={`/icons/${leftIcon}.svg`} alt="icon" width={24} height={24} />
+            <LeftIcon width={24} height={24} />
           </div>
         )}
         <InputMUI
@@ -61,9 +64,9 @@ export const SearchInput: FC<SearchInputProps> = ({ placeholder, leftIcon, right
           className={styles.input}
           placeholder={placeholder}
         />
-        {!!rightIcon && (
+        {!!RightIcon && (
           <div className={styles.rightIcon}>
-            <Image src={`/icons/${rightIcon}.svg`} alt="icon" width={24} height={24} />
+            <RightIcon width={24} height={24} />
           </div>
         )}
       </div>

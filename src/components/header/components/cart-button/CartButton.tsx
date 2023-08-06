@@ -1,8 +1,8 @@
 'use client';
 
-import Image from 'next/image';
 import { useSession, signIn, signOut } from 'next-auth/react';
 import { Typography } from '@/ui-kit';
+import { SVG } from '@/components/svg';
 import styles from './CartButton.module.scss';
 
 export const CartButton = () => {
@@ -20,7 +20,7 @@ export const CartButton = () => {
     <>
       <div onClick={clickHandler} className={styles.container}>
         <div className={styles.cartButton}>
-          <Image src="/icons/cart.svg" alt="cart" width="24" height="24" />
+          <SVG.Cart width="24" height="24" />
         </div>
         <div className={styles.count}>
           <Typography component="span" color="white">

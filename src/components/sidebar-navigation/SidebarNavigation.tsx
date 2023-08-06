@@ -1,8 +1,8 @@
 import { FC } from 'react';
-import Image from 'next/image';
 import Link from 'next/link';
 import { Typography } from '@/ui-kit';
 import { SectionIcon } from '../section-icon';
+import { SVG } from '../svg';
 import styles from './SidebarNavigation.module.scss';
 
 interface SidebarNavigationProps {
@@ -24,7 +24,7 @@ export const SidebarNavigation: FC<SidebarNavigationProps> = ({
         <Typography component="h2" color="white">
           {title}
         </Typography>
-        <SectionIcon icon="clinic" size="sm" />
+        <SectionIcon icon="Clinic" size="sm" />
       </div>
       <div className={styles.sidebarItems}>
         {sections.map(({ name, id }) => {
@@ -35,7 +35,7 @@ export const SidebarNavigation: FC<SidebarNavigationProps> = ({
               <Typography component="h4" color={isActive ? 'secondary' : 'dark-grey'}>
                 {name}
               </Typography>
-              <Image src="/icons/right-arrow.svg" alt="icon" width={10} height={18} />
+              <SVG.Arrow />
             </Link>
           );
         })}

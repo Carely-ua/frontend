@@ -1,16 +1,18 @@
 import { FC } from 'react';
-import Image from 'next/image';
 import classNames from 'classnames';
 import { Typography } from '@/ui-kit';
+import { SVG, SVGNameType } from '../svg';
 import styles from './SectionIcon.module.scss';
 
 export interface SectionIconProps {
-  icon: string;
+  icon: SVGNameType;
   serviceCount?: number;
   size?: 'sm' | 'lg';
 }
 
 export const SectionIcon: FC<SectionIconProps> = ({ icon, serviceCount, size = 'lg' }) => {
+  const Icon = SVG[icon];
+
   return (
     <div className={styles.sectionIcon}>
       {!!serviceCount && (
@@ -19,7 +21,7 @@ export const SectionIcon: FC<SectionIconProps> = ({ icon, serviceCount, size = '
         </Typography>
       )}
       <div className={classNames(styles.icon, styles[`icon-${size}`])}>
-        <Image src={`/icons/${icon}.svg`} alt="icon" width={32} height={32} />
+        <Icon width={32} height={32} />
       </div>
     </div>
   );

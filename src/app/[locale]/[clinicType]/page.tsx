@@ -11,7 +11,7 @@ interface ClinicsWrapperParams {
   };
 }
 
-const ClinicsWrapper: FC<ClinicsWrapperParams> = async ({ params }) => {
+const ClinicsWrapper = async ({ params }: ClinicsWrapperParams) => {
   checkClinicType(params.clinicType);
   const clinicType = getClinicType(params.clinicType);
 
@@ -29,7 +29,7 @@ const Clinics: FC<ClinicsProps> = ({ clinicType, clinics }) => {
   const t = useTranslations(clinicType);
   return (
     <div>
-      <PageSearch title={t('title')} icon="clinic" />
+      <PageSearch title={t('title')} icon="Clinic" />
       {clinics.length > 0 && <SearchResult items={clinics} />}
     </div>
   );
