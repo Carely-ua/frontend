@@ -12,7 +12,7 @@ export const LogoutButton: FC<LogoutButtonProps> = ({ children }) => {
   const router = useRouter();
 
   const logoutHandler = async () => {
-    await signOut();
+    await signOut({ redirect: false });
     router.push('/');
   };
 

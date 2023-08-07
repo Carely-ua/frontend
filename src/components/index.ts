@@ -27,3 +27,4 @@ export * from './section-icon';
 export * from './account-navigation';
 export * from './account-template';
 export * from './client-services';
+export * from './consultation-navigation';

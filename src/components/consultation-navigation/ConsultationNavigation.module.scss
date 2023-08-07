@@ -1,0 +1,35 @@
+@use '@/scss/abstracts' as *;
+
+.consultationNavigation {
+  display: flex;
+  gap: $gap-xlg;
+  flex-wrap: wrap;
+}
+
+.consultationItem {
+  flex: 32% 0;
+  border-radius: 20px;
+  border: 1px solid $light-grey;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: $gap-md $gap-md $gap-md $gap-xlg;
+  text-decoration: none;
+}
+
+.icon {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: $primary;
+  border-radius: 50%;
+
+  svg {
+    path {
+      color: $white;
+      fill: $white;
+    }
+  }
+}

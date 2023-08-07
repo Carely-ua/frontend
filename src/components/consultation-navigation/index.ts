@@ -1,0 +1,1 @@
+export { ConsultationNavigation } from './ConsultationNavigation';
