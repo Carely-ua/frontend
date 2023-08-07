@@ -2,6 +2,7 @@ import { FC } from 'react';
 import { ModalComponentProps } from '@/ui-kit';
 import { ModalLayout } from '../modal-layout';
 
+//TODO: check if we really need this component
 export const SingInModal: FC<ModalComponentProps> = ({ handleClose }) => {
   return (
     <ModalLayout handleClose={handleClose} title="Вхід/реєстрація">

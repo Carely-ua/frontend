@@ -1,0 +1,28 @@
+@use '@/scss/abstracts' as *;
+
+.modal {
+  width: 650px;
+  height: 329px;
+  border-radius: 20px;
+  background: linear-gradient(85deg, #00C692 0%, #0058C1 100%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.image {
+  position: absolute;
+  bottom: 0;
+  left: 7%;
+  object-fit: contain;
+}
+
+.content {
+  margin-left: 250px;
+}
+
+.link {
+  display: inline-block;
+  margin-top: customGap(12);
+}

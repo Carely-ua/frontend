@@ -1,0 +1,1 @@
+export { AuthModalTemplate } from './AuthModalTemplate';

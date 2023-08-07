@@ -1,33 +1,19 @@
-import { useTranslations } from 'next-intl';
-import Image from 'next/image';
-import classNames from 'classnames';
-import { Typography } from '@/ui-kit';
-import { AuthForm } from '../auth-form';
-import styles from './AddToBagAuthModal.module.scss';
+import { AuthModalTemplate } from '../auth-modal-template';
+import { useModalContext } from '../../utils/providers/modal-provider/ModalProvider';
 
 export const AddToBagAuthModal = () => {
   // const t = useTranslations('AddToBagAuthModal');
+  const { openModal } = useModalContext();
+
+  const successSignInHandler = () => {
+    openModal('SuccessAddedToCartModal');
+  };
 
   return (
-    <div className={styles.modal}>
-      <div className={classNames(styles.section, styles.contentSection)}>
-        <Typography component="h2" color="white" gutterBottom="md">
-          Послуга успішно додана в кошик
-        </Typography>
-        <Typography component="h4" color="white" weight="medium" className={styles.description}>
-          Для деяких послуг потрібен попередній запис просимо вас ввести номер телефона
-        </Typography>
-        <Image
-          className={styles.image}
-          src="/images/woman.png"
-          alt="woman"
-          width="170"
-          height="280"
-        />
-      </div>
-      <div className={styles.section}>
-        <AuthForm />
-      </div>
-    </div>
+    <AuthModalTemplate
+      title="Послуга успішно додана в кошик"
+      description="Для деяких послуг потрібен попередній запис просимо вас ввести номер телефона"
+      successSignInHandler={successSignInHandler}
+    />
   );
 };

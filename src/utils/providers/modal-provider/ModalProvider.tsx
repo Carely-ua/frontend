@@ -2,11 +2,20 @@
 
 import { createContext, ReactNode, FC, useState, useCallback, useMemo, useContext } from 'react';
 import { Modal } from '@/ui-kit';
-import { AddToBagAuthModal, SingInModal } from '@/components';
+import {
+  AddToBagAuthModal,
+  SingInModal,
+  AuthModal,
+  SuccessAuthModal,
+  SuccessAddedToCartModal,
+} from '@/components';
 
 const modals = {
-  SingInModal: SingInModal,
-  AddToBagAuthModal: AddToBagAuthModal,
+  SingInModal,
+  AddToBagAuthModal,
+  AuthModal,
+  SuccessAuthModal,
+  SuccessAddedToCartModal,
 };
 
 type ModalId = keyof typeof modals;

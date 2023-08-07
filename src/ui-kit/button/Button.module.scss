@@ -2,7 +2,7 @@
 
 .button {
   border-radius: 40px;
-  padding: customGap(2.5);
+  padding: customGap(2.5) $gap-xlg;
   width: 100%;
   outline: none;
   border: none;
