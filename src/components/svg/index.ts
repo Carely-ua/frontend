@@ -16,8 +16,9 @@ import Search from './search.svg';
 import Star from './star.svg';
 import Time from './time.svg';
 import User from './user.svg';
+import Cross from './cross.svg';
 
-export const SVG = {
+const SVGObject = {
   Arrow,
   Analyze,
   Cart,
@@ -35,7 +36,10 @@ export const SVG = {
   Star,
   Time,
   User,
+  Cross,
 };
 
-export type SVGNameType = keyof typeof SVG;
-export type SVGType = FC<{ width: number; height: number }>;
+export type SVGNameType = keyof typeof SVGObject;
+export type SVGType = FC<{ width?: number; height?: number }>;
+
+export const SVG = SVGObject as Record<SVGNameType, SVGType>;

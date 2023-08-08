@@ -1,10 +1,11 @@
+import Link from 'next/link';
 import { Typography } from '@/ui-kit';
 import { SVG } from '@/components/svg';
 import styles from './CartButton.module.scss';
 
 export const CartButton = () => {
   return (
-    <div className={styles.container}>
+    <Link href="/cart" className={styles.container}>
       <div className={styles.cartButton}>
         <SVG.Cart width="24" height="24" />
       </div>
@@ -13,6 +14,6 @@ export const CartButton = () => {
           2
         </Typography>
       </div>
-    </div>
+    </Link>
   );
 };

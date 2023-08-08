@@ -49,6 +49,7 @@
 
 .copyright {
   display: flex;
+  margin-bottom: customGap(10);;
 
   &Link {
     display: inline-block;

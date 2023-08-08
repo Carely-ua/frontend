@@ -32,3 +32,4 @@ export * from './auth-modal-template';
 export * from './auth-modal';
 export * from './success-auth-modal';
 export * from './success-added-to-cart-modal';
+export * from './cart';

@@ -4,8 +4,9 @@ import Image from 'next/image';
 import Link from 'next/link';
 import classNames from 'classnames';
 import { useTranslations } from 'next-intl';
-import { Typography } from '@/ui-kit';
-import { SVG, SVGType } from '@/components/svg';
+import { Button, Typography } from '@/ui-kit';
+import { SVGNameType } from '@/components/svg';
+import { SectionIcon } from '@/components';
 import styles from './NavigationSections.module.scss';
 
 const items = [
@@ -15,7 +16,7 @@ const items = [
     label: 'Clinics.label',
     buttonText: 'Clinics.buttonText',
     linkUrl: '/clinics',
-    Icon: SVG.Clinic,
+    icon: 'Clinic',
     image: 'clinics-item',
     size: 3,
     hasGradient: true,
@@ -27,7 +28,7 @@ const items = [
     label: 'Labs.label',
     buttonText: 'Labs.buttonText',
     linkUrl: '/labs',
-    Icon: SVG.Lab,
+    icon: 'Lab',
     image: 'labs-item',
     size: 3,
     hasGradient: true,
@@ -41,7 +42,7 @@ const items = [
     label: 'Analyzes.label',
     buttonText: 'Analyzes.buttonText',
     linkUrl: '/analyzes',
-    Icon: SVG.Analyze,
+    icon: 'Analyze',
     image: 'analyzes-item',
     size: 6,
     hasGradient: false,
@@ -53,7 +54,7 @@ const items = [
     label: 'Consultations.label',
     buttonText: 'Consultations.buttonText',
     linkUrl: '/consultations',
-    Icon: SVG.Doctor,
+    icon: 'Doctor',
     image: 'consultations-item',
     size: 4,
     hasGradient: true,
@@ -65,13 +66,13 @@ const items = [
     label: 'Diagnostics.label',
     buttonText: 'Diagnostics.buttonText',
     linkUrl: '/diagnostics',
-    Icon: SVG.Diagnostic,
+    icon: 'Diagnostic',
     image: 'diagnostics-item',
     size: 2,
     hasGradient: true,
     gradient: 'linear-gradient(44deg, rgba(0, 88, 193, 0.56) 0%, rgba(0, 198, 146, 0.8) 100%)',
   },
-];
+] as const;
 
 interface ItemProps {
   title: string;
@@ -79,7 +80,7 @@ interface ItemProps {
   label: string;
   buttonText: string;
   linkUrl: string;
-  Icon: SVGType;
+  icon: SVGNameType;
   image: string;
   size: number;
   gradient: string;
@@ -90,7 +91,7 @@ interface ItemProps {
 const Item: FC<ItemProps> = ({
   label,
   image,
-  Icon,
+  icon,
   title,
   text,
   buttonText,
@@ -112,7 +113,7 @@ const Item: FC<ItemProps> = ({
               {t(label)}
             </Typography>
             <div className={styles.icon}>
-              <Icon width={width || 32} height={height || 32} />
+              <SectionIcon width={width || 32} height={height || 32} icon={icon} />
             </div>
           </div>
           <div>
@@ -122,7 +123,9 @@ const Item: FC<ItemProps> = ({
             <Typography component="p" color="white" gutterBottom="lg">
               {t(text)}
             </Typography>
-            <Link href={linkUrl}>{t(buttonText)}</Link>
+            <Link href={linkUrl} className={styles.link}>
+              <Button buttonType="white">{t(buttonText)}</Button>
+            </Link>
           </div>
         </div>
       </div>

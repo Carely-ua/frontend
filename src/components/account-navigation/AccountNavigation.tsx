@@ -34,7 +34,7 @@ export const AccountNavigation = () => {
         <li key={title} className={styles.item}>
           <Link className={styles.link} href={href}>
             <div className={styles.linkContent}>
-              <Icon width={18} height={18} color="red" />
+              <Icon width={18} height={18} />
               <Typography className={styles.text} component="h4">
                 {title}
               </Typography>

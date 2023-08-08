@@ -27,6 +27,7 @@ interface ClinicsProps {
 
 const Clinics: FC<ClinicsProps> = ({ clinicType, clinics }) => {
   const t = useTranslations(clinicType);
+
   return (
     <div>
       <PageSearch title={t('title')} icon="Clinic" />

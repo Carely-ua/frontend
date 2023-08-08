@@ -8,9 +8,17 @@ export interface SectionIconProps {
   icon: SVGNameType;
   serviceCount?: number;
   size?: 'sm' | 'lg';
+  width?: number;
+  height?: number;
 }
 
-export const SectionIcon: FC<SectionIconProps> = ({ icon, serviceCount, size = 'lg' }) => {
+export const SectionIcon: FC<SectionIconProps> = ({
+  icon,
+  serviceCount,
+  size = 'lg',
+  width,
+  height,
+}) => {
   const Icon = SVG[icon];
 
   return (
@@ -21,7 +29,7 @@ export const SectionIcon: FC<SectionIconProps> = ({ icon, serviceCount, size = '
         </Typography>
       )}
       <div className={classNames(styles.icon, styles[`icon-${size}`])}>
-        <Icon width={32} height={32} />
+        <Icon width={width || 32} height={height || 32} />
       </div>
     </div>
   );

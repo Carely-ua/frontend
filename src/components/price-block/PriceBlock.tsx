@@ -1,16 +1,18 @@
 import { FC } from 'react';
+import classNames from 'classnames';
 import { Typography } from '@/ui-kit';
 import styles from './PriceBlock.module.scss';
 
 interface PriceBlock {
   firstPrice: number;
   secondPrice: number;
+  flexStart?: boolean;
 }
 
-export const PriceBlock: FC<PriceBlock> = ({ firstPrice, secondPrice }) => {
+export const PriceBlock: FC<PriceBlock> = ({ firstPrice, secondPrice, flexStart }) => {
   return (
     <div>
-      <div className={styles.priceItem}>
+      <div className={classNames(styles.priceItem, { [styles.priceItemStart]: flexStart })}>
         <Typography component="p" color="dark-grey">
           Ціна в клініці
         </Typography>
@@ -18,7 +20,7 @@ export const PriceBlock: FC<PriceBlock> = ({ firstPrice, secondPrice }) => {
           {firstPrice} грн
         </Typography>
       </div>
-      <div className={styles.priceItem}>
+      <div className={classNames(styles.priceItem, { [styles.priceItemStart]: flexStart })}>
         <Typography component="p" color="dark-grey">
           Ціна Carely
         </Typography>

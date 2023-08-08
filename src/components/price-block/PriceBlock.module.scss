@@ -15,5 +15,9 @@
   &:not(:last-child) {
     margin-bottom: $gap-xs;
   }
+
+  &Start {
+    justify-content: start;
+  }
 }
 

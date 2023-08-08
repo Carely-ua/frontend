@@ -1,0 +1,62 @@
+@use '@/scss/abstracts' as *;
+
+.row {
+  display: flex;
+  align-items: center;
+
+  & > * {
+    flex: 1;
+    flex: 15%;
+    &:nth-child(3) {
+      flex: 40%;
+    }
+    &:first-child {
+      flex: 30%;
+    }
+    &:last-child {
+      flex: 50px;
+    }
+  }
+}
+
+.head {
+  margin-bottom: $gap-md;
+  padding: 0 $gap-md;
+}
+
+.item {
+  padding: $gap-md;
+  border-radius: 20px;
+  border: 1px solid $light-grey;
+  margin-bottom: $gap-xlg;
+}
+
+.clinicInfo {
+  display: flex;
+  align-items: center;
+}
+
+.image {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-right: $gap-md;
+
+  img {
+    object-fit: contain;
+  }
+}
+
+.deleteButton {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+
+  svg {
+    path {
+      fill: $dangerous;
+      color: $dangerous;
+    }
+  }
+}
