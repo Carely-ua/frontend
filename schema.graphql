@@ -8,18 +8,34 @@ scalar Upload
 type Mutation {
   register(login: String!, password: String!): Boolean
   auth(login: String!, password: String!): String
+  createCartItem(input: CartItemCreateInputType!): CartItem
+  destroyCartItem(id: ID!): Boolean!
+  createCategorySubTitle(input: CategorySubTitleCreateInputType!): CategoriesSubTitle
+  updateCategorySubTitle(input: CategorySubTitleUpdateInputType!): CategoriesSubTitle
+  destroyCategorySubTitle(id: ID!): Boolean!
+  createSubTitleService(input: createSubTitleService): Boolean!
+  subTitleService(input: createSubTitleService): Boolean!
+  destroySubTitleService(subTitleId: ID!, serviceId: ID!): Boolean!
   createCategory(input: CategoryCreateInputType!): Category
   updateCategory(input: CategoryUpdateInputType!): Category
   destroyCategory(id: ID!): Boolean!
   createClinic(input: ClinicCreateInputType!): Clinic
   updateClinic(input: ClinicUpdateInputType!): Clinic
   destroyClinic(id: ID!): Boolean!
+  createSpecClinic(input: SpecClinicCreateInputType): Boolean!
+  destroySpecClinic(input: SpecClinicCreateInputType): Boolean!
+  createSpecialization(input: SpecializationCreateInputType!): Specialization
+  updateSpecialization(input: SpecializationUpdateInputType!): Specialization
+  destroySpecialization(id: ID!): Boolean!
   createDoctor(input: DoctorCreateInputType!): Doctor
   updateDoctor(input: DoctorUpdateInputType!): Doctor
   destroyDoctor(id: ID!): Boolean!
   createDoctorsService(input: createDoctorService): Boolean!
   doctorsService(input: createDoctorService): Boolean!
   destroyDoctorService(doctorId: ID!, serviceId: ID!): Boolean!
+  createOrder: Order
+  createReview(input: ReviewCreateInputType!): Review
+  destroyReview(id: ID!): Boolean!
   createService(input: ServiceCreateInputType!): Service
   updateService(input: ServiceUpdateInputType!): Service
   destroyService(id: ID!): Boolean!
@@ -28,23 +44,53 @@ type Mutation {
   signIn(input: SignInInput!): String
   editUser(input: EditUser): User
 }
-type Category {
+type CartItem {
   id: ID!
-  title: String!
-  subTitle: String!
-  services: [Service]
+  amount: Float
+  userId: String!
+  serviceId: String
+  doctorId: String
+  user: User
+  doctor: Doctor
+  service: Service
 }
 type Query {
+  cart: [CartItem]
+  categorySubTitle(filters: CategorySubTitleFilterInputType!): CategoriesSubTitle
+  getCategorySubTitles(filters: CategorySubTitleFilterInputType!): [CategoriesSubTitle]
   category(filters: CategoryFilterInputType!): Category
   getCategories(filters: CategoryFilterInputType!): [Category]
   clinic(filters: ClinicFilterInputType!): Clinic
   getClinics(filters: ClinicFilterInputType!): [Clinic]
+  getSpecializations(filters: SpecializationFilterInputType): [Specialization]
   health: Boolean!
   doctor(filters: DoctorFilterInputType!): Doctor
   getDoctors(filters: DoctorFilterInputType!): [Doctor]
+  orders: [Order]
+  order(id: ID!): Order
   service(filters: ServiceFilterInputType!): Service
   getServices(filters: ServiceFilterInputType!): [Category]
   user: User
+}
+type CategoriesSubTitle {
+  id: ID!
+  title: String!
+  categoryId: String!
+  category: Category
+  services: [Service]
+}
+type SubTitleService {
+  subTitleId: ID!
+  serviceId: ID!
+  specializationId: ID!
+  clinicId: ID!
+}
+type Category {
+  id: ID!
+  title: String!
+  serviceType: ServiceType
+  subTitles: [CategoriesSubTitle]
+  services: [Service]
 }
 type MapCoordinates {
   lat: Float!
@@ -56,6 +102,8 @@ type Clinic {
   email: String!
   address: String!
   phone: String!
+  workingTime: String
+  reviewsCount: Float
   mapCoordinates: MapCoordinates!
   clinicType: ClinicType!
   city: String!
@@ -63,6 +111,13 @@ type Clinic {
   image: String!
   rating: Float
   servicesWithCategories(input: ServiceFilterInputType): [Category]!
+  reviews: [Review]
+  specializations: [Specialization]
+}
+type Specialization {
+  id: ID!
+  title: String!
+  clinics: [Clinic]
 }
 type Doctor {
   id: ID!
@@ -75,11 +130,44 @@ type Doctor {
   price: Float
   clinic: Clinic
   services: [Service]
+  reviews: [Review]
 }
 type DoctorService {
   price: Float
   doctorId: ID!
   serviceId: ID!
+}
+type OrderItem {
+  id: ID!
+  amount: Float!
+  serviceId: String
+  orderId: String
+  doctorId: String
+  order: Order
+  doctor: Doctor
+  service: Service
+}
+type Order {
+  id: ID!
+  amount: Float!
+  status: OrderStatus!
+  userId: String!
+  details: String
+  orderItems: [OrderItem!]!
+  user: User
+}
+type Review {
+  id: ID!
+  rate: Float
+  text: String!
+  userId: String!
+  serviceId: String
+  doctorId: String
+  clinicId: String
+  user: User
+  doctor: Doctor
+  service: Service
+  clinic: Clinic
 }
 type Service {
   id: ID!
@@ -91,6 +179,7 @@ type Service {
   clinic: Clinic
   categoryId: String
   category: Category
+  reviews: [Review]
 }
 type SmsSend {
   id: ID!
@@ -114,6 +203,13 @@ enum ClinicType {
   clinic
   laboratory
 }
+enum OrderStatus {
+  done
+  waitingPayment
+  confirmedPayment
+  clinicApprovalPending
+  confirmedByClinic
+}
 enum ServiceType {
   analyse
   diagnostic
@@ -123,19 +219,40 @@ enum Sex {
   male
   female
 }
+input CartItemCreateInputType {
+  serviceId: String
+  doctorId: String
+}
+input CategorySubTitleFilterInputType {
+  title: String
+  categoryId: String
+  id: ID
+}
+input CategorySubTitleCreateInputType {
+  title: String!
+  categoryId: String!
+}
+input CategorySubTitleUpdateInputType {
+  id: ID!
+  title: String
+  categoryId: String
+}
+input createSubTitleService {
+  subTitleId: ID!
+  serviceId: ID!
+}
 input CategoryFilterInputType {
   title: String
-  subTitle: String
+  serviceType: ServiceType
   id: ID
 }
 input CategoryCreateInputType {
   title: String!
-  subTitle: String!
+  serviceType: ServiceType
 }
 input CategoryUpdateInputType {
   id: ID!
   title: String
-  subTitle: String
 }
 input MapCoordinatesInput {
   lat: Float!
@@ -145,9 +262,11 @@ input ClinicFilterInputType {
   city: String
   address: String
   name: String
+  workingTime: String
   mapCoordinates: MapCoordinatesInput
   id: ID
   clinicType: ClinicType
+  specializationIds: [String]
 }
 input ClinicCreateInputType {
   name: String!
@@ -173,6 +292,21 @@ input ClinicUpdateInputType {
   description: String
   image: String
   rating: Float
+}
+input SpecClinicCreateInputType {
+  specializationId: ID!
+  clinicId: ID!
+}
+input SpecializationFilterInputType {
+  title: String
+  id: ID
+}
+input SpecializationCreateInputType {
+  title: String!
+}
+input SpecializationUpdateInputType {
+  id: ID!
+  title: String
 }
 input DoctorFilterInputType {
   name: String
@@ -201,6 +335,13 @@ input createDoctorService {
   serviceId: ID!
   price: Float
 }
+input ReviewCreateInputType {
+  serviceId: String
+  doctorId: String
+  clinicId: String
+  text: String!
+  rating: Float
+}
 input ServiceFilterInputType {
   city: String
   address: String
@@ -208,8 +349,8 @@ input ServiceFilterInputType {
   description: String
   id: ID
   clinicId: String
-  categoryTitle: String
-  categorySubtitle: String
+  categoryId: String
+  categorySubTitleId: String
   serviceType: ServiceType
 }
 input ServiceCreateInputType {
@@ -246,3 +387,4 @@ directive @specifiedBy(
     "The URL that specifies the behavior of this scalar."
     url: String!
   ) on SCALAR
+

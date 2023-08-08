@@ -1,0 +1,7 @@
+
+query GetConsultations($filters: CategoryFilterInputType!) {
+  getCategories(filters: $filters) {
+		id
+    title
+  }
+}
