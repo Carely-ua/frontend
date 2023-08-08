@@ -5,7 +5,7 @@ import { Form, FormikProps, Formik } from 'formik';
 import { object, string } from 'yup';
 import { signIn } from 'next-auth/react';
 import { Button } from '@/ui-kit';
-import { PhoneInput, SmsCodeInput } from '../inputs';
+import { PhoneInput, SmsCodeInput } from '../../inputs';
 import styles from './AuthForm.module.scss';
 
 interface Values {

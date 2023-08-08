@@ -1,12 +1,14 @@
-import { useModalContext } from '../../utils/providers/modal-provider/ModalProvider';
+'use client';
+
+// import { useModalContext } from '@/utils/client';
 import { AuthModalTemplate } from '../auth-modal-template';
 
 export const AuthModal = () => {
-  const { openModal } = useModalContext();
+  // const { openModal } = useModalContext();
   // const t = useTranslations('AddToBagAuthModal');
 
   const successSignInHandler = () => {
-    openModal('SuccessAuthModal');
+    // openModal('SuccessAuthModal');
   };
 
   return (

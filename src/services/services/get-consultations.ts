@@ -1,4 +1,4 @@
-import { query } from '@/utils';
+import { query } from '@/utils/server';
 import { ServiceType } from '@/utils/graphql/__generated__/types';
 import { GetConsultationsDocument } from './graphql/__generated__/GetConsultations';
 

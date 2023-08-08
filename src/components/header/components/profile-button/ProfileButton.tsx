@@ -4,7 +4,7 @@ import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 import { Typography } from '@/ui-kit';
 import { SVG } from '@/components/svg';
-import { useModalContext } from '@/utils';
+import { useModalContext } from '@/utils/client';
 import styles from './ProfileButton.module.scss';
 
 export const ProfileButton = () => {

@@ -1,4 +1,4 @@
-import { mutate } from '@/utils';
+import { mutate } from '@/utils/server';
 import {
   SignInDocument,
   SignInMutation,

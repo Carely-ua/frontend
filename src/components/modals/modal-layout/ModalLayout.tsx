@@ -1,6 +1,6 @@
 import { FC, ReactNode } from 'react';
 import { ModalComponentProps, Typography } from '@/ui-kit';
-import { CloseButton } from '../close-button';
+import { CloseButton } from '../../close-button';
 import styles from './ModalLayout.module.scss';
 
 interface ModalLayoutProps extends ModalComponentProps {

@@ -1,4 +1,4 @@
-import { query } from '@/utils';
+import { query } from '@/utils/server';
 import { GetClinicsDocument, GetClinicsQueryVariables } from './graphql/__generated__/GetClinics';
 
 export const getClinics = async (filters: GetClinicsQueryVariables['filters'] = {}) => {

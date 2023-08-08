@@ -8,7 +8,7 @@ import {
   AuthModal,
   SuccessAuthModal,
   SuccessAddedToCartModal,
-} from '@/components';
+} from '@/components/modals';
 
 const modals = {
   SingInModal,

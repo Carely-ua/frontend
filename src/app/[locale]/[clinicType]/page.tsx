@@ -3,6 +3,7 @@ import { useTranslations } from 'next-intl';
 import { PageSearch, SearchResult } from '@/components';
 import { getClinics, ClinicTypes } from '@/services';
 import { checkClinicType, getClinicType } from '@/utils';
+//TODO: fix this import
 import { ClinicType } from '@/utils/graphql/__generated__/types';
 
 interface ClinicsWrapperParams {

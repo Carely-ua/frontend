@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { Roboto } from 'next/font/google';
 import { Footer, FooterSearch, Header, TopServices } from '@/components';
 import '@/scss/main.scss';
-import { ApolloWrapper, AppProvider } from '@/utils';
+import { ApolloWrapper, AppProvider } from '@/utils/client';
 
 const roboto = Roboto({ subsets: ['latin', 'cyrillic'], weight: ['400', '500', '700'] });
 

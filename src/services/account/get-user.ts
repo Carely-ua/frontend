@@ -1,4 +1,4 @@
-import { query } from '@/utils';
+import { query } from '@/utils/server';
 import { GetUserDocument, GetUserQuery } from './graphql/__generated__/GetUser';
 
 export const getUser = async () => {

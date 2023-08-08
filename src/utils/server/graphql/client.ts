@@ -1,3 +1,4 @@
+import 'server-only';
 import { ApolloClient, HttpLink } from '@apollo/client';
 import {
   NextSSRInMemoryCache,
