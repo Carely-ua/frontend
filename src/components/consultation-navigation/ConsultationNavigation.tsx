@@ -20,7 +20,7 @@ const ConsultationItem: FC<NonNullable<ServicesTypes.Consultation>> = ({ title, 
 };
 
 export const ConsultationNavigation = async () => {
-  // const { data } = await getConsultations();
+  const { data } = await getConsultations();
 
   if (!data.getCategories || data.getCategories.length === 0) return null;
 

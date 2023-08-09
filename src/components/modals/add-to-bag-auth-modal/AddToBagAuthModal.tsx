@@ -1,19 +1,23 @@
-// import { useModalContext } from '@/utils/client';
 import { AuthModalTemplate } from '../auth-modal-template';
+import { Modal } from '../modal';
+import { ModalComponent } from '..';
 
-export const AddToBagAuthModal = () => {
-  // const t = useTranslations('AddToBagAuthModal');
-  // const { openModal } = useModalContext();
-
+export const AddToBagAuthModal: ModalComponent = ({ openModal, handleClose, open }) => {
   const successSignInHandler = () => {
-    // openModal('SuccessAddedToCartModal');
+    openModal('SuccessAddedToCartModal');
+  };
+
+  const closeHandler = () => {
+    handleClose();
   };
 
   return (
-    <AuthModalTemplate
-      title="Послуга успішно додана в кошик"
-      description="Для деяких послуг потрібен попередній запис просимо вас ввести номер телефона"
-      successSignInHandler={successSignInHandler}
-    />
+    <Modal handleClose={closeHandler} open={open}>
+      <AuthModalTemplate
+        title="Послуга успішно додана в кошик"
+        description="Для деяких послуг потрібен попередній запис просимо вас ввести номер телефона"
+        successSignInHandler={successSignInHandler}
+      />
+    </Modal>
   );
 };

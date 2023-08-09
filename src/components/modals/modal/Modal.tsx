@@ -1,15 +1,12 @@
 import ModalMUI from '@mui/base/Modal';
-import { FC, ReactNode, forwardRef, memo } from 'react';
+import { FC, ReactNode, forwardRef } from 'react';
 import classNames from 'classnames';
 import styles from './Modal.module.scss';
 
-export interface ModalComponentProps {
-  handleClose(): void;
-}
-
-interface ModalProps extends ModalComponentProps {
+interface ModalProps {
   children: ReactNode;
   open: boolean;
+  handleClose(): void;
 }
 
 const Backdrop = forwardRef<HTMLDivElement, { open?: boolean; className: string }>(

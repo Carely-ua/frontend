@@ -18,7 +18,7 @@ export const ProfileButton = () => {
     if (session) {
       router.push('/account');
     } else {
-      openModal('AuthModal');
+      openModal('AddToBagAuthModal');
     }
   };
 

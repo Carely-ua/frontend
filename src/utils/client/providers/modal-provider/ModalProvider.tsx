@@ -1,24 +1,12 @@
 'use client';
 
 import { createContext, ReactNode, FC, useState, useCallback, useMemo, useContext } from 'react';
-import { Modal } from '@/ui-kit';
-import {
-  AddToBagAuthModal,
-  SingInModal,
-  AuthModal,
-  SuccessAuthModal,
-  SuccessAddedToCartModal,
-} from '@/components/modals';
+import { ModalId, modals } from '@/components/modals';
 
-const modals = {
-  SingInModal,
-  AddToBagAuthModal,
-  AuthModal,
-  SuccessAuthModal,
-  SuccessAddedToCartModal,
-};
-
-type ModalId = keyof typeof modals;
+export interface ModalComponentProps {
+  handleClose(): void;
+  openModal(id: ModalId): void;
+}
 
 interface ModalContextType {
   openModal: (id: ModalId) => void;
@@ -60,9 +48,9 @@ export const ModalProvider: FC<ModalProviderProps> = ({ children }) => {
   return (
     <ModalContext.Provider value={modalProviderValue}>
       {children}
-      <Modal handleClose={closeModal} open={!!modalId}>
-        {!!CurrentModal && <CurrentModal handleClose={closeModal} />}
-      </Modal>
+      {!!CurrentModal && (
+        <CurrentModal handleClose={closeModal} openModal={openModal} open={!!modalId} />
+      )}
     </ModalContext.Provider>
   );
 };
