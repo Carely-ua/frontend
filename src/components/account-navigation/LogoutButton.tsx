@@ -1,19 +1,17 @@
 'use client';
 
 import { ReactNode, FC } from 'react';
-import { signOut } from 'next-auth/react';
-import { useRouter } from 'next/navigation';
+import { useModalContext } from '@/utils/client';
 
 interface LogoutButtonProps {
   children: ReactNode;
 }
 
 export const LogoutButton: FC<LogoutButtonProps> = ({ children }) => {
-  const router = useRouter();
+  const { openModal } = useModalContext();
 
   const logoutHandler = async () => {
-    await signOut({ redirect: false });
-    router.push('/');
+    openModal('LogoutModal');
   };
 
   return <div onClick={logoutHandler}>{children}</div>;
