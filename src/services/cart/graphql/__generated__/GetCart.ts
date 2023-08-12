@@ -9,7 +9,14 @@ export type GetCartQuery = {
     __typename?: 'CartItem';
     id: string;
     amount?: number | null;
-    service?: { __typename?: 'Service'; id: string; name: string } | null;
+    service?: {
+      __typename?: 'Service';
+      id: string;
+      name: string;
+      serviceType: Types.ServiceType;
+      price?: number | null;
+      clinic?: { __typename?: 'Clinic'; image: string; name: string } | null;
+    } | null;
   } | null> | null;
 };
 
@@ -39,6 +46,19 @@ export const GetCartDocument = {
                     selections: [
                       { kind: 'Field', name: { kind: 'Name', value: 'id' } },
                       { kind: 'Field', name: { kind: 'Name', value: 'name' } },
+                      { kind: 'Field', name: { kind: 'Name', value: 'serviceType' } },
+                      { kind: 'Field', name: { kind: 'Name', value: 'price' } },
+                      {
+                        kind: 'Field',
+                        name: { kind: 'Name', value: 'clinic' },
+                        selectionSet: {
+                          kind: 'SelectionSet',
+                          selections: [
+                            { kind: 'Field', name: { kind: 'Name', value: 'image' } },
+                            { kind: 'Field', name: { kind: 'Name', value: 'name' } },
+                          ],
+                        },
+                      },
                     ],
                   },
                 },

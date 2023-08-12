@@ -5,6 +5,12 @@ query GetCart {
     service {
       id
       name
+      serviceType
+      price
+      clinic {
+        image
+        name
+      }
     }
   }
 }
