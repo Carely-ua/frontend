@@ -1,6 +1,7 @@
 import classNames from 'classnames';
 import Image from 'next/image';
 import { Typography } from '@/ui-kit';
+import { getCart } from '@/services';
 import { PriceBlock } from '../price-block';
 import { SVG } from '../svg';
 import styles from './Cart.module.scss';
@@ -37,7 +38,9 @@ const mockItems = [
   },
 ];
 
-export const Cart = () => {
+export const Cart = async () => {
+  const { data } = await getCart();
+
   return (
     <div>
       <div className={styles.table}>

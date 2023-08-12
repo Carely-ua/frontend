@@ -4,7 +4,7 @@ import ButtonMUI, { ButtonProps as ButtonMUIProps } from '@mui/base/Button';
 import { Typography } from '../typography';
 import styles from './Button.module.scss';
 
-interface ButtonProps extends ButtonMUIProps {
+export interface ButtonProps extends ButtonMUIProps {
   buttonType?: 'primary' | 'secondary' | 'white';
   children: React.ReactNode;
 }

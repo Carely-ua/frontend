@@ -2,8 +2,18 @@ import { AuthModalTemplate } from '../auth-modal-template';
 import { Modal } from '../modal';
 import { ModalComponent } from '..';
 
-export const AddToBagAuthModal: ModalComponent = ({ openModal, handleClose, open }) => {
-  const successSignInHandler = () => {
+export interface AddToBagAuthModalProps {
+  addToBagHandler(): Promise<void>;
+}
+
+export const AddToBagAuthModal: ModalComponent<AddToBagAuthModalProps> = ({
+  openModal,
+  handleClose,
+  open,
+  modalProps,
+}) => {
+  const successSignInHandler = async () => {
+    await modalProps?.addToBagHandler();
     openModal('SuccessAddedToCartModal');
   };
 

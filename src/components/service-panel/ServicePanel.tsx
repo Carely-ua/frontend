@@ -4,6 +4,7 @@ import { ServiceType } from '@/utils/graphql/__generated__/types';
 import { ServicesTypes, getClinicServices } from '@/services';
 import { SidebarNavigation } from '../sidebar-navigation';
 import { PriceBlock } from '../price-block';
+import { AddToBagButton } from '../add-to-bag-button';
 import styles from './ServicePanel.module.scss';
 
 interface ServiceSectionProps {
@@ -30,7 +31,7 @@ const ServiceSection: FC<ServiceSectionProps> = ({ title, services }) => {
             <div className={styles.buyInfo}>
               <PriceBlock secondPrice={price} firstPrice={120} />
               <div className={styles.addToCartButton}>
-                <Button>В кошик</Button>
+                <AddToBagButton serviceId={id} />
               </div>
             </div>
           </div>

@@ -17,10 +17,14 @@ export const modals = {
 
 export type ModalId = keyof typeof modals;
 
-interface ModalComponentProps {
-  openModal(modalId: ModalId): void;
+export type ModalProps<T extends ModalId> = NonNullable<
+  Parameters<(typeof modals)[T]>[0]['modalProps']
+>;
+interface ModalComponentProps<T extends {}> {
+  openModal(modalId: ModalId, props?: T): void;
   handleClose(): void;
   open: boolean;
+  modalProps: T | null;
 }
 
-export type ModalComponent = FC<ModalComponentProps>;
+export type ModalComponent<T extends {} = {}> = FC<ModalComponentProps<T>>;

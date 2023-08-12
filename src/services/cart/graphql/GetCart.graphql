@@ -1,0 +1,10 @@
+query GetCart {
+  cart {
+    id
+    amount
+    service {
+      id
+      name
+    }
+  }
+}

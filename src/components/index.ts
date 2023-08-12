@@ -25,3 +25,4 @@ export * from './account-template';
 export * from './client-services';
 export * from './consultation-navigation';
 export * from './cart';
+export * from './add-to-bag-button';
