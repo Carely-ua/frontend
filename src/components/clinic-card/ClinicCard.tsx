@@ -18,7 +18,12 @@ const defaultSpecializations = [
   'УЗД молочна залоза',
 ];
 
-export const ClinicCard: FC<NonNullable<ClinicTypes.Clinic>> = ({
+interface ClinicCardProps extends NonNullable<ClinicTypes.Clinic> {
+  hrefPrefix: string;
+}
+
+export const ClinicCard: FC<ClinicCardProps> = ({
+  hrefPrefix,
   id,
   name,
   address,
@@ -34,7 +39,7 @@ export const ClinicCard: FC<NonNullable<ClinicTypes.Clinic>> = ({
     <div className={styles.card}>
       <div className={styles.mainSection}>
         <div className={styles.image}>
-          <Image src={image || defaultImage} alt="clinic" width="160" height="160" />
+          <Image src={defaultImage} alt="clinic" width="160" height="160" />
         </div>
         <div className={styles.content}>
           <div className={styles.header}>
@@ -49,7 +54,7 @@ export const ClinicCard: FC<NonNullable<ClinicTypes.Clinic>> = ({
       <div className={styles.bottomSection}>
         <ClinicExtraInfo address={address} workingHours={workingHours} />
         <div>
-          <Link className={styles.link} href={`/clinics/${id}`}>
+          <Link className={styles.link} href={`/${hrefPrefix}/${id}`}>
             <Button>Детальніше</Button>
           </Link>
         </div>

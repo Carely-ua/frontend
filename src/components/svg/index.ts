@@ -40,6 +40,6 @@ const SVGObject = {
 };
 
 export type SVGNameType = keyof typeof SVGObject;
-export type SVGType = FC<{ width?: number; height?: number }>;
+export type SVGType = FC<{ width?: number | string; height?: number | string; className?: string }>;
 
 export const SVG = SVGObject as Record<SVGNameType, SVGType>;

@@ -15,6 +15,8 @@ export type GetClinicQuery = {
     address: string;
     image: string;
     clinicType: Types.ClinicType;
+    workingTime?: string | null;
+    reviewsCount?: number | null;
     mapCoordinates: { __typename?: 'MapCoordinates'; lat: number; lng: number };
   } | null;
 };
@@ -58,6 +60,8 @@ export const GetClinicDocument = {
                 { kind: 'Field', name: { kind: 'Name', value: 'address' } },
                 { kind: 'Field', name: { kind: 'Name', value: 'image' } },
                 { kind: 'Field', name: { kind: 'Name', value: 'clinicType' } },
+                { kind: 'Field', name: { kind: 'Name', value: 'workingTime' } },
+                { kind: 'Field', name: { kind: 'Name', value: 'reviewsCount' } },
                 {
                   kind: 'Field',
                   name: { kind: 'Name', value: 'mapCoordinates' },

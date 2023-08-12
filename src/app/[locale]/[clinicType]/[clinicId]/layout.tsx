@@ -21,8 +21,7 @@ const ClinicLayout: FC<ClinicLayoutProps> = async ({ children, params }) => {
 
   return (
     <>
-      {/* TODO: delete reviewAmount and workingHours  */}
-      <ClinicMainInfo reviewAmount={433} workingHours="з 9:00-17:00" {...data.clinic} />
+      <ClinicMainInfo {...data.clinic} />
       {children}
     </>
   );

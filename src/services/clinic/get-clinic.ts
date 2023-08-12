@@ -1,4 +1,3 @@
-import { gql } from '@apollo/client';
 import { query } from '@/utils/server';
 import { GetClinicDocument } from './graphql/__generated__/GetClinic';
 

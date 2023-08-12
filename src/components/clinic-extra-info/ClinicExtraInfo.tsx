@@ -5,10 +5,10 @@ import styles from './ClinicExtraInfo.module.scss';
 
 export interface ClinicExtraInfoProps {
   address: string;
-  workingHours: string;
+  workingTime?: string | null;
 }
 
-export const ClinicExtraInfo: FC<ClinicExtraInfoProps> = ({ address, workingHours }) => {
+export const ClinicExtraInfo: FC<ClinicExtraInfoProps> = ({ address, workingTime }) => {
   return (
     <div>
       <div className={styles.extraInfo}>
@@ -19,10 +19,10 @@ export const ClinicExtraInfo: FC<ClinicExtraInfoProps> = ({ address, workingHour
       </div>
       <div className={styles.extraInfo}>
         <span className={styles.icon}>
-          <SVG.Time alt="time" width="16" height="16" />
+          <SVG.Time width="16" height="16" />
         </span>
         <Typography component="p" color="dark-grey">
-          {workingHours}
+          {workingTime}
         </Typography>
       </div>
     </div>

@@ -18,3 +18,15 @@
 .servicesSections {
   flex: 66.6%;
 }
+
+.buyInfo {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.addToCartButton {
+  padding-left: $gap-lg;
+  border-left: 1px solid $light-grey;
+  margin-left: $gap-xlg;
+} 

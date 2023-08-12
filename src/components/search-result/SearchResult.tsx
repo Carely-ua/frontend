@@ -4,16 +4,17 @@ import { ClinicCard } from '../clinic-card';
 import { Map } from '../map';
 import styles from './SearchResult.module.scss';
 
-interface SearchResultProps {
-  items: Array<ClinicTypes.Clinic>;
+export interface SearchResultProps {
+  clinics: Array<ClinicTypes.Clinic>;
+  hrefPrefix: string;
 }
 
-export const SearchResult: FC<SearchResultProps> = ({ items }) => {
+export const SearchResult: FC<SearchResultProps> = ({ clinics, hrefPrefix }) => {
   return (
     <div className={styles.wrapper}>
       <div className={styles.item}>
-        {items.map(item => {
-          return item ? <ClinicCard key={item.id} {...item} /> : null;
+        {clinics.map(clinic => {
+          return clinic ? <ClinicCard hrefPrefix={hrefPrefix} key={clinic.id} {...clinic} /> : null;
         })}
       </div>
       <div className={styles.item}>

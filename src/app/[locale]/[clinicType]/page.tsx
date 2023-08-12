@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import { useTranslations } from 'next-intl';
-import { PageSearch, SearchResult } from '@/components';
+import { PageSearch, SearchResult, SearchResultProps } from '@/components';
 import { getClinics, ClinicTypes } from '@/services';
 import { checkClinicType, getClinicType } from '@/utils';
 //TODO: fix this import
@@ -18,21 +18,26 @@ const ClinicsWrapper = async ({ params }: ClinicsWrapperParams) => {
 
   const { data } = await getClinics({ clinicType });
 
-  return <Clinics clinicType={clinicType} clinics={data.getClinics || []} />;
+  return (
+    <Clinics
+      hrefPrefix={params.clinicType}
+      clinicType={clinicType}
+      clinics={data.getClinics || []}
+    />
+  );
 };
 
-interface ClinicsProps {
+interface ClinicsProps extends SearchResultProps {
   clinicType: ClinicType;
-  clinics: Array<ClinicTypes.Clinic>;
 }
 
-const Clinics: FC<ClinicsProps> = ({ clinicType, clinics }) => {
+const Clinics: FC<ClinicsProps> = ({ clinicType, clinics, hrefPrefix }) => {
   const t = useTranslations(clinicType);
 
   return (
     <div>
       <PageSearch title={t('title')} icon="Clinic" />
-      {clinics.length > 0 && <SearchResult items={clinics} />}
+      {clinics.length > 0 && <SearchResult hrefPrefix={hrefPrefix} clinics={clinics} />}
     </div>
   );
 };

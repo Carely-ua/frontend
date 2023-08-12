@@ -8,14 +8,14 @@ import styles from './SidebarNavigation.module.scss';
 interface SidebarNavigationProps {
   title: string;
   baseUrl: string;
-  sections: Array<{ name: string; id: string }>;
+  categories: Array<{ title: string; id: string } | null>;
   categoryId: string;
 }
 
 export const SidebarNavigation: FC<SidebarNavigationProps> = ({
   title,
   baseUrl,
-  sections,
+  categories,
   categoryId,
 }) => {
   return (
@@ -27,13 +27,16 @@ export const SidebarNavigation: FC<SidebarNavigationProps> = ({
         <SectionIcon icon="Clinic" size="sm" />
       </div>
       <div className={styles.sidebarItems}>
-        {sections.map(({ name, id }) => {
+        {categories.map(item => {
+          if (!item) return null;
+
+          const { title, id } = item;
           const isActive = categoryId === id;
 
           return (
             <Link href={`${baseUrl}/${id}`} key={id} className={styles.sidebarItem}>
               <Typography component="h4" color={isActive ? 'secondary' : 'dark-grey'}>
-                {name}
+                {title}
               </Typography>
               <SVG.Arrow />
             </Link>

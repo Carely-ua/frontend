@@ -6,6 +6,8 @@ query GetClinic($filters: ClinicFilterInputType!) {
     address
     image
     clinicType
+    workingTime
+    reviewsCount
     mapCoordinates {
       lat
       lng

@@ -15,10 +15,10 @@ interface ClinicMainInfoProps extends RatingProps, ClinicExtraInfoProps {
 export const ClinicMainInfo: FC<ClinicMainInfoProps> = ({
   image,
   rating,
-  reviewAmount,
+  reviewsCount,
   name,
   address,
-  workingHours,
+  workingTime,
 }) => {
   return (
     <div className={styles.clinicMainInfo}>
@@ -28,12 +28,12 @@ export const ClinicMainInfo: FC<ClinicMainInfoProps> = ({
         </div>
         <div className={styles.clinicInfo}>
           <div className={styles.rating}>
-            <Rating rating={rating} reviewAmount={reviewAmount} />
+            <Rating rating={rating} reviewsCount={reviewsCount} />
           </div>
           <Typography className={styles.name} component="h2">
             {name}
           </Typography>
-          <ClinicExtraInfo address={address} workingHours={workingHours} />
+          <ClinicExtraInfo address={address} workingTime={workingTime} />
         </div>
       </div>
       <div className={styles.item}>map</div>

@@ -4,8 +4,8 @@ import { Typography } from '@/ui-kit';
 import styles from './PriceBlock.module.scss';
 
 interface PriceBlock {
-  firstPrice: number;
-  secondPrice: number;
+  firstPrice?: number | null;
+  secondPrice?: number | null;
   flexStart?: boolean;
 }
 
