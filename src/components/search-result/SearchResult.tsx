@@ -18,7 +18,7 @@ export const SearchResult: FC<SearchResultProps> = ({ clinics, hrefPrefix }) => 
         })}
       </div>
       <div className={styles.item}>
-        <StickyMap />
+        <StickyMap clinics={clinics} />
       </div>
     </div>
   );

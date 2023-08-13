@@ -1,12 +1,12 @@
 'use client';
 
 import Sticky from 'react-stickynode';
-import { useState } from 'react';
+import { FC, useState } from 'react';
 import classNames from 'classnames';
-import { Map } from '../map';
+import { Map, MapProps } from '../map';
 import styles from './SearchResult.module.scss';
 
-export const StickyMap = () => {
+export const StickyMap: FC<MapProps> = ({ clinics }) => {
   const [isSticky, setIsSticky] = useState(false);
 
   const handleStateChange = (status: Sticky.Status) => {
@@ -23,7 +23,7 @@ export const StickyMap = () => {
         className={classNames({
           [styles.mapContainer]: isSticky,
         })}>
-        <Map />
+        <Map clinics={clinics} />
       </div>
     </Sticky>
   );

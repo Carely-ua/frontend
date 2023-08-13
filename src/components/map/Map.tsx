@@ -1,6 +1,7 @@
 'use client';
-import { useRef, useCallback } from 'react';
+import { useRef, useCallback, FC } from 'react';
 import { GoogleMap, useJsApiLoader } from '@react-google-maps/api';
+import { ClinicTypes } from '@/services';
 import { theme } from './theme';
 import { Marker } from './components';
 import styles from './Map.module.scss';
@@ -13,8 +14,8 @@ const containerStyle = {
 };
 
 const center = {
-  lat: 51.509865,
-  lng: -0.118092,
+  lat: 0.3,
+  lng: 0.4,
 };
 
 const defaultOption = {
@@ -30,18 +31,22 @@ const defaultOption = {
   styles: theme,
 };
 
-export const Map = () => {
+export interface MapProps {
+  clinics: ClinicTypes.Clinics;
+}
+
+export const Map: FC<MapProps> = ({ clinics }) => {
   const { isLoaded } = useJsApiLoader({
     id: 'google-map-script',
     googleMapsApiKey: API_KEY,
   });
-  const mapRef = useRef(null);
+  const mapRef = useRef<google.maps.Map | null>(null);
 
-  const onLoad = useCallback(function callback(map) {
+  const onLoad = useCallback((map: google.maps.Map) => {
     mapRef.current = map;
   }, []);
 
-  const onUnmount = useCallback(function callback(map) {
+  const onUnmount = useCallback(() => {
     mapRef.current = null;
   }, []);
 
@@ -55,7 +60,17 @@ export const Map = () => {
           onLoad={onLoad}
           onUnmount={onUnmount}
           options={defaultOption}>
-          <Marker />
+          {clinics.map(clinic => {
+            if (!clinic) return null;
+            return (
+              <Marker
+                key={clinic.id}
+                rating={clinic.rating}
+                image={clinic.image}
+                mapCoordinates={clinic.mapCoordinates}
+              />
+            );
+          })}
         </GoogleMap>
       ) : null}
     </div>

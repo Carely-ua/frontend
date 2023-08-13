@@ -10,13 +10,17 @@ const center = {
 };
 
 interface MarkerProps {
-  rating: string;
+  rating?: number | null;
   image: string;
+  mapCoordinates: {
+    lat: number;
+    lng: number;
+  };
 }
 
-export const Marker: FC<MarkerProps> = ({ rating = 5 }) => {
+export const Marker: FC<MarkerProps> = ({ rating = 0, mapCoordinates }) => {
   return (
-    <OverlayView mapPaneName={OverlayView.OVERLAY_MOUSE_TARGET} position={center}>
+    <OverlayView mapPaneName={OverlayView.OVERLAY_MOUSE_TARGET} position={mapCoordinates}>
       <div className={styles.marker}>
         <div className={styles.rating}>
           <SVG.Star className={styles.icon} width="10" height="10" />
