@@ -1,0 +1,3 @@
+mutation DestroyCartItem($id:  ID!) {
+  destroyCartItem(id: $id)
+}
