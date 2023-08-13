@@ -13,13 +13,11 @@ import styles from './Cart.module.scss';
 
 const defaultImage = '/images/test-clinic-image.png';
 
-const CartItem: FC<CartTypes.CartItem> = ({ service }) => {
+const CartItem: FC<CartTypes.CartItem> = ({ id, service }) => {
   const { destroyCartItem } = useDestroyCartItem();
 
   const deleteCartItem = async () => {
-    if (!service?.id) return;
-
-    return await destroyCartItem(service.id);
+    return await destroyCartItem(id);
   };
 
   if (!service) return null;

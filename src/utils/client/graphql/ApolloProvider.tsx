@@ -10,6 +10,7 @@ import {
 
 const makeClient = () => {
   const httpLink = new HttpLink({
+    //TODO move it to env file
     uri: 'https://backend.carely.com.ua/graphql',
   });
 

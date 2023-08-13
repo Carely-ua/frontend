@@ -9,7 +9,7 @@ export const useDestroyCartItem = () => {
   const destroyCartItem = async (id: string) => {
     return await _destroyCartItem({
       variables: { id },
-      refetchQueries: ['AddToCart'],
+      refetchQueries: ['GetCart'],
       context: {
         headers: {
           Authorization: `Bearer ${session?.user?.token}`,
