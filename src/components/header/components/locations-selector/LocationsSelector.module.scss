@@ -1,0 +1,49 @@
+@use '@/scss/abstracts' as *;
+
+.locationsSelector {
+  display: flex;
+  align-items: center;
+  border-radius: 100px;
+  border: 1px solid $light-grey;
+  padding: $gap-sm $gap-sm $gap-sm $gap-xlg;
+  cursor: not-allowed;
+  margin-left: $gap-xlg;
+  position: relative;
+  z-index: 5;
+
+  &Button {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: $primary;
+    margin-left: $gap-lg;
+    border-radius: 50%;
+    transform: rotate(90deg);
+
+    svg {
+      path {
+        fill: $white;
+        color: $white;
+      }
+    }
+  }
+
+  &Message {
+    display: none;
+    position: absolute;
+    top: 120%;
+    left: 0;
+    background-color: $secondary;
+    border-radius: 20px;
+    padding: $gap-md;
+    width: 190px;
+  }
+
+  &:hover {
+    .locationsSelectorMessage {
+      display: block;
+    }
+  }
+}
