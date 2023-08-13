@@ -1,19 +1,29 @@
+'use client';
+
 import Link from 'next/link';
 import { Typography } from '@/ui-kit';
 import { SVG } from '@/components/svg';
+import { useGetCart } from '@/services/cart/get-cart';
 import styles from './CartButton.module.scss';
 
 export const CartButton = () => {
+  const { data } = useGetCart();
+
+  //TODO replace it to correct data from backend
+  const count = data?.cart?.[0]?.amount;
+
   return (
     <Link href="/cart" className={styles.container}>
       <div className={styles.cartButton}>
         <SVG.Cart width="24" height="24" />
       </div>
-      <div className={styles.count}>
-        <Typography component="span" color="white">
-          2
-        </Typography>
-      </div>
+      {!!count && (
+        <div className={styles.count}>
+          <Typography component="span" color="white">
+            {count}
+          </Typography>
+        </div>
+      )}
     </Link>
   );
 };

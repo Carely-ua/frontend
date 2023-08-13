@@ -24,6 +24,7 @@ export const AddToBagButton: FC<AddToBagButtonProps> = ({ buttonType, serviceId,
   const addToCartHandler = async () => {
     if (session) {
       await _addToCart();
+      openModal('SuccessAddedToCartModal');
     } else {
       openModal('AddToBagAuthModal', { addToBagHandler: _addToCart });
     }

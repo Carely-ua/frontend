@@ -48,7 +48,6 @@ const CartItem: FC<CartTypes.CartItem> = ({ id, service }) => {
 
 export const Cart = () => {
   const { data } = useGetCart();
-  console.log('data', data);
 
   if (!data?.cart) return null;
 
