@@ -1,5 +1,9 @@
 @use '@/scss/abstracts' as *;
 
+.navigation {
+  padding-right: 150px;
+}
+
 .list {
   display: flex;
   list-style: none;
@@ -22,6 +26,12 @@
   }
 
   :hover {
+    color: $primary;
+  }
+}
+
+.activeLink {
+  h4 {
     color: $primary;
   }
 }

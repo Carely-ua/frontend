@@ -11,8 +11,8 @@ export const Header = () => {
         <div className={styles.section}>
           <Logo />
           <LocationsSelector />
-          <Navigation />
         </div>
+        <Navigation />
         <div className={styles.section}>
           <CartButton />
           <ProfileButton />
