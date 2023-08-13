@@ -27,6 +27,7 @@ const Slide = () => {
 export const Carousel = () => {
   return (
     <Swiper
+      className="top-services-carousel"
       modules={[Pagination]}
       spaceBetween={20}
       slidesPerView={6}
