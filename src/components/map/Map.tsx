@@ -9,7 +9,7 @@ const API_KEY = 'AIzaSyBLk8kSHT1YRxxb2H-e51HPxLNMM9rkRjM';
 
 const containerStyle = {
   width: '100%',
-  height: '640px',
+  height: 'calc(100vh - 40px)',
 };
 
 const center = {

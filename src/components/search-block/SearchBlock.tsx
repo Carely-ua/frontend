@@ -5,7 +5,7 @@ export const SearchBlock = () => {
   return (
     <div>
       <SearchNavigation />
-      <SearchInput />
+      <SearchInput rightIcon="Search" placeholder="Наприклад аналіз на COVID" />
     </div>
   );
 };
