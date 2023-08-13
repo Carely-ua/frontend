@@ -15,6 +15,10 @@
   p {
     color: $white;
   }
+
+  &:hover {
+    background-color: $secondary;
+  }
 }
 
 .secondary {
@@ -23,6 +27,10 @@
   p {
     color: $white;
   }
+
+  &:hover {
+    background-color: $primary;
+  }
 }
 
 .white {
@@ -30,5 +38,11 @@
 
   p {
     color: $black;
+  }
+
+  &:hover {
+    p {
+      color: $primary;
+    }
   }
 }
