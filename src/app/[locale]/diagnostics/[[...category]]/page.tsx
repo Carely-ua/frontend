@@ -2,16 +2,21 @@ import { ServicePanel } from '@/components';
 import { getServices } from '@/services';
 import { ServiceType } from '@/utils/graphql/__generated__/types';
 
-const Diagnostics = async () => {
-  const { data } = await getServices(ServiceType.Diagnostic);
+interface DiagnosticsParams {
+  params: {
+    category?: [id: string];
+  };
+}
 
-  const baseUrl = '';
+const Diagnostics = async ({ params }: DiagnosticsParams) => {
+  const categoryId = params.category?.[0];
+  const { data } = await getServices(ServiceType.Diagnostic);
 
   if (!data.getCategories) return null;
 
   return (
     <ServicePanel
-      baseUrl={baseUrl}
+      baseUrl="/diagnostics"
       categories={data.getCategories}
       serviceType={ServiceType.Diagnostic}
       showPrice={false}
