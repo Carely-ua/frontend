@@ -10,5 +10,11 @@ query GetClinics($filters: ClinicFilterInputType!) {
       lat
       lng
     }
+    reviewsCount
+    specializations {
+      id
+      title
+    }
+    workingTime
   }
 }

@@ -1,6 +1,7 @@
 import { FC } from 'react';
 import { ClinicTypes } from '@/services';
-import { ClinicCard } from '../clinic-card';
+import { ClinicType } from '@/utils/graphql/__generated__/types';
+import { ClinicCard, GeneralClinicCart } from '../clinic-card';
 import styles from './SearchResult.module.scss';
 import { StickyMap } from './StickyMap';
 
@@ -14,7 +15,13 @@ export const SearchResult: FC<SearchResultProps> = ({ clinics, hrefPrefix }) => 
     <div id="searchResult" className={styles.wrapper}>
       <div className={styles.item}>
         {clinics.map(clinic => {
-          return clinic ? <ClinicCard hrefPrefix={hrefPrefix} key={clinic.id} {...clinic} /> : null;
+          if (!clinic) return null;
+
+          if (clinic.clinicType === ClinicType.Clinic) {
+            return <ClinicCard hrefPrefix={hrefPrefix} key={clinic.id} {...clinic} />;
+          }
+
+          return <GeneralClinicCart hrefPrefix={hrefPrefix} key={clinic.id} {...clinic} />;
         })}
       </div>
       <div className={styles.item}>

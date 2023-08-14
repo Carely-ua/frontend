@@ -15,7 +15,14 @@ export type GetClinicsQuery = {
     address: string;
     image: string;
     clinicType: Types.ClinicType;
+    reviewsCount?: number | null;
+    workingTime?: string | null;
     mapCoordinates: { __typename?: 'MapCoordinates'; lat: number; lng: number };
+    specializations?: Array<{
+      __typename?: 'Specialization';
+      id: string;
+      title: string;
+    } | null> | null;
   } | null> | null;
 };
 
@@ -69,6 +76,19 @@ export const GetClinicsDocument = {
                     ],
                   },
                 },
+                { kind: 'Field', name: { kind: 'Name', value: 'reviewsCount' } },
+                {
+                  kind: 'Field',
+                  name: { kind: 'Name', value: 'specializations' },
+                  selectionSet: {
+                    kind: 'SelectionSet',
+                    selections: [
+                      { kind: 'Field', name: { kind: 'Name', value: 'id' } },
+                      { kind: 'Field', name: { kind: 'Name', value: 'title' } },
+                    ],
+                  },
+                },
+                { kind: 'Field', name: { kind: 'Name', value: 'workingTime' } },
               ],
             },
           },

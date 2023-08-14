@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, ReactNode } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { ClinicTypes } from '@/services';
@@ -13,9 +13,10 @@ const defaultWorkingHours = 'з 9:00-17:00';
 
 interface ClinicCardProps extends NonNullable<ClinicTypes.Clinic> {
   hrefPrefix: string;
+  children?: ReactNode;
 }
 
-export const ClinicCard: FC<ClinicCardProps> = ({
+export const GeneralClinicCart: FC<ClinicCardProps> = ({
   hrefPrefix,
   id,
   name,
@@ -25,36 +26,30 @@ export const ClinicCard: FC<ClinicCardProps> = ({
   reviewsCount,
   workingTime = defaultWorkingHours,
   specializations,
+  children,
 }) => {
-  const specializationsArray = specializations?.map(item => item?.title);
-
   return (
     <div className={styles.card}>
       <div className={styles.mainSection}>
         <div className={styles.image}>
           <Image src={defaultImage} alt="clinic" width="160" height="160" />
         </div>
-        <div className={styles.content}>
+        <div className={styles.generalCartContent}>
           <div className={styles.header}>
             <Typography component="h3">{name}</Typography>
             <Rating rating={rating || 0} reviewsCount={reviewsCount} />
           </div>
-          <Typography component="p" gutterBottom="md" className={styles.label}>
-            Медичний центр
-          </Typography>
-          <Typography component="p" color="dark-grey" gutterBottom="md">
-            {specializationsArray?.join(', ')}
-          </Typography>
+          <div className={styles.bottomSection}>
+            <ClinicExtraInfo address={address} workingTime={workingTime} />
+            <div>
+              <Link className={styles.link} href={`/${hrefPrefix}/${id}`}>
+                <Button>Детальніше</Button>
+              </Link>
+            </div>
+          </div>
         </div>
       </div>
-      <div className={styles.bottomSection}>
-        <ClinicExtraInfo address={address} workingTime={workingTime} />
-        <div>
-          <Link className={styles.link} href={`/${hrefPrefix}/${id}`}>
-            <Button>Детальніше</Button>
-          </Link>
-        </div>
-      </div>
+      <div>{children}</div>
     </div>
   );
 };
