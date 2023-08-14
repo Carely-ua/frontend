@@ -1,15 +1,5 @@
 query GetServices($filters: ServiceFilterInputType!) {
   getServices(filters: $filters) {
-		id
-    title
-    subTitles {
-      id 
-      title
-      services {
-      	id 
-      	name
-        price
-    	}
-    }
+		...Category
   }
 }

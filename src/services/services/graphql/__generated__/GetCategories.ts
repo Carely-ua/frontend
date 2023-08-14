@@ -15,7 +15,12 @@ export type GetCategoriesQuery = {
       __typename?: 'CategoriesSubTitle';
       id: string;
       title: string;
-      services?: Array<{ __typename?: 'Service'; id: string; name: string } | null> | null;
+      services?: Array<{
+        __typename?: 'Service';
+        id: string;
+        name: string;
+        price?: number | null;
+      } | null> | null;
     } | null> | null;
   } | null> | null;
 };
@@ -52,28 +57,38 @@ export const GetCategoriesDocument = {
             ],
             selectionSet: {
               kind: 'SelectionSet',
+              selections: [{ kind: 'FragmentSpread', name: { kind: 'Name', value: 'Category' } }],
+            },
+          },
+        ],
+      },
+    },
+    {
+      kind: 'FragmentDefinition',
+      name: { kind: 'Name', value: 'Category' },
+      typeCondition: { kind: 'NamedType', name: { kind: 'Name', value: 'Category' } },
+      selectionSet: {
+        kind: 'SelectionSet',
+        selections: [
+          { kind: 'Field', name: { kind: 'Name', value: 'id' } },
+          { kind: 'Field', name: { kind: 'Name', value: 'title' } },
+          {
+            kind: 'Field',
+            name: { kind: 'Name', value: 'subTitles' },
+            selectionSet: {
+              kind: 'SelectionSet',
               selections: [
                 { kind: 'Field', name: { kind: 'Name', value: 'id' } },
                 { kind: 'Field', name: { kind: 'Name', value: 'title' } },
                 {
                   kind: 'Field',
-                  name: { kind: 'Name', value: 'subTitles' },
+                  name: { kind: 'Name', value: 'services' },
                   selectionSet: {
                     kind: 'SelectionSet',
                     selections: [
                       { kind: 'Field', name: { kind: 'Name', value: 'id' } },
-                      { kind: 'Field', name: { kind: 'Name', value: 'title' } },
-                      {
-                        kind: 'Field',
-                        name: { kind: 'Name', value: 'services' },
-                        selectionSet: {
-                          kind: 'SelectionSet',
-                          selections: [
-                            { kind: 'Field', name: { kind: 'Name', value: 'id' } },
-                            { kind: 'Field', name: { kind: 'Name', value: 'name' } },
-                          ],
-                        },
-                      },
+                      { kind: 'Field', name: { kind: 'Name', value: 'name' } },
+                      { kind: 'Field', name: { kind: 'Name', value: 'price' } },
                     ],
                   },
                 },

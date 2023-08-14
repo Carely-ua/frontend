@@ -7,11 +7,14 @@ const Analyzes = async () => {
 
   const baseUrl = '';
 
+  if (!data.getCategories) return null;
+
   return (
     <ServicePanel
       baseUrl={baseUrl}
-      categoriesData={data.getCategories}
+      categories={data.getCategories}
       serviceType={ServiceType.Analyse}
+      showPrice={false}
     />
   );
 };

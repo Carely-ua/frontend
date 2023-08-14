@@ -27,12 +27,14 @@ const ServicesSection = async ({ params }: ClinicParams) => {
       {showServicesPanel && (
         <ClinicServicesNavigation clinicId={params.clinicId} serviceType={serviceType} />
       )}
-      <ServicePanel
-        baseUrl={baseUrl}
-        categoriesData={data.getServices}
-        serviceType={serviceType}
-        categoryId={categoryId}
-      />
+      {data.getServices && (
+        <ServicePanel
+          baseUrl={baseUrl}
+          categories={data.getServices}
+          serviceType={serviceType}
+          categoryId={categoryId}
+        />
+      )}
     </>
   );
 };
