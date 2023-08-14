@@ -3,7 +3,7 @@
 import classNames from 'classnames';
 import Image from 'next/image';
 import { FC } from 'react';
-import { Typography } from '@/ui-kit';
+import { Button, Typography } from '@/ui-kit';
 import { CartTypes } from '@/services';
 import { useDestroyCartItem } from '@/services/cart/destroy-cart-item';
 import { useGetCart } from '@/services/cart/get-cart';
@@ -22,7 +22,7 @@ const CartItem: FC<CartTypes.CartItem> = ({ id, service }) => {
 
   if (!service) return null;
 
-  const { name, serviceType, price, clinic } = service;
+  const { name, serviceType, price, discountPrice, clinic } = service;
 
   return (
     <div className={classNames(styles.row, styles.item)}>
@@ -36,7 +36,7 @@ const CartItem: FC<CartTypes.CartItem> = ({ id, service }) => {
         <Typography component="p">{serviceType}</Typography>
       </div>
       <Typography component="p">{name}</Typography>
-      <PriceBlock flexStart firstPrice={120} secondPrice={price} />
+      <PriceBlock flexStart firstPrice={price} secondPrice={discountPrice} />
       <div>
         <button onClick={deleteCartItem} className={styles.deleteButton}>
           <SVG.Cross width={24} height={24} />
@@ -50,6 +50,8 @@ export const Cart = () => {
   const { data } = useGetCart();
 
   if (!data?.cart) return null;
+
+  const { cartSum, cartDiscountSum, cartItems } = data.cart;
 
   return (
     <div>
@@ -69,11 +71,34 @@ export const Cart = () => {
           </Typography>
           <div />
         </div>
-        {data.cart.map(item => {
+        {cartItems?.map(item => {
           if (!item) return null;
 
           return <CartItem key={item.id} {...item} />;
         })}
+        <div className={styles.cartInfo}>
+          <div className={styles.cartInfoItem}>
+            <Typography component="p">Ціна в клініці</Typography>
+            <Typography component="h4" weight="medium">
+              {cartSum} грн
+            </Typography>
+          </div>
+          <div className={styles.cartInfoItem}>
+            <Typography component="p">Ціна Carely</Typography>
+            <Typography component="h4" weight="medium" color="secondary">
+              {cartDiscountSum} грн
+            </Typography>
+          </div>
+          <div className={styles.cartInfoItem}>
+            <Typography component="p">Всього до сплати</Typography>
+            <Typography component="h4" weight="medium" color="secondary">
+              {cartDiscountSum} грн
+            </Typography>
+          </div>
+          <div className={styles.cartInfoItem}>
+            <Button>Сплатити</Button>
+          </div>
+        </div>
       </div>
     </div>
   );

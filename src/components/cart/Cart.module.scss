@@ -60,3 +60,20 @@
     }
   }
 }
+
+.cartInfo {
+  &Item {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: $gap-xlg;
+
+    &:not(:last-child) {
+      margin-bottom: $gap-xlg;
+    }
+
+    button {
+      max-width: 160px;
+    }
+  }
+}
