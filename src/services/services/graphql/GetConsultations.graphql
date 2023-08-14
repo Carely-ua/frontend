@@ -1,5 +1,5 @@
 
-query GetConsultations($filters: CategoryFilterInputType!) {
+query GetConsultations($filters: ServiceFilterInputType!) {
   getCategories(filters: $filters) {
 		id
     title

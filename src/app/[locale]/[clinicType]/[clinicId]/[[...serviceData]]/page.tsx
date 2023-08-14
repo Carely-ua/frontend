@@ -1,4 +1,5 @@
 import { ClinicServicesNavigation, ServicePanel } from '@/components';
+import { getClinicServices } from '@/services';
 import { getClinicType } from '@/utils';
 //TODO fix this import;
 import { ClinicType, ServiceType } from '@/utils/graphql/__generated__/types';
@@ -18,12 +19,20 @@ const ServicesSection = async ({ params }: ClinicParams) => {
 
   const showServicesPanel = clinicType === ClinicType.Clinic;
 
+  const { data } = await getClinicServices(params.clinicId, serviceType);
+  const baseUrl = `/clinics/${params.clinicId}/${serviceType}`;
+
   return (
     <>
       {showServicesPanel && (
         <ClinicServicesNavigation clinicId={params.clinicId} serviceType={serviceType} />
       )}
-      <ServicePanel serviceType={serviceType} clinicId={params.clinicId} categoryId={categoryId} />
+      <ServicePanel
+        baseUrl={baseUrl}
+        categoriesData={data.getServices}
+        serviceType={serviceType}
+        categoryId={categoryId}
+      />
     </>
   );
 };

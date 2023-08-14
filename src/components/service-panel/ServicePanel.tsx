@@ -43,8 +43,9 @@ const ServiceSection: FC<ServiceSectionProps> = ({ title, services }) => {
 
 interface ServicePanelProps {
   serviceType: ServiceType;
-  clinicId: string;
   categoryId?: string;
+  baseUrl: string;
+  categoriesData: any;
 }
 
 const titles = {
@@ -55,12 +56,11 @@ const titles = {
 
 export const ServicePanel: FC<ServicePanelProps> = async ({
   serviceType,
-  clinicId,
   categoryId,
+  categoriesData,
+  baseUrl,
 }) => {
-  const { data } = await getClinicServices(clinicId, serviceType);
-
-  const categories = data.getServices?.map(item => {
+  const categories = categoriesData.map(item => {
     if (!item) return null;
 
     return { id: item.id, title: item.title };
@@ -69,13 +69,11 @@ export const ServicePanel: FC<ServicePanelProps> = async ({
   const defaultCategoryId = categories?.[0]?.id || '';
   const _categoryId = categoryId || defaultCategoryId;
 
-  const currentCategory = data.getServices?.find(item => {
+  const currentCategory = categoriesData?.find(item => {
     if (!item) return;
 
     return item.id === _categoryId;
   });
-
-  const baseUrl = `/clinics/${clinicId}/${serviceType}`;
 
   return (
     <div className={styles.servicePanel}>

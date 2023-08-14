@@ -47,6 +47,7 @@ type Mutation {
 type CartItem {
   id: ID!
   amount: Float
+  discountAmount: Float
   userId: String!
   serviceId: String
   doctorId: String
@@ -54,12 +55,18 @@ type CartItem {
   doctor: Doctor
   service: Service
 }
+type CartResponse {
+  cartItems: [CartItem]
+  cartSum: Float
+  cartDiscountSum: Float
+  cartLength: Float
+}
 type Query {
-  cart: [CartItem]
+  cart: CartResponse
   categorySubTitle(filters: CategorySubTitleFilterInputType!): CategoriesSubTitle
   getCategorySubTitles(filters: CategorySubTitleFilterInputType!): [CategoriesSubTitle]
   category(filters: CategoryFilterInputType!): Category
-  getCategories(filters: CategoryFilterInputType!): [Category]
+  getCategories(filters: ServiceFilterInputType!): [Category]
   clinic(filters: ClinicFilterInputType!): Clinic
   getClinics(filters: ClinicFilterInputType!): [Clinic]
   getSpecializations(filters: SpecializationFilterInputType): [Specialization]
@@ -128,12 +135,14 @@ type Doctor {
   rating: Float
   clinicId: String!
   price: Float
+  discountPrice: Float
   clinic: Clinic
   services: [Service]
   reviews: [Review]
 }
 type DoctorService {
   price: Float
+  discountPrice: Float
   doctorId: ID!
   serviceId: ID!
 }
@@ -175,6 +184,7 @@ type Service {
   serviceType: ServiceType!
   description: String!
   price: Float
+  discountPrice: Float
   clinicId: String!
   clinic: Clinic
   categoryId: String
@@ -241,11 +251,6 @@ input createSubTitleService {
   subTitleId: ID!
   serviceId: ID!
 }
-input CategoryFilterInputType {
-  title: String
-  serviceType: ServiceType
-  id: ID
-}
 input CategoryCreateInputType {
   title: String!
   serviceType: ServiceType
@@ -253,6 +258,12 @@ input CategoryCreateInputType {
 input CategoryUpdateInputType {
   id: ID!
   title: String
+}
+input CategoryFilterInputType {
+  id: String
+  title: String
+  subTitle: String
+  serviceType: ServiceType
 }
 input MapCoordinatesInput {
   lat: Float!
@@ -358,6 +369,7 @@ input ServiceCreateInputType {
   serviceType: ServiceType!
   description: String!
   price: Float
+  discountPrice: Float
   clinicId: String!
   categoryId: String
 }
@@ -367,6 +379,7 @@ input ServiceUpdateInputType {
   serviceType: ServiceType
   description: String
   price: Float
+  discountPrice: Float
   clinicId: String
   categoryId: String
 }

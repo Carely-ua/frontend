@@ -5,19 +5,7 @@ export type GetCartQueryVariables = Types.Exact<{ [key: string]: never }>;
 
 export type GetCartQuery = {
   __typename?: 'Query';
-  cart?: Array<{
-    __typename?: 'CartItem';
-    id: string;
-    amount?: number | null;
-    service?: {
-      __typename?: 'Service';
-      id: string;
-      name: string;
-      serviceType: Types.ServiceType;
-      price?: number | null;
-      clinic?: { __typename?: 'Clinic'; image: string; name: string } | null;
-    } | null;
-  } | null> | null;
+  cart?: { __typename?: 'CartResponse'; cartSum?: number | null } | null;
 };
 
 export const GetCartDocument = {
@@ -35,34 +23,7 @@ export const GetCartDocument = {
             name: { kind: 'Name', value: 'cart' },
             selectionSet: {
               kind: 'SelectionSet',
-              selections: [
-                { kind: 'Field', name: { kind: 'Name', value: 'id' } },
-                { kind: 'Field', name: { kind: 'Name', value: 'amount' } },
-                {
-                  kind: 'Field',
-                  name: { kind: 'Name', value: 'service' },
-                  selectionSet: {
-                    kind: 'SelectionSet',
-                    selections: [
-                      { kind: 'Field', name: { kind: 'Name', value: 'id' } },
-                      { kind: 'Field', name: { kind: 'Name', value: 'name' } },
-                      { kind: 'Field', name: { kind: 'Name', value: 'serviceType' } },
-                      { kind: 'Field', name: { kind: 'Name', value: 'price' } },
-                      {
-                        kind: 'Field',
-                        name: { kind: 'Name', value: 'clinic' },
-                        selectionSet: {
-                          kind: 'SelectionSet',
-                          selections: [
-                            { kind: 'Field', name: { kind: 'Name', value: 'image' } },
-                            { kind: 'Field', name: { kind: 'Name', value: 'name' } },
-                          ],
-                        },
-                      },
-                    ],
-                  },
-                },
-              ],
+              selections: [{ kind: 'Field', name: { kind: 'Name', value: 'cartSum' } }],
             },
           },
         ],

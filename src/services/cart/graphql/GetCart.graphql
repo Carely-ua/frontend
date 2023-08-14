@@ -1,16 +1,17 @@
 query GetCart {
   cart {
-    id
-    amount
-    service {
-      id
-      name
-      serviceType
-      price
-      clinic {
-        image
-        name
-      }
-    }
+    cartSum
+    # id
+    # amount
+    # service {
+    #   id
+    #   name
+    #   serviceType
+    #   price
+    #   clinic {
+    #     image
+    #     name
+    #   }
+    # }
   }
 }

@@ -2,7 +2,7 @@ import { TypedDocumentNode as DocumentNode } from '@graphql-typed-document-node/
 import * as Types from '../../../../utils/graphql/__generated__/types';
 
 export type GetConsultationsQueryVariables = Types.Exact<{
-  filters: Types.CategoryFilterInputType;
+  filters: Types.ServiceFilterInputType;
 }>;
 
 export type GetConsultationsQuery = {
@@ -23,7 +23,7 @@ export const GetConsultationsDocument = {
           variable: { kind: 'Variable', name: { kind: 'Name', value: 'filters' } },
           type: {
             kind: 'NonNullType',
-            type: { kind: 'NamedType', name: { kind: 'Name', value: 'CategoryFilterInputType' } },
+            type: { kind: 'NamedType', name: { kind: 'Name', value: 'ServiceFilterInputType' } },
           },
         },
       ],
