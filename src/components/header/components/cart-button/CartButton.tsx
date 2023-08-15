@@ -9,8 +9,7 @@ import styles from './CartButton.module.scss';
 export const CartButton = () => {
   const { data } = useGetCart();
 
-  //TODO replace it to correct data from backend
-  const count = data?.cart?.[0]?.amount;
+  const count = data?.cart?.cartLength;
 
   return (
     <Link href="/cart" className={styles.container}>
