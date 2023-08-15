@@ -1,0 +1,128 @@
+@use '@/scss/abstracts' as *;
+
+.banner {
+  border-radius: 20px;
+  background: linear-gradient(268deg, $primary 0%, $secondary 100%);
+  padding: customGap(10);
+  height: 600px;
+  margin-bottom: customGap(22);
+  position: relative;
+}
+
+.content {
+  max-width: 850px;
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.title {
+  padding-bottom: customGap(10);
+}
+
+.labBlock {
+  top: 80px;
+  right: 553px;
+  position: absolute;
+  width: 195px;
+  height: 200px;
+  border-radius: 10px;
+  background: $white;
+  box-shadow: 0px 40px 50px 0px rgba(0, 0, 0, 0.15);
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.circle {
+  width: 96px;
+  height: 96px;
+  background-color: rgba(0, 198, 146, 0.20);
+  border-radius: 50%;
+  margin-bottom: $gap-sm;
+}
+
+.clinicBlock {
+  top: 154px;
+  right: 73px;
+  position: absolute;
+  width: 448px;
+  height: 161px;
+  border-radius: 20px;
+  background: $white;
+  box-shadow: 0px 40px 50px 0px rgba(0, 0, 0, 0.15);
+  z-index: 2;
+  padding: $gap-xlg;
+  display: flex;
+
+  .decoration {
+    flex: 0;
+  }
+}
+
+.imageContainer {
+  flex: 165px;
+  height: 120px;
+  border-radius: 10px;
+  border: 1px solid $light-grey;
+  margin-right: $gap-lg;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.doctorBlock {
+  top: 345px;
+  right: 403px;
+  position: absolute;
+  width: 300px;
+  height: 80px;
+  border-radius: 38.5px;
+  background: $white;
+  box-shadow: 0px 40px 50px 0px rgba(0, 0, 0, 0.15);
+  z-index: 2;
+  padding: $gap-sm $gap-md;
+  display: flex;
+  align-items: center;
+}
+
+.doctorImage {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: rgba(0, 198, 146, 0.20);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: $gap-sm
+}
+
+.heart {
+  position: absolute;
+  top: 40px;
+  right: 188px;
+  z-index: 1;
+}
+
+.snake {
+  position: absolute;
+  top: 244px;
+  right: 688px;
+  z-index: 1;
+}
+
+.clinic {
+  position: absolute;
+  top: 331px;
+  right: 127px;
+  z-index: 1;
+}
+
+.search {
+  position: relative;
+  top: -36px;
+  max-width: 1140px;
+  margin: 0 auto;
+}

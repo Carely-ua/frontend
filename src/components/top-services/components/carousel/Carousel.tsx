@@ -3,6 +3,7 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination } from 'swiper/modules';
 import Link from 'next/link';
+import Image from 'next/image';
 import 'swiper/scss';
 import 'swiper/scss/pagination';
 import { Typography } from '@/ui-kit';
@@ -14,7 +15,7 @@ const Slide = () => {
     <SwiperSlide>
       <Link href="/" className={styles.slide}>
         <div className={styles.iconWrapper}>
-          <SVG.Gastroenterologist width={50} height={50} />
+          <Image src="/images/gastroenterologist.svg" width={50} height={50} alt="doctor" />
         </div>
         <Typography component="h4" className={styles.slideText} weight="medium">
           Гастроентеролог

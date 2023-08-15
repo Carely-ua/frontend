@@ -2,6 +2,7 @@
 
 .list {
   display: flex;
+  justify-content: center;
   list-style: none;
   padding: 0;
   margin: 0 0 customGap(6) 0;

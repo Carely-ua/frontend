@@ -7,7 +7,6 @@ import Close from './close.svg';
 import DarkUser from './dark-user.svg';
 import Diagnostic from './diagnostic.svg';
 import Doctor from './doctor.svg';
-import Gastroenterologist from './gastroenterologist.svg';
 import Hospital from './hospital.svg';
 import Lab from './lab.svg';
 import Location from './location.svg';
@@ -27,7 +26,6 @@ const SVGObject = {
   DarkUser,
   Diagnostic,
   Doctor,
-  Gastroenterologist,
   Hospital,
   Lab,
   Location,
