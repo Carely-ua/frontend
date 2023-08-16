@@ -1,11 +1,11 @@
 import { TypedDocumentNode as DocumentNode } from '@graphql-typed-document-node/core';
 import * as Types from '../../../../utils/graphql/__generated__/types';
 
-export type GetClinicsQueryVariables = Types.Exact<{
+export type GetClinicsWithServicesQueryVariables = Types.Exact<{
   filters: Types.ClinicFilterInputType;
 }>;
 
-export type GetClinicsQuery = {
+export type GetClinicsWithServicesQuery = {
   __typename?: 'Query';
   getClinics?: Array<{
     __typename?: 'Clinic';
@@ -17,22 +17,24 @@ export type GetClinicsQuery = {
     clinicType: Types.ClinicType;
     reviewsCount?: number | null;
     workingTime?: string | null;
-    specializations?: Array<{
-      __typename?: 'Specialization';
+    services?: Array<{
+      __typename?: 'Service';
       id: string;
-      title: string;
+      name: string;
+      price?: number | null;
+      discountPrice?: number | null;
     } | null> | null;
     mapCoordinates: { __typename?: 'MapCoordinates'; lat: number; lng: number };
   } | null> | null;
 };
 
-export const GetClinicsDocument = {
+export const GetClinicsWithServicesDocument = {
   kind: 'Document',
   definitions: [
     {
       kind: 'OperationDefinition',
       operation: 'query',
-      name: { kind: 'Name', value: 'GetClinics' },
+      name: { kind: 'Name', value: 'GetClinicsWithServices' },
       variableDefinitions: [
         {
           kind: 'VariableDefinition',
@@ -62,12 +64,14 @@ export const GetClinicsDocument = {
                 { kind: 'FragmentSpread', name: { kind: 'Name', value: 'Clinic' } },
                 {
                   kind: 'Field',
-                  name: { kind: 'Name', value: 'specializations' },
+                  name: { kind: 'Name', value: 'services' },
                   selectionSet: {
                     kind: 'SelectionSet',
                     selections: [
                       { kind: 'Field', name: { kind: 'Name', value: 'id' } },
-                      { kind: 'Field', name: { kind: 'Name', value: 'title' } },
+                      { kind: 'Field', name: { kind: 'Name', value: 'name' } },
+                      { kind: 'Field', name: { kind: 'Name', value: 'price' } },
+                      { kind: 'Field', name: { kind: 'Name', value: 'discountPrice' } },
                     ],
                   },
                 },
@@ -107,4 +111,4 @@ export const GetClinicsDocument = {
       },
     },
   ],
-} as unknown as DocumentNode<GetClinicsQuery, GetClinicsQueryVariables>;
+} as unknown as DocumentNode<GetClinicsWithServicesQuery, GetClinicsWithServicesQueryVariables>;

@@ -66,3 +66,29 @@
   background: $light-grey;
   padding: 2px 10px;
 }
+
+.services {
+  margin-top: $gap-xlg;
+}
+
+.service {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: $gap-sm 0;
+  border-top: 1px solid $light-grey;
+
+  &:last-child {
+    padding-bottom: 0;
+  }
+}
+
+.buyInfo {
+  display: flex;
+  align-items: center;
+  gap: $gap-md;
+
+  button {
+    max-width: 105px;
+  }
+}

@@ -1,0 +1,14 @@
+fragment Clinic on Clinic {
+  id
+  name
+  rating
+  address
+  image
+  clinicType
+  reviewsCount
+  workingTime
+  mapCoordinates {
+    lat
+    lng
+  }
+}

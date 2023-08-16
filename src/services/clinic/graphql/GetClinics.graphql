@@ -1,20 +1,9 @@
 query GetClinics($filters: ClinicFilterInputType!) {
   getClinics(filters: $filters) {
-    id
-    name
-    rating
-    address
-    image
-    clinicType
-    mapCoordinates {
-      lat
-      lng
-    }
-    reviewsCount
+    ...Clinic
     specializations {
       id
       title
     }
-    workingTime
   }
 }

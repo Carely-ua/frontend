@@ -1,0 +1,12 @@
+query GetClinicsWithServices($filters: ClinicFilterInputType!) {
+  getClinics(filters: $filters) {
+    ...Clinic
+   	services{
+      id
+      name
+      price
+      discountPrice
+    }
+
+  }
+}

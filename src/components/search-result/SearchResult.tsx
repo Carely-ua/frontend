@@ -6,18 +6,19 @@ import styles from './SearchResult.module.scss';
 import { StickyMap } from './StickyMap';
 
 export interface SearchResultProps {
-  clinics: Array<ClinicTypes.Clinic>;
+  clinics: Array<ClinicTypes.Clinic | ClinicTypes.ClinicWithServices>;
   hrefPrefix: string;
+  onlyGeneralCard?: boolean;
 }
 
-export const SearchResult: FC<SearchResultProps> = ({ clinics, hrefPrefix }) => {
+export const SearchResult: FC<SearchResultProps> = ({ clinics, hrefPrefix, onlyGeneralCard }) => {
   return (
     <div id="searchResult" className={styles.wrapper}>
       <div className={styles.item}>
         {clinics.map(clinic => {
           if (!clinic) return null;
 
-          if (clinic.clinicType === ClinicType.Clinic) {
+          if (clinic.clinicType === ClinicType.Clinic && !onlyGeneralCard) {
             return <ClinicCard hrefPrefix={hrefPrefix} key={clinic.id} {...clinic} />;
           }
 

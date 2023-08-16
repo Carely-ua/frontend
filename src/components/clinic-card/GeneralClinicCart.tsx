@@ -1,11 +1,12 @@
-import { FC, ReactNode } from 'react';
+import { FC } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { ClinicTypes } from '@/services';
 import { Button, Typography } from '@/ui-kit';
-import { ClinicType } from '@/utils/graphql/__generated__/types';
 import { Rating } from '../rating';
 import { ClinicExtraInfo } from '../clinic-extra-info';
+import { PriceBlock } from '../price-block';
+import { AddToBagButton } from '../add-to-bag-button';
 import styles from './ClinicCard.module.scss';
 
 const defaultImage = '/images/test-clinic-image.png';
@@ -13,7 +14,7 @@ const defaultWorkingHours = 'з 9:00-17:00';
 
 interface ClinicCardProps extends NonNullable<ClinicTypes.Clinic> {
   hrefPrefix: string;
-  children?: ReactNode;
+  services?: ClinicTypes.ClinicServices;
 }
 
 export const GeneralClinicCart: FC<ClinicCardProps> = ({
@@ -25,8 +26,7 @@ export const GeneralClinicCart: FC<ClinicCardProps> = ({
   image,
   reviewsCount,
   workingTime = defaultWorkingHours,
-  specializations,
-  children,
+  services,
 }) => {
   return (
     <div className={styles.card}>
@@ -49,7 +49,25 @@ export const GeneralClinicCart: FC<ClinicCardProps> = ({
           </div>
         </div>
       </div>
-      <div>{children}</div>
+      {services && (
+        <div className={styles.services}>
+          {services.map(service => {
+            if (!service) return null;
+
+            const { name, id, price, discountPrice } = service;
+
+            return (
+              <div key={id} className={styles.service}>
+                <Typography component="p">{name}</Typography>
+                <div className={styles.buyInfo}>
+                  <PriceBlock firstPrice={price} secondPrice={discountPrice} />
+                  <AddToBagButton buttonType="secondary" serviceId={id} />
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      )}
     </div>
   );
 };

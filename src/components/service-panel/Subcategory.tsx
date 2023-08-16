@@ -1,4 +1,5 @@
 import { FC } from 'react';
+import Link from 'next/link';
 import { Button, Typography } from '@/ui-kit';
 import { ServicesTypes } from '@/services';
 import { PriceBlock } from '../price-block';
@@ -6,12 +7,18 @@ import { AddToBagButton } from '../add-to-bag-button';
 import styles from './ServicePanel.module.scss';
 
 export interface SubcategoryProps {
+  id: string;
   title: string;
   services?: ServicesTypes.Services;
   showPrice?: boolean;
 }
 
-export const Subcategory: FC<SubcategoryProps> = ({ title, services, showPrice = true }) => {
+export const Subcategory: FC<SubcategoryProps> = ({
+  id: subcategoryId,
+  title,
+  services,
+  showPrice = true,
+}) => {
   if (!services) return null;
 
   return (
@@ -37,9 +44,9 @@ export const Subcategory: FC<SubcategoryProps> = ({ title, services, showPrice =
                 </div>
               </div>
             ) : (
-              <div>
+              <Link href={`/services/${subcategoryId}`}>
                 <Button>Обрати</Button>
-              </div>
+              </Link>
             )}
           </div>
         );

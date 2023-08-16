@@ -114,6 +114,7 @@ export type Clinic = {
   rating?: Maybe<Scalars['Float']['output']>;
   reviews?: Maybe<Array<Maybe<Review>>>;
   reviewsCount?: Maybe<Scalars['Float']['output']>;
+  services?: Maybe<Array<Maybe<Service>>>;
   servicesWithCategories: Array<Maybe<Category>>;
   specializations?: Maybe<Array<Maybe<Specialization>>>;
   workingTime?: Maybe<Scalars['String']['output']>;
@@ -138,6 +139,8 @@ export type ClinicCreateInputType = {
 
 export type ClinicFilterInputType = {
   address?: InputMaybe<Scalars['String']['input']>;
+  categoryId?: InputMaybe<Scalars['String']['input']>;
+  categorySubTitleId?: InputMaybe<Scalars['String']['input']>;
   city?: InputMaybe<Scalars['String']['input']>;
   clinicType?: InputMaybe<ClinicType>;
   id?: InputMaybe<Scalars['ID']['input']>;
