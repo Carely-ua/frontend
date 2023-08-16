@@ -5,6 +5,7 @@ import { SuccessAddedToCartModal } from './success-added-to-cart-modal';
 import { SuccessAuthModal } from './success-auth-modal';
 import { ServiceWasNotAddedModal } from './service-was-not-added-modal';
 import { LogoutModal } from './logout-modal';
+import { AddReviewModal } from './add-review-modal';
 
 export const modals = {
   AddToBagAuthModal,
@@ -13,6 +14,7 @@ export const modals = {
   SuccessAddedToCartModal,
   ServiceWasNotAddedModal,
   LogoutModal,
+  AddReviewModal,
 };
 
 export type ModalId = keyof typeof modals;

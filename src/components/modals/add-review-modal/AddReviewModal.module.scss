@@ -1,0 +1,39 @@
+@use '@/scss/abstracts' as *;
+
+.addReviewModal {
+  width: 560px; 
+  border-radius: 20px;
+  background-color: $white;
+}
+
+.header {
+  border-radius: 20px 20px 0px 0px;
+  background: linear-gradient(134deg, $primary 0%, $secondary 100%);
+  height: 101px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 $gap-xlg 0 customGap(12);
+}
+
+.content {
+  padding: customGap(10) customGap(7) customGap(10);
+}
+
+.ratingBlock {
+  margin-bottom: customGap(10);
+
+  svg {
+    width: 32px;
+    height: 32px;
+  }
+}
+
+.review {
+  margin-bottom: customGap(10);
+}
+
+.textarea {
+  height: 180px !important;
+  resize: none;
+}

@@ -2,6 +2,7 @@ import Image from 'next/image';
 import classNames from 'classnames';
 import { Typography } from '@/ui-kit';
 import styles from './ClientServices.module.scss';
+import { AddReviewButton } from './AddReviewButton';
 
 const mockItems = [
   {
@@ -89,11 +90,7 @@ export const ClientServices = () => {
                   Виконано
                 </Typography>
               )}
-              {!isActive && (
-                <Typography className={styles.feedbackButton} component="p" color="primary">
-                  Залишити відгук
-                </Typography>
-              )}
+              {!isActive && <AddReviewButton />}
             </div>
           </div>
         ),

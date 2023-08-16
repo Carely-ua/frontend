@@ -89,5 +89,11 @@
   },
   "Diagnostics": {
     "title": "Діагностика у Вінниці"
+  },
+  "AddReviewModal": {
+    "title": "Залишити відгук",
+    "ratingLabel": "Ваша оцінка лабораторії",
+    "reviewLabel": "Відгук",
+    "button": "Залишити відгук"
   }
 }

@@ -10,16 +10,27 @@ export interface TypographyProps {
   color?: 'primary' | 'secondary' | 'white' | 'dark-grey';
   weight?: 'bold' | 'normal' | 'medium';
   gutterBottom?: 'xs' | 'sm' | 'md' | 'lg' | 'xlg';
+  onClick?(): void;
 }
 
 export const Typography = memo(
   forwardRef(<T extends unknown>(props: TypographyProps, ref: T) => {
-    const { component: Component, children, id, className, color, weight, gutterBottom } = props;
+    const {
+      component: Component,
+      children,
+      id,
+      className,
+      color,
+      weight,
+      gutterBottom,
+      onClick,
+    } = props;
 
     return (
       <Component
         ref={ref}
         id={id}
+        onClick={onClick}
         className={classNames(className, styles.typography, styles[`typography-${Component}`], {
           [styles[`typography--${color}`]]: color,
           [styles[`typography--${weight}`]]: weight,

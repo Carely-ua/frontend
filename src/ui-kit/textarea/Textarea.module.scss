@@ -1,0 +1,16 @@
+@use '@/scss/abstracts' as *;
+
+.textarea {
+  width: 100%;
+  border-radius: 20px;
+  border: 1px solid $light-grey;
+  padding: $gap-md $gap-lg;
+  color: $dark-grey;
+  font-size: 18px;
+  line-height: 27px;
+  outline: none;
+
+  &:focus {
+    border-color: $primary;
+  }
+}
