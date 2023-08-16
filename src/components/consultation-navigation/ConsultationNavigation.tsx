@@ -9,7 +9,7 @@ import styles from './ConsultationNavigation.module.scss';
 const ConsultationItem: FC<NonNullable<ServicesTypes.Consultation>> = ({ title, id }) => {
   return (
     <Grid xs={4}>
-      <Link className={styles.consultationItem} href={`/${id}`}>
+      <Link className={styles.consultationItem} href={`/services/${id}`}>
         <Typography component="p">{title}</Typography>
         <div className={styles.icon}>
           <SVG.Arrow width={8} height={13} />

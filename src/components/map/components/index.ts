@@ -1,1 +1,1 @@
-export { Marker } from './marker';
+export * from './marker';

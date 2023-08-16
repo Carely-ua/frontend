@@ -9,7 +9,7 @@ const center = {
   lng: -0.118092,
 };
 
-interface MarkerProps {
+export interface MarkerProps {
   rating?: number | null;
   image: string;
   mapCoordinates: {

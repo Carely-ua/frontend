@@ -1,2 +1,2 @@
 export { Map } from './Map';
-export type { MapProps } from './Map';
+export type { MapProps, MapItemProps } from './Map';

@@ -26,7 +26,7 @@ export const SearchResult: FC<SearchResultProps> = ({ clinics, hrefPrefix, onlyG
         })}
       </div>
       <div className={styles.item}>
-        <StickyMap clinics={clinics} />
+        <StickyMap data={clinics} />
       </div>
     </div>
   );

@@ -1,30 +1,48 @@
-import { FC } from 'react';
+import { FC, useMemo } from 'react';
 import Image from 'next/image';
 import { Typography } from '@/ui-kit';
 import { Rating, RatingProps } from '../rating';
 import { ClinicExtraInfo, ClinicExtraInfoProps } from '../clinic-extra-info';
+import { Map, MapItemProps } from '../map';
 import styles from './ClinicMainInfo.module.scss';
 
 const defaultImage = '/images/test-clinic-image.png';
 
-interface ClinicMainInfoProps extends RatingProps, ClinicExtraInfoProps {
+const containerStyle = {
+  width: '100%',
+  height: '270px',
+};
+
+interface ClinicMainInfoProps extends RatingProps, ClinicExtraInfoProps, MapItemProps {
   image: string;
   name: string;
 }
 
 export const ClinicMainInfo: FC<ClinicMainInfoProps> = ({
   image,
+  id,
   rating,
   reviewsCount,
   name,
   address,
   workingTime,
+  mapCoordinates,
 }) => {
+  const mapData = useMemo(
+    () => ({
+      rating,
+      id,
+      image,
+      mapCoordinates,
+    }),
+    [rating, id, image, mapCoordinates],
+  );
+
   return (
     <div className={styles.clinicMainInfo}>
       <div className={styles.item}>
         <div className={styles.image}>
-          <Image src={image || defaultImage} alt="clinic" width={270} height={270} />
+          <Image src={defaultImage} alt="clinic" width={270} height={270} />
         </div>
         <div className={styles.clinicInfo}>
           <div className={styles.rating}>
@@ -36,7 +54,9 @@ export const ClinicMainInfo: FC<ClinicMainInfoProps> = ({
           <ClinicExtraInfo address={address} workingTime={workingTime} />
         </div>
       </div>
-      <div className={styles.item}>map</div>
+      <div className={styles.item}>
+        <Map data={mapData} containerStyle={containerStyle} />
+      </div>
     </div>
   );
 };
