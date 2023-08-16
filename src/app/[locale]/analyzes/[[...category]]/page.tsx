@@ -10,11 +10,11 @@ interface AnalyzesProps {
 }
 
 const Analyzes: FC<AnalyzesProps> = ({ categories, categoryId }) => {
-  const t = useTranslations('laboratory');
+  const t = useTranslations('Analyzes');
 
   return (
     <>
-      <PageSearch title={t('title')} icon="Clinic" />
+      <PageSearch title={t('title')} icon="Lab" />
       <ServicePanel
         baseUrl="/analyzes"
         categories={categories}
