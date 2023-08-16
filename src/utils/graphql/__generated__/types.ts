@@ -198,6 +198,7 @@ export type DoctorFilterInputType = {
   clinicId?: InputMaybe<Scalars['ID']['input']>;
   id?: InputMaybe<Scalars['ID']['input']>;
   name?: InputMaybe<Scalars['String']['input']>;
+  serviceId?: InputMaybe<Scalars['ID']['input']>;
 };
 
 export type DoctorService = {

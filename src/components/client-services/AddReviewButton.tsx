@@ -1,15 +1,21 @@
 'use client';
 
+import { FC } from 'react';
 import { useModalContext } from '@/utils/client';
 import { Typography } from '@/ui-kit';
 import styles from './ClientServices.module.scss';
 
-export const AddReviewButton = () => {
+interface AddReviewButtonProps {
+  serviceId: string;
+  doctorId?: string;
+  clinicId: string;
+}
+
+export const AddReviewButton: FC<AddReviewButtonProps> = props => {
   const { openModal } = useModalContext();
 
   const clickHandler = () => {
-    console.log('HELLO');
-    openModal('AddReviewModal');
+    openModal('AddReviewModal', props);
   };
 
   return (

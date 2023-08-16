@@ -1,15 +1,22 @@
 import Rating from '@mui/material/Rating';
-import { useState } from 'react';
 import { useTranslations } from 'next-intl';
+import { useForm, SubmitHandler } from 'react-hook-form';
 import { Button, Textarea, Typography } from '@/ui-kit';
+import { useCreateReview } from '@/services/review';
 import { Modal } from '../modal';
 import { ModalComponent } from '..';
 import styles from './AddReviewModal.module.scss';
 
 export interface AddReviewModalProps {
   serviceId: string;
-  doctorId: string;
+  doctorId?: string;
+  clinicId: string;
 }
+
+type Inputs = {
+  rating: number | null;
+  review: string;
+};
 
 export const AddReviewModal: ModalComponent<AddReviewModalProps> = ({
   handleClose,
@@ -17,7 +24,22 @@ export const AddReviewModal: ModalComponent<AddReviewModalProps> = ({
   open,
 }) => {
   const t = useTranslations('AddReviewModal');
-  const [value, setValue] = useState<number | null>(null);
+  const { createReview } = useCreateReview();
+  const { serviceId, doctorId, clinicId } = modalProps || {};
+
+  const { register, handleSubmit, setValue } = useForm<Inputs>();
+
+  const onSubmit: SubmitHandler<Inputs> = async values => {
+    //TODO use real values
+    await createReview({
+      serviceId: '803cff65-8e38-4559-a3fb-d0c32ebc0844',
+      clinicId: 'b939e10e-1e8c-4871-85d8-1f049c243852',
+      text: values.review,
+      rating: values.rating,
+      ...(doctorId ? { doctorId } : {}),
+    });
+    handleClose();
+  };
 
   return (
     <Modal handleClose={handleClose} open={open}>
@@ -27,16 +49,14 @@ export const AddReviewModal: ModalComponent<AddReviewModalProps> = ({
             {t('title')}
           </Typography>
         </div>
-        <div className={styles.content}>
+        <form className={styles.content} onSubmit={handleSubmit(onSubmit)}>
           <div className={styles.ratingBlock}>
             <Typography component="p" gutterBottom="xlg">
               {t('ratingLabel')}
             </Typography>
             <Rating
-              name="simple-controlled"
-              value={value}
-              onChange={(event, newValue) => {
-                setValue(newValue);
+              onChange={(_, newValue) => {
+                setValue('rating', newValue);
               }}
               size="large"
             />
@@ -45,10 +65,10 @@ export const AddReviewModal: ModalComponent<AddReviewModalProps> = ({
             <Typography component="p" gutterBottom="xlg">
               {t('reviewLabel')}
             </Typography>
-            <Textarea className={styles.textarea} />
+            <Textarea {...register('review')} className={styles.textarea} />
           </div>
-          <Button>{t('button')}</Button>
-        </div>
+          <Button type="submit">{t('button')}</Button>
+        </form>
       </div>
     </Modal>
   );

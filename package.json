@@ -37,6 +37,7 @@
     "next-intl": "^3.0.0-beta.9",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-hook-form": "^7.45.4",
     "react-input-mask": "^2.0.4",
     "react-stickynode": "^4.1.0",
     "server-only": "^0.0.1",
