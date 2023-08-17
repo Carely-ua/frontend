@@ -16,6 +16,7 @@ import Star from './star.svg';
 import Time from './time.svg';
 import User from './user.svg';
 import Cross from './cross.svg';
+import Message from './message.svg';
 
 const SVGObject = {
   Arrow,
@@ -35,6 +36,7 @@ const SVGObject = {
   Time,
   User,
   Cross,
+  Message,
 };
 
 export type SVGNameType = keyof typeof SVGObject;

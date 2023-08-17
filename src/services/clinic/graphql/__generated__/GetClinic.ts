@@ -17,6 +17,12 @@ export type GetClinicQuery = {
     clinicType: Types.ClinicType;
     reviewsCount?: number | null;
     workingTime?: string | null;
+    reviews?: Array<{
+      __typename?: 'Review';
+      id: string;
+      text: string;
+      rate?: number | null;
+    } | null> | null;
     mapCoordinates: { __typename?: 'MapCoordinates'; lat: number; lng: number };
   } | null;
 };
@@ -53,7 +59,21 @@ export const GetClinicDocument = {
             ],
             selectionSet: {
               kind: 'SelectionSet',
-              selections: [{ kind: 'FragmentSpread', name: { kind: 'Name', value: 'Clinic' } }],
+              selections: [
+                { kind: 'FragmentSpread', name: { kind: 'Name', value: 'Clinic' } },
+                {
+                  kind: 'Field',
+                  name: { kind: 'Name', value: 'reviews' },
+                  selectionSet: {
+                    kind: 'SelectionSet',
+                    selections: [
+                      { kind: 'Field', name: { kind: 'Name', value: 'id' } },
+                      { kind: 'Field', name: { kind: 'Name', value: 'text' } },
+                      { kind: 'Field', name: { kind: 'Name', value: 'rate' } },
+                    ],
+                  },
+                },
+              ],
             },
           },
         ],

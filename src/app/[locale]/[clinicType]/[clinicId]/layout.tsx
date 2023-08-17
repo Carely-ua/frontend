@@ -1,5 +1,5 @@
 import { ReactNode, FC } from 'react';
-import { ClinicMainInfo } from '@/components';
+import { ClinicAdditionalInfo, ClinicMainInfo } from '@/components';
 import { getClinic } from '@/services';
 import { ServiceType } from '@/utils/graphql/__generated__/types';
 import { checkClinicType } from '@/utils';
@@ -23,6 +23,7 @@ const ClinicLayout: FC<ClinicLayoutProps> = async ({ children, params }) => {
     <>
       <ClinicMainInfo {...data.clinic} />
       {children}
+      <ClinicAdditionalInfo {...data.clinic} />
     </>
   );
 };

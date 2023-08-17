@@ -1,0 +1,23 @@
+@use '@/scss/abstracts' as *;
+
+.clinicAdditionalInfo {
+  padding-top: customGap(6);
+}
+
+.tabList {
+  display: flex;
+  gap: customGap(10);
+  margin-bottom: customGap(7);
+
+  div {
+    padding-bottom: $gap-sm;
+    cursor: pointer;
+
+    &[aria-selected="true"] {
+      border-bottom: 1px solid $primary;
+      p {
+        color: $primary;
+      }
+    }
+  }
+}

@@ -1,0 +1,1 @@
+export { ClinicAdditionalInfo } from './ClinicAdditionalInfo';

@@ -1,0 +1,67 @@
+@use '@/scss/abstracts' as *;
+
+.reviews {
+  border-radius: 20px;
+  border: 1px solid $light-grey;
+  background: $white;
+  box-shadow: 0px 5px 20px 0px rgba(0, 88, 193, 0.10), 0px 2px 8px 0px rgba(0, 113, 83, 0.04);
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 76px;
+  padding: 0 $gap-xlg;
+  border-bottom: 1px solid $light-grey;
+}
+
+.headerBlock {
+  display: flex;
+  align-items: center;
+  gap: customGap(20);
+}
+
+.headerItem {
+  display: flex;
+  align-items: center;
+  gap: $gap-md;
+}
+
+.rating {
+  display: flex;
+  align-items: center;
+  gap: $gap-sm;
+}
+
+.review {
+  display: flex;
+  justify-content: space-between;
+  padding: $gap-xlg;
+  border-bottom: 1px solid $light-grey;
+}
+
+.reviewInfo {
+  display: flex;
+  flex-direction: column;
+  gap: $gap-xlg;
+}
+
+.alert {
+  display: flex;
+  align-items: center;
+  gap: $gap-xlg;
+
+  div {
+    position: relative;
+    &::before {
+      content: 'i';
+      color: $white;
+      position: absolute;
+      display: inline-block;
+      left: 46%;
+      top: 9%;
+      font-size: 24px;
+    }
+  }
+}

@@ -26,3 +26,4 @@ export * from './client-services';
 export * from './consultation-navigation';
 export * from './cart';
 export * from './add-to-bag-button';
+export * from './clinc-additional-info';
