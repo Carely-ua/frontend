@@ -5,6 +5,7 @@ import TabPanel from '@mui/base/TabPanel';
 import { FC } from 'react';
 import { Typography } from '@/ui-kit';
 import { Reviews, ReviewsProps } from '../reviews';
+import { AboutClinic } from '../about-clinic';
 import styles from './ClinicAdditionalInfo.module.scss';
 
 interface ClinicAdditionalInfoProps extends ReviewsProps {}
@@ -31,7 +32,9 @@ export const ClinicAdditionalInfo: FC<ClinicAdditionalInfoProps> = ({
       <TabPanel value={1}>
         <Reviews rating={rating} reviews={reviews} reviewsCount={reviewsCount} />
       </TabPanel>
-      <TabPanel value={2}>Про клініку</TabPanel>
+      <TabPanel value={2}>
+        <AboutClinic />
+      </TabPanel>
     </Tabs>
   );
 };

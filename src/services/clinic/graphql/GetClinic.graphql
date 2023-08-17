@@ -1,6 +1,7 @@
 query GetClinic($filters: ClinicFilterInputType!) {
   clinic(filters: $filters) {
     ...Clinic
+    description
     reviews {
       id
       text

@@ -4,10 +4,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination } from 'swiper/modules';
 import Link from 'next/link';
 import Image from 'next/image';
-import 'swiper/scss';
-import 'swiper/scss/pagination';
 import { Typography } from '@/ui-kit';
-import { SVG } from '@/components/svg';
 import styles from './Carousel.module.scss';
 
 const Slide = () => {

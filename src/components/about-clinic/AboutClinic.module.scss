@@ -1,0 +1,20 @@
+@use '@/scss/abstracts' as *;
+
+.description {
+  padding: customGap(7);
+  border-radius: 20px;
+  border: 1px solid $light-grey;
+  box-shadow: 0px 5px 20px 0px rgba(0, 88, 193, 0.10), 0px 2px 8px 0px rgba(0, 113, 83, 0.04);
+}
+
+.clinicSlider {
+  padding: $gap-md;
+  margin-bottom: $gap-xlg;
+  border-radius: 20px;
+  border: 1px solid $light-grey;
+  box-shadow: 0px 5px 20px 0px rgba(0, 88, 193, 0.10), 0px 2px 8px 0px rgba(0, 113, 83, 0.04);
+}
+
+.slideImage {
+  border-radius: 10px;
+}

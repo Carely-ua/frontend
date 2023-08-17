@@ -1,3 +1,7 @@
+@use 'swiper/scss';
+@use 'swiper/scss/pagination';
+@use 'swiper/scss/navigation';
+
 @use '@/scss/abstracts' as *;
 @use './base';
 
@@ -21,5 +25,28 @@ body {
         background-color: $primary;
       }
     }
+  }
+}
+
+.clinic-slider {
+  .swiper-button-prev,
+  .swiper-button-next {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: $primary;
+  
+    &::after {
+      color: $white;
+      font-size: 20px;
+    }
+  }
+
+  .swiper-button-next {
+    right: 2px;
+  }
+
+  .swiper-button-prev {
+    left: 2px;
   }
 }
