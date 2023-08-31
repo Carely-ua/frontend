@@ -7,6 +7,7 @@ import { Button, Typography } from '@/ui-kit';
 import { CartTypes } from '@/services';
 import { useDestroyCartItem } from '@/services/cart/destroy-cart-item';
 import { useGetCart } from '@/services/cart/get-cart';
+import { useCreateOrder } from '@/services/cart/create-order';
 import { PriceBlock } from '../price-block';
 import { SVG } from '../svg';
 import styles from './Cart.module.scss';
@@ -28,7 +29,7 @@ const CartItem: FC<CartTypes.CartItem> = ({ id, service }) => {
     <div className={classNames(styles.row, styles.item)}>
       <div className={styles.clinicInfo}>
         <div className={styles.image}>
-          <Image src={clinic?.image || defaultImage} alt="clinic" width={48} height={48} />
+          <Image src={clinic?.mainImage || defaultImage} alt="clinic" width={48} height={48} />
         </div>
         <Typography component="h4">{clinic?.name}</Typography>
       </div>
@@ -46,8 +47,20 @@ const CartItem: FC<CartTypes.CartItem> = ({ id, service }) => {
   );
 };
 
+const LIQPAY_URL = 'https://www.liqpay.ua/api/3/checkout';
+
 export const Cart = () => {
   const { data } = useGetCart();
+  const { createOrder } = useCreateOrder();
+
+  const createOrderHandler = async () => {
+    const { data } = await createOrder();
+
+    if (data?.createOrder) {
+      const { signature, data: liqPayData } = data.createOrder;
+      window.open(`${LIQPAY_URL}?signature=${signature}&data=${liqPayData}`);
+    }
+  };
 
   if (!data?.cart) return null;
 
@@ -96,7 +109,7 @@ export const Cart = () => {
             </Typography>
           </div>
           <div className={styles.cartInfoItem}>
-            <Button>Сплатити</Button>
+            <Button onClick={createOrderHandler}>Сплатити</Button>
           </div>
         </div>
       </div>
