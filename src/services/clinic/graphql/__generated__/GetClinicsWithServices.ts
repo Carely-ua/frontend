@@ -24,6 +24,18 @@ export type GetClinicsWithServicesQuery = {
       name: string;
       price?: number | null;
       discountPrice?: number | null;
+      serviceType: Types.ServiceType;
+      doctors?: Array<{
+        __typename?: 'Doctor';
+        id: string;
+        name: string;
+        rating?: number | null;
+        image: string;
+        tags?: Array<string | null> | null;
+        experience?: number | null;
+        price?: number | null;
+        discountPrice?: number | null;
+      } | null> | null;
     } | null> | null;
     mapCoordinates: { __typename?: 'MapCoordinates'; lat: number; lng: number };
   } | null> | null;
@@ -73,6 +85,24 @@ export const GetClinicsWithServicesDocument = {
                       { kind: 'Field', name: { kind: 'Name', value: 'name' } },
                       { kind: 'Field', name: { kind: 'Name', value: 'price' } },
                       { kind: 'Field', name: { kind: 'Name', value: 'discountPrice' } },
+                      { kind: 'Field', name: { kind: 'Name', value: 'serviceType' } },
+                      {
+                        kind: 'Field',
+                        name: { kind: 'Name', value: 'doctors' },
+                        selectionSet: {
+                          kind: 'SelectionSet',
+                          selections: [
+                            { kind: 'Field', name: { kind: 'Name', value: 'id' } },
+                            { kind: 'Field', name: { kind: 'Name', value: 'name' } },
+                            { kind: 'Field', name: { kind: 'Name', value: 'rating' } },
+                            { kind: 'Field', name: { kind: 'Name', value: 'image' } },
+                            { kind: 'Field', name: { kind: 'Name', value: 'tags' } },
+                            { kind: 'Field', name: { kind: 'Name', value: 'experience' } },
+                            { kind: 'Field', name: { kind: 'Name', value: 'price' } },
+                            { kind: 'Field', name: { kind: 'Name', value: 'discountPrice' } },
+                          ],
+                        },
+                      },
                     ],
                   },
                 },

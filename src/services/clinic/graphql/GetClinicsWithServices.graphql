@@ -6,7 +6,17 @@ query GetClinicsWithServices($filters: ClinicFilterInputType!) {
       name
       price
       discountPrice
+      serviceType
+      doctors {
+        id
+        name
+        rating
+        image
+        tags
+        experience
+        price
+        discountPrice
+      }
     }
-
   }
 }

@@ -3,8 +3,10 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { ClinicTypes } from '@/services';
 import { Button, Typography } from '@/ui-kit';
+import { ServiceType } from '@/utils/graphql/__generated__/types';
 import { Rating } from '../rating';
 import { ClinicExtraInfo } from '../clinic-extra-info';
+import { ConsultationItems } from '../consultation-items';
 import { PriceBlock } from '../price-block';
 import { AddToBagButton } from '../add-to-bag-button';
 import styles from './ClinicCard.module.scss';
@@ -23,7 +25,7 @@ export const GeneralClinicCart: FC<ClinicCardProps> = ({
   name,
   address,
   rating,
-  image,
+  mainImage,
   reviewsCount,
   workingTime = defaultWorkingHours,
   services,
@@ -54,7 +56,11 @@ export const GeneralClinicCart: FC<ClinicCardProps> = ({
           {services.map(service => {
             if (!service) return null;
 
-            const { name, id, price, discountPrice } = service;
+            const { name, id, price, discountPrice, serviceType, doctors } = service;
+
+            if (serviceType === ServiceType.Consultations) {
+              return <ConsultationItems key={id} doctors={doctors} />;
+            }
 
             return (
               <div key={id} className={styles.service}>
