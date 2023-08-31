@@ -33,7 +33,7 @@ type Mutation {
   createDoctorsService(input: createDoctorService): Boolean!
   doctorsService(input: createDoctorService): Boolean!
   destroyDoctorService(doctorId: ID!, serviceId: ID!): Boolean!
-  createOrder: Order
+  createOrder: CreateOrderOutput
   createReview(input: ReviewCreateInputType!): Review
   destroyReview(id: ID!): Boolean!
   createService(input: ServiceCreateInputType!): Service
@@ -89,8 +89,6 @@ type CategoriesSubTitle {
 type SubTitleService {
   subTitleId: ID!
   serviceId: ID!
-  specializationId: ID!
-  clinicId: ID!
 }
 type Category {
   id: ID!
@@ -115,12 +113,18 @@ type Clinic {
   clinicType: ClinicType!
   city: String!
   description: String!
-  image: String!
+  images: [String]
+  mainImage: String
   rating: Float
   services: [Service]
+  doctors: [Doctor]
   servicesWithCategories(input: ServiceFilterInputType): [Category]!
   reviews: [Review]
   specializations: [Specialization]
+}
+type SpecializationClinicService {
+  specializationId: ID!
+  clinicId: ID!
 }
 type Specialization {
   id: ID!
@@ -138,14 +142,15 @@ type Doctor {
   price: Float
   discountPrice: Float
   clinic: Clinic
+  reviewsCount: Float
+  tags: [String]
+  experience: Float
   services: [Service]
   reviews: [Review]
 }
 type DoctorService {
   price: Float
   discountPrice: Float
-  doctorId: ID!
-  serviceId: ID!
 }
 type OrderItem {
   id: ID!
@@ -166,6 +171,11 @@ type Order {
   orderItems: [OrderItem!]!
   user: User
 }
+type CreateOrderOutput {
+  order: Order
+  data: String
+  signature: String
+}
 type Review {
   id: ID!
   rate: Float
@@ -174,6 +184,7 @@ type Review {
   serviceId: String
   doctorId: String
   clinicId: String
+  createdAt: Date
   user: User
   doctor: Doctor
   service: Service
@@ -189,6 +200,7 @@ type Service {
   clinicId: String!
   clinic: Clinic
   categoryId: String
+  doctors: [Doctor]
   category: Category
   reviews: [Review]
 }
@@ -291,7 +303,8 @@ input ClinicCreateInputType {
   clinicType: ClinicType!
   city: String!
   description: String!
-  image: String!
+  images: [String]
+  mainImage: String
   rating: Float
 }
 input ClinicUpdateInputType {
@@ -326,6 +339,7 @@ input DoctorFilterInputType {
   name: String
   id: ID
   clinicId: ID
+  tag: String
   serviceId: ID
 }
 input DoctorCreateInputType {
@@ -360,6 +374,7 @@ input ReviewCreateInputType {
 input ServiceFilterInputType {
   city: String
   address: String
+  tag: String
   name: String
   description: String
   id: ID

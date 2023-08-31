@@ -9,11 +9,13 @@ export type GetClinicQuery = {
   __typename?: 'Query';
   clinic?: {
     __typename?: 'Clinic';
+    description: string;
     id: string;
     name: string;
     rating?: number | null;
     address: string;
-    image: string;
+    mainImage?: string | null;
+    images?: Array<string | null> | null;
     clinicType: Types.ClinicType;
     reviewsCount?: number | null;
     workingTime?: string | null;
@@ -61,6 +63,7 @@ export const GetClinicDocument = {
               kind: 'SelectionSet',
               selections: [
                 { kind: 'FragmentSpread', name: { kind: 'Name', value: 'Clinic' } },
+                { kind: 'Field', name: { kind: 'Name', value: 'description' } },
                 {
                   kind: 'Field',
                   name: { kind: 'Name', value: 'reviews' },
@@ -90,7 +93,8 @@ export const GetClinicDocument = {
           { kind: 'Field', name: { kind: 'Name', value: 'name' } },
           { kind: 'Field', name: { kind: 'Name', value: 'rating' } },
           { kind: 'Field', name: { kind: 'Name', value: 'address' } },
-          { kind: 'Field', name: { kind: 'Name', value: 'image' } },
+          { kind: 'Field', name: { kind: 'Name', value: 'mainImage' } },
+          { kind: 'Field', name: { kind: 'Name', value: 'images' } },
           { kind: 'Field', name: { kind: 'Name', value: 'clinicType' } },
           { kind: 'Field', name: { kind: 'Name', value: 'reviewsCount' } },
           { kind: 'Field', name: { kind: 'Name', value: 'workingTime' } },

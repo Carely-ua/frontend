@@ -20,7 +20,7 @@ export type GetCartQuery = {
         serviceType: Types.ServiceType;
         price?: number | null;
         discountPrice?: number | null;
-        clinic?: { __typename?: 'Clinic'; image: string; name: string } | null;
+        clinic?: { __typename?: 'Clinic'; mainImage?: string | null; name: string } | null;
       } | null;
     } | null> | null;
   } | null;
@@ -69,7 +69,7 @@ export const GetCartDocument = {
                               selectionSet: {
                                 kind: 'SelectionSet',
                                 selections: [
-                                  { kind: 'Field', name: { kind: 'Name', value: 'image' } },
+                                  { kind: 'Field', name: { kind: 'Name', value: 'mainImage' } },
                                   { kind: 'Field', name: { kind: 'Name', value: 'name' } },
                                 ],
                               },

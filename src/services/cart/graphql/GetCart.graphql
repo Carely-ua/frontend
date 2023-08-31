@@ -12,7 +12,7 @@ query GetCart {
         price
         discountPrice
         clinic {
-          image
+          mainImage
           name
         }
       }

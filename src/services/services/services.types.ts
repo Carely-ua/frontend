@@ -7,6 +7,10 @@ export type Consultation = NonNullable<GetConsultationsQuery['getCategories']>[n
 export type Category = CategoryFragment | null;
 export type Categories = Array<Category>;
 export type Services = NonNullable<
-  NonNullable<NonNullable<Category>['subTitles']>[number]
+  NonNullable<
+    NonNullable<NonNullable<GetServicesQuery['getServices']>[number]>['subTitles']
+  >[number]
 >['services'];
 export type Service = NonNullable<Services>[number];
+export type Doctors = NonNullable<Service>['doctors'];
+export type Doctor = NonNullable<NonNullable<Doctors>[number]>;

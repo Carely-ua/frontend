@@ -3,7 +3,8 @@ fragment Clinic on Clinic {
   name
   rating
   address
-  image
+  mainImage
+  images
   clinicType
   reviewsCount
   workingTime

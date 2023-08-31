@@ -105,9 +105,11 @@ export type Clinic = {
   city: Scalars['String']['output'];
   clinicType: ClinicType;
   description: Scalars['String']['output'];
+  doctors?: Maybe<Array<Maybe<Doctor>>>;
   email: Scalars['String']['output'];
   id: Scalars['ID']['output'];
-  image: Scalars['String']['output'];
+  images?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  mainImage?: Maybe<Scalars['String']['output']>;
   mapCoordinates: MapCoordinates;
   name: Scalars['String']['output'];
   phone: Scalars['String']['output'];
@@ -130,7 +132,8 @@ export type ClinicCreateInputType = {
   clinicType: ClinicType;
   description: Scalars['String']['input'];
   email: Scalars['String']['input'];
-  image: Scalars['String']['input'];
+  images?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  mainImage?: InputMaybe<Scalars['String']['input']>;
   mapCoordinates: MapCoordinatesInput;
   name: Scalars['String']['input'];
   phone: Scalars['String']['input'];
@@ -169,12 +172,20 @@ export type ClinicUpdateInputType = {
   rating?: InputMaybe<Scalars['Float']['input']>;
 };
 
+export type CreateOrderOutput = {
+  __typename?: 'CreateOrderOutput';
+  data?: Maybe<Scalars['String']['output']>;
+  order?: Maybe<Order>;
+  signature?: Maybe<Scalars['String']['output']>;
+};
+
 export type Doctor = {
   __typename?: 'Doctor';
   clinic?: Maybe<Clinic>;
   clinicId: Scalars['String']['output'];
   description: Scalars['String']['output'];
   discountPrice?: Maybe<Scalars['Float']['output']>;
+  experience?: Maybe<Scalars['Float']['output']>;
   id: Scalars['ID']['output'];
   image: Scalars['String']['output'];
   name: Scalars['String']['output'];
@@ -182,7 +193,9 @@ export type Doctor = {
   price?: Maybe<Scalars['Float']['output']>;
   rating?: Maybe<Scalars['Float']['output']>;
   reviews?: Maybe<Array<Maybe<Review>>>;
+  reviewsCount?: Maybe<Scalars['Float']['output']>;
   services?: Maybe<Array<Maybe<Service>>>;
+  tags?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
 };
 
 export type DoctorCreateInputType = {
@@ -199,14 +212,13 @@ export type DoctorFilterInputType = {
   id?: InputMaybe<Scalars['ID']['input']>;
   name?: InputMaybe<Scalars['String']['input']>;
   serviceId?: InputMaybe<Scalars['ID']['input']>;
+  tag?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type DoctorService = {
   __typename?: 'DoctorService';
   discountPrice?: Maybe<Scalars['Float']['output']>;
-  doctorId: Scalars['ID']['output'];
   price?: Maybe<Scalars['Float']['output']>;
-  serviceId: Scalars['ID']['output'];
 };
 
 export type DoctorUpdateInputType = {
@@ -248,7 +260,7 @@ export type Mutation = {
   createClinic?: Maybe<Clinic>;
   createDoctor?: Maybe<Doctor>;
   createDoctorsService: Scalars['Boolean']['output'];
-  createOrder?: Maybe<Order>;
+  createOrder?: Maybe<CreateOrderOutput>;
   createReview?: Maybe<Review>;
   createService?: Maybe<Service>;
   createSpecClinic: Scalars['Boolean']['output'];
@@ -532,6 +544,7 @@ export type Review = {
   __typename?: 'Review';
   clinic?: Maybe<Clinic>;
   clinicId?: Maybe<Scalars['String']['output']>;
+  createdAt?: Maybe<Scalars['Date']['output']>;
   doctor?: Maybe<Doctor>;
   doctorId?: Maybe<Scalars['String']['output']>;
   id: Scalars['ID']['output'];
@@ -559,6 +572,7 @@ export type Service = {
   clinicId: Scalars['String']['output'];
   description: Scalars['String']['output'];
   discountPrice?: Maybe<Scalars['Float']['output']>;
+  doctors?: Maybe<Array<Maybe<Doctor>>>;
   id: Scalars['ID']['output'];
   name: Scalars['String']['output'];
   price?: Maybe<Scalars['Float']['output']>;
@@ -586,6 +600,7 @@ export type ServiceFilterInputType = {
   id?: InputMaybe<Scalars['ID']['input']>;
   name?: InputMaybe<Scalars['String']['input']>;
   serviceType?: InputMaybe<ServiceType>;
+  tag?: InputMaybe<Scalars['String']['input']>;
 };
 
 export enum ServiceType {
@@ -635,6 +650,12 @@ export type Specialization = {
   title: Scalars['String']['output'];
 };
 
+export type SpecializationClinicService = {
+  __typename?: 'SpecializationClinicService';
+  clinicId: Scalars['ID']['output'];
+  specializationId: Scalars['ID']['output'];
+};
+
 export type SpecializationCreateInputType = {
   title: Scalars['String']['input'];
 };
@@ -651,9 +672,7 @@ export type SpecializationUpdateInputType = {
 
 export type SubTitleService = {
   __typename?: 'SubTitleService';
-  clinicId: Scalars['ID']['output'];
   serviceId: Scalars['ID']['output'];
-  specializationId: Scalars['ID']['output'];
   subTitleId: Scalars['ID']['output'];
 };
 
