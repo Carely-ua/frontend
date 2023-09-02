@@ -22,3 +22,52 @@ jobs:
     - uses: actions/checkout@v3
     - run: npm i
     - run: npm run lint:ci
+  build:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      - name: Checkout dev
+        uses: actions/checkout@main
+
+      - name: Update SHA
+        run: echo $GITHUB_SHA > $GITHUB_WORKSPACE/_meta
+
+      # Install doctl.
+      - name: Install doctl
+        uses: digitalocean/action-doctl@v2
+        with:
+          token: dop_v1_5404964490381f4f21538bc21aa01a41a4f14afa1077fa3f8da9ed633148e871
+
+      # Build a Docker image of your application in your registry and tag the image with the $GITHUB_SHA.
+      - name: Build container image
+        run:
+          docker build -t registry.digitalocean.com/carely/carely-frontend:$(echo
+          $GITHUB_SHA | head -c7) .
+
+      - name:
+          Log in to DigitalOcean Container Registry with short-lived credentials
+        run: doctl registry login --expiry-seconds 1200
+
+      - name: Push image to DigitalOcean Container Registry
+        run:
+          docker push registry.digitalocean.com/carely/carely-frontend:$(echo $GITHUB_SHA
+          | head -c7)
+
+
+      # Deploy to DigitalOCcean Kubernetes.
+      - name: Update deployment file
+        run:
+          TAG=$(echo $GITHUB_SHA | head -c7) && sed -i 's|<IMAGE>|registry.digitalocean.com/carely/carely-frontend:'${TAG}'|'
+          $GITHUB_WORKSPACE/kube.yml
+
+      - name: Save DigitalOcean kubeconfig with short-lived credentials
+        run:
+          doctl kubernetes cluster kubeconfig save --expiry-seconds 600 carely
+
+      - name: Deploy to DigitalOcean Kubernetes
+        run: kubectl apply -f $GITHUB_WORKSPACE/kube.yml
+
+      - name: Verify deployment
+        run: kubectl rollout status deployment/carely-frontend

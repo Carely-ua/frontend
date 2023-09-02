@@ -1,0 +1,35 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: carely-frontend
+spec:
+  type: ClusterIP
+  ports:
+    - port: 80
+      targetPort: 8080
+  selector:
+    app: carely-frontend
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: carely-frontend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: carely-frontend
+  template:
+    metadata:
+      labels:
+        app: carely-frontend
+    spec:
+      containers:
+        - name: carely-frontend
+          image: <IMAGE>
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
+          envFrom:
+            - secretRef:
+                name: carely-frontend
