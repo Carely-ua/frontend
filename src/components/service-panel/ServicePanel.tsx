@@ -48,6 +48,7 @@ export const ServicePanel: FC<ServicePanelProps> = async ({
       />
       <div className={styles.servicesSections}>
         {currentCategory?.subTitles?.map(item => {
+          //@ts-ignore
           return item ? <Subcategory key={item.id} showPrice={showPrice} {...item} /> : null;
         })}
       </div>

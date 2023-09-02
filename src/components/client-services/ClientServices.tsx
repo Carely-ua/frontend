@@ -90,7 +90,8 @@ export const ClientServices = () => {
                   Виконано
                 </Typography>
               )}
-              {!isActive && <AddReviewButton />}
+              {/* TODO add real props here */}
+              {!isActive && <AddReviewButton serviceId="" clinicId="" />}
             </div>
           </div>
         ),

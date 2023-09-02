@@ -14,12 +14,11 @@ const containerStyle = {
 };
 
 interface ClinicMainInfoProps extends RatingProps, ClinicExtraInfoProps, MapItemProps {
-  image: string;
   name: string;
 }
 
 export const ClinicMainInfo: FC<ClinicMainInfoProps> = ({
-  image,
+  mainImage,
   id,
   rating,
   reviewsCount,
@@ -32,10 +31,10 @@ export const ClinicMainInfo: FC<ClinicMainInfoProps> = ({
     () => ({
       rating,
       id,
-      image,
+      mainImage,
       mapCoordinates,
     }),
-    [rating, id, image, mapCoordinates],
+    [rating, id, mainImage, mapCoordinates],
   );
 
   return (
@@ -55,6 +54,7 @@ export const ClinicMainInfo: FC<ClinicMainInfoProps> = ({
         </div>
       </div>
       <div className={styles.item}>
+        {/* @ts-ignore */}
         <Map data={mapData} containerStyle={containerStyle} />
       </div>
     </div>

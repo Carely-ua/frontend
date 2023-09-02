@@ -72,13 +72,17 @@ export const Map: FC<MapProps> = ({ data, containerStyle }) => {
                 <Marker
                   key={clinic.id}
                   rating={clinic.rating}
-                  image={clinic.image}
+                  mainImage={clinic.mainImage}
                   mapCoordinates={clinic.mapCoordinates}
                 />
               );
             })
           ) : (
-            <Marker rating={data.rating} image={data.image} mapCoordinates={data.mapCoordinates} />
+            <Marker
+              rating={data.rating}
+              mainImage={data.mainImage}
+              mapCoordinates={data.mapCoordinates}
+            />
           )}
         </GoogleMap>
       ) : null}

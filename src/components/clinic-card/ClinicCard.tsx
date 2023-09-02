@@ -21,7 +21,7 @@ export const ClinicCard: FC<ClinicCardProps> = ({
   name,
   address,
   rating,
-  image,
+  mainImage,
   reviewsCount,
   workingTime = defaultWorkingHours,
   specializations,

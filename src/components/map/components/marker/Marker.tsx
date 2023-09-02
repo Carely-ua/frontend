@@ -11,7 +11,7 @@ const center = {
 
 export interface MarkerProps {
   rating?: number | null;
-  image: string;
+  mainImage?: string | null;
   mapCoordinates: {
     lat: number;
     lng: number;
