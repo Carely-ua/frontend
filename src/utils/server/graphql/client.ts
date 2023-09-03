@@ -12,8 +12,7 @@ const { getClient } = registerApolloClient(() => {
   return new NextSSRApolloClient({
     cache: new NextSSRInMemoryCache(),
     link: new HttpLink({
-      //TODO move it to env file
-      uri: 'https://backend.carely.com.ua/graphql',
+      uri: process.env.API_URL,
     }),
   });
 });
