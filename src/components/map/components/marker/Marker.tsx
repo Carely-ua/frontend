@@ -4,11 +4,6 @@ import Image from 'next/image';
 import { SVG } from '@/components/svg';
 import styles from './Marker.module.scss';
 
-const center = {
-  lat: 51.509865,
-  lng: -0.118092,
-};
-
 export interface MarkerProps {
   rating?: number | null;
   mainImage?: string | null;
