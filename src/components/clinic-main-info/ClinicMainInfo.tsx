@@ -6,8 +6,6 @@ import { ClinicExtraInfo, ClinicExtraInfoProps } from '../clinic-extra-info';
 import { Map, MapItemProps } from '../map';
 import styles from './ClinicMainInfo.module.scss';
 
-const defaultImage = '/images/test-clinic-image.png';
-
 const containerStyle = {
   width: '100%',
   height: '270px',
@@ -41,7 +39,7 @@ export const ClinicMainInfo: FC<ClinicMainInfoProps> = ({
     <div className={styles.clinicMainInfo}>
       <div className={styles.item}>
         <div className={styles.image}>
-          <Image src={defaultImage} alt="clinic" width={270} height={270} />
+          {!!mainImage && <Image src={mainImage} alt="clinic" width={270} height={270} />}
         </div>
         <div className={styles.clinicInfo}>
           <div className={styles.rating}>
