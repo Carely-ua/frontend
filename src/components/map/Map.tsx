@@ -1,22 +1,21 @@
 'use client';
 import { useRef, useCallback, FC, CSSProperties } from 'react';
 import { GoogleMap, useJsApiLoader } from '@react-google-maps/api';
-import { ClinicTypes } from '@/services';
 import { theme } from './theme';
 import { Marker, MarkerProps } from './components';
 import styles from './Map.module.scss';
-
-const API_KEY = 'AIzaSyBLk8kSHT1YRxxb2H-e51HPxLNMM9rkRjM';
 
 const defaultContainerStyle = {
   width: '100%',
   height: 'calc(100vh - 40px)',
 };
 
-const center = {
-  lat: 0.3,
-  lng: 0.4,
+const VINNYTSIA_POSITION = {
+  lat: 49.23439260166493,
+  lng: 28.477175435987192,
 };
+
+const center = VINNYTSIA_POSITION;
 
 const defaultOption = {
   panControl: true,
@@ -41,7 +40,7 @@ export interface MapProps {
 export const Map: FC<MapProps> = ({ data, containerStyle }) => {
   const { isLoaded } = useJsApiLoader({
     id: 'google-map-script',
-    googleMapsApiKey: API_KEY,
+    googleMapsApiKey: process.env.NEXT_PUBLIC_API_KEY || '',
   });
   const mapRef = useRef<google.maps.Map | null>(null);
 

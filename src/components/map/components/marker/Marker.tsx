@@ -18,7 +18,7 @@ export interface MarkerProps {
   };
 }
 
-export const Marker: FC<MarkerProps> = ({ rating = 0, mapCoordinates }) => {
+export const Marker: FC<MarkerProps> = ({ rating = 0, mapCoordinates, mainImage }) => {
   return (
     <OverlayView mapPaneName={OverlayView.OVERLAY_MOUSE_TARGET} position={mapCoordinates}>
       <div className={styles.marker}>
@@ -27,7 +27,7 @@ export const Marker: FC<MarkerProps> = ({ rating = 0, mapCoordinates }) => {
           {rating}
         </div>
         <div className={styles.image}>
-          <Image src="/images/test-clinic-image.png" alt="clinic" width="50" height="50" />
+          {!!mainImage && <Image src={mainImage} alt="clinic" width="50" height="50" />}
         </div>
       </div>
     </OverlayView>

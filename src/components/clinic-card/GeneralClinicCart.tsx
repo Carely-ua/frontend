@@ -11,9 +11,6 @@ import { PriceBlock } from '../price-block';
 import { AddToBagButton } from '../add-to-bag-button';
 import styles from './ClinicCard.module.scss';
 
-const defaultImage = '/images/test-clinic-image.png';
-const defaultWorkingHours = 'з 9:00-17:00';
-
 interface ClinicCardProps extends NonNullable<ClinicTypes.Clinic> {
   hrefPrefix: string;
   services?: ClinicTypes.ClinicServices;
@@ -27,14 +24,14 @@ export const GeneralClinicCart: FC<ClinicCardProps> = ({
   rating,
   mainImage,
   reviewsCount,
-  workingTime = defaultWorkingHours,
+  workingTime,
   services,
 }) => {
   return (
     <div className={styles.card}>
       <div className={styles.mainSection}>
         <div className={styles.image}>
-          <Image src={defaultImage} alt="clinic" width="160" height="160" />
+          {!!mainImage && <Image src={mainImage} alt="clinic" width="160" height="160" />}
         </div>
         <div className={styles.generalCartContent}>
           <div className={styles.header}>

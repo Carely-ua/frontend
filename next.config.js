@@ -4,6 +4,9 @@ const nextConfig = {
   experimental: {
     serverActions: true,
   },
+  images: {
+    domains: ['d1csarkz8obe9u.cloudfront.net'],
+  },
   async redirects() {
     return [
       {

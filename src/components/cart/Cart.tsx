@@ -12,8 +12,6 @@ import { PriceBlock } from '../price-block';
 import { SVG } from '../svg';
 import styles from './Cart.module.scss';
 
-const defaultImage = '/images/test-clinic-image.png';
-
 const CartItem: FC<CartTypes.CartItem> = ({ id, service }) => {
   const { destroyCartItem } = useDestroyCartItem();
 
@@ -29,7 +27,9 @@ const CartItem: FC<CartTypes.CartItem> = ({ id, service }) => {
     <div className={classNames(styles.row, styles.item)}>
       <div className={styles.clinicInfo}>
         <div className={styles.image}>
-          <Image src={clinic?.mainImage || defaultImage} alt="clinic" width={48} height={48} />
+          {!!clinic?.mainImage && (
+            <Image src={clinic.mainImage} alt="clinic" width={48} height={48} />
+          )}
         </div>
         <Typography component="h4">{clinic?.name}</Typography>
       </div>
@@ -47,8 +47,6 @@ const CartItem: FC<CartTypes.CartItem> = ({ id, service }) => {
   );
 };
 
-const LIQPAY_URL = 'https://www.liqpay.ua/api/3/checkout';
-
 export const Cart = () => {
   const { data } = useGetCart();
   const { createOrder } = useCreateOrder();
@@ -58,7 +56,9 @@ export const Cart = () => {
 
     if (data?.createOrder) {
       const { signature, data: liqPayData } = data.createOrder;
-      window.open(`${LIQPAY_URL}?signature=${signature}&data=${liqPayData}`);
+      window.open(
+        `${process.env.NEXT_PUBLIC_LIQPAY_URL}?signature=${signature}&data=${liqPayData}`,
+      );
     }
   };
 
