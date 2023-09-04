@@ -2,6 +2,7 @@
 
 .searchInputWrap {
   position: relative;
+  z-index: 5;
 }
 
 .searchInput {
@@ -56,6 +57,13 @@
   width: 100%;
   z-index: 1;
   padding: customGap(10) customGap(6) 0;
+  max-height: 480px;
+  overflow: auto;
+
+  &::-webkit-scrollbar{
+    display: none;
+  }
+  
 
   &Item {
     display: flex;
@@ -66,6 +74,19 @@
 
     &:not(:last-child) {
       border-bottom: 1px solid $light-grey;
+    }
+
+    &:hover {
+      p {
+        color: $primary;
+      }
+
+      svg {
+        path {
+          color: $primary;
+          fill: $primary;
+        }
+      }
     }
   }
 }

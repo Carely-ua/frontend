@@ -1,33 +1,31 @@
 'use client';
 
-import { FC, useState } from 'react';
+import { ChangeEvent, FC, useState } from 'react';
+import { useRouter } from 'next/navigation';
 import InputMUI from '@mui/base/Input';
 import { Typography } from '@/ui-kit';
+import { SearchItems } from '@/services/search';
 import { SVG, SVGNameType } from '../svg';
 import styles from './SearchInput.module.scss';
 
-const items = [
-  { title: 'Клініка Covid-19' },
-  { title: 'Клініка Акушерства' },
-  { title: 'Клініка Алергологія' },
-  { title: 'Клініка Алергологія' },
-  { title: 'Клініка Анестезіологія' },
-  { title: 'Клініка Венерологія' },
-  { title: 'Клініка Вертебрологія' },
-  { title: 'Клініка Гастроентерологія' },
-  { title: 'Клініка Гаматологі' },
-  { title: 'Клініка Генетика' },
-];
-
 interface SuggestionList {
-  items: Array<{ title: string }>;
+  items: SearchItems;
 }
 
 const SuggestionList: FC<SuggestionList> = ({ items }) => {
+  const router = useRouter();
+
+  const clickHandler = (path: string) => {
+    router.push(path);
+  };
+
   return (
     <div className={styles.suggestionList}>
-      {items.map(({ title }) => (
-        <div className={styles.suggestionListItem} key={title}>
+      {items.map(({ title, id, type }) => (
+        <div
+          onMouseDown={() => clickHandler(`/${type}/${id}`)}
+          className={styles.suggestionListItem}
+          key={id}>
           <Typography component="p" color="dark-grey">
             {title}
           </Typography>
@@ -38,13 +36,20 @@ const SuggestionList: FC<SuggestionList> = ({ items }) => {
   );
 };
 
-interface SearchInputProps {
+interface SearchInputProps extends SuggestionList {
   leftIcon?: SVGNameType;
   rightIcon?: SVGNameType;
   placeholder?: string;
+  searchHandler(event: ChangeEvent<HTMLInputElement>): void;
 }
 
-export const SearchInput: FC<SearchInputProps> = ({ placeholder, leftIcon, rightIcon }) => {
+export const SearchInput: FC<SearchInputProps> = ({
+  placeholder,
+  leftIcon,
+  rightIcon,
+  searchHandler,
+  items,
+}) => {
   const [isFocused, setIsFocused] = useState(false);
 
   const LeftIcon = leftIcon ? SVG[leftIcon] : null;
@@ -59,6 +64,7 @@ export const SearchInput: FC<SearchInputProps> = ({ placeholder, leftIcon, right
           </div>
         )}
         <InputMUI
+          onChange={searchHandler}
           onFocus={() => setIsFocused(true)}
           onBlur={() => setIsFocused(false)}
           className={styles.input}

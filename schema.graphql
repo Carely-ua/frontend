@@ -69,12 +69,15 @@ type Query {
   getCategories(filters: ServiceFilterInputType!): [Category]
   clinic(filters: ClinicFilterInputType!): Clinic
   getClinics(filters: ClinicFilterInputType!): [Clinic]
+  searchClinics(filters: ClinicFilterInputType!): ClinicSearch!
   getSpecializations(filters: SpecializationFilterInputType): [Specialization]
   health: Boolean!
   doctor(filters: DoctorFilterInputType!): Doctor
   getDoctors(filters: DoctorFilterInputType!): [Doctor]
   orders: [Order]
   order(id: ID!): Order
+  scriptRun: Boolean!
+  mainSearch(filters: MainSearchInputType): MainSearchResponseType
   service(filters: ServiceFilterInputType!): Service
   getServices(filters: ServiceFilterInputType!): [Category]
   user: User
@@ -122,6 +125,10 @@ type Clinic {
   reviews: [Review]
   specializations: [Specialization]
 }
+type ClinicSearch {
+  clinics: [Clinic]
+  specializations: [Specialization]
+}
 type SpecializationClinicService {
   specializationId: ID!
   clinicId: ID!
@@ -138,6 +145,7 @@ type Doctor {
   description: String!
   image: String!
   rating: Float
+  title: String
   clinicId: String!
   price: Float
   discountPrice: Float
@@ -203,6 +211,10 @@ type Service {
   doctors: [Doctor]
   category: Category
   reviews: [Review]
+}
+type MainSearchResponseType {
+  clinics: [Clinic]
+  categories: [Category]
 }
 type SmsSend {
   id: ID!
@@ -299,6 +311,7 @@ input ClinicCreateInputType {
   email: String!
   address: String!
   phone: String!
+  workingTime: String!
   mapCoordinates: MapCoordinatesInput!
   clinicType: ClinicType!
   city: String!
@@ -344,8 +357,11 @@ input DoctorFilterInputType {
 }
 input DoctorCreateInputType {
   name: String!
+  experience: String
   phone: String!
+  title: String
   clinicId: String!
+  tags: [String]
   description: String!
   image: String!
   rating: Float
@@ -363,6 +379,7 @@ input createDoctorService {
   doctorId: ID!
   serviceId: ID!
   price: Float
+  discountPrice: Float
 }
 input ReviewCreateInputType {
   serviceId: String
@@ -401,6 +418,10 @@ input ServiceUpdateInputType {
   discountPrice: Float
   clinicId: String
   categoryId: String
+}
+input MainSearchInputType {
+  city: String
+  name: String
 }
 input SignInInput {
   phone: String!

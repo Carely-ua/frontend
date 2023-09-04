@@ -1,0 +1,13 @@
+query MainSearch($filters: MainSearchInputType!) {
+  mainSearch(filters: $filters) {
+   	clinics {
+      id
+      name
+      clinicType
+    }
+    categories {
+      id
+      title
+		}
+  }
+}
