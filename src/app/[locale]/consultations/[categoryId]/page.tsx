@@ -20,12 +20,12 @@ const ServicePage: FC<ServicePageProps> = ({ clinics, hrefPrefix }) => {
 
 interface ServicePageParams {
   params: {
-    subcategoryId: string;
+    categoryId: string;
   };
 }
 
 const ServicePageWrapper = async ({ params }: ServicePageParams) => {
-  const { data } = await getClinicsWithServices({ categorySubTitleId: params.subcategoryId });
+  const { data } = await getClinicsWithServices({ categoryId: params.categoryId });
 
   return <ServicePage clinics={data.getClinics || []} hrefPrefix="/clinics" />;
 };

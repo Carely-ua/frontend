@@ -35,6 +35,7 @@ export type GetClinicsWithServicesQuery = {
         experience?: number | null;
         price?: number | null;
         discountPrice?: number | null;
+        title?: string | null;
       } | null> | null;
     } | null> | null;
     mapCoordinates: { __typename?: 'MapCoordinates'; lat: number; lng: number };
@@ -100,6 +101,7 @@ export const GetClinicsWithServicesDocument = {
                             { kind: 'Field', name: { kind: 'Name', value: 'experience' } },
                             { kind: 'Field', name: { kind: 'Name', value: 'price' } },
                             { kind: 'Field', name: { kind: 'Name', value: 'discountPrice' } },
+                            { kind: 'Field', name: { kind: 'Name', value: 'title' } },
                           ],
                         },
                       },

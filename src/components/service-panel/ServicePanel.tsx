@@ -2,6 +2,7 @@ import { FC } from 'react';
 import { ServiceType } from '@/utils/graphql/__generated__/types';
 import { ServicesTypes } from '@/services';
 import { SidebarNavigation } from '../sidebar-navigation';
+import { ConsultationItems } from '../consultation-items';
 import styles from './ServicePanel.module.scss';
 import { Subcategory, SubcategoryProps } from './Subcategory';
 
@@ -11,7 +12,7 @@ const titles = {
   [ServiceType.Diagnostic]: 'Діагностика',
 };
 
-const getCurrentCategory = (categories: ServicesTypes.Categories, categoryId: string) => {
+const getCurrentCategory = (categories: ServicesTypes.ClinicServiceData, categoryId: string) => {
   return categories?.find(item => {
     if (!item) return;
 
@@ -37,6 +38,7 @@ export const ServicePanel: FC<ServicePanelProps> = async ({
   const _categoryId = categoryId || defaultCategoryId;
 
   const currentCategory = getCurrentCategory(categories, _categoryId);
+  const service = currentCategory?.services?.[0];
 
   return (
     <div className={styles.servicePanel}>
@@ -47,10 +49,13 @@ export const ServicePanel: FC<ServicePanelProps> = async ({
         categories={categories || []}
       />
       <div className={styles.servicesSections}>
-        {currentCategory?.subTitles?.map(item => {
-          //@ts-ignore
-          return item ? <Subcategory key={item.id} showPrice={showPrice} {...item} /> : null;
-        })}
+        {serviceType === ServiceType.Consultations ? (
+          <ConsultationItems serviceId={service?.id || ''} doctors={service?.doctors} />
+        ) : (
+          currentCategory?.subTitles?.map(item => {
+            return item ? <Subcategory key={item.id} showPrice={showPrice} {...item} /> : null;
+          })
+        )}
       </div>
     </div>
   );

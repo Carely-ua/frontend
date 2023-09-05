@@ -5,7 +5,7 @@ const nextConfig = {
     serverActions: true,
   },
   images: {
-    domains: ['d1csarkz8obe9u.cloudfront.net'],
+    domains: ['d1csarkz8obe9u.cloudfront.net', 'img.freepik.com'],
   },
   async redirects() {
     return [

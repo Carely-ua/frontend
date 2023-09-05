@@ -20,19 +20,26 @@ export type GetServicesQuery = {
         id: string;
         name: string;
         price?: number | null;
-        serviceType: Types.ServiceType;
         discountPrice?: number | null;
-        doctors?: Array<{
-          __typename?: 'Doctor';
-          id: string;
-          name: string;
-          rating?: number | null;
-          image: string;
-          tags?: Array<string | null> | null;
-          experience?: number | null;
-          price?: number | null;
-          discountPrice?: number | null;
-        } | null> | null;
+      } | null> | null;
+    } | null> | null;
+    services?: Array<{
+      __typename?: 'Service';
+      id: string;
+      name: string;
+      price?: number | null;
+      discountPrice?: number | null;
+      doctors?: Array<{
+        __typename?: 'Doctor';
+        id: string;
+        name: string;
+        rating?: number | null;
+        image: string;
+        tags?: Array<string | null> | null;
+        experience?: number | null;
+        price?: number | null;
+        discountPrice?: number | null;
+        title?: string | null;
       } | null> | null;
     } | null> | null;
   } | null> | null;
@@ -90,25 +97,38 @@ export const GetServicesDocument = {
                             { kind: 'Field', name: { kind: 'Name', value: 'id' } },
                             { kind: 'Field', name: { kind: 'Name', value: 'name' } },
                             { kind: 'Field', name: { kind: 'Name', value: 'price' } },
-                            { kind: 'Field', name: { kind: 'Name', value: 'serviceType' } },
                             { kind: 'Field', name: { kind: 'Name', value: 'discountPrice' } },
-                            {
-                              kind: 'Field',
-                              name: { kind: 'Name', value: 'doctors' },
-                              selectionSet: {
-                                kind: 'SelectionSet',
-                                selections: [
-                                  { kind: 'Field', name: { kind: 'Name', value: 'id' } },
-                                  { kind: 'Field', name: { kind: 'Name', value: 'name' } },
-                                  { kind: 'Field', name: { kind: 'Name', value: 'rating' } },
-                                  { kind: 'Field', name: { kind: 'Name', value: 'image' } },
-                                  { kind: 'Field', name: { kind: 'Name', value: 'tags' } },
-                                  { kind: 'Field', name: { kind: 'Name', value: 'experience' } },
-                                  { kind: 'Field', name: { kind: 'Name', value: 'price' } },
-                                  { kind: 'Field', name: { kind: 'Name', value: 'discountPrice' } },
-                                ],
-                              },
-                            },
+                          ],
+                        },
+                      },
+                    ],
+                  },
+                },
+                {
+                  kind: 'Field',
+                  name: { kind: 'Name', value: 'services' },
+                  selectionSet: {
+                    kind: 'SelectionSet',
+                    selections: [
+                      { kind: 'Field', name: { kind: 'Name', value: 'id' } },
+                      { kind: 'Field', name: { kind: 'Name', value: 'name' } },
+                      { kind: 'Field', name: { kind: 'Name', value: 'price' } },
+                      { kind: 'Field', name: { kind: 'Name', value: 'discountPrice' } },
+                      {
+                        kind: 'Field',
+                        name: { kind: 'Name', value: 'doctors' },
+                        selectionSet: {
+                          kind: 'SelectionSet',
+                          selections: [
+                            { kind: 'Field', name: { kind: 'Name', value: 'id' } },
+                            { kind: 'Field', name: { kind: 'Name', value: 'name' } },
+                            { kind: 'Field', name: { kind: 'Name', value: 'rating' } },
+                            { kind: 'Field', name: { kind: 'Name', value: 'image' } },
+                            { kind: 'Field', name: { kind: 'Name', value: 'tags' } },
+                            { kind: 'Field', name: { kind: 'Name', value: 'experience' } },
+                            { kind: 'Field', name: { kind: 'Name', value: 'price' } },
+                            { kind: 'Field', name: { kind: 'Name', value: 'discountPrice' } },
+                            { kind: 'Field', name: { kind: 'Name', value: 'title' } },
                           ],
                         },
                       },

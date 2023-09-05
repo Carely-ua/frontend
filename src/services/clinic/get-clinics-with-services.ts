@@ -1,13 +1,16 @@
 import { query } from '@/utils/server';
-import { GetClinicsWithServicesDocument } from './graphql/__generated__/GetClinicsWithServices';
+import {
+  GetClinicsWithServicesDocument,
+  GetClinicsWithServicesQueryVariables,
+} from './graphql/__generated__/GetClinicsWithServices';
 
-export const getClinicsWithServices = async (subcategoryId: string) => {
+export const getClinicsWithServices = async (
+  filters: GetClinicsWithServicesQueryVariables['filters'],
+) => {
   const { data } = await query({
     query: GetClinicsWithServicesDocument,
     variables: {
-      filters: {
-        categorySubTitleId: subcategoryId,
-      },
+      filters,
     },
   });
 

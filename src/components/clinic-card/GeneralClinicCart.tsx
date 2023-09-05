@@ -56,7 +56,7 @@ export const GeneralClinicCart: FC<ClinicCardProps> = ({
             const { name, id, price, discountPrice, serviceType, doctors } = service;
 
             if (serviceType === ServiceType.Consultations) {
-              return <ConsultationItems key={id} doctors={doctors} />;
+              return <ConsultationItems key={id} doctors={doctors} serviceId={id} />;
             }
 
             return (

@@ -53,11 +53,7 @@ export const Subcategory: FC<SubcategoryProps> = ({
       {services.map(service => {
         if (!service) return null;
 
-        const { id, name, price, serviceType, doctors } = service;
-
-        if (serviceType === ServiceType.Consultations) {
-          return <ConsultationItems key={id} doctors={doctors} />;
-        }
+        const { id, name, price } = service;
 
         return (
           <ServiceItem

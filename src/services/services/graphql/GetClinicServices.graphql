@@ -9,19 +9,25 @@ query GetServices($filters: ServiceFilterInputType!) {
     	  id 
     	  name
         price
-        serviceType
         discountPrice
-        doctors {
-          id
-          name
-          rating
-          image
-          tags
-          experience
-          price
-          discountPrice
-        }
   	  }
     }
+    services {
+      id 
+    	name
+      price
+      discountPrice
+      doctors {
+        id
+        name
+        rating
+        image
+        tags
+        experience
+        price
+        discountPrice
+        title
+      }
+  	}
   }
 }

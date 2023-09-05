@@ -8,37 +8,43 @@ import { PriceBlock } from '../price-block';
 import { AddToBagButton } from '../add-to-bag-button';
 import styles from './ConsultationItems.module.scss';
 
-const ConsultationItem: FC<ServicesTypes.Doctor> = ({
+interface ConsultationItemProps extends ServicesTypes.Doctor {
+  serviceId: string;
+}
+
+const ConsultationItem: FC<ConsultationItemProps> = ({
   name,
   price,
   discountPrice,
   experience,
   id,
+  serviceId,
+  image,
+  tags,
+  title,
 }) => {
   return (
     <div className={styles.consultationItem}>
-      <Image
-        className={styles.doctorImage}
-        src="/images/doctor.jpeg"
-        width={160}
-        height={160}
-        alt="doctor"
-      />
+      <Image className={styles.doctorImage} src={image} width={160} height={160} alt="doctor" />
       <div className={styles.mainInfo}>
         <Typography component="h3" gutterBottom="md">
           {name}
         </Typography>
-        <Typography component="h4" gutterBottom="md">
-          Гастроентеролог, Дієтолог, Терапевт
-        </Typography>
-        <div className={styles.extraInfoItem}>
-          <div className={styles.extraInfoItemIcon}>
-            <SVG.DoctorMan />
-          </div>
-          <Typography component="p" color="dark-grey">
-            Лікар вищої категорії
+        {!!tags && (
+          <Typography component="h4" gutterBottom="md">
+            {tags.join(', ')}
           </Typography>
-        </div>
+        )}
+        {!!title && (
+          <div className={styles.extraInfoItem}>
+            <div className={styles.extraInfoItemIcon}>
+              <SVG.DoctorMan />
+            </div>
+            <Typography component="p" color="dark-grey">
+              {title}
+            </Typography>
+          </div>
+        )}
         <div className={styles.extraInfoItem}>
           <div className={styles.extraInfoItemIcon}>
             <SVG.Portfolio />
@@ -55,7 +61,7 @@ const ConsultationItem: FC<ServicesTypes.Doctor> = ({
         <div className={styles.price}>
           <PriceBlock firstPrice={price} secondPrice={discountPrice} />
         </div>
-        <AddToBagButton serviceId={id} />
+        <AddToBagButton serviceId={serviceId} doctorId={id} />
       </div>
     </div>
   );
@@ -63,8 +69,11 @@ const ConsultationItem: FC<ServicesTypes.Doctor> = ({
 
 interface ConsultationItemsProps {
   doctors: ServicesTypes.Doctors;
+  serviceId: string;
 }
 
-export const ConsultationItems: FC<ConsultationItemsProps> = ({ doctors }) => {
-  return doctors?.map(doctor => (doctor ? <ConsultationItem key={doctor.id} {...doctor} /> : null));
+export const ConsultationItems: FC<ConsultationItemsProps> = ({ doctors, serviceId }) => {
+  return doctors?.map(doctor =>
+    doctor ? <ConsultationItem key={doctor.id} {...doctor} serviceId={serviceId} /> : null,
+  );
 };

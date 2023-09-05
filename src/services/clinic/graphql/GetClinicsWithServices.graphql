@@ -16,6 +16,7 @@ query GetClinicsWithServices($filters: ClinicFilterInputType!) {
         experience
         price
         discountPrice
+        title
       }
     }
   }

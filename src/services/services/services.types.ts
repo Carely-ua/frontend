@@ -6,11 +6,11 @@ export type Consultation = NonNullable<GetConsultationsQuery['getCategories']>[n
 
 export type Category = CategoryFragment | null;
 export type Categories = Array<Category>;
-export type Services = NonNullable<
-  NonNullable<
-    NonNullable<NonNullable<GetServicesQuery['getServices']>[number]>['subTitles']
-  >[number]
->['services'];
+
+export type ClinicServiceData = NonNullable<GetServicesQuery['getServices']>;
+export type Services = NonNullable<ClinicServiceData[number]>['services'];
 export type Service = NonNullable<Services>[number];
-export type Doctors = NonNullable<Service>['doctors'];
+export type Doctors = NonNullable<
+  NonNullable<NonNullable<ClinicServiceData[number]>['services']>[number]
+>['doctors'];
 export type Doctor = NonNullable<NonNullable<Doctors>[number]>;
