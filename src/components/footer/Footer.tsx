@@ -49,7 +49,7 @@ const SecondaryNavigation = () => {
         {links.map(({ label, href }) => (
           <li key={label}>
             <Link href={href} className={styles.secondaryMenuLink}>
-              <Typography component="h4" gutterBottom="xlg">
+              <Typography component="h5" gutterBottom="xlg">
                 {t(label)}
               </Typography>
             </Link>
@@ -68,13 +68,13 @@ const Contacts = () => {
       <Typography component="p" color="dark-grey" gutterBottom="xlg">
         {t('Contacts')}
       </Typography>
-      <Typography component="h4" weight="medium" gutterBottom="xlg">
+      <Typography component="h5" weight="medium" gutterBottom="xlg">
         068 000 11 22
       </Typography>
-      <Typography component="h4" weight="medium" gutterBottom="xlg">
+      <Typography component="h5" weight="medium" gutterBottom="xlg">
         068 000 11 22
       </Typography>
-      <Typography component="h4" weight="medium" gutterBottom="xlg">
+      <Typography component="h5" weight="medium" gutterBottom="xlg">
         carely@mail.com
       </Typography>
     </div>
@@ -121,7 +121,7 @@ export const Footer = () => {
           </div>
           <SecondaryNavigation />
           <Contacts />
-          <Social />
+          {/* <Social /> */}
         </div>
 
         <Copyright />

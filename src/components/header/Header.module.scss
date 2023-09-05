@@ -15,3 +15,14 @@
   display: flex;
   align-items: center;
 }
+
+.logo {
+  position: relative;
+  width: 147px;
+  height: 60px;
+
+  @include laptop {
+    width: 100px;
+    height: 40px;
+  }
+}

@@ -9,7 +9,9 @@ export const Header = () => {
     <header className={styles.wrapper}>
       <div className={classNames('container', styles.header)}>
         <div className={styles.section}>
-          <Logo />
+          <div className={styles.logo}>
+            <Logo />
+          </div>
           <LocationsSelector />
         </div>
         <Navigation />

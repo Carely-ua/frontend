@@ -2,7 +2,6 @@ import { FC } from 'react';
 import { Grid } from '@mui/material';
 import Image from 'next/image';
 import Link from 'next/link';
-import classNames from 'classnames';
 import { useTranslations } from 'next-intl';
 import { Button, Typography } from '@/ui-kit';
 import { SVGNameType } from '@/components/svg';
@@ -105,7 +104,7 @@ const Item: FC<ItemProps> = ({
 
   return (
     <Grid item xs={size}>
-      <div className={classNames(styles.item)}>
+      <div className={styles.item}>
         <Image className={styles.image} fill src={`/images/${image}.png`} alt="background-image" />
         <div style={{ background: gradient }} className={styles.itemContent}>
           <div className={styles.topSection}>

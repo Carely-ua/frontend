@@ -25,7 +25,7 @@ export const Navigation: FC<NavigationProps> = ({ type = 'horizontal' }) => {
   const pathname = usePathname();
 
   return (
-    <nav className={styles.navigation}>
+    <nav>
       <ul className={classNames(styles.list, styles[`list--${type}`])}>
         {links.map(({ label, href }) => (
           <li key={label}>
@@ -34,7 +34,7 @@ export const Navigation: FC<NavigationProps> = ({ type = 'horizontal' }) => {
               className={classNames(styles.link, styles[`link--${type}`], {
                 [styles.activeLink]: pathname === href,
               })}>
-              <Typography component="h4">{t(label)}</Typography>
+              <Typography component="h5">{t(label)}</Typography>
             </Link>
           </li>
         ))}

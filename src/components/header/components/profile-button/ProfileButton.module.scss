@@ -9,6 +9,10 @@
   border-radius: 100px;
   margin-left: $gap-sm;
   cursor: pointer;
+
+  @include laptop {
+    padding: customGap(1.5) customGap(1.5) customGap(1.5) customGap(2.5);
+  }
 }
 
 .icon {
@@ -20,4 +24,9 @@
   background-color: $secondary;
   margin-left: $gap-sm;
   border-radius: 50%;
+
+  @include laptop {
+    width: 28px;
+    height: 28px;
+  }
 }

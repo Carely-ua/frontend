@@ -41,7 +41,7 @@ export const GeneralClinicCart: FC<ClinicCardProps> = ({
           <div className={styles.bottomSection}>
             <ClinicExtraInfo address={address} workingTime={workingTime} />
             <div>
-              <Link className={styles.link} href={`/${hrefPrefix}/${id}`}>
+              <Link className={styles.link} href={`${hrefPrefix}/${id}`}>
                 <Button>Детальніше</Button>
               </Link>
             </div>
