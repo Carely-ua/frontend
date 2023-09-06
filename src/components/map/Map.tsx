@@ -60,7 +60,7 @@ export const Map: FC<MapProps> = ({ data, containerStyle }) => {
         <GoogleMap
           mapContainerStyle={containerStyle || defaultContainerStyle}
           center={isArray ? center : data.mapCoordinates}
-          zoom={10}
+          zoom={12}
           onLoad={onLoad}
           onUnmount={onUnmount}
           options={defaultOption}>

@@ -1,6 +1,9 @@
 import Image from 'next/image';
-import { Typography } from '@/ui-kit';
+import Link from 'next/link';
+import classNames from 'classnames';
+import { Button, Typography } from '@/ui-kit';
 import { SearchBlock } from '../search-block';
+import { SVG } from '../svg';
 import styles from './MainBanner.module.scss';
 
 export const MainBanner = () => {
@@ -21,6 +24,15 @@ export const MainBanner = () => {
         <SearchBlock />
       </div>
       <div className={styles.labBlock}>
+        <Link href="/labs" className={styles.labBlockButton}>
+          <Button buttonType="white">Знайти лабораторію</Button>
+        </Link>
+        <div className={styles.rating}>
+          <SVG.Star width={28} height={28} />
+          <Typography component="h3" color="secondary">
+            5
+          </Typography>
+        </div>
         <div className={styles.circle} />
         <Image
           src="/images/main-banner-decoration-1.svg"
@@ -30,6 +42,15 @@ export const MainBanner = () => {
         />
       </div>
       <div className={styles.clinicBlock}>
+        <Link href="/clinics" className={styles.clinicBlockButton}>
+          <Button>Знайти клініку</Button>
+        </Link>
+        <div className={styles.rating}>
+          <SVG.Star width={28} height={28} />
+          <Typography component="h3" color="secondary">
+            5
+          </Typography>
+        </div>
         <div className={styles.imageContainer}>
           <Image src="/images/oxford-medical.png" alt="decoration" width={135} height={51} />
         </div>
@@ -49,6 +70,9 @@ export const MainBanner = () => {
         </div>
       </div>
       <div className={styles.doctorBlock}>
+        <Link href="/consultations" className={styles.doctorBlockButton}>
+          <Button buttonType="secondary">Обрати лікаря</Button>
+        </Link>
         <div className={styles.doctorImage}>
           <Image src="/images/gastroenterologist.svg" alt="doctor" width={30} height={30} />
         </div>

@@ -34,6 +34,22 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
+
+  .rating {
+    position: absolute;
+    top: 70px;
+    left: -22px;
+  }
+
+  &Button {
+    position: absolute;
+    top: 10px;
+    right: -158px;
+
+    button {
+      box-shadow: 0px 20px 20px 0px rgba(0, 0, 0, 0.15);
+    }
+  }
 }
 
 .circle {
@@ -59,6 +75,22 @@
 
   .decoration {
     flex: 0;
+  }
+
+  .rating {
+    position: absolute;
+    bottom: -20px;
+    left: 132px;
+  }
+
+  &Button {
+    position: absolute;
+    bottom: -16px;
+    right: -39px;
+
+    button {
+      box-shadow: 0px 20px 20px 0px rgba(0, 0, 0, 0.15);
+    }
   }
 }
 
@@ -86,6 +118,16 @@
   padding: $gap-sm $gap-md;
   display: flex;
   align-items: center;
+
+  &Button {
+    position: absolute;
+    bottom: -22px;
+    left: -33px;
+
+    button {
+      box-shadow: 0px 20px 20px 0px rgba(0, 0, 0, 0.15);
+    }
+  }
 }
 
 .doctorImage {
@@ -125,4 +167,14 @@
   top: -36px;
   max-width: 1140px;
   margin: 0 auto;
+}
+
+.rating {
+  display: flex;
+  align-items: center;
+  border-radius: 10px;
+  background: $white;
+  box-shadow: 0px 20px 50px 0px rgba(0, 0, 0, 0.20);
+  gap: $gap-sm;
+  padding: customGap(2.5) $gap-lg customGap(2.5) customGap(2.5);
 }
