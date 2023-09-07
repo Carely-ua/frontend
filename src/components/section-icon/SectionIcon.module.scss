@@ -27,4 +27,14 @@
       height: 80px;
     }
   }
+
+  svg {
+    width: 24px;
+    height: 24px;
+
+    @include tablet {
+      width: 32px;
+      height: 32px;
+    }
+  }
 }

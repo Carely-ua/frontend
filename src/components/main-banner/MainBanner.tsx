@@ -34,39 +34,52 @@ export const MainBanner = () => {
           </Typography>
         </div>
         <div className={styles.circle} />
-        <Image
-          src="/images/main-banner-decoration-1.svg"
-          alt="decoration"
-          width={145}
-          height={54}
-        />
+        <div className={styles.decoration}>
+          <Image
+            src="/images/main-banner-decoration-1.svg"
+            alt="decoration"
+            layout="fill"
+            objectFit="contain"
+          />
+        </div>
       </div>
       <div className={styles.clinicBlock}>
         <Link href="/clinics" className={styles.clinicBlockButton}>
           <Button>Знайти клініку</Button>
         </Link>
         <div className={styles.rating}>
-          <SVG.Star width={28} height={28} />
+          <SVG.Star />
           <Typography component="h3" color="secondary">
             5
           </Typography>
         </div>
         <div className={styles.imageContainer}>
-          <Image src="/images/oxford-medical.png" alt="decoration" width={135} height={51} />
+          <div className={styles.image}>
+            <Image
+              src="/images/oxford-medical.png"
+              alt="decoration"
+              layout="fill"
+              objectFit="cover"
+            />
+          </div>
         </div>
         <div className={styles.decoration}>
-          <Image
-            src="/images/main-banner-decoration-2.svg"
-            alt="decoration"
-            width={133}
-            height={27}
-          />
-          <Image
-            src="/images/main-banner-decoration-3.svg"
-            alt="decoration"
-            width={233}
-            height={48}
-          />
+          <div>
+            <Image
+              src="/images/main-banner-decoration-2.svg"
+              alt="decoration"
+              layout="fill"
+              objectFit="contain"
+            />
+          </div>
+          <div>
+            <Image
+              src="/images/main-banner-decoration-3.svg"
+              alt="decoration"
+              layout="fill"
+              objectFit="contain"
+            />
+          </div>
         </div>
       </div>
       <div className={styles.doctorBlock}>
@@ -74,14 +87,23 @@ export const MainBanner = () => {
           <Button buttonType="secondary">Обрати лікаря</Button>
         </Link>
         <div className={styles.doctorImage}>
-          <Image src="/images/gastroenterologist.svg" alt="doctor" width={30} height={30} />
+          <div>
+            <Image
+              src="/images/gastroenterologist.svg"
+              alt="doctor"
+              layout="fill"
+              objectFit="contain"
+            />
+          </div>
         </div>
-        <Image
-          src="/images/main-banner-decoration-4.svg"
-          alt="decoration"
-          width={145}
-          height={54}
-        />
+        <div className={styles.decoration}>
+          <Image
+            src="/images/main-banner-decoration-4.svg"
+            alt="decoration"
+            layout="fill"
+            objectFit="contain"
+          />
+        </div>
       </div>
       <div className={styles.heart}>
         <Image src="/images/heart.png" alt="heart" width={194} height={170} />

@@ -29,7 +29,7 @@ export const SectionIcon: FC<SectionIconProps> = ({
         </Typography>
       )}
       <div className={classNames(styles.icon, styles[`icon-${size}`])}>
-        <Icon width={width || 32} height={height || 32} />
+        <Icon width={width} height={height} />
       </div>
     </div>
   );

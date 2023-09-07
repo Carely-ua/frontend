@@ -72,7 +72,7 @@ export const SearchInput: FC<SearchInputProps> = ({
         />
         {!!RightIcon && (
           <div className={styles.rightIcon}>
-            <RightIcon width={24} height={24} />
+            <RightIcon />
           </div>
         )}
       </div>

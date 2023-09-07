@@ -3,29 +3,51 @@
 .banner {
   border-radius: 20px;
   background: linear-gradient(268deg, $primary 0%, $secondary 100%);
-  padding: customGap(10);
-  height: 600px;
+  padding: customGap(10) customGap(6) customGap(10) customGap(6);
+  height: 707px;
   margin-bottom: customGap(22);
   position: relative;
+
+  @include tablet {
+    height: 600px;
+    padding: customGap(10);
+  }
 }
 
 .content {
   max-width: 850px;
-  display: flex;
-  align-items: center;
+  text-align: center;
   height: 100%;
+
+  @include tablet {
+    display: flex;
+    align-items: center;
+    text-align: start;
+  }
+
+  h3 {
+    font-weight: 400;
+  
+    @include tablet {
+      font-weight: 700;
+    }
+  }
 }
 
 .title {
-  padding-bottom: customGap(10);
+  padding-bottom: $gap-xlg;
+
+  @include tablet {
+    padding-bottom: customGap(10);
+  }
 }
 
 .labBlock {
-  top: 80px;
-  right: 553px;
+  top: 399px;
+  left: 30px;
   position: absolute;
-  width: 195px;
-  height: 200px;
+  width: 125px;
+  height: 112px;
   border-radius: 10px;
   background: $white;
   box-shadow: 0px 40px 50px 0px rgba(0, 0, 0, 0.15);
@@ -35,16 +57,45 @@
   align-items: center;
   flex-direction: column;
 
+  @include tablet {
+    left: initial;
+    top: 80px;
+    right: 553px;
+    width: 195px;
+    height: 200px;
+  }
+
+  .decoration {
+    position: relative;
+    width: 110px;
+    height: 19px;
+
+    @include tablet {
+      width: 145px;
+      height: 54px;
+    }
+  }
+
   .rating {
     position: absolute;
-    top: 70px;
-    left: -22px;
+    top: 40px;
+    left: -15px;
+
+    @include tablet {
+      top: 70px;
+      left: -22px;
+    }
   }
 
   &Button {
     position: absolute;
     top: 10px;
     right: -158px;
+    display: none;
+
+    @include tablet {
+      display: block;
+    }
 
     button {
       box-shadow: 0px 20px 20px 0px rgba(0, 0, 0, 0.15);
@@ -53,40 +104,89 @@
 }
 
 .circle {
-  width: 96px;
-  height: 96px;
+  width: 55px;
+  height: 55px;
   background-color: rgba(0, 198, 146, 0.20);
   border-radius: 50%;
   margin-bottom: $gap-sm;
+
+  @include tablet {
+    width: 96px;
+    height: 96px;
+  }
 }
 
 .clinicBlock {
-  top: 154px;
-  right: 73px;
+  top: 360px;
+  right: 20px;
   position: absolute;
-  width: 448px;
-  height: 161px;
+  width: 222px;
+  height: 80px;
   border-radius: 20px;
   background: $white;
   box-shadow: 0px 40px 50px 0px rgba(0, 0, 0, 0.15);
   z-index: 2;
-  padding: $gap-xlg;
+  padding: customGap(2.5);
   display: flex;
+  gap: $gap-sm;
+
+  @include tablet {
+    width: 448px;
+    height: 161px;
+    top: 154px;
+    right: 73px;
+    padding: $gap-xlg;
+    gap: $gap-lg;
+  }
 
   .decoration {
     flex: 0;
+
+    div {
+      &:first-child {
+        position: relative;
+        width: 62px;
+        height: 16px;
+  
+        @include tablet {
+          width: 133px;
+          height: 27px;
+        }
+      }
+  
+      &:last-child {
+        position: relative;
+        width: 110px;
+        height: 18px;
+  
+        @include tablet {
+          width: 233px;
+          height: 48px;
+        }
+      }
+    }
   }
 
   .rating {
     position: absolute;
-    bottom: -20px;
-    left: 132px;
+    bottom: -10px;
+    left: 65px;
+
+    @include tablet {
+      bottom: -20px;
+      left: 132px;
+    }
   }
 
   &Button {
     position: absolute;
     bottom: -16px;
     right: -39px;
+    display: none;
+
+    @include tablet {
+      display: block;
+    }
 
     button {
       box-shadow: 0px 20px 20px 0px rgba(0, 0, 0, 0.15);
@@ -95,50 +195,106 @@
 }
 
 .imageContainer {
-  flex: 165px;
-  height: 120px;
+  flex: 83px 0;
   border-radius: 10px;
   border: 1px solid $light-grey;
-  margin-right: $gap-lg;
   display: flex;
   align-items: center;
   justify-content: center;
+  height: 60px;
+
+  @include tablet {
+    flex: 165px;
+    height: 120px;
+  }
+
+  .image {
+    position: relative;
+    width: 67px;
+    height: 25px;
+
+    @include tablet {
+      width: 135px;
+      height: 51px;
+    };
+  }
 }
 
 .doctorBlock {
-  top: 345px;
-  right: 403px;
+  top: 521px;
+  right: 40px;
   position: absolute;
-  width: 300px;
-  height: 80px;
+  width: 220px;
+  height: 59px;
   border-radius: 38.5px;
   background: $white;
   box-shadow: 0px 40px 50px 0px rgba(0, 0, 0, 0.15);
   z-index: 2;
-  padding: $gap-sm $gap-md;
+  padding: $gap-sm;
   display: flex;
   align-items: center;
+
+  @include tablet {
+    top: 345px;
+    right: 403px;
+    width: 300px;
+    height: 80px;
+    padding: $gap-sm $gap-md;
+  }
 
   &Button {
     position: absolute;
     bottom: -22px;
     left: -33px;
+    display: none;
+
+    @include tablet {
+      display: block;
+    }
 
     button {
       box-shadow: 0px 20px 20px 0px rgba(0, 0, 0, 0.15);
     }
   }
+
+  .decoration {
+    position: relative;
+    width: 110px;
+    height: 24px;
+
+    @include tablet {
+      width: 145px;
+      height: 54px;
+    }
+  }
 }
 
 .doctorImage {
-  width: 60px;
-  height: 60px;
+  width: 44px;
+  height: 44px;
   border-radius: 50%;
   background-color: rgba(0, 198, 146, 0.20);
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-right: $gap-sm
+  margin-right: $gap-xs;
+
+  @include tablet {
+    width: 60px;
+    height: 60px;
+    margin-right: $gap-sm;
+  }
+
+  div {
+    position: relative;
+    width: 22px;
+    height: 22px;
+
+    @include tablet {
+      width: 30px;
+      height: 30px;
+    }
+  }
 }
 
 .heart {
@@ -146,6 +302,11 @@
   top: 40px;
   right: 188px;
   z-index: 1;
+  display: none;
+
+  @include tablet {
+    display: block;
+  }
 }
 
 .snake {
@@ -153,6 +314,11 @@
   top: 244px;
   right: 688px;
   z-index: 1;
+  display: none;
+
+  @include tablet {
+    display: block;
+  }
 }
 
 .clinic {
@@ -160,6 +326,11 @@
   top: 331px;
   right: 127px;
   z-index: 1;
+  display: none;
+
+  @include tablet {
+    display: block;
+  }
 }
 
 .search {
@@ -175,6 +346,21 @@
   border-radius: 10px;
   background: $white;
   box-shadow: 0px 20px 50px 0px rgba(0, 0, 0, 0.20);
-  gap: $gap-sm;
-  padding: customGap(2.5) $gap-lg customGap(2.5) customGap(2.5);
+  gap: $gap-xs;
+  padding: customGap(1.5) $gap-sm customGap(1.5);
+
+  @include tablet {
+    gap: $gap-sm;
+    padding: customGap(2.5) $gap-lg customGap(2.5) customGap(2.5);
+  }
+
+  svg {
+    width: 18px;
+    height: 18px;
+
+    @include tablet {
+      width: 28px;
+      height: 28px;
+    }
+  }
 }

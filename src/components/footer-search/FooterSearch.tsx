@@ -6,7 +6,7 @@ export const FooterSearch = () => {
   return (
     <div className="container">
       <div className={styles.footerSearch}>
-        <SearchBlock />
+        <SearchBlock isFooter />
       </div>
     </div>
   );
