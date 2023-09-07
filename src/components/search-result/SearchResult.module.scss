@@ -13,3 +13,10 @@
   padding: $gap-xlg 0;
 }
 
+.map {
+  display: none;
+
+  @include tablet {
+    display: block;
+  }
+}

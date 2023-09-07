@@ -1,4 +1,5 @@
 import { FC } from 'react';
+import classNames from 'classnames';
 import { ClinicTypes } from '@/services';
 import { ClinicType } from '@/utils/graphql/__generated__/types';
 import { ClinicCard, GeneralClinicCart } from '../clinic-card';
@@ -25,7 +26,7 @@ export const SearchResult: FC<SearchResultProps> = ({ clinics, hrefPrefix, onlyG
           return <GeneralClinicCart hrefPrefix={hrefPrefix} key={clinic.id} {...clinic} />;
         })}
       </div>
-      <div className={styles.item}>
+      <div className={classNames(styles.item, styles.map)}>
         {/* @ts-ignore */}
         <StickyMap data={clinics} />
       </div>

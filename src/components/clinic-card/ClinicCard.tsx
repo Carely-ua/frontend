@@ -30,7 +30,7 @@ export const ClinicCard: FC<ClinicCardProps> = ({
     <div className={styles.card}>
       <div className={styles.mainSection}>
         <div className={styles.image}>
-          {!!mainImage && <Image src={mainImage} alt="clinic" width="160" height="160" />}
+          {!!mainImage && <Image src={mainImage} alt="clinic" layout="fill" objectFit="contain" />}
         </div>
         <div className={styles.content}>
           <div className={styles.header}>
@@ -40,11 +40,22 @@ export const ClinicCard: FC<ClinicCardProps> = ({
           <Typography component="p" gutterBottom="md" className={styles.label}>
             Медичний центр
           </Typography>
-          <Typography component="p" color="dark-grey" gutterBottom="md">
+          <Typography
+            component="p"
+            color="dark-grey"
+            gutterBottom="md"
+            className={styles.specializations}>
             {specializationsArray?.join(', ')}
           </Typography>
         </div>
       </div>
+      <Typography
+        component="p"
+        color="dark-grey"
+        gutterBottom="md"
+        className={styles.specializationsMobile}>
+        {specializationsArray?.join(', ')}
+      </Typography>
       <div className={styles.bottomSection}>
         <ClinicExtraInfo address={address} workingTime={workingTime} />
         <div>

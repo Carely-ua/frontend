@@ -9,14 +9,32 @@
 
 .mainSection {
   display: flex;
+  border-bottom: 1px solid $grey;
+  margin-bottom: customGap(2.5);
+
+  @include tablet {
+    border-bottom: 0;
+    margin-bottom: 0;
+  }
+
+  .specializations {
+    display: none;
+
+    @include tablet {
+      display: block;
+    }
+  }
 }
 
 .content {
   width: 100%;
-  border-bottom: 1px solid $light-grey;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+
+  @include tablet {
+    border-bottom: 1px solid $light-grey;
+  }
 }
 
 .generalCartContent {
@@ -27,17 +45,20 @@
 }
 
 .image {
-  flex-basis: 160px;
+  flex-basis: 80px;
 	flex-grow: 0;
 	flex-shrink: 0;
-  height: 160px;
-  margin-right: $gap-xlg;
+  height: 80px;
+  margin-right: customGap(2.5);
   border-radius: 10px;
   border: 1px solid $light-grey;
   overflow: hidden;
+  position: relative;
 
-  img {
-    object-fit: contain;
+  @include tablet {
+    flex-basis: 160px;
+    height: 160px;
+    margin-right: $gap-xlg;
   }
 }
 
@@ -45,18 +66,42 @@
   display: flex;
   justify-content: space-between;
   margin-bottom: $gap-md;
+  flex-direction: column-reverse;
+  gap: $gap-sm;
+
+  @include tablet {
+    flex-direction: row;
+    gap: 0;
+  }
+
+  div {
+    justify-content: flex-start;
+
+    @include tablet {
+      justify-content: flex-end;
+    }
+  }
 }
 
 .bottomSection {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
   margin-top: $gap-md;
+
+  @include tablet {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
 }
 
 .link {
   display: inline-block;
-  width: 160px;
+  width: 100%;
+  margin-top: $gap-md;
+
+  @include tablet {
+    width: 160px;
+    margin-top: 0;
+  }
 }
 
 .label {
@@ -90,5 +135,11 @@
 
   button {
     max-width: 105px;
+  }
+}
+
+.specializationsMobile {
+  @include tablet {
+    display: none;
   }
 }

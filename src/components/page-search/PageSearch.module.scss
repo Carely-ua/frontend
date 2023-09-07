@@ -3,20 +3,38 @@
 .pageSearch {
   border-radius: 20px;
   background: linear-gradient(134deg, $primary 0%, $secondary 100%);
-  padding: $gap-xlg $gap-lg 0 customGap(10);
+  padding: customGap(3);
   height: 150px;
   margin-bottom: customGap(18);
+
+  @include tablet {
+    padding: $gap-xlg $gap-lg 0 customGap(10);
+  }
 }
 
 .topSection {
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  h2 {
+    font-weight: 500;
+    max-width: 180px;
+
+    @include tablet {
+      font-weight: 700;
+      max-width: initial;
+    }
+  }
 }
 
 .searchField {
   position: relative;
-  bottom: -20px;
+  bottom: -25px;
   max-width: 1200px;
   margin: 0 auto;
+
+  @include tablet {
+    bottom: -20px;
+  }
 }

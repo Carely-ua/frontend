@@ -21,7 +21,7 @@ export const PageSearch: FC<PageSearch> = ({ icon, title }) => {
         <SearchInput
           leftIcon="Hospital"
           rightIcon="Search"
-          placeholder="Введіть/виберіть напрямок або назву клініки"
+          placeholder="Введіть назву клініки"
         />
       </div>
     </div>
