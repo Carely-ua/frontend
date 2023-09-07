@@ -1,19 +1,29 @@
 @use '@/scss/abstracts' as *;
 
 .wrapper {
-  margin-bottom: customGap(15);
+  margin-bottom: customGap(10);
+
+  @include tablet {
+    margin-bottom: customGap(15);
+  }
 }
 
 .title {
-  margin-bottom: customGap(10);
+  margin-bottom: $gap-xlg;
   display: flex;
   align-items: center;
 
+  @include tablet {
+    margin-bottom: customGap(10);
+  }
+
   &Line {
-    height: 1px;
-    background-color: $light-grey;
-    flex: 1;
-    margin-left: $gap-xlg;
+    @include tablet {
+      height: 1px;
+      background-color: $light-grey;
+      flex: 1;
+      margin-left: $gap-xlg;
+    }
   }
 }
 
@@ -21,10 +31,23 @@
   display: flex;
   gap: customGap(10);
   margin-bottom: customGap(7);
+  overflow: auto;
+
+  @include tablet {
+    overflow: auto;
+  }
 
   div {
     padding-bottom: $gap-sm;
     cursor: pointer;
+
+    p {
+      white-space: nowrap;
+
+      @include tablet {
+        white-space: normal;
+      }
+    }
 
     &[aria-selected="true"] {
       border-bottom: 1px solid $primary;

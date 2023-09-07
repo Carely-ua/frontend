@@ -24,15 +24,20 @@ const Payments = () => {
         <Logo />
       </div>
       <div>
-        <Typography component="p" color="dark-grey" gutterBottom="xlg">
+        <Typography component="p" color="dark-grey">
           {t('Payments')}
         </Typography>
         <div className={styles.payments}>
-          <div>
-            <Image src="/images/master-card.svg" alt="master-card" width="53" height="32" />
+          <div className={styles.masterCard}>
+            <Image
+              src="/images/master-card.svg"
+              alt="master-card"
+              layout="fill"
+              objectFit="contain"
+            />
           </div>
-          <div>
-            <Image src="/images/visa.svg" alt="visa" width="106" height="32" />
+          <div className={styles.visa}>
+            <Image src="/images/visa.svg" alt="visa" layout="fill" objectFit="contain" />
           </div>
         </div>
       </div>
@@ -98,11 +103,11 @@ const Copyright = () => {
 
   return (
     <div className={styles.copyright}>
-      <Typography component="h4" weight="medium" color="dark-grey">
+      <Typography component="h5" color="dark-grey">
         {t('text')}
       </Typography>
       <Link href="/" className={styles.copyrightLink}>
-        <Typography component="h4" weight="medium" color="dark-grey">
+        <Typography component="h5" color="dark-grey">
           {t('link')}
         </Typography>
       </Link>

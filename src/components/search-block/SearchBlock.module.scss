@@ -1,11 +1,27 @@
 @use '@/scss/abstracts' as *;
 
+.searchBlock {
+  max-width: 100%;
+}
+
+.searchInput {
+  margin: 0 $gap-xlg;
+
+  @include tablet {
+    margin: 0;
+  }
+}
+
 .list {
   display: flex;
-  justify-content: center;
   list-style: none;
   padding: 0;
   margin: 0 0 customGap(6) 0;
+  overflow: auto;
+
+  @include tablet {
+    justify-content: center;
+  }
 }
 
 .link {
@@ -13,6 +29,14 @@
   padding: 0 $gap-sm;
   text-decoration: none;
   text-transform: uppercase;
+
+  h5 {
+    white-space: nowrap;
+
+    @include tablet {
+      white-space: normal;
+    }
+  }
 }
 
 .activeLink {

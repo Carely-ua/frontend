@@ -28,7 +28,7 @@ export const SearchNavigation = () => {
             className={classNames(styles.link, {
               [styles.activeLink]: href === pathname,
             })}>
-            <Typography component="h4" color="white">
+            <Typography component="h5" color="white">
               {t(label)}
             </Typography>
           </Link>

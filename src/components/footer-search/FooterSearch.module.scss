@@ -1,9 +1,14 @@
 @use '@/scss/abstracts' as *;
 
 .footerSearch {
-  border-radius: 40px;
+  border-radius: 20px;
   background: linear-gradient(134deg, $primary 0%, $secondary 100%);
-  padding: customGap(26);
+  padding: customGap(10) 0;
   display: flex;
   justify-content: center;
+  
+  @include tablet {
+    border-radius: 40px;
+    padding: customGap(26);
+  }
 }

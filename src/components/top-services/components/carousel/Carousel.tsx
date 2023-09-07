@@ -28,7 +28,12 @@ export const Carousel = () => {
       className="top-services-carousel"
       modules={[Pagination]}
       spaceBetween={20}
-      slidesPerView={6}
+      slidesPerView={1.5}
+      breakpoints={{
+        768: {
+          slidesPerView: 6,
+        },
+      }}
       pagination={{ clickable: true }}
       onSlideChange={() => console.log('slide change')}>
       <SwiperSlide>

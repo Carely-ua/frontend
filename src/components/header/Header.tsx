@@ -12,12 +12,19 @@ export const Header = () => {
           <div className={styles.logo}>
             <Logo />
           </div>
-          <LocationsSelector />
+          <div className={styles.locationsSelector}>
+            <LocationsSelector />
+          </div>
         </div>
-        <Navigation />
+        <div className={styles.navigation}>
+          <Navigation />
+        </div>
         <div className={styles.section}>
           <CartButton />
           <ProfileButton />
+          <div className={styles.burger}>
+            <span />
+          </div>
         </div>
       </div>
     </header>

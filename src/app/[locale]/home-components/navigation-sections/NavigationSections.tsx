@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { Grid } from '@mui/material';
+import { Grid, GridSize } from '@mui/material';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useTranslations } from 'next-intl';
@@ -43,7 +43,8 @@ const items = [
     linkUrl: '/analyzes',
     icon: 'Analyze',
     image: 'analyzes-item',
-    size: 6,
+    size: 3,
+    smSize: 6,
     hasGradient: false,
     gradient: 'linear-gradient(46deg, #292929 0%, rgba(41, 41, 41, 0.49) 61.57%, #292929 100%)',
   },
@@ -55,7 +56,8 @@ const items = [
     linkUrl: '/consultations',
     icon: 'Doctor',
     image: 'consultations-item',
-    size: 4,
+    size: 3,
+    smSize: 4,
     hasGradient: true,
     gradient: 'linear-gradient(180deg, rgba(0, 88, 193, 0.56)0%, rgba(0, 198, 146, 0.8) 100%)',
   },
@@ -67,7 +69,8 @@ const items = [
     linkUrl: '/diagnostics',
     icon: 'Diagnostic',
     image: 'diagnostics-item',
-    size: 2,
+    size: 3,
+    smSize: 2,
     hasGradient: true,
     gradient: 'linear-gradient(44deg, rgba(0, 88, 193, 0.56) 0%, rgba(0, 198, 146, 0.8) 100%)',
   },
@@ -82,6 +85,7 @@ interface ItemProps {
   icon: SVGNameType;
   image: string;
   size: number;
+  smSize?: number;
   gradient: string;
   width?: number;
   height?: number;
@@ -99,11 +103,12 @@ const Item: FC<ItemProps> = ({
   linkUrl,
   width,
   height,
+  smSize,
 }) => {
   const t = useTranslations('Sections');
 
   return (
-    <Grid item xs={size}>
+    <Grid item xs={size} sm={smSize}>
       <div className={styles.item}>
         <Image className={styles.image} fill src={`/images/${image}.png`} alt="background-image" />
         <div style={{ background: gradient }} className={styles.itemContent}>
@@ -111,12 +116,10 @@ const Item: FC<ItemProps> = ({
             <Typography component="h4" color="white">
               {t(label)}
             </Typography>
-            <div className={styles.icon}>
-              <SectionIcon width={width || 32} height={height || 32} icon={icon} />
-            </div>
+            <SectionIcon width={width || 32} height={height || 32} icon={icon} />
           </div>
           <div>
-            <Typography component="h2" color="white" gutterBottom="lg">
+            <Typography component="h2" color="white" className={styles.title}>
               {t(title)}
             </Typography>
             <Typography component="p" color="white" gutterBottom="lg">
@@ -134,7 +137,7 @@ const Item: FC<ItemProps> = ({
 
 export const NavigationSections = () => {
   return (
-    <Grid container spacing={3} columns={{ xs: 6 }}>
+    <Grid container spacing={3} columns={{ xs: 3, md: 6 }}>
       {items.map((items, index) => (
         <Item {...items} key={index} />
       ))}

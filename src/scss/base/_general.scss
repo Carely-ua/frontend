@@ -4,20 +4,32 @@
 *,
 *::before,
 *::after {
-    box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+*::-webkit-scrollbar{
+  display: none;
 }
 
 .container {
-  max-width: 1720px;
+  padding: 0 $gap-md;
   width: 100%;
   margin: 0 auto;
 
-  @include laptop {
+  @include laptop-1 {
     max-width: 1300px;
+  }
+
+  @include desktop {
+    max-width: 1720px;
   }
 }
 
 .main {
-  margin-bottom: customGap(25);
+  margin-bottom: customGap(15);
   padding-top: customGap(10);
+
+  @include tablet {
+    margin-bottom: customGap(25);
+  }
 }

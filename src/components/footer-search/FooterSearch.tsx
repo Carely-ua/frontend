@@ -4,8 +4,10 @@ import styles from './FooterSearch.module.scss';
 
 export const FooterSearch = () => {
   return (
-    <div className={classNames('container', styles.footerSearch)}>
-      <SearchBlock />
+    <div className="container">
+      <div className={styles.footerSearch}>
+        <SearchBlock />
+      </div>
     </div>
   );
 };

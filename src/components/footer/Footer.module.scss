@@ -2,24 +2,82 @@
 
 .main {
   display: flex;
-  padding: customGap(15) 0;
+  flex-wrap: wrap;
+  padding: customGap(15) 0 $gap-xlg;
   border-bottom: 1px solid $grey;
-  margin-bottom: customGap(10);
+  margin-bottom: $gap-xlg;
+
+  @include tablet {
+    margin-bottom: customGap(10);
+    padding: customGap(15) 0;
+    flex-wrap: nowrap;
+  }
 }
 
 .paymentsWrap {
-  margin-right: customGap(25);
+  display: flex;
+  gap: customGap(7);
+  align-items: center;
+  flex: 100%;
+  border-bottom: 1px solid $grey;
+  margin-bottom: $gap-xlg;
+  padding-bottom: customGap(7);
+
+  @include tablet {
+    display: block;
+    margin-right: customGap(25);
+    border-bottom: 0;
+    border-bottom: 0;
+    padding-bottom: 0;
+  }
+
+  p {
+    margin-bottom: $gap-sm;
+  
+    @include tablet {
+      margin-bottom: $gap-xlg;
+    }
+  }
+}
+
+.masterCard {
+  position: relative;
+  width: 40px;
+  height: 24px;
+
+  @include tablet {
+    width: 53px;
+    height: 32px;
+  }
+}
+
+.visa {
+  position: relative;
+  width: 80px;
+  height: 24px;
+
+  @include tablet {
+    width: 106px;
+    height: 32px;
+  }
 }
 
 .menu {
-  margin-right: customGap(40);
+  flex: 50%;
+
+  @include tablet {
+    margin-right: customGap(40);
+  }
 }
 
 .logo {
-  margin-bottom: customGap(10);
   position: relative;
   width: 149px;
   height: 60px;
+
+  @include tablet {
+    margin-bottom: customGap(10);
+  }
 }
 
 .payments {
@@ -28,7 +86,11 @@
 }
 
 .secondaryMenu {
-  margin-right: customGap(15);
+  flex: 50%;
+
+  @include tablet {
+    margin-right: customGap(15);
+  }
 
   &List {
     list-style: none;
@@ -51,12 +113,27 @@
 }
 
 .copyright {
-  display: flex;
-  margin-bottom: customGap(10);;
+  margin-bottom: $gap-xlg;
+  text-align: center;
+
+  @include tablet {
+    display: flex;
+    margin-bottom: customGap(10);
+
+    h5 {
+      font-weight: 500;
+    }
+  }
 
   &Link {
     display: inline-block;
-    margin-left: customGap(10);
     text-decoration: none;
+    margin-top: $gap-xlg;
+
+    @include tablet {
+      margin-left: customGap(10);
+      margin-top: 0;
+    }
+  
   }
 }
