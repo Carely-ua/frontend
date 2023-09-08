@@ -2,9 +2,24 @@ import { FC } from 'react';
 import classNames from 'classnames';
 import { ClinicTypes } from '@/services';
 import { ClinicType } from '@/utils/graphql/__generated__/types';
+import { Typography } from '@/ui-kit';
 import { ClinicCard, GeneralClinicCart } from '../clinic-card';
+import { SVG } from '../svg';
 import styles from './SearchResult.module.scss';
 import { StickyMap } from './StickyMap';
+
+const MapButton = () => {
+  return (
+    <div className={styles.mapButton}>
+      <Typography component="p" color="white">
+        Показати на мапі
+      </Typography>
+      <div className={styles.mapButtonIcon}>
+        <SVG.Map width={16} height={16} />
+      </div>
+    </div>
+  );
+};
 
 export interface SearchResultProps {
   clinics: Array<ClinicTypes.Clinic | ClinicTypes.ClinicWithServices>;
@@ -30,6 +45,7 @@ export const SearchResult: FC<SearchResultProps> = ({ clinics, hrefPrefix, onlyG
         {/* @ts-ignore */}
         <StickyMap data={clinics} />
       </div>
+      <MapButton />
     </div>
   );
 };
