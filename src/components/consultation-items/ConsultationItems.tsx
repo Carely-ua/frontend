@@ -25,8 +25,13 @@ const ConsultationItem: FC<ConsultationItemProps> = ({
 }) => {
   return (
     <div className={styles.consultationItem}>
-      <Image className={styles.doctorImage} src={image} width={160} height={160} alt="doctor" />
+      <div className={styles.doctorImage}>
+        <Image src={image} layout="fill" objectFit="cover" alt="doctor" />
+      </div>
       <div className={styles.mainInfo}>
+        <div className={styles.mobileRating}>
+          <Rating />
+        </div>
         <Typography component="h3" gutterBottom="md">
           {name}
         </Typography>
@@ -54,7 +59,7 @@ const ConsultationItem: FC<ConsultationItemProps> = ({
           </Typography>
         </div>
       </div>
-      <div>
+      <div className={styles.priceInfo}>
         <div className={styles.rating}>
           <Rating />
         </div>

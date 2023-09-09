@@ -8,11 +8,27 @@
   background: #FFF;
   padding: $gap-md;
   margin-bottom: $gap-xlg;
+  flex-wrap: wrap;
+
+  @include tablet {
+    flex-wrap: nowrap;
+  }
 }
 
 .doctorImage {
-  border-radius: 10px;
+  position: relative;
+  flex: 80px 0;
+  height: 80px;
   margin-right: $gap-md;
+
+  @include tablet {
+    width: 160px;
+    height: 160px;
+  }
+
+  img {
+    border-radius: 10px;
+  }
 }
 
 .extraInfoItem {
@@ -39,8 +55,44 @@
 
 .rating {
   margin-bottom: $gap-md;
+  display: none;
+
+  @include tablet {
+    display: block;
+  }
 }
 
 .price {
+  margin-top: $gap-xlg;
   margin-bottom: $gap-lg;
+
+  @include tablet {
+    margin-top: 0;
+  }
+
+  div {
+    div {
+      justify-content: space-between;
+
+      @include tablet {
+        justify-content: flex-end;
+      }
+    }
+  }
+}
+
+.priceInfo {
+  flex: 100% 0 0;
+}
+
+.mobileRating {
+  margin-bottom: $gap-sm;
+
+  div {
+    justify-content: start;
+  }
+
+  @include tablet {
+    display: none;
+  }
 }

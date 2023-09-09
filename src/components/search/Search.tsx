@@ -43,6 +43,8 @@ export const Search: FC<SearchProps> = ({ clinics, hrefPrefix, onlyGeneralCard, 
     return setIsCardActive(prev => !prev);
   };
 
+  if (clinics.length <= 0) return null;
+
   return (
     <>
       {isCardActive ? (

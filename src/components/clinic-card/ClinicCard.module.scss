@@ -122,11 +122,14 @@
 }
 
 .service {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
   padding: $gap-sm 0;
   border-top: 1px solid $light-grey;
+
+  @include tablet {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
 
   &:last-child {
     padding-bottom: 0;
@@ -136,10 +139,29 @@
 .buyInfo {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   gap: $gap-md;
+  margin-top: customGap(7);
+
+  @include tablet {
+    margin-top: 0;
+    justify-content: start;
+  }
 
   button {
     max-width: 105px;
+  }
+}
+
+.price {
+  div {
+    div {
+      justify-content: start;
+
+      @include tablet {
+        justify-content: flex-end;
+      }
+    }
   }
 }
 

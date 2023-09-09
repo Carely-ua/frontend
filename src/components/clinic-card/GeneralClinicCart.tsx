@@ -72,7 +72,9 @@ export const GeneralClinicCart: FC<ClinicCardProps> = ({
               <div key={id} className={styles.service}>
                 <Typography component="p">{name}</Typography>
                 <div className={styles.buyInfo}>
-                  <PriceBlock firstPrice={price} secondPrice={discountPrice} />
+                  <div className={styles.price}>
+                    <PriceBlock firstPrice={price} secondPrice={discountPrice} />
+                  </div>
                   <AddToBagButton buttonType="secondary" serviceId={id} />
                 </div>
               </div>
