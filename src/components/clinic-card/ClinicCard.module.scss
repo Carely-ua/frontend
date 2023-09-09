@@ -4,24 +4,31 @@
   border-radius: 20px;
   border: 1px solid $light-grey;
   margin-bottom: $gap-xlg;
-  padding: $gap-xlg;
+  padding: $gap-md;
+
+  @include tablet {
+    padding: $gap-xlg;
+  }
 }
 
 .mainSection {
   display: flex;
-  border-bottom: 1px solid $grey;
-  margin-bottom: customGap(2.5);
-
-  @include tablet {
-    border-bottom: 0;
-    margin-bottom: 0;
-  }
 
   .specializations {
     display: none;
 
     @include tablet {
       display: block;
+    }
+  }
+  
+  &WithBorder {
+    border-bottom: 1px solid $grey;
+    margin-bottom: customGap(2.5);
+  
+    @include tablet {
+      border-bottom: 0;
+      margin-bottom: 0;
     }
   }
 }
@@ -84,8 +91,6 @@
 }
 
 .bottomSection {
-  margin-top: $gap-md;
-
   @include tablet {
     display: flex;
     justify-content: space-between;
@@ -139,6 +144,25 @@
 }
 
 .specializationsMobile {
+  @include tablet {
+    display: none;
+  }
+}
+
+.desktopBottomSection {
+  margin-top: $gap-md;
+  display: none;
+
+  @include tablet {
+    display: block;
+  }
+}
+
+.mobileBottomSection {
+  margin-top: $gap-xlg;
+  padding-top: $gap-xlg;
+  border-top: 1px solid $light-grey;
+
   @include tablet {
     display: none;
   }

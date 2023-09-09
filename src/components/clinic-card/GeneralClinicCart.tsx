@@ -27,26 +27,35 @@ export const GeneralClinicCart: FC<ClinicCardProps> = ({
   workingTime,
   services,
 }) => {
+  const BottomSection = () => (
+    <div className={styles.bottomSection}>
+      <ClinicExtraInfo address={address} workingTime={workingTime} />
+      <div>
+        <Link className={styles.link} href={`${hrefPrefix}/${id}`}>
+          <Button>Детальніше</Button>
+        </Link>
+      </div>
+    </div>
+  );
+
   return (
     <div className={styles.card}>
       <div className={styles.mainSection}>
         <div className={styles.image}>
-          {!!mainImage && <Image src={mainImage} alt="clinic" width="160" height="160" />}
+          {!!mainImage && <Image src={mainImage} alt="clinic" layout="fill" objectFit="contain" />}
         </div>
         <div className={styles.generalCartContent}>
           <div className={styles.header}>
             <Typography component="h3">{name}</Typography>
             <Rating rating={rating || 0} reviewsCount={reviewsCount} />
           </div>
-          <div className={styles.bottomSection}>
-            <ClinicExtraInfo address={address} workingTime={workingTime} />
-            <div>
-              <Link className={styles.link} href={`${hrefPrefix}/${id}`}>
-                <Button>Детальніше</Button>
-              </Link>
-            </div>
+          <div className={styles.desktopBottomSection}>
+            <BottomSection />
           </div>
         </div>
+      </div>
+      <div className={styles.mobileBottomSection}>
+        <BottomSection />
       </div>
       {services && (
         <div className={styles.services}>

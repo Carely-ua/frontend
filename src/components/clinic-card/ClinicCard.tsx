@@ -1,6 +1,7 @@
 import { FC } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import classNames from 'classnames';
 import { ClinicTypes } from '@/services';
 import { Button, Typography } from '@/ui-kit';
 import { Rating } from '../rating';
@@ -28,7 +29,7 @@ export const ClinicCard: FC<ClinicCardProps> = ({
 
   return (
     <div className={styles.card}>
-      <div className={styles.mainSection}>
+      <div className={classNames(styles.mainSection, styles.mainSectionWithBorder)}>
         <div className={styles.image}>
           {!!mainImage && <Image src={mainImage} alt="clinic" layout="fill" objectFit="contain" />}
         </div>
