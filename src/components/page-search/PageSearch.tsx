@@ -4,11 +4,11 @@ import { SearchInput } from '../search-input';
 import { SectionIcon, SectionIconProps } from '../section-icon';
 import styles from './PageSearch.module.scss';
 
-interface PageSearch extends SectionIconProps {
+export interface PageSearchProps extends SectionIconProps {
   title: string;
 }
 
-export const PageSearch: FC<PageSearch> = ({ icon, title }) => {
+export const PageSearch: FC<PageSearchProps> = ({ icon, title }) => {
   return (
     <div className={styles.pageSearch}>
       <div className={styles.topSection}>
@@ -18,11 +18,7 @@ export const PageSearch: FC<PageSearch> = ({ icon, title }) => {
         <SectionIcon icon={icon} />
       </div>
       <div className={styles.searchField}>
-        <SearchInput
-          leftIcon="Hospital"
-          rightIcon="Search"
-          placeholder="Введіть назву клініки"
-        />
+        <SearchInput leftIcon="Hospital" rightIcon="Search" placeholder="Введіть назву клініки" />
       </div>
     </div>
   );

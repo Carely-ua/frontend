@@ -8,7 +8,7 @@ export * from './search-input';
 export * from './top-services';
 export * from './close-button';
 export * from './map';
-export * from './search-result';
+export * from './search';
 export * from './clinic-card';
 export * from './page-search';
 export * from './rating';

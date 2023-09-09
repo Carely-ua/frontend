@@ -1,24 +1,21 @@
 import { FC } from 'react';
 import { useTranslations } from 'next-intl';
-import { PageSearch, SearchResult, SearchResultProps } from '@/components';
+import { Search, SearchProps } from '@/components';
 import { getClinics } from '@/services';
 import { checkClinicType, getClinicType } from '@/utils';
 //TODO: fix this import
 import { ClinicType } from '@/utils/graphql/__generated__/types';
 
-interface ClinicsProps extends SearchResultProps {
+interface ClinicsProps extends Omit<SearchProps, 'title' | 'icon'> {
   clinicType: ClinicType;
 }
 
 const Clinics: FC<ClinicsProps> = ({ clinicType, clinics, hrefPrefix }) => {
   const t = useTranslations(clinicType);
 
-  return (
-    <div>
-      <PageSearch title={t('title')} icon="Clinic" />
-      {clinics.length > 0 && <SearchResult hrefPrefix={hrefPrefix} clinics={clinics} />}
-    </div>
-  );
+  if (clinics.length <= 0) return null;
+
+  return <Search hrefPrefix={hrefPrefix} clinics={clinics} title={t('title')} icon="Clinic" />;
 };
 
 interface ClinicsWrapperParams {

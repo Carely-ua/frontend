@@ -4,7 +4,7 @@ import Sticky from 'react-stickynode';
 import { FC, useState } from 'react';
 import classNames from 'classnames';
 import { Map, MapProps } from '../map';
-import styles from './SearchResult.module.scss';
+import styles from './Search.module.scss';
 
 export const StickyMap: FC<MapProps> = ({ data }) => {
   const [isSticky, setIsSticky] = useState(false);
@@ -18,7 +18,7 @@ export const StickyMap: FC<MapProps> = ({ data }) => {
   };
 
   return (
-    <Sticky bottomBoundary="#searchResult" onStateChange={handleStateChange}>
+    <Sticky bottomBoundary="#Search" onStateChange={handleStateChange}>
       <div
         className={classNames({
           [styles.mapContainer]: isSticky,
