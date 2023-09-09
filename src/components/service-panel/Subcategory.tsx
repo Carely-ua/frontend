@@ -23,7 +23,9 @@ const ServiceItem: FC<any> = ({ id, name, showPrice, price, subcategoryId }) => 
       </Typography>
       {showPrice ? (
         <div className={styles.buyInfo}>
-          <PriceBlock secondPrice={price} firstPrice={120} />
+          <div className={styles.price}>
+            <PriceBlock secondPrice={price} firstPrice={120} />
+          </div>
           <div className={styles.addToCartButton}>
             <AddToBagButton serviceId={id} />
           </div>

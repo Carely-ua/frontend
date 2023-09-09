@@ -5,6 +5,7 @@ import { Pagination } from 'swiper/modules';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Typography } from '@/ui-kit';
+import { MOBILE_WIDTH } from '@/utils';
 import styles from './Carousel.module.scss';
 
 const Slide = () => {
@@ -30,7 +31,7 @@ export const Carousel = () => {
       spaceBetween={20}
       slidesPerView={1.5}
       breakpoints={{
-        768: {
+        [MOBILE_WIDTH]: {
           slidesPerView: 6,
         },
       }}

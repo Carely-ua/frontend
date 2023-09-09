@@ -4,6 +4,8 @@
   display: flex;
   gap: $gap-xlg;
   margin-bottom: customGap(10);
+  width: 100%;
+  overflow: auto;
 }
 
 .item {
@@ -11,9 +13,13 @@
   border: 1px solid $light-grey;
   background: $light-grey;
   flex: 1;
-  padding: $gap-lg; 
+  padding: $gap-sm $gap-lg; 
   text-align: center;
   text-decoration: none;
+
+  @include tablet {
+    padding: $gap-lg; 
+  }
 
   &Active {
     background: $secondary; 

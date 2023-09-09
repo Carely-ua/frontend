@@ -1,6 +1,9 @@
+'use client';
+
 import { FC, useMemo } from 'react';
 import Image from 'next/image';
 import { Typography } from '@/ui-kit';
+import { isMobileScreen } from '@/utils';
 import { Rating, RatingProps } from '../rating';
 import { ClinicExtraInfo, ClinicExtraInfoProps } from '../clinic-extra-info';
 import { Map, MapItemProps } from '../map';
@@ -8,7 +11,7 @@ import styles from './ClinicMainInfo.module.scss';
 
 const containerStyle = {
   width: '100%',
-  height: '270px',
+  height: isMobileScreen() ? '108px' : '270px',
 };
 
 interface ClinicMainInfoProps extends RatingProps, ClinicExtraInfoProps, MapItemProps {
@@ -39,7 +42,7 @@ export const ClinicMainInfo: FC<ClinicMainInfoProps> = ({
     <div className={styles.clinicMainInfo}>
       <div className={styles.item}>
         <div className={styles.image}>
-          {!!mainImage && <Image src={mainImage} alt="clinic" width={270} height={270} />}
+          {!!mainImage && <Image src={mainImage} alt="clinic" layout="fill" objectFit="contain" />}
         </div>
         <div className={styles.clinicInfo}>
           <div className={styles.rating}>

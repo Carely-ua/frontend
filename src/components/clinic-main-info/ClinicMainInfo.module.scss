@@ -1,23 +1,37 @@
 @use '@/scss/abstracts' as *;
 
 .clinicMainInfo {
-  display: flex;
-  gap: $gap-xlg;
   margin-bottom: customGap(10);
+
+  @include tablet {
+    display: flex;
+    gap: $gap-xlg;
+  }
 }
 
 .item {
-  flex: 50%;
-  display: flex;
+  @include tablet {
+    flex: 50%;
+    display: flex;
+  }
 }
 
 .image {
-  flex: 270px 0;
-  height: 270px;
+  width: 100%;
+  height: 120px;
+  text-align: center;
   border-radius: 10px;
   border: 1px solid $light-grey;
   overflow: hidden;
   margin-right: $gap-xlg;
+  margin-bottom: $gap-xlg;
+  position: relative;
+
+  @include tablet {
+    flex: 270px 0;
+    height: 270px;
+    margin-bottom: 0;
+  }
   
   img {
     object-fit: contain;
@@ -26,12 +40,33 @@
 
 .clinicInfo {
   flex: 1;
+  margin-bottom: $gap-xlg;
+
+  @include tablet {
+    margin-bottom: 0;
+  }
 }
 
 .rating {
-  margin-bottom: $gap-xlg;
+  margin-bottom: customGap(2.5);
+
+  @include tablet {
+    margin-bottom: $gap-xlg;
+  }
+  
+  div {
+    justify-content: flex-start;
+
+    @include tablet {
+      justify-content:flex-end;
+    }
+  }
 }
 
 .name {
-  margin-bottom: customGap(6);
+  margin-bottom: customGap(2.5);
+
+  @include tablet {
+    margin-bottom: customGap(6);
+  }
 }

@@ -2,17 +2,35 @@
 
 .servicePanel {
   display: flex;
-  gap: $gap-xlg;
+  flex-direction: column;
+  gap: customGap(10);
+
+  @include tablet {
+    flex-direction: row;
+    gap: $gap-xlg;
+  }
 }
 
 .serviceItem {
   border-radius: 20px;
   border: 1px solid $light-grey;
-  padding: $gap-md $gap-md $gap-md $gap-xlg;
+  padding: $gap-md;
   margin-bottom: $gap-xlg;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+
+  @include tablet {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: $gap-md $gap-md $gap-md $gap-xlg;
+  }
+
+  h3 {
+    margin-bottom: customGap(6);
+
+    @include tablet {
+      margin-bottom: 0;
+    }
+  }
 }
 
 .servicesSections {
@@ -20,13 +38,35 @@
 }
 
 .buyInfo {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
+  @include tablet {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
 }
 
 .addToCartButton {
-  padding-left: $gap-lg;
-  border-left: 1px solid $light-grey;
-  margin-left: $gap-xlg;
+  @include tablet {
+    padding-left: $gap-lg;
+    border-left: 1px solid $light-grey;
+    margin-left: $gap-xlg;
+  }
 } 
+
+.price {
+  margin-bottom: $gap-xlg;
+
+  @include tablet {
+    margin-bottom: 0;
+  }
+
+  div {
+    div {
+      justify-content: start;
+
+      @include tablet {
+        justify-content: flex-end;
+      }
+    }
+  }
+}

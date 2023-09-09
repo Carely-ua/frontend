@@ -41,7 +41,7 @@ export const Reviews: FC<ReviewsProps> = ({ reviews, reviewsCount, rating }) => 
               Рейтинг
             </Typography>
             <div className={styles.rating}>
-              <SVG.Star width={32} height={32} />
+              <SVG.Star />
               <Typography component="h3" color="secondary">
                 {rating}
               </Typography>

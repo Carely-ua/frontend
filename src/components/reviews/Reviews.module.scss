@@ -8,30 +8,53 @@
 }
 
 .header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  height: 76px;
-  padding: 0 $gap-xlg;
+  padding: $gap-md;
   border-bottom: 1px solid $light-grey;
+
+  @include tablet {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 76px;
+    padding: 0 $gap-xlg;
+  }
 }
 
 .headerBlock {
-  display: flex;
-  align-items: center;
-  gap: customGap(20);
+  @include tablet {
+    display: flex;
+    align-items: center;
+    gap: customGap(20);
+  }
 }
 
 .headerItem {
   display: flex;
+  justify-content: space-between;
   align-items: center;
   gap: $gap-md;
+  margin-bottom: $gap-md;
+
+  @include tablet {
+    justify-content: start;
+    margin-bottom: 0;
+  }
 }
 
 .rating {
   display: flex;
   align-items: center;
   gap: $gap-sm;
+
+  svg {
+    width: 26px;
+    height: 26px;
+
+    @include tablet {
+      width: 32px;
+      height: 32px;
+    }
+  }
 }
 
 .review {
