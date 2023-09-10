@@ -5,10 +5,19 @@
   justify-content: center;
   align-items: center;
   padding: $gap-sm $gap-sm $gap-sm $gap-xlg;
-  border: 1px solid var(--5, $light-grey);
+  border: 1px solid $light-grey;
   border-radius: 100px;
   margin-left: $gap-sm;
   cursor: pointer;
+
+  &:hover {
+    background-color: $primary;
+    border: 1px solid $primary;
+
+    p {
+      color: $white;
+    }
+  }
 
   @include laptop {
     padding: customGap(1.5) customGap(1.5) customGap(1.5) customGap(2.5);

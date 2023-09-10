@@ -29,6 +29,12 @@
   padding: 0 $gap-sm;
   text-decoration: none;
   text-transform: uppercase;
+  
+  &:hover {
+    h5 {
+      color: $black;
+    }
+  }
 
   h5 {
     white-space: nowrap;
@@ -37,8 +43,4 @@
       white-space: normal;
     }
   }
-}
-
-.activeLink {
-  //TODO add colors for active state
 }

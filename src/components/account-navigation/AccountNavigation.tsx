@@ -5,11 +5,12 @@ import styles from './AccountNavigation.module.scss';
 import { LogoutButton } from './LogoutButton';
 
 const accountSections = [
-  {
-    title: 'Акаунт',
-    href: '/account/profile',
-    Icon: SVG.DarkUser,
-  },
+  //TODO maybe we will return it later, since right now it doesn't have aby sense
+  // {
+  //   title: 'Акаунт',
+  //   href: '/account/profile',
+  //   Icon: SVG.DarkUser,
+  // },
   {
     title: 'Мої аналізи',
     href: '/account/analyzes',

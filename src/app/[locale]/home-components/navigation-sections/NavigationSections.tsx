@@ -32,8 +32,6 @@ const items = [
     size: 3,
     hasGradient: true,
     gradient: 'linear-gradient(19deg, rgba(0, 88, 193, 0.56) 0%, rgba(0, 198, 146, 0.8) 100%)',
-    width: 40,
-    height: 40,
   },
   {
     title: 'Analyzes.title',

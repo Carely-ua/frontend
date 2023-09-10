@@ -31,11 +31,16 @@ export const Typography = memo(
         ref={ref}
         id={id}
         onClick={onClick}
-        className={classNames(className, styles.typography, styles[`typography-${Component}`], {
-          [styles[`typography--${color}`]]: color,
-          [styles[`typography--${weight}`]]: weight,
-          [styles[`typography--gap-${gutterBottom}`]]: gutterBottom,
-        })}>
+        className={classNames(
+          styles.typography,
+          styles[`typography-${Component}`],
+          {
+            [styles[`typography--${color}`]]: color,
+            [styles[`typography--${weight}`]]: weight,
+            [styles[`typography--gap-${gutterBottom}`]]: gutterBottom,
+          },
+          className,
+        )}>
         {children}
       </Component>
     );

@@ -130,6 +130,10 @@
     text-decoration: none;
     margin-top: $gap-xlg;
 
+    :hover {
+      color: $primary;
+    }
+
     @include tablet {
       margin-left: customGap(10);
       margin-top: 0;

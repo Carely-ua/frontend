@@ -1,8 +1,5 @@
-'use client';
-
 import Link from 'next/link';
 import { useTranslations } from 'next-intl';
-import { usePathname } from 'next/navigation';
 import classNames from 'classnames';
 import { Typography } from '@/ui-kit';
 import styles from './SearchBlock.module.scss';
@@ -17,17 +14,12 @@ const links = [
 
 export const SearchNavigation = () => {
   const t = useTranslations('SearchNavigation');
-  const pathname = usePathname();
 
   return (
     <ul className={styles.list}>
       {links.map(({ label, href }) => (
         <li key={label}>
-          <Link
-            href={href}
-            className={classNames(styles.link, {
-              [styles.activeLink]: href === pathname,
-            })}>
+          <Link href={href} className={styles.link}>
             <Typography component="h5" color="white">
               {t(label)}
             </Typography>
