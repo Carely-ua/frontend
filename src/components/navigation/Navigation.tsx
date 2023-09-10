@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { useTranslations } from 'next-intl';
 import { FC } from 'react';
 import classNames from 'classnames';
-import { usePathname } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 import { Typography } from '@/ui-kit';
 import styles from './Navigation.module.scss';
 
@@ -18,11 +18,11 @@ const links = [
 
 interface NavigationProps {
   type?: 'horizontal' | 'vertical';
+  clickHandler?(): void;
 }
 
-export const Navigation: FC<NavigationProps> = ({ type = 'horizontal' }) => {
+export const Navigation: FC<NavigationProps> = ({ type = 'horizontal', clickHandler }) => {
   const t = useTranslations('Navigation');
-  const pathname = usePathname();
 
   return (
     <nav>
@@ -30,10 +30,9 @@ export const Navigation: FC<NavigationProps> = ({ type = 'horizontal' }) => {
         {links.map(({ label, href }) => (
           <li key={label}>
             <Link
+              onClick={clickHandler}
               href={href}
-              className={classNames(styles.link, styles[`link--${type}`], {
-                [styles.activeLink]: pathname === href,
-              })}>
+              className={classNames(styles.link, styles[`link--${type}`])}>
               <Typography component="h5">{t(label)}</Typography>
             </Link>
           </li>

@@ -80,9 +80,13 @@
   box-shadow: 0px 5px 20px 0px rgba(0, 88, 193, 0.10), 0px 2px 8px 0px rgba(0, 113, 83, 0.04);
   width: 100%;
   z-index: 1;
-  padding: customGap(10) customGap(6) 0;
+  padding: customGap(6) $gap-lg 0;
   max-height: 480px;
   overflow: auto;
+
+  @include tablet {
+    padding: customGap(10) customGap(6) 0;
+  }
 
   &Item {
     display: flex;

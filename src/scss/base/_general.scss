@@ -34,3 +34,8 @@
     padding-top: customGap(10);
   }
 }
+
+a[href^=tel] {
+  text-decoration:inherit;
+  color: inherit;
+}

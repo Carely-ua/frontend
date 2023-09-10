@@ -30,9 +30,11 @@
   text-decoration: none;
   text-transform: uppercase;
   
-  &:hover {
-    h5 {
-      color: $black;
+  @include tablet {
+    &:hover {
+      h5 {
+        color: $black;
+      }
     }
   }
 

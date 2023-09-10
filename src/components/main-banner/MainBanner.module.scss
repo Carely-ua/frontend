@@ -5,12 +5,13 @@
   background: linear-gradient(268deg, $primary 0%, $secondary 100%);
   padding: customGap(10) customGap(6) customGap(10) customGap(6);
   height: 707px;
-  margin-bottom: customGap(22);
+  margin-bottom: customGap(15);
   position: relative;
 
   @include tablet {
     height: 600px;
     padding: customGap(10);
+    margin-bottom: customGap(22);
   }
 }
 
@@ -335,9 +336,13 @@
 
 .search {
   position: relative;
-  top: -36px;
+  top: -23px;
   max-width: 1140px;
   margin: 0 auto;
+
+  @include tablet {
+    top: -36px;
+  }
 }
 
 .rating {

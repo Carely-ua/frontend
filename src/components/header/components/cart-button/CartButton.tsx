@@ -1,13 +1,18 @@
 'use client';
 
 import { useRouter } from 'next/navigation';
+import { FC } from 'react';
 import { Typography } from '@/ui-kit';
 import { SVG } from '@/components/svg';
 import { useGetCart } from '@/services/cart/get-cart';
 import { useModalContext } from '@/utils/client';
 import styles from './CartButton.module.scss';
 
-export const CartButton = () => {
+interface CartButtonProps {
+  clickHandler?(): void;
+}
+
+export const CartButton: FC<CartButtonProps> = ({ clickHandler: _clickHandler }) => {
   const { data } = useGetCart();
   const router = useRouter();
   const { openModal } = useModalContext();
@@ -15,6 +20,7 @@ export const CartButton = () => {
   const count = data?.cart?.cartLength;
 
   const clickHandler = () => {
+    _clickHandler?.();
     if (!count || count === 0) {
       openModal('AlertModal', { message: 'Кошик на разі порожній' });
     } else {

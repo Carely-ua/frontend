@@ -1,6 +1,5 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import classNames from 'classnames';
 import { Button, Typography } from '@/ui-kit';
 import { SearchBlock } from '../search-block';
 import { SVG } from '../svg';
