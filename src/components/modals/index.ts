@@ -6,6 +6,7 @@ import { SuccessAuthModal } from './success-auth-modal';
 import { ServiceWasNotAddedModal } from './service-was-not-added-modal';
 import { LogoutModal } from './logout-modal';
 import { AddReviewModal } from './add-review-modal';
+import { AlertModal } from './alert-modal';
 
 export const modals = {
   AddToBagAuthModal,
@@ -15,6 +16,7 @@ export const modals = {
   ServiceWasNotAddedModal,
   LogoutModal,
   AddReviewModal,
+  AlertModal,
 };
 
 export type ModalId = keyof typeof modals;
@@ -23,7 +25,7 @@ export type ModalProps<T extends ModalId> = NonNullable<
   Parameters<(typeof modals)[T]>[0]['modalProps']
 >;
 interface ModalComponentProps<T extends {}> {
-  openModal(modalId: ModalId, props?: T): void;
+  openModal(modalId: ModalId, props?: ModalProps<typeof modalId>): void;
   handleClose(): void;
   open: boolean;
   modalProps: T | null;

@@ -9,10 +9,10 @@ import { SVG, SVGNameType } from '../svg';
 import styles from './SearchInput.module.scss';
 
 interface SuggestionList {
-  items: SearchItems;
+  items?: SearchItems;
 }
 
-const SuggestionList: FC<SuggestionList> = ({ items }) => {
+const SuggestionList: FC<SuggestionList> = ({ items = [] }) => {
   const router = useRouter();
 
   const clickHandler = (path: string) => {
@@ -36,11 +36,11 @@ const SuggestionList: FC<SuggestionList> = ({ items }) => {
   );
 };
 
-interface SearchInputProps extends SuggestionList {
+export interface SearchInputProps extends SuggestionList {
   leftIcon?: SVGNameType;
   rightIcon?: SVGNameType;
   placeholder?: string;
-  searchHandler(event: ChangeEvent<HTMLInputElement>): void;
+  searchHandler?(event: ChangeEvent<HTMLInputElement>): void;
 }
 
 export const SearchInput: FC<SearchInputProps> = ({

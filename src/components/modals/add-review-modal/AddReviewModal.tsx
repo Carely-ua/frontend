@@ -22,6 +22,7 @@ export const AddReviewModal: ModalComponent<AddReviewModalProps> = ({
   handleClose,
   modalProps,
   open,
+  openModal,
 }) => {
   const t = useTranslations('AddReviewModal');
   const { createReview } = useCreateReview();
@@ -38,7 +39,7 @@ export const AddReviewModal: ModalComponent<AddReviewModalProps> = ({
       rating: values.rating,
       ...(doctorId ? { doctorId } : {}),
     });
-    handleClose();
+    openModal('AlertModal', { message: 'Ваш відгук успішно створений' });
   };
 
   return (

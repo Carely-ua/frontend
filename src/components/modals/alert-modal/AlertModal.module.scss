@@ -1,0 +1,23 @@
+@use '@/scss/abstracts' as *;
+
+.alertModal {
+  width: 560px;
+  height: 200px;
+  border-radius: 20px;
+  background: linear-gradient(83deg, $primary 10.55%, $secondary 91.12%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+
+  button {
+    position: absolute;
+    right: 12px;
+    top: 12px;
+  }
+}
+
+.message {
+  max-width: 400px;
+  text-align: center;
+}

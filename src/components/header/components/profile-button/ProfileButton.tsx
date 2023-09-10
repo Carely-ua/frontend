@@ -12,8 +12,6 @@ export const ProfileButton = () => {
   const { data: session } = useSession();
   const router = useRouter();
 
-  console.log('session', session);
-
   const clickHandler = () => {
     if (session) {
       router.push('/account');
