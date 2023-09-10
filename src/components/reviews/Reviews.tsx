@@ -65,11 +65,17 @@ export const Reviews: FC<ReviewsProps> = ({ reviews, reviewsCount, rating }) => 
           </div>
         </div>
       </div>
-      {reviews?.map(item => {
-        if (!item) return null;
+      {!reviews || reviews.length === 0 ? (
+        <Typography component="h3" color="dark-grey" className={styles.noReviewsText}>
+          Наразі відгуків ще немає
+        </Typography>
+      ) : (
+        reviews.map(item => {
+          if (!item) return null;
 
-        return <ReviewItem key={item.id} {...item} />;
-      })}
+          return <ReviewItem key={item.id} {...item} />;
+        })
+      )}
     </div>
   );
 };
