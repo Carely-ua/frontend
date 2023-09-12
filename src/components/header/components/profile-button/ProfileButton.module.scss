@@ -4,7 +4,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: $gap-sm $gap-sm $gap-sm $gap-xlg;
+  padding: customGap(1.5) customGap(1.5) customGap(1.5) customGap(2.5);
   border: 1px solid $light-grey;
   border-radius: 100px;
   margin-left: $gap-sm;
@@ -19,14 +19,14 @@
     }
   }
 
-  @include laptop {
-    padding: customGap(1.5) customGap(1.5) customGap(1.5) customGap(2.5);
+  @include desktop {
+    padding: $gap-sm $gap-sm $gap-sm $gap-xlg;
   }
 }
 
 .icon {
-  width: 32px;
-  height: 32px;
+  width: 28px;
+  height: 28px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -34,8 +34,8 @@
   margin-left: $gap-sm;
   border-radius: 50%;
 
-  @include laptop {
-    width: 28px;
-    height: 28px;
+  @include desktop {
+    width: 32px;
+    height: 32px;
   }
 }

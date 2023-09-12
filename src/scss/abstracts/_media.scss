@@ -1,16 +1,10 @@
-@mixin laptop {
-  @media screen and (max-width: 1512px) {
-    @content;
-  }
-}
-
 @mixin desktop {
   @media screen and (min-width: 1512px) {
     @content;
   }
 }
 
-@mixin laptop-1 {
+@mixin laptop {
   @media screen and (min-width: 1000px) {
     @content;
   }

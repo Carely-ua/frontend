@@ -5,19 +5,19 @@
   align-items: center;
   border-radius: 100px;
   border: 1px solid $light-grey;
-  padding: $gap-sm $gap-sm $gap-sm $gap-xlg;
+  padding: customGap(1.5) customGap(1.5) customGap(1.5) customGap(2.5);
   cursor: not-allowed;
   margin-left: $gap-xlg;
   position: relative;
   z-index: 5;
 
-  @include laptop {
-    padding: customGap(1.5) customGap(1.5) customGap(1.5) customGap(2.5);
+  @include desktop {
+    padding: $gap-sm $gap-sm $gap-sm $gap-xlg;
   }
 
   &Button {
-    width: 32px;
-    height: 32px;
+    width: 28px;
+    height: 28px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -26,9 +26,9 @@
     border-radius: 50%;
     transform: rotate(90deg);
 
-    @include laptop {
-      width: 28px;
-      height: 28px;
+    @include desktop {
+      width: 32px;
+      height: 32px;
     }
 
     svg {
