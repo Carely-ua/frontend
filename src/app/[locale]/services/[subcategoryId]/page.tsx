@@ -28,6 +28,7 @@ interface ServicePageParams {
 const ServicePageWrapper = async ({ params }: ServicePageParams) => {
   const { data } = await getClinicsWithServices({ categorySubTitleId: params.subcategoryId });
 
+  //@ts-ignore
   return <ServicePage clinics={data.getClinics || []} hrefPrefix="/clinics" />;
 };
 
