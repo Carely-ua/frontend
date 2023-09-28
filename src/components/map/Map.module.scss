@@ -7,3 +7,13 @@
   overflow: hidden;
   width: 100%;
 }
+
+.map {
+  width: 100%;
+  height: calc(100vh - 40px);
+}
+
+.smallMap {
+  width: 100%;
+  height: 270px;
+}

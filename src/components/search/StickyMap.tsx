@@ -6,7 +6,7 @@ import classNames from 'classnames';
 import { Map, MapProps } from '../map';
 import styles from './Search.module.scss';
 
-export const StickyMap: FC<MapProps> = ({ data }) => {
+export const StickyMap: FC<MapProps> = ({ data, hrefPrefix }) => {
   const [isSticky, setIsSticky] = useState(false);
 
   const handleStateChange = (status: Sticky.Status) => {
@@ -23,7 +23,7 @@ export const StickyMap: FC<MapProps> = ({ data }) => {
         className={classNames({
           [styles.mapContainer]: isSticky,
         })}>
-        <Map data={data} />
+        <Map data={data} hrefPrefix={hrefPrefix} />
       </div>
     </Sticky>
   );

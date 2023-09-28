@@ -15,6 +15,21 @@
     left: 50%;
     transform: translate(-50%, 0);
     bottom: -5px;
+    transition: all 0.05s ease-out;
+  }
+
+  &Hover {
+    &::before {
+      background-color: $primary;
+    }
+
+    .image {
+      border: 5px solid $primary;
+    }
+
+    .rating {
+      background-color: $primary;
+    }
   }
 }
 
@@ -27,6 +42,7 @@
   background-color: $white;
   top: -15px;
   position: relative;
+  transition: all 0.05s ease-out;
 
   img {
     object-fit: contain;
@@ -48,6 +64,7 @@
   justify-content: center;
   align-items: center;
   top: -20px;
+  transition: all 0.05s ease-out;
 }
 
 .icon {

@@ -69,7 +69,7 @@ export const Search: FC<SearchProps> = ({ clinics, hrefPrefix, onlyGeneralCard, 
             </div>
             <div className={classNames(styles.item, styles.map)}>
               {/* @ts-ignore */}
-              <StickyMap data={clinics} />
+              <StickyMap data={clinics} hrefPrefix={hrefPrefix} />
             </div>
           </div>
         </div>

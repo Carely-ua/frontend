@@ -56,7 +56,7 @@ export const ClinicMainInfo: FC<ClinicMainInfoProps> = ({
       </div>
       <div className={styles.item}>
         {/* @ts-ignore */}
-        <Map data={mapData} containerStyle={containerStyle} />
+        <Map data={mapData} containerStyle={containerStyle} smallMap />
       </div>
     </div>
   );
