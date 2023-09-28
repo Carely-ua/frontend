@@ -10,7 +10,7 @@ const VINNYTSIA_POSITION = {
   lng: 28.477175435987192,
 };
 
-export type MapItemProps = MarkerProps & { id: string };
+export type MapItemProps = Omit<MarkerProps, 'map'> & { id: string };
 
 const mapOptions = {
   mapId: '89ebabfc997f2bb0',
