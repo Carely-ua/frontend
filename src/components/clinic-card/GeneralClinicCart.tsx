@@ -63,6 +63,7 @@ export const GeneralClinicCart: FC<ClinicCardProps> = ({
             if (!service) return null;
 
             const { name, id, price, discountPrice, serviceType, doctors } = service;
+            console.log('doctors23', doctors);
 
             if (serviceType === ServiceType.Consultations) {
               return <ConsultationItems key={id} doctors={doctors} serviceId={id} />;
