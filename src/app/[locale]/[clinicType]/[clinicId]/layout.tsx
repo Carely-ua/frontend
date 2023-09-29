@@ -1,5 +1,5 @@
-import { ReactNode, FC } from 'react';
-import { ClinicAdditionalInfo, ClinicMainInfo } from '@/components';
+import { ReactNode, FC, useMemo } from 'react';
+import { Breadcrumbs, ClinicAdditionalInfo, ClinicMainInfo } from '@/components';
 import { getClinic } from '@/services';
 import { ServiceType } from '@/utils/graphql/__generated__/types';
 import { checkClinicType } from '@/utils';
@@ -7,20 +7,33 @@ import { checkClinicType } from '@/utils';
 interface ClinicLayoutProps {
   children: ReactNode;
   params: {
-    clinicType: string;
+    clinicType: 'clinics' | 'labs';
     clinicId: string;
     serviceData?: [ServiceType, string | undefined];
   };
 }
 
+const CLINIC_TYPES = {
+  clinics: 'Клініки',
+  labs: 'Лабораторії',
+};
+
 const ClinicLayout: FC<ClinicLayoutProps> = async ({ children, params }) => {
-  checkClinicType(params.clinicType);
-  const { data } = await getClinic(params.clinicId);
+  const { clinicType, clinicId } = params;
+
+  checkClinicType(clinicType);
+  const { data } = await getClinic(clinicId);
 
   if (!data.clinic) return '...error';
 
   return (
     <>
+      <Breadcrumbs
+        breadcrumbs={[
+          { label: CLINIC_TYPES[clinicType], path: `/${clinicType}` },
+          { label: data.clinic.name, path: '/' },
+        ]}
+      />
       <ClinicMainInfo {...data.clinic} />
       {children}
       <ClinicAdditionalInfo {...data.clinic} />

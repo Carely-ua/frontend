@@ -10,6 +10,11 @@ const ServicePage: FC<ServicePageProps> = ({ clinics, hrefPrefix }) => {
 
   return (
     <Search
+      breadcrumbs={[
+        { label: 'Консультації', path: `/consultations` },
+        //@ts-ignore
+        { label: clinics[0]?.services?.[0]?.name, path: '/' },
+      ]}
       onlyGeneralCard
       hrefPrefix={hrefPrefix}
       clinics={clinics}

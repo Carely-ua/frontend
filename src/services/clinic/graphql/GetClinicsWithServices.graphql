@@ -7,6 +7,9 @@ query GetClinicsWithServices($filters: ClinicFilterInputType!) {
       price
       discountPrice
       serviceType
+      category {
+        title
+      }
       doctors {
         id
         name

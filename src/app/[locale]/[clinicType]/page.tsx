@@ -6,16 +6,29 @@ import { checkClinicType, getClinicType } from '@/utils';
 //TODO: fix this import
 import { ClinicType } from '@/utils/graphql/__generated__/types';
 
-interface ClinicsProps extends Omit<SearchProps, 'title' | 'icon'> {
+interface ClinicsProps extends Omit<SearchProps, 'title' | 'icon' | 'breadcrumbs'> {
   clinicType: ClinicType;
 }
+
+const CLINIC_TYPES = {
+  clinic: 'Клініки',
+  laboratory: 'Лабораторії',
+};
 
 const Clinics: FC<ClinicsProps> = ({ clinicType, clinics, hrefPrefix }) => {
   const t = useTranslations(clinicType);
 
   if (clinics.length <= 0) return null;
 
-  return <Search hrefPrefix={hrefPrefix} clinics={clinics} title={t('title')} icon="Clinic" />;
+  return (
+    <Search
+      breadcrumbs={[{ label: CLINIC_TYPES[clinicType], path: '/' }]}
+      hrefPrefix={hrefPrefix}
+      clinics={clinics}
+      title={t('title')}
+      icon="Clinic"
+    />
+  );
 };
 
 interface ClinicsWrapperParams {

@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import { useTranslations } from 'next-intl';
-import { PageSearch, ServicePanel } from '@/components';
+import { Breadcrumbs, PageSearch, ServicePanel } from '@/components';
 import { getServices, ServicesTypes } from '@/services';
 import { ServiceType } from '@/utils/graphql/__generated__/types';
 
@@ -15,6 +15,7 @@ const Analyzes: FC<AnalyzesProps> = ({ categories, categoryId }) => {
   return (
     <>
       <PageSearch title={t('title')} icon="Lab" />
+      <Breadcrumbs breadcrumbs={[{ label: 'Аналізи', path: '/' }]} />
       <ServicePanel
         baseUrl="/analyzes"
         categories={categories}

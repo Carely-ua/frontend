@@ -9,6 +9,7 @@ import { ClinicCard, GeneralClinicCart } from '../clinic-card';
 import { Map } from '../map';
 import { SVG } from '../svg';
 import { PageSearch, PageSearchProps } from '../page-search';
+import { Breadcrumbs, BreadcrumbsProps } from '../breadcrumbs';
 import styles from './Search.module.scss';
 import { StickyMap } from './StickyMap';
 
@@ -30,13 +31,20 @@ const MapButton: FC<MapButtonProps> = ({ isCardActive, clickHandler }) => {
   );
 };
 
-export interface SearchProps extends PageSearchProps {
+export interface SearchProps extends PageSearchProps, BreadcrumbsProps {
   clinics: Array<ClinicTypes.Clinic | ClinicTypes.ClinicWithServices>;
   hrefPrefix: string;
   onlyGeneralCard?: boolean;
 }
 
-export const Search: FC<SearchProps> = ({ clinics, hrefPrefix, onlyGeneralCard, title, icon }) => {
+export const Search: FC<SearchProps> = ({
+  clinics,
+  hrefPrefix,
+  onlyGeneralCard,
+  title,
+  icon,
+  breadcrumbs,
+}) => {
   const [isCardActive, setIsCardActive] = useState(false);
 
   const mapButtonHandler = () => {
@@ -55,6 +63,7 @@ export const Search: FC<SearchProps> = ({ clinics, hrefPrefix, onlyGeneralCard, 
       ) : (
         <div>
           <PageSearch title={title} icon={icon} />
+          <Breadcrumbs breadcrumbs={breadcrumbs} />
           <div id="Search" className={styles.wrapper}>
             <div className={styles.item}>
               {clinics.map(clinic => {

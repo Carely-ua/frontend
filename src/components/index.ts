@@ -29,3 +29,4 @@ export * from './add-to-bag-button';
 export * from './clinc-additional-info';
 export * from './about-clinic';
 export * from './consultation-items';
+export * from './breadcrumbs';

@@ -1,0 +1,23 @@
+@use '@/scss/abstracts' as *;
+
+.breadcrumbs {
+  margin-bottom: customGap(10);
+}
+
+.item {
+  text-decoration: none;
+
+  p {
+    cursor: pointer;
+  }
+
+  &:hover {
+    p {
+      color: $primary;
+    }
+  }
+}
+
+.homeIcon {
+  margin-top: $gap-xs;
+}

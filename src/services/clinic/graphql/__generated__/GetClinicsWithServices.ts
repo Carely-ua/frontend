@@ -25,6 +25,7 @@ export type GetClinicsWithServicesQuery = {
       price?: number | null;
       discountPrice?: number | null;
       serviceType: Types.ServiceType;
+      category?: { __typename?: 'Category'; title: string } | null;
       doctors?: Array<{
         __typename?: 'Doctor';
         id: string;
@@ -87,6 +88,14 @@ export const GetClinicsWithServicesDocument = {
                       { kind: 'Field', name: { kind: 'Name', value: 'price' } },
                       { kind: 'Field', name: { kind: 'Name', value: 'discountPrice' } },
                       { kind: 'Field', name: { kind: 'Name', value: 'serviceType' } },
+                      {
+                        kind: 'Field',
+                        name: { kind: 'Name', value: 'category' },
+                        selectionSet: {
+                          kind: 'SelectionSet',
+                          selections: [{ kind: 'Field', name: { kind: 'Name', value: 'title' } }],
+                        },
+                      },
                       {
                         kind: 'Field',
                         name: { kind: 'Name', value: 'doctors' },
