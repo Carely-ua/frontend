@@ -7,6 +7,7 @@ import { isMobileScreen } from '@/utils';
 import { Rating, RatingProps } from '../rating';
 import { ClinicExtraInfo, ClinicExtraInfoProps } from '../clinic-extra-info';
 import { Map, MapItemProps } from '../map';
+import { PhoneButton } from '../phone-button';
 import styles from './ClinicMainInfo.module.scss';
 
 const containerStyle = {
@@ -45,7 +46,8 @@ export const ClinicMainInfo: FC<ClinicMainInfoProps> = ({
           {!!mainImage && <Image src={mainImage} alt="clinic" layout="fill" objectFit="contain" />}
         </div>
         <div className={styles.clinicInfo}>
-          <div className={styles.rating}>
+          <div className={styles.topSection}>
+            <PhoneButton />
             <Rating rating={rating} reviewsCount={reviewsCount} />
           </div>
           <Typography className={styles.name} component="h2">

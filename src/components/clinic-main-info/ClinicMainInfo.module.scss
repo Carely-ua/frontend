@@ -47,19 +47,13 @@
   }
 }
 
-.rating {
+.topSection {
   margin-bottom: customGap(2.5);
+  display: flex;
+  justify-content: space-between;
 
   @include tablet {
-    margin-bottom: $gap-xlg;
-  }
-  
-  div {
-    justify-content: flex-start;
-
-    @include tablet {
-      justify-content:flex-end;
-    }
+    margin-bottom: $gap-lg;
   }
 }
 

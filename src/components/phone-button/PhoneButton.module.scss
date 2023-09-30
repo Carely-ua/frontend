@@ -1,0 +1,16 @@
+@use '@/scss/abstracts' as *;
+
+.phoneButton {
+  border-radius: 50%;
+  background-color: $secondary;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+
+  &:hover {
+    background-color: $primary;
+  }
+}

@@ -22,6 +22,7 @@ import DoctorMan from './doctor-man.svg';
 import Map from './map.svg';
 import Burger from './burger.svg';
 import Home from './home.svg';
+import Phone from './phone.svg';
 
 const SVGObject = {
   Arrow,
@@ -47,6 +48,7 @@ const SVGObject = {
   Map,
   Burger,
   Home,
+  Phone,
 };
 
 export type SVGNameType = keyof typeof SVGObject;

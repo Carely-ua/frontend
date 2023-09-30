@@ -9,6 +9,7 @@ import { ClinicExtraInfo } from '../clinic-extra-info';
 import { ConsultationItems } from '../consultation-items';
 import { PriceBlock } from '../price-block';
 import { AddToBagButton } from '../add-to-bag-button';
+import { PhoneButton } from '../phone-button';
 import styles from './ClinicCard.module.scss';
 
 interface ClinicCardProps extends NonNullable<ClinicTypes.Clinic> {
@@ -30,7 +31,8 @@ export const GeneralClinicCart: FC<ClinicCardProps> = ({
   const BottomSection = () => (
     <div className={styles.bottomSection}>
       <ClinicExtraInfo address={address} workingTime={workingTime} />
-      <div>
+      <div className={styles.bottomSectionItem}>
+        <PhoneButton />
         <Link className={styles.link} href={`${hrefPrefix}/${id}`}>
           <Button>Детальніше</Button>
         </Link>

@@ -30,3 +30,4 @@ export * from './clinc-additional-info';
 export * from './about-clinic';
 export * from './consultation-items';
 export * from './breadcrumbs';
+export * from './phone-button';

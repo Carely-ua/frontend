@@ -6,6 +6,7 @@ import { ClinicTypes } from '@/services';
 import { Button, Typography } from '@/ui-kit';
 import { Rating } from '../rating';
 import { ClinicExtraInfo } from '../clinic-extra-info';
+import { PhoneButton } from '../phone-button';
 import styles from './ClinicCard.module.scss';
 
 const defaultWorkingHours = 'з 9:00-17:00';
@@ -59,7 +60,8 @@ export const ClinicCard: FC<ClinicCardProps> = ({
       </Typography>
       <div className={styles.bottomSection}>
         <ClinicExtraInfo address={address} workingTime={workingTime} />
-        <div>
+        <div className={styles.bottomSectionItem}>
+          <PhoneButton />
           <Link className={styles.link} href={`/${hrefPrefix}/${id}`}>
             <Button>Детальніше</Button>
           </Link>
