@@ -44,7 +44,7 @@
   margin-right: $gap-md;
 
   img {
-    object-fit: contain;
+    object-fit: cover;
   }
 }
 
@@ -67,13 +67,41 @@
     align-items: center;
     justify-content: flex-end;
     gap: $gap-xlg;
+    margin-top: customGap(10);
 
     &:not(:last-child) {
       margin-bottom: $gap-xlg;
     }
 
     button {
-      max-width: 160px;
+      max-width: 230px;
     }
   }
+}
+
+.serviceType {
+  display: flex;
+  align-items: center;
+  gap: $gap-md;
+
+  &Icon {
+    width: 32px;
+    height: 32px;
+    background-color: $primary;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+
+    svg {
+      path {
+        color: $white;
+        fill: $white;
+      }
+    }
+  }
+}
+
+.link {
+  text-decoration: none;
 }

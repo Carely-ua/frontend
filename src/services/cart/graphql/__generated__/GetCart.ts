@@ -7,12 +7,11 @@ export type GetCartQuery = {
   __typename?: 'Query';
   cart?: {
     __typename?: 'CartResponse';
-    cartSum?: number | null;
-    cartDiscountSum?: number | null;
     cartLength?: number | null;
     cartItems?: Array<{
       __typename?: 'CartItem';
       id: string;
+      doctor?: { __typename?: 'Doctor'; id: string; name: string; image: string } | null;
       service?: {
         __typename?: 'Service';
         id: string;
@@ -20,7 +19,13 @@ export type GetCartQuery = {
         serviceType: Types.ServiceType;
         price?: number | null;
         discountPrice?: number | null;
-        clinic?: { __typename?: 'Clinic'; mainImage?: string | null; name: string } | null;
+        clinic?: {
+          __typename?: 'Clinic';
+          mainImage?: string | null;
+          name: string;
+          clinicType: Types.ClinicType;
+          id: string;
+        } | null;
       } | null;
     } | null> | null;
   } | null;
@@ -42,8 +47,6 @@ export const GetCartDocument = {
             selectionSet: {
               kind: 'SelectionSet',
               selections: [
-                { kind: 'Field', name: { kind: 'Name', value: 'cartSum' } },
-                { kind: 'Field', name: { kind: 'Name', value: 'cartDiscountSum' } },
                 { kind: 'Field', name: { kind: 'Name', value: 'cartLength' } },
                 {
                   kind: 'Field',
@@ -52,6 +55,18 @@ export const GetCartDocument = {
                     kind: 'SelectionSet',
                     selections: [
                       { kind: 'Field', name: { kind: 'Name', value: 'id' } },
+                      {
+                        kind: 'Field',
+                        name: { kind: 'Name', value: 'doctor' },
+                        selectionSet: {
+                          kind: 'SelectionSet',
+                          selections: [
+                            { kind: 'Field', name: { kind: 'Name', value: 'id' } },
+                            { kind: 'Field', name: { kind: 'Name', value: 'name' } },
+                            { kind: 'Field', name: { kind: 'Name', value: 'image' } },
+                          ],
+                        },
+                      },
                       {
                         kind: 'Field',
                         name: { kind: 'Name', value: 'service' },
@@ -71,6 +86,8 @@ export const GetCartDocument = {
                                 selections: [
                                   { kind: 'Field', name: { kind: 'Name', value: 'mainImage' } },
                                   { kind: 'Field', name: { kind: 'Name', value: 'name' } },
+                                  { kind: 'Field', name: { kind: 'Name', value: 'clinicType' } },
+                                  { kind: 'Field', name: { kind: 'Name', value: 'id' } },
                                 ],
                               },
                             },

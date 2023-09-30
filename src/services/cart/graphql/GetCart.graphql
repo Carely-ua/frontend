@@ -1,10 +1,13 @@
 query GetCart {
   cart {
-    cartSum
-    cartDiscountSum
     cartLength
     cartItems {
       id
+      doctor {
+        id
+        name
+        image
+      }
       service {
         id
         name
@@ -14,6 +17,8 @@ query GetCart {
         clinic {
           mainImage
           name
+          clinicType
+          id
         }
       }
     }

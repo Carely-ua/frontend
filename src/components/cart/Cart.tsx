@@ -3,16 +3,35 @@
 import classNames from 'classnames';
 import Image from 'next/image';
 import { FC } from 'react';
+import Link from 'next/link';
 import { Button, Typography } from '@/ui-kit';
 import { CartTypes } from '@/services';
 import { useDestroyCartItem } from '@/services/cart/destroy-cart-item';
 import { useGetCart } from '@/services/cart/get-cart';
 import { useCreateOrder } from '@/services/cart/create-order';
+import { ServiceType } from '@/utils/graphql/__generated__/types';
 import { PriceBlock } from '../price-block';
 import { SVG } from '../svg';
 import styles from './Cart.module.scss';
 
-const CartItem: FC<CartTypes.CartItem> = ({ id, service }) => {
+const titles = {
+  [ServiceType.Analyse]: 'Аналізи',
+  [ServiceType.Consultations]: 'Консультації',
+  [ServiceType.Diagnostic]: 'Діагностика',
+};
+
+const icons = {
+  [ServiceType.Analyse]: SVG.Analyze,
+  [ServiceType.Consultations]: SVG.Doctor,
+  [ServiceType.Diagnostic]: SVG.Diagnostic,
+};
+
+const CLINIC_TYPES = {
+  clinic: 'clinics',
+  laboratory: 'labs',
+};
+
+const CartItem: FC<CartTypes.CartItem> = ({ id, service, doctor }) => {
   const { destroyCartItem } = useDestroyCartItem();
 
   const deleteCartItem = async () => {
@@ -23,18 +42,38 @@ const CartItem: FC<CartTypes.CartItem> = ({ id, service }) => {
 
   const { name, serviceType, price, discountPrice, clinic } = service;
 
+  const isConsultation = serviceType === ServiceType.Consultations;
+  const image = isConsultation ? doctor?.image : clinic?.mainImage;
+  const Icon = icons[serviceType];
+  const clinicType = clinic?.clinicType || 'clinic';
+  const pathForImageLink = isConsultation ? '/' : `/${CLINIC_TYPES[clinicType]}/${clinic?.id}`;
+
   return (
     <div className={classNames(styles.row, styles.item)}>
       <div className={styles.clinicInfo}>
         <div className={styles.image}>
-          {!!clinic?.mainImage && (
-            <Image src={clinic.mainImage} alt="clinic" width={48} height={48} />
+          <Link href={pathForImageLink}>
+            {!!image && <Image src={image} alt="clinic" width={48} height={48} />}
+          </Link>
+        </div>
+        <div>
+          <Link href="/" className={styles.link}>
+            <Typography component="h4">{clinic?.name}</Typography>
+          </Link>
+          {isConsultation && (
+            <Link href="/" className={styles.link}>
+              <Typography component="p" color="dark-grey">
+                {doctor?.name}
+              </Typography>
+            </Link>
           )}
         </div>
-        <Typography component="h4">{clinic?.name}</Typography>
       </div>
-      <div>
-        <Typography component="p">{serviceType}</Typography>
+      <div className={styles.serviceType}>
+        <div className={styles.serviceTypeIcon}>
+          <Icon width={16} height={16} />
+        </div>
+        <Typography component="p">{titles[serviceType]}</Typography>
       </div>
       <Typography component="p">{name}</Typography>
       <PriceBlock flexStart firstPrice={price} secondPrice={discountPrice} />
@@ -64,7 +103,7 @@ export const Cart = () => {
 
   if (!data?.cart) return null;
 
-  const { cartSum, cartDiscountSum, cartItems } = data.cart;
+  const { cartItems } = data.cart;
 
   return (
     <div>
@@ -91,25 +130,7 @@ export const Cart = () => {
         })}
         <div className={styles.cartInfo}>
           <div className={styles.cartInfoItem}>
-            <Typography component="p">Ціна в клініці</Typography>
-            <Typography component="h4" weight="medium">
-              {cartSum} грн
-            </Typography>
-          </div>
-          <div className={styles.cartInfoItem}>
-            <Typography component="p">Ціна Carely</Typography>
-            <Typography component="h4" weight="medium" color="secondary">
-              {cartDiscountSum} грн
-            </Typography>
-          </div>
-          <div className={styles.cartInfoItem}>
-            <Typography component="p">Всього до сплати</Typography>
-            <Typography component="h4" weight="medium" color="secondary">
-              {cartDiscountSum} грн
-            </Typography>
-          </div>
-          <div className={styles.cartInfoItem}>
-            <Button onClick={createOrderHandler}>Сплатити</Button>
+            <Button onClick={createOrderHandler}>Оформити бронювання</Button>
           </div>
         </div>
       </div>
