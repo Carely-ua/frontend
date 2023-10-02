@@ -32,3 +32,4 @@ export * from './consultation-items';
 export * from './breadcrumbs';
 export * from './phone-button';
 export * from './doctor-profile';
+export * from './orders';

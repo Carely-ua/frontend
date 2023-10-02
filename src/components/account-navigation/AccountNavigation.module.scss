@@ -28,6 +28,7 @@
   &Content {
     display: flex;
     align-items: center;
+    gap: $gap-sm;
 
     svg {
       path {
@@ -40,4 +41,17 @@
 
 .text {
   margin-left: $gap-sm;
+}
+
+.activeLink {
+  svg {
+    path {
+      color: $primary;
+      fill: $primary;
+    }
+  }
+
+  h4 {
+    color: $primary;
+  }
 }

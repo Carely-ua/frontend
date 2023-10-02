@@ -20,7 +20,7 @@ export const ProfileButton: FC<ProfileButtonProps> = ({ clickHandler: _clickHand
   const clickHandler = () => {
     _clickHandler?.();
     if (session) {
-      router.push('/account');
+      router.push('/account/orders');
     } else {
       openModal('AuthModal');
     }

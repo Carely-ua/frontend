@@ -1,30 +1,15 @@
 import Link from 'next/link';
+import classNames from 'classnames';
 import { Typography } from '@/ui-kit';
 import { SVG } from '../svg';
 import styles from './AccountNavigation.module.scss';
 import { LogoutButton } from './LogoutButton';
 
 const accountSections = [
-  //TODO maybe we will return it later, since right now it doesn't have aby sense
-  // {
-  //   title: 'Акаунт',
-  //   href: '/account/profile',
-  //   Icon: SVG.DarkUser,
-  // },
   {
-    title: 'Мої аналізи',
-    href: '/account/analyzes',
+    title: 'Мої замовлення',
+    href: '/account/orders',
     Icon: SVG.Analyze,
-  },
-  {
-    title: 'Мої консультації',
-    href: '/account/consultations',
-    Icon: SVG.Doctor,
-  },
-  {
-    title: 'Мої діагностика',
-    href: '/account/diagnostics',
-    Icon: SVG.Diagnostic,
   },
 ];
 
@@ -33,7 +18,7 @@ export const AccountNavigation = () => {
     <ul className={styles.accountNavigation}>
       {accountSections.map(({ title, href, Icon }) => (
         <li key={title} className={styles.item}>
-          <Link className={styles.link} href={href}>
+          <Link className={classNames(styles.link, styles.activeLink)} href={href}>
             <div className={styles.linkContent}>
               <Icon width={18} height={18} />
               <Typography className={styles.text} component="h4">

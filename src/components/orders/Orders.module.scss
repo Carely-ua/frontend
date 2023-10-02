@@ -1,0 +1,67 @@
+@use '@/scss/abstracts' as *;
+
+.order {
+  margin-bottom: customGap(10);
+
+  h3 {
+    margin-bottom: $gap-md;
+  }
+}
+
+.voucher {
+  border-radius: 20px;
+  border: 1px solid $light-grey;
+  margin-bottom: $gap-xlg;
+  padding: $gap-md;
+  display: flex;
+}
+
+.block {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 100% 1 1;
+  padding: 0 $gap-md;
+
+  &:not(:last-child) {
+    border-right: 1px solid $dark-grey;
+  }
+
+  &Center {
+    & > div {
+      text-align: center;
+    }
+  }
+}
+
+.serviceType {
+  svg {
+    path {
+      color: $primary;
+      fill: $primary;
+    }
+  }
+}
+
+.mainInfo {
+  display: flex;
+  gap: $gap-md;
+  align-items: center;
+  margin-bottom: $gap-md;
+}
+
+.image {
+  border-radius: 50%;
+  border: 1px solid $light-grey;
+  width: 48px;
+  height: 48px;
+
+  img {
+    justify-content: cover;
+  }
+}
+
+.mainSection {
+  flex: 450px 1;
+  flex-shrink: 0;
+}
