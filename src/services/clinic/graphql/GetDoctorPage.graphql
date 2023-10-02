@@ -1,0 +1,30 @@
+query GetDoctorPage($filtersForDoctor: DoctorFilterInputType!, $filtersForService: ServiceFilterInputType!) {
+  doctor(filters: $filtersForDoctor) {
+    name
+    description
+    image
+    rating
+    tags
+    title
+    experience
+    description
+    clinic {
+      mainImage
+      id
+      name
+      rating
+      reviewsCount
+      address
+      workingTime
+      mapCoordinates {
+        lat
+        lng
+      }
+    }
+  }
+  service(filters: $filtersForService) {
+    id
+    price
+    discountPrice
+  }
+}

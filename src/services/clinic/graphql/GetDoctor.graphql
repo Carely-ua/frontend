@@ -1,5 +1,0 @@
-query GetDoctor($filters: DoctorFilterInputType!) {
-  doctor(filters: $filters) {
-    name
-  }
-}

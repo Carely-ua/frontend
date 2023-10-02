@@ -1,3 +1,5 @@
+'use client';
+
 import { SVG } from '../svg';
 import styles from './PhoneButton.module.scss';
 

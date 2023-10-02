@@ -1,1 +1,1 @@
-export { ConsultationItems } from './ConsultationItems';
+export { ConsultationItems, ConsultationItem } from './ConsultationItems';

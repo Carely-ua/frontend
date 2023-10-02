@@ -1,6 +1,7 @@
 import { GetClinicQuery } from './graphql/__generated__/GetClinic';
 import { GetClinicsQuery } from './graphql/__generated__/GetClinics';
 import { GetClinicsWithServicesQuery } from './graphql/__generated__/GetClinicsWithServices';
+import { GetDoctorPageQuery } from './graphql/__generated__/GetDoctorPage';
 
 export type Clinics = NonNullable<GetClinicsQuery['getClinics']>;
 export type Clinic = Clinics[number];
@@ -10,3 +11,5 @@ export type ClinicWithServices = ClinicsWithServices[number];
 export type ClinicServices = NonNullable<ClinicWithServices>['services'];
 export type Reviews = NonNullable<GetClinicQuery['clinic']>['reviews'];
 export type Review = NonNullable<NonNullable<Reviews>[number]>;
+export type Doctor = GetDoctorPageQuery['doctor'];
+export type Service = GetDoctorPageQuery['service'];

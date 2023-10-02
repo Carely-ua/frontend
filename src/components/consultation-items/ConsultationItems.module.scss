@@ -3,15 +3,18 @@
 
 .consultationItem {
   display: flex;
-  border-radius: 20px;
-  border: 1px solid $light-grey;
-  background: #FFF;
-  padding: $gap-md;
-  margin-bottom: $gap-xlg;
   flex-wrap: wrap;
 
   @include tablet {
     flex-wrap: nowrap;
+  }
+
+  &Container {
+    border-radius: 20px;
+    border: 1px solid $light-grey;
+    background: #FFF;
+    padding: $gap-md;
+    margin-bottom: $gap-xlg;
   }
 }
 
@@ -22,7 +25,8 @@
   margin-right: $gap-md;
 
   @include tablet {
-    width: 160px;
+    flex: 160px 0;
+    flex-shrink: 0;
     height: 160px;
   }
 
@@ -82,7 +86,7 @@
 }
 
 .priceInfo {
-  flex: 100% 0 0;
+  // flex: 100% 0 0;
 }
 
 .mobileRating {
@@ -95,4 +99,8 @@
   @include tablet {
     display: none;
   }
+}
+
+.doctorName {
+  text-decoration: none;
 }

@@ -31,3 +31,4 @@ export * from './about-clinic';
 export * from './consultation-items';
 export * from './breadcrumbs';
 export * from './phone-button';
+export * from './doctor-profile';

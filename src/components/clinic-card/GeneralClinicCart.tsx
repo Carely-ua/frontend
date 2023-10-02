@@ -12,7 +12,7 @@ import { AddToBagButton } from '../add-to-bag-button';
 import { PhoneButton } from '../phone-button';
 import styles from './ClinicCard.module.scss';
 
-interface ClinicCardProps extends NonNullable<ClinicTypes.Clinic> {
+interface ClinicCardProps extends Omit<NonNullable<ClinicTypes.Clinic>, 'clinicType'> {
   hrefPrefix: string;
   services?: ClinicTypes.ClinicServices;
 }

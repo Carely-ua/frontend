@@ -53,7 +53,7 @@ const CartItem: FC<CartTypes.CartItem> = ({ id, service, doctor }) => {
       <div className={styles.clinicInfo}>
         <div className={styles.image}>
           <Link href={pathForImageLink}>
-            {!!image && <Image src={image} alt="clinic" width={48} height={48} />}
+            {!!image && <Image src={image} alt="clinic" width={60} height={60} />}
           </Link>
         </div>
         <div>
