@@ -5,6 +5,7 @@ import classNames from 'classnames';
 import { ClinicTypes } from '@/services';
 import { ClinicType } from '@/utils/graphql/__generated__/types';
 import { Typography } from '@/ui-kit';
+import { useClinicsSearch } from '@/services/search';
 import { ClinicCard, GeneralClinicCart } from '../clinic-card';
 import { Map } from '../map';
 import { SVG } from '../svg';
@@ -51,6 +52,8 @@ export const Search: FC<SearchProps> = ({
     return setIsCardActive(prev => !prev);
   };
 
+  const { searchHandler } = useClinicsSearch();
+
   if (clinics.length <= 0) return null;
 
   return (
@@ -62,7 +65,7 @@ export const Search: FC<SearchProps> = ({
         </div>
       ) : (
         <div>
-          <PageSearch title={title} icon={icon} />
+          <PageSearch title={title} icon={icon} searchHandler={searchHandler} />
           <Breadcrumbs breadcrumbs={breadcrumbs} />
           <div id="Search" className={styles.wrapper}>
             <div className={styles.item}>

@@ -1,0 +1,13 @@
+query SearchClinics($filters: ClinicFilterInputType!) {
+  searchClinics(filters: $filters) {
+   	clinics {
+      id
+      name
+      clinicType
+      specializations {
+        id
+        title
+			}
+    }
+  }
+}
