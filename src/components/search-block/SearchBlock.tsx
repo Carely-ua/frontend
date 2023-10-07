@@ -20,7 +20,7 @@ export const SearchBlock: FC<SearchBlockProps> = ({ isFooter }) => {
       <div className={classNames({ [styles.searchInput]: isFooter })}>
         <SearchInput
           rightIcon="Search"
-          placeholder="Наприклад аналіз на COVID"
+          placeholder="Наприклад, аналіз на COVID"
           searchHandler={searchHandler}
           items={searchItems}
         />

@@ -11,11 +11,10 @@ export const MainBanner = () => {
       <div className={styles.content}>
         <div>
           <Typography component="h1" color="white" className={styles.title}>
-            Онлайн медицина з турботую про користувача і його гаманець
+            Carely - сучасний інструмент для вибору найкращого лікування!
           </Typography>
           <Typography component="h3" color="white">
-            Lorem ipsum dolor sit amet consectetur. Aliquam urna egestas est lectus. Magna eu sapien
-            in nisl tempor faucibus eget amet aliquam.
+            Обирайте кращу клініку, лікаря чи лабораторію завдяки чесному рейтингу!
           </Typography>
         </div>
       </div>

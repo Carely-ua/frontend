@@ -22,7 +22,7 @@ export const CartButton: FC<CartButtonProps> = ({ clickHandler: _clickHandler })
   const clickHandler = () => {
     _clickHandler?.();
     if (!count || count === 0) {
-      openModal('AlertModal', { message: 'Кошик на разі порожній' });
+      openModal('AlertModal', { message: 'Кошик наразі порожній' });
     } else {
       router.push('/cart');
     }

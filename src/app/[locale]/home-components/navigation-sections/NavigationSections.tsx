@@ -11,7 +11,7 @@ import styles from './NavigationSections.module.scss';
 const items = [
   {
     title: 'Clinics.title',
-    text: 'Clinics.text',
+    text: 'На сайті представлені кращі клініки міста. Обирайте спираючись на відгуки реальних пацієнтів, бронюйте відвідування на сайті Carely зі знижкою!',
     label: 'Clinics.label',
     buttonText: 'Clinics.buttonText',
     linkUrl: '/clinics',
@@ -23,7 +23,7 @@ const items = [
   },
   {
     title: 'Labs.title',
-    text: 'Labs.text',
+    text: 'Всі лабораторії на Carely! Оберіть зручну для вас за розміщенням, послугам, що надаються і чесному рейтингу.',
     label: 'Labs.label',
     buttonText: 'Labs.buttonText',
     linkUrl: '/labs',
@@ -35,7 +35,7 @@ const items = [
   },
   {
     title: 'Analyzes.title',
-    text: 'Analyzes.text',
+    text: 'На Carely зручно обирати потрібні вам аналізи, адже ви можете не тільки порівняти ціни, а й отримати ваучер на проведення аналізу зі знижкою.',
     label: 'Analyzes.label',
     buttonText: 'Analyzes.buttonText',
     linkUrl: '/analyzes',
@@ -48,7 +48,7 @@ const items = [
   },
   {
     title: 'Consultations.title',
-    text: 'Consultations.text',
+    text: 'Кращі лікарі міста зібрані на Carely. Ви легко знайдете потрібного вам спеціаліста і переконаєтесь у його професійності завдяки відгукам інших пацієнтів.',
     label: 'Consultations.label',
     buttonText: 'Consultations.buttonText',
     linkUrl: '/consultations',
@@ -61,7 +61,7 @@ const items = [
   },
   {
     title: 'Diagnostics.title',
-    text: 'Diagnostics.text',
+    text: 'Весь спектр діагностичних процедур та медзакладів, що їх надають - на Carely. Зробіть обміркований і правильний вибір завдяки рейтингу.',
     label: 'Diagnostics.label',
     buttonText: 'Diagnostics.buttonText',
     linkUrl: '/diagnostics',
@@ -121,7 +121,7 @@ const Item: FC<ItemProps> = ({
               {t(title)}
             </Typography>
             <Typography component="p" color="white" gutterBottom="lg">
-              {t(text)}
+              {text}
             </Typography>
             <Link href={linkUrl} className={styles.link}>
               <Button buttonType="white">{t(buttonText)}</Button>
