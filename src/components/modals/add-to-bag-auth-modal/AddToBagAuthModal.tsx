@@ -24,6 +24,7 @@ export const AddToBagAuthModal: ModalComponent<AddToBagAuthModalProps> = ({
   return (
     <Modal handleClose={closeHandler} open={open}>
       <AuthModalTemplate
+        handleClose={closeHandler}
         title="Для створення замовлення, будь ласка, зайдіть в систему"
         description=""
         successSignInHandler={successSignInHandler}
