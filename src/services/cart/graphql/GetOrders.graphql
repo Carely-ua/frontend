@@ -1,0 +1,31 @@
+query GetOrders {
+  orders {
+    id
+    number
+    createdAt
+    orderItems {
+      id
+      number
+      endDate
+      createdAt
+      doctor {
+        id
+        name
+        tags
+        image
+      }
+      service {
+        serviceType
+        name
+        price
+        discountPrice
+        clinic {
+          id
+          mainImage
+          clinicType
+          name
+        }
+      }
+    }
+  }
+}

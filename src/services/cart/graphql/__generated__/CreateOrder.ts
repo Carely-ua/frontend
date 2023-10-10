@@ -5,11 +5,7 @@ export type CreateOrderMutationVariables = Types.Exact<{ [key: string]: never }>
 
 export type CreateOrderMutation = {
   __typename?: 'Mutation';
-  createOrder?: {
-    __typename?: 'CreateOrderOutput';
-    data?: string | null;
-    signature?: string | null;
-  } | null;
+  createOrder?: { __typename?: 'Order'; id: string; number?: number | null } | null;
 };
 
 export const CreateOrderDocument = {
@@ -28,8 +24,8 @@ export const CreateOrderDocument = {
             selectionSet: {
               kind: 'SelectionSet',
               selections: [
-                { kind: 'Field', name: { kind: 'Name', value: 'data' } },
-                { kind: 'Field', name: { kind: 'Name', value: 'signature' } },
+                { kind: 'Field', name: { kind: 'Name', value: 'id' } },
+                { kind: 'Field', name: { kind: 'Name', value: 'number' } },
               ],
             },
           },

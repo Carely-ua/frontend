@@ -12,7 +12,7 @@
   border-radius: 20px;
   border: 1px solid $light-grey;
   margin-bottom: $gap-xlg;
-  padding: $gap-md;
+  padding: $gap-md 0;
   display: flex;
 }
 
@@ -43,6 +43,11 @@
   }
 }
 
+.serviceTypeContainer {
+  flex: 120px 0;
+  flex-shrink: 0;
+}
+
 .mainInfo {
   display: flex;
   gap: $gap-md;
@@ -53,15 +58,25 @@
 .image {
   border-radius: 50%;
   border: 1px solid $light-grey;
-  width: 48px;
+  flex: 48px 0;
+  flex-shrink: 0;
   height: 48px;
+  overflow: hidden;
 
   img {
-    justify-content: cover;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
   }
 }
 
 .mainSection {
+  justify-content: flex-start;
   flex: 450px 1;
+  flex-shrink: 0;
+}
+
+.statusBlock {
+  flex: 275px 0;
   flex-shrink: 0;
 }

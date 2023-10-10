@@ -2,22 +2,47 @@ import Image from 'next/image';
 import classNames from 'classnames';
 import { FC } from 'react';
 import { Button, Typography } from '@/ui-kit';
+import { CartTypes } from '@/services';
+import { formatDate } from '@/utils';
+import { ServiceType, ClinicType } from '@/utils/graphql/__generated__/types';
 import { SVG } from '../svg';
 import styles from './Orders.module.scss';
 
-const ORDERS_DATA = [
-  { id: 1, items: [{ id: 11 }, { id: 12 }] },
-  { id: 2, items: [{ id: 21 }, { id: 22 }] },
-];
+const titles = {
+  [ServiceType.Analyse]: 'Аналізи',
+  [ServiceType.Consultations]: 'Консультації',
+  [ServiceType.Diagnostic]: 'Діагностика',
+};
 
-const OrderItem = () => {
+const icons = {
+  [ServiceType.Analyse]: SVG.Analyze,
+  [ServiceType.Consultations]: SVG.Doctor,
+  [ServiceType.Diagnostic]: SVG.Diagnostic,
+};
+
+const OrderItem: FC<CartTypes.OrderItem> = ({ service, endDate, createdAt, number, doctor }) => {
+  const isConsultation = service?.serviceType === ServiceType.Consultations;
+  const isLab = service?.clinic?.clinicType === ClinicType.Laboratory;
+
+  const image = isConsultation ? doctor?.image : service?.clinic?.mainImage;
+  const Icon = service?.serviceType && icons[service?.serviceType];
+  const serviceType = service?.serviceType && titles[service?.serviceType];
+
+  const mainSectionTitle = isConsultation ? doctor?.name : service?.clinic?.name;
+  const mainSectionSubTitle = isConsultation
+    ? doctor?.tags?.join(', ')
+    : isLab
+    ? 'Доступно в будь-якому відділенні'
+    : '';
+  const mainSectionText = isConsultation ? service.clinic?.name : service?.name;
+
   return (
     <div className={styles.voucher}>
-      <div className={classNames(styles.block, styles.blockCenter)}>
+      <div className={classNames(styles.block, styles.blockCenter, styles.serviceTypeContainer)}>
         <div className={styles.serviceType}>
-          <SVG.Analyze />
+          {!!Icon && <Icon width={17} height={17} />}
           <Typography component="p" color="primary">
-            Аналізи
+            {serviceType}
           </Typography>
         </div>
       </div>
@@ -25,86 +50,90 @@ const OrderItem = () => {
         <div>
           <div className={styles.mainInfo}>
             <div className={styles.image}>
-              <Image
-                src="https://d1csarkz8obe9u.cloudfront.net/posterpreviews/medical-clinic-logo-healthcare-logo-design-template-030829d4eea09e04efaa539c5766a00d_screen.jpg?ts=1666032713"
-                width={46}
-                height={46}
-                alt={'clinic'}
-              />
+              <Image src={image || ''} width={46} height={46} alt={'clinic'} />
             </div>
             <div>
-              <Typography component="h5">Медична лабораторія «МедЛаб»</Typography>
+              <Typography component="h5">{mainSectionTitle}</Typography>
               <Typography component="p" color="dark-grey">
-                Доступно в будь-якому відділенні
+                {mainSectionSubTitle}
               </Typography>
             </div>
           </div>
           <div>
-            <Typography component="p">Пероксидаза щитоподібної залози, антитіла (ATПO)</Typography>
+            <Typography component="p">{mainSectionText}</Typography>
           </div>
         </div>
       </div>
       <div className={classNames(styles.block, styles.blockCenter)}>
         <div>
-          <Typography component="p" color="secondary">
+          <Typography component="p" color="secondary" gutterBottom="sm">
             № ваучера
           </Typography>
           <Typography component="h5" weight="medium">
-            612641
+            {number}
           </Typography>
         </div>
       </div>
       <div className={classNames(styles.block, styles.blockCenter)}>
         <div>
-          <Typography component="p" color="secondary">
+          <Typography component="p" color="secondary" gutterBottom="sm">
             Дата створенняя
           </Typography>
           <Typography component="h5" weight="medium">
-            20.03.23
+            {formatDate(createdAt)}
           </Typography>
         </div>
       </div>
       <div className={classNames(styles.block, styles.blockCenter)}>
         <div>
-          <Typography component="p" color="secondary">
+          <Typography component="p" color="secondary" gutterBottom="sm">
             Термін дії
           </Typography>
           <Typography component="h5" weight="medium">
-            20.08.23
+            {formatDate(endDate)}
           </Typography>
         </div>
       </div>
-      <div className={styles.block}>
-        <Button buttonType="secondary">Активувати знову</Button>
+      <div className={classNames(styles.block, styles.statusBlock)}>
+        <div>
+          <div>
+            <span />
+            <Typography component="p">Активний</Typography>
+          </div>
+          <Button buttonType="secondary">Активувати знову</Button>
+        </div>
       </div>
     </div>
   );
 };
 
-interface OrderProps {
-  id: number;
-  items: Array<any>;
-}
-
-const Order: FC<OrderProps> = ({ id, items }) => {
+const Order: FC<CartTypes.Order> = ({ id, orderItems }) => {
   return (
     <div className={styles.order}>
       <Typography component="h3" key={id}>
         Замовлення №{id}
       </Typography>
-      {items.map(item => (
-        <OrderItem key={item.id} {...item} />
-      ))}
+      {orderItems.map(item => {
+        if (!item) return null;
+
+        return <OrderItem key={item.id} {...item} />;
+      })}
     </div>
   );
 };
 
-export const Orders = () => {
+interface OrdersProps {
+  orders: CartTypes.Orders;
+}
+
+export const Orders: FC<OrdersProps> = ({ orders }) => {
   return (
     <div>
-      {ORDERS_DATA.map(order => (
-        <Order key={order.id} {...order} />
-      ))}
+      {orders.map(order => {
+        if (!order) return null;
+
+        return <Order key={order.id} {...order} />;
+      })}
     </div>
   );
 };
