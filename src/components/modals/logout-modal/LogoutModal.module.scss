@@ -1,14 +1,23 @@
 @use '@/scss/abstracts' as *;
 
 .modal {
-  width: 532px;
-  height: 320px;
+  width: calc(100vw - 40px);
+  margin: 0 auto;
   border-radius: 20px;
   background: linear-gradient(134deg, $primary 0%, $secondary 100%);
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
+  position: relative;
+  padding: customGap(13) customGap(10) customGap(10); 
+
+  @include tablet {
+    padding: $gap-xlg 0 0;
+    margin: 0;
+    width: 532px;
+    height: 320px;
+  }
 }
 
 .content {
@@ -17,6 +26,16 @@
 
 .buttons {
   display: flex;
-  gap: $gap-md;
+  flex-direction: column;
+  gap: $gap-lg;
   margin-top: customGap(10);
+  max-width: 180px;
+  margin: 0 auto;
+
+  @include tablet {
+    margin: 0;
+    flex-direction: row;
+    gap: $gap-md;
+    max-width: unset;
+  }
 }

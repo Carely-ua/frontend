@@ -1,6 +1,7 @@
 import { signOut } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 import { Button, Typography } from '@/ui-kit';
+import { CloseButton } from '@/components/close-button';
 import { ModalComponent } from '..';
 import { Modal } from '../modal';
 import styles from './LogoutModal.module.scss';
@@ -17,6 +18,7 @@ export const LogoutModal: ModalComponent = ({ handleClose, open }) => {
   return (
     <Modal handleClose={handleClose} open={open}>
       <div className={styles.modal}>
+        <CloseButton handleClose={handleClose} />
         <div className={styles.content}>
           <Typography component="h2" gutterBottom="xlg" color="white">
             Ви дійсно бажаєте вийти з системи

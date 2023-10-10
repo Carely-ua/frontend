@@ -1,23 +1,42 @@
 @use '@/scss/abstracts' as *;
 
 .modal {
-  width: 650px;
-  height: 329px;
+  width: calc(100vw - 40px);
+  margin: 0 auto;
+  height: 200px;
   border-radius: 20px;
   background: linear-gradient(85deg, #00C692 0%, #0058C1 100%);
   display: flex;
   justify-content: center;
   align-items: center;
   position: relative;
+  padding: 0 customGap(6);
+
+  @include tablet {
+    margin: 0;
+    width: 650px;
+    height: 329px;
+    padding: 0;
+  }
 }
 
 .image {
+  display: none;
   position: absolute;
   bottom: 0;
   left: 7%;
   object-fit: contain;
+
+  @include tablet {
+    display: block;
+  }
 }
 
 .text {
-  margin-left: 250px;
+  text-align: center;
+
+  @include tablet {
+    text-align: start;
+    margin-left: 250px;
+  }
 }
