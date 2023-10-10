@@ -31,7 +31,7 @@ export type CartItem = {
   service?: Maybe<Service>;
   serviceId?: Maybe<Scalars['String']['output']>;
   user?: Maybe<User>;
-  userId: Scalars['String']['output'];
+  userId?: Maybe<Scalars['String']['output']>;
 };
 
 export type CartItemCreateInputType = {
@@ -179,13 +179,6 @@ export type ClinicUpdateInputType = {
   rating?: InputMaybe<Scalars['Float']['input']>;
 };
 
-export type CreateOrderOutput = {
-  __typename?: 'CreateOrderOutput';
-  data?: Maybe<Scalars['String']['output']>;
-  order?: Maybe<Order>;
-  signature?: Maybe<Scalars['String']['output']>;
-};
-
 export type Doctor = {
   __typename?: 'Doctor';
   clinic?: Maybe<Clinic>;
@@ -275,14 +268,16 @@ export type MapCoordinatesInput = {
 
 export type Mutation = {
   __typename?: 'Mutation';
+  activateOrderItem?: Maybe<OrderItem>;
   auth?: Maybe<Scalars['String']['output']>;
   createCartItem?: Maybe<CartItem>;
+  createCartItemUnAuth?: Maybe<CartItem>;
   createCategory?: Maybe<Category>;
   createCategorySubTitle?: Maybe<CategoriesSubTitle>;
   createClinic?: Maybe<Clinic>;
   createDoctor?: Maybe<Doctor>;
   createDoctorsService: Scalars['Boolean']['output'];
-  createOrder?: Maybe<CreateOrderOutput>;
+  createOrder?: Maybe<Order>;
   createReview?: Maybe<Review>;
   createService?: Maybe<Service>;
   createSpecClinic: Scalars['Boolean']['output'];
@@ -301,6 +296,7 @@ export type Mutation = {
   destroySubTitleService: Scalars['Boolean']['output'];
   doctorsService: Scalars['Boolean']['output'];
   editUser?: Maybe<User>;
+  linkCartItemToUser?: Maybe<Array<Maybe<CartItem>>>;
   register?: Maybe<Scalars['Boolean']['output']>;
   sendSms?: Maybe<Scalars['String']['output']>;
   signIn?: Maybe<Scalars['String']['output']>;
@@ -314,12 +310,20 @@ export type Mutation = {
   verifySms: Scalars['Boolean']['output'];
 };
 
+export type MutationActivateOrderItemArgs = {
+  orderItemId?: InputMaybe<Scalars['String']['input']>;
+};
+
 export type MutationAuthArgs = {
   login: Scalars['String']['input'];
   password: Scalars['String']['input'];
 };
 
 export type MutationCreateCartItemArgs = {
+  input: CartItemCreateInputType;
+};
+
+export type MutationCreateCartItemUnAuthArgs = {
   input: CartItemCreateInputType;
 };
 
@@ -417,6 +421,10 @@ export type MutationEditUserArgs = {
   input?: InputMaybe<EditUser>;
 };
 
+export type MutationLinkCartItemToUserArgs = {
+  ids?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+};
+
 export type MutationRegisterArgs = {
   login: Scalars['String']['input'];
   password: Scalars['String']['input'];
@@ -465,11 +473,10 @@ export type MutationVerifySmsArgs = {
 
 export type Order = {
   __typename?: 'Order';
-  amount: Scalars['Float']['output'];
-  details?: Maybe<Scalars['String']['output']>;
+  createdAt?: Maybe<Scalars['Date']['output']>;
   id: Scalars['ID']['output'];
+  number?: Maybe<Scalars['Int']['output']>;
   orderItems: Array<OrderItem>;
-  status: OrderStatus;
   user?: Maybe<User>;
   userId: Scalars['String']['output'];
 };
@@ -477,13 +484,17 @@ export type Order = {
 export type OrderItem = {
   __typename?: 'OrderItem';
   amount: Scalars['Float']['output'];
+  createdAt?: Maybe<Scalars['Date']['output']>;
   doctor?: Maybe<Doctor>;
   doctorId?: Maybe<Scalars['String']['output']>;
+  endDate?: Maybe<Scalars['Date']['output']>;
   id: Scalars['ID']['output'];
+  number?: Maybe<Scalars['Int']['output']>;
   order?: Maybe<Order>;
   orderId?: Maybe<Scalars['String']['output']>;
   service?: Maybe<Service>;
   serviceId?: Maybe<Scalars['String']['output']>;
+  status: OrderStatus;
 };
 
 export enum OrderStatus {
@@ -497,6 +508,7 @@ export enum OrderStatus {
 export type Query = {
   __typename?: 'Query';
   cart?: Maybe<CartResponse>;
+  cartUnAuth?: Maybe<CartResponse>;
   category?: Maybe<Category>;
   categorySubTitle?: Maybe<CategoriesSubTitle>;
   clinic?: Maybe<Clinic>;
@@ -515,6 +527,10 @@ export type Query = {
   searchClinics: ClinicSearch;
   service?: Maybe<Service>;
   user?: Maybe<User>;
+};
+
+export type QueryCartUnAuthArgs = {
+  ids?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
 };
 
 export type QueryCategoryArgs = {

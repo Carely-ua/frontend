@@ -1,8 +1,5 @@
 mutation AddToCart($input: CartItemCreateInputType!) {
   createCartItem(input: $input) {
     id
-    amount
-    userId
-    serviceId
   }
 }

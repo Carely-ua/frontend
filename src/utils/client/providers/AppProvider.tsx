@@ -1,6 +1,6 @@
 import { FC, ReactNode } from 'react';
 import { ModalProvider } from './modal-provider';
-import { AuthProvider } from './auth-provider';
+import { AuthProvider, CustomAuthProvider } from './auth-provider';
 
 interface AppProviderProps {
   children: ReactNode;
@@ -9,7 +9,9 @@ interface AppProviderProps {
 export const AppProvider: FC<AppProviderProps> = ({ children }) => {
   return (
     <AuthProvider>
-      <ModalProvider>{children}</ModalProvider>
+      <ModalProvider>
+        <CustomAuthProvider>{children}</CustomAuthProvider>
+      </ModalProvider>
     </AuthProvider>
   );
 };

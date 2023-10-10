@@ -1,22 +1,22 @@
 import { TypedDocumentNode as DocumentNode } from '@graphql-typed-document-node/core';
 import * as Types from '../../../../utils/graphql/__generated__/types';
 
-export type AddToCartMutationVariables = Types.Exact<{
+export type AddToCartUnAuthMutationVariables = Types.Exact<{
   input: Types.CartItemCreateInputType;
 }>;
 
-export type AddToCartMutation = {
+export type AddToCartUnAuthMutation = {
   __typename?: 'Mutation';
-  createCartItem?: { __typename?: 'CartItem'; id: string } | null;
+  createCartItemUnAuth?: { __typename?: 'CartItem'; id: string } | null;
 };
 
-export const AddToCartDocument = {
+export const AddToCartUnAuthDocument = {
   kind: 'Document',
   definitions: [
     {
       kind: 'OperationDefinition',
       operation: 'mutation',
-      name: { kind: 'Name', value: 'AddToCart' },
+      name: { kind: 'Name', value: 'AddToCartUnAuth' },
       variableDefinitions: [
         {
           kind: 'VariableDefinition',
@@ -32,7 +32,7 @@ export const AddToCartDocument = {
         selections: [
           {
             kind: 'Field',
-            name: { kind: 'Name', value: 'createCartItem' },
+            name: { kind: 'Name', value: 'createCartItemUnAuth' },
             arguments: [
               {
                 kind: 'Argument',
@@ -49,4 +49,4 @@ export const AddToCartDocument = {
       },
     },
   ],
-} as unknown as DocumentNode<AddToCartMutation, AddToCartMutationVariables>;
+} as unknown as DocumentNode<AddToCartUnAuthMutation, AddToCartUnAuthMutationVariables>;

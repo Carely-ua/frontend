@@ -1,0 +1,5 @@
+mutation LinkCartItemToUser($ids:  [ID]) {
+  linkCartItemToUser(ids: $ids) {
+    id
+  }
+}

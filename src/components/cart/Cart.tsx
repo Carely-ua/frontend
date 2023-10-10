@@ -4,12 +4,14 @@ import classNames from 'classnames';
 import Image from 'next/image';
 import { FC } from 'react';
 import Link from 'next/link';
+import { useSession } from 'next-auth/react';
 import { Button, Typography } from '@/ui-kit';
 import { CartTypes } from '@/services';
 import { useDestroyCartItem } from '@/services/cart/destroy-cart-item';
 import { useGetCart } from '@/services/cart/get-cart';
 import { useCreateOrder } from '@/services/cart/create-order';
 import { ServiceType } from '@/utils/graphql/__generated__/types';
+import { useModalContext } from '@/utils/client';
 import { PriceBlock } from '../price-block';
 import { SVG } from '../svg';
 import styles from './Cart.module.scss';
@@ -89,21 +91,21 @@ const CartItem: FC<CartTypes.CartItem> = ({ id, service, doctor }) => {
 export const Cart = () => {
   const { data } = useGetCart();
   const { createOrder } = useCreateOrder();
+  const { data: session } = useSession();
+  const { openModal } = useModalContext();
 
   const createOrderHandler = async () => {
-    const { data } = await createOrder();
-
-    if (data?.createOrder) {
-      const { signature, data: liqPayData } = data.createOrder;
-      window.open(
-        `${process.env.NEXT_PUBLIC_LIQPAY_URL}?signature=${signature}&data=${liqPayData}`,
-      );
+    if (!session?.user.token) {
+      openModal('AddToBagAuthModal', { successSignInHandler: () => null });
+      return;
     }
+
+    await createOrder();
   };
 
-  if (!data?.cart) return null;
+  if (!data) return null;
 
-  const { cartItems } = data.cart;
+  const { cartItems } = data;
 
   return (
     <div>

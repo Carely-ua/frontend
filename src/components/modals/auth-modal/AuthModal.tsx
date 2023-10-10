@@ -5,8 +5,6 @@ import { ModalComponent } from '..';
 import { Modal } from '../modal';
 
 export const AuthModal: ModalComponent = ({ openModal, handleClose, open }) => {
-  // const t = useTranslations('AddToBagAuthModal');
-
   const successSignInHandler = () => {
     openModal('SuccessAuthModal');
   };

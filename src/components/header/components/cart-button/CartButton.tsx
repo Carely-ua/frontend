@@ -17,7 +17,7 @@ export const CartButton: FC<CartButtonProps> = ({ clickHandler: _clickHandler })
   const router = useRouter();
   const { openModal } = useModalContext();
 
-  const count = data?.cart?.cartLength;
+  const count = data?.cartLength;
 
   const clickHandler = () => {
     _clickHandler?.();

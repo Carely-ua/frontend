@@ -9,6 +9,8 @@ type Mutation {
   register(login: String!, password: String!): Boolean
   auth(login: String!, password: String!): String
   createCartItem(input: CartItemCreateInputType!): CartItem
+  createCartItemUnAuth(input: CartItemCreateInputType!): CartItem
+  linkCartItemToUser(ids: [ID]): [CartItem]
   destroyCartItem(id: ID!): Boolean!
   createCategorySubTitle(input: CategorySubTitleCreateInputType!): CategoriesSubTitle
   updateCategorySubTitle(input: CategorySubTitleUpdateInputType!): CategoriesSubTitle
@@ -33,7 +35,8 @@ type Mutation {
   createDoctorsService(input: createDoctorService): Boolean!
   doctorsService(input: createDoctorService): Boolean!
   destroyDoctorService(doctorId: ID!, serviceId: ID!): Boolean!
-  createOrder: CreateOrderOutput
+  createOrder: Order
+  activateOrderItem(orderItemId: String): OrderItem
   createReview(input: ReviewCreateInputType!): Review
   destroyReview(id: ID!): Boolean!
   createService(input: ServiceCreateInputType!): Service
@@ -48,7 +51,7 @@ type CartItem {
   id: ID!
   amount: Float
   discountAmount: Float
-  userId: String!
+  userId: String
   serviceId: String
   doctorId: String
   user: User
@@ -63,6 +66,7 @@ type CartResponse {
 }
 type Query {
   cart: CartResponse
+  cartUnAuth(ids: [ID]): CartResponse
   categorySubTitle(filters: CategorySubTitleFilterInputType!): CategoriesSubTitle
   getCategorySubTitles(filters: CategorySubTitleFilterInputType!): [CategoriesSubTitle]
   category(filters: CategoryFilterInputType!): Category
@@ -169,20 +173,18 @@ type OrderItem {
   order: Order
   doctor: Doctor
   service: Service
+  status: OrderStatus!
+  createdAt: Date
+  endDate: Date
+  number: Int
 }
 type Order {
   id: ID!
-  amount: Float!
-  status: OrderStatus!
+  number: Int
   userId: String!
-  details: String
   orderItems: [OrderItem!]!
   user: User
-}
-type CreateOrderOutput {
-  order: Order
-  data: String
-  signature: String
+  createdAt: Date
 }
 type Review {
   id: ID!

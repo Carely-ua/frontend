@@ -3,30 +3,29 @@ import { Modal } from '../modal';
 import { ModalComponent } from '..';
 
 export interface AddToBagAuthModalProps {
-  addToBagHandler(): Promise<void>;
+  successSignInHandler(): Promise<void>;
 }
 
 export const AddToBagAuthModal: ModalComponent<AddToBagAuthModalProps> = ({
-  openModal,
   handleClose,
   open,
   modalProps,
 }) => {
   const successSignInHandler = async () => {
-    await modalProps?.addToBagHandler();
-    openModal('SuccessAddedToCartModal');
+    await modalProps?.successSignInHandler();
+    handleClose();
   };
 
   const closeHandler = () => {
     handleClose();
-    openModal('ServiceWasNotAddedModal');
+    // openModal('ServiceWasNotAddedModal');
   };
 
   return (
     <Modal handleClose={closeHandler} open={open}>
       <AuthModalTemplate
-        title="Послуга успішно додана в кошик"
-        description="Для деяких послуг потрібен попередній запис просимо вас ввести номер телефона"
+        title="Для створення замовлення, будь ласка, зайдіть в систему"
+        description=""
         successSignInHandler={successSignInHandler}
       />
     </Modal>

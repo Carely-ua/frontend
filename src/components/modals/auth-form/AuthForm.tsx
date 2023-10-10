@@ -1,6 +1,6 @@
 'use client';
 
-import { FC, createServerContext } from 'react';
+import { FC } from 'react';
 import { Form, FormikProps, Formik } from 'formik';
 import { object, string } from 'yup';
 import { signIn } from 'next-auth/react';
@@ -37,7 +37,11 @@ export interface AuthFormProps {
 
 export const AuthForm: FC<AuthFormProps> = ({ successSignInHandler }) => {
   const submitHandler = async (values: Values) => {
-    await signIn('credentials', { phone: values.phone, code: values.code, redirect: false });
+    await signIn('credentials', {
+      phone: values.phone,
+      code: values.code,
+      redirect: false,
+    });
     successSignInHandler?.();
   };
 

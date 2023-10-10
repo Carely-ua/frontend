@@ -1,0 +1,26 @@
+query GetUnAuthCart($ids: [ID]) {
+  cartUnAuth(ids: $ids) {
+    cartLength
+    cartItems {
+      id
+      doctor {
+        id
+        name
+        image
+      }
+      service {
+        id
+        name
+        serviceType
+        price
+        discountPrice
+        clinic {
+          mainImage
+          name
+          clinicType
+          id
+        }
+      }
+    }
+  }
+}
