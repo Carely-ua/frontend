@@ -13,7 +13,7 @@ export const AuthModal: ModalComponent = ({ openModal, handleClose, open }) => {
     <Modal handleClose={handleClose} open={open}>
       <AuthModalTemplate
         title="Вхід/реєстрація"
-        description="Lorem ipsum dolor sit amet consectetur. Tristique dictumst rhoncus enim "
+        description="Для реєстрації чи входу в акаунт, введіть свій номер телефона і підтвердження з SMS повідомлення."
         successSignInHandler={successSignInHandler}
       />
     </Modal>

@@ -1,13 +1,19 @@
 @use '@/scss/abstracts' as *;
 
 .modal {
-  width: 740px;
-  height: 474px;
+  width: calc(100% - 40px);
+  margin: 0 $gap-xlg;
   border-radius: 20px;
   background: $white;
-  display: flex;
   position: relative;
   overflow: hidden;
+
+  @include tablet {
+    display: flex;
+    margin: 0;
+    width: 740px;
+    height: 474px;
+  }
 }
 
 .section {
@@ -17,7 +23,13 @@
 .contentSection {
   position: relative;
   background: linear-gradient(134deg, $primary 0%, $secondary 100%);
-  padding: $gap-lg $gap-xlg;
+  padding: customGap(10) customGap(8);
+  text-align: center;
+
+  @include tablet {
+    text-align: start;
+    padding: $gap-lg $gap-xlg;
+  }
 }
 
 .description {
@@ -25,9 +37,14 @@
 }
 
 .image {
+  display: none;
   position: absolute;
   bottom: 0;
   transform: translate(-50%, 0);
   left: 50%;
   object-fit: contain;
+
+  @include tablet {
+    display: block;
+  }
 }

@@ -54,8 +54,10 @@ export const AuthForm: FC<AuthFormProps> = ({ successSignInHandler }) => {
         {({ handleSubmit }: FormikProps<Values>) => {
           return (
             <Form>
-              <PhoneInput name="phone" label="Телефон" />
-              <SmsCodeInput name="code" label="Код з SMS" />
+              <div className={styles.inputs}>
+                <PhoneInput name="phone" label="Телефон" />
+                <SmsCodeInput name="code" label="Код з SMS" />
+              </div>
               <Button onClick={() => handleSubmit()}>Підтвердити</Button>
             </Form>
           );

@@ -1,5 +1,13 @@
 @use '@/scss/abstracts' as *;
 
 .authForm {
-  padding: customGap(18) $gap-xlg 0;
+  padding: customGap(6) $gap-xlg customGap(8);
+
+  @include tablet {
+    padding: customGap(18) $gap-xlg 0;
+  }
+}
+
+.inputs {
+  margin-bottom: customGap(7);
 }
