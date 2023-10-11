@@ -2,6 +2,7 @@ import { FC } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import classNames from 'classnames';
+import { useRouter } from 'next/navigation';
 import { ClinicTypes } from '@/services';
 import { Button, Typography } from '@/ui-kit';
 import { Rating } from '../rating';
@@ -27,10 +28,15 @@ export const ClinicCard: FC<ClinicCardProps> = ({
   specializations,
   phone,
 }) => {
+  const router = useRouter();
   const specializationsArray = specializations?.map(item => item?.title);
 
+  const pressHandler = () => {
+    router.push(`/${hrefPrefix}/${id}`);
+  };
+
   return (
-    <div className={styles.card}>
+    <div className={styles.card} onClick={pressHandler}>
       <div className={classNames(styles.mainSection, styles.mainSectionWithBorder)}>
         <div className={styles.image}>
           {!!mainImage && <Image src={mainImage} alt="clinic" layout="fill" objectFit="contain" />}

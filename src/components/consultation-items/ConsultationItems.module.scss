@@ -8,14 +8,6 @@
   @include tablet {
     flex-wrap: nowrap;
   }
-
-  &Container {
-    border-radius: 20px;
-    border: 1px solid $light-grey;
-    background: #FFF;
-    padding: $gap-md;
-    margin-bottom: $gap-xlg;
-  }
 }
 
 .doctorImage {
@@ -86,7 +78,11 @@
 }
 
 .priceInfo {
-  // flex: 100% 0 0;
+  flex: 100% 0;
+
+  @include tablet {
+    flex: auto 0;
+  }
 }
 
 .mobileRating {

@@ -50,7 +50,9 @@ export const ServicePanel: FC<ServicePanelProps> = async ({
       />
       <div className={styles.servicesSections}>
         {serviceType === ServiceType.Consultations ? (
-          <ConsultationItems serviceId={service?.id || ''} doctors={service?.doctors} />
+          <div className={styles.consultationItems}>
+            <ConsultationItems serviceId={service?.id || ''} doctors={service?.doctors} />
+          </div>
         ) : (
           currentCategory?.subTitles?.map(item => {
             return item ? <Subcategory key={item.id} showPrice={showPrice} {...item} /> : null;

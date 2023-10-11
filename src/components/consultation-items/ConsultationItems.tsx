@@ -1,4 +1,4 @@
-import { FC, ReactNode } from 'react';
+import { FC, ReactNode, SyntheticEvent } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { ServicesTypes } from '@/services';
@@ -8,6 +8,7 @@ import { SVG } from '../svg';
 import { PriceBlock } from '../price-block';
 import { AddToBagButton } from '../add-to-bag-button';
 import styles from './ConsultationItems.module.scss';
+import { ConsultationItemContainer } from './ConsultationItemContainer';
 
 interface ConsultationItemProps extends ServicesTypes.Doctor {
   serviceId: string;
@@ -27,7 +28,7 @@ export const ConsultationItem: FC<ConsultationItemProps> = ({
   children,
 }) => {
   return (
-    <div className={styles.consultationItemContainer}>
+    <ConsultationItemContainer>
       <div className={styles.consultationItem}>
         <Link href={`/doctor/${id}/${serviceId}`} className={styles.doctorImage}>
           <Image src={image} layout="fill" objectFit="cover" alt="doctor" />
@@ -76,7 +77,7 @@ export const ConsultationItem: FC<ConsultationItemProps> = ({
         </div>
       </div>
       {children}
-    </div>
+    </ConsultationItemContainer>
   );
 };
 

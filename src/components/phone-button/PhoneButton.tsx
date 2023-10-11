@@ -1,6 +1,6 @@
 'use client';
 
-import { FC } from 'react';
+import { FC, SyntheticEvent } from 'react';
 import { useModalContext } from '@/utils/client';
 import { SVG } from '../svg';
 import styles from './PhoneButton.module.scss';
@@ -12,7 +12,8 @@ interface PhoneButtonProps {
 export const PhoneButton: FC<PhoneButtonProps> = ({ phones }) => {
   const { openModal } = useModalContext();
 
-  const pressHandler = () => {
+  const pressHandler = (e: SyntheticEvent<any>) => {
+    e.stopPropagation();
     openModal('PhoneModal', { phones });
   };
 

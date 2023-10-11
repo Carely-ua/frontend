@@ -46,6 +46,10 @@
 }
 
 .addToCartButton {
+  button {
+    text-wrap: nowrap;
+  }
+
   @include tablet {
     padding-left: $gap-lg;
     border-left: 1px solid $light-grey;
@@ -68,5 +72,15 @@
         justify-content: flex-end;
       }
     }
+  }
+}
+
+.consultationItems {
+  & > div {
+    border-radius: 20px;
+    border: 1px solid $light-grey;
+    background: #FFF;
+    padding: $gap-md;
+    margin-bottom: $gap-xlg;
   }
 }

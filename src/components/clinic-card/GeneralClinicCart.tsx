@@ -11,6 +11,7 @@ import { PriceBlock } from '../price-block';
 import { AddToBagButton } from '../add-to-bag-button';
 import { PhoneButton } from '../phone-button';
 import styles from './ClinicCard.module.scss';
+import { GeneralClinicCartContainer } from './GeneralClinicCartContainer';
 
 interface ClinicCardProps extends Omit<NonNullable<ClinicTypes.Clinic>, 'clinicType'> {
   hrefPrefix: string;
@@ -42,49 +43,57 @@ export const GeneralClinicCart: FC<ClinicCardProps> = ({
   );
 
   return (
-    <div className={styles.card}>
-      <div className={styles.mainSection}>
-        <div className={styles.image}>
-          {!!mainImage && <Image src={mainImage} alt="clinic" layout="fill" objectFit="contain" />}
-        </div>
-        <div className={styles.generalCartContent}>
-          <div className={styles.header}>
-            <Typography component="h3">{name}</Typography>
-            <Rating rating={rating || 0} reviewsCount={reviewsCount} />
+    <GeneralClinicCartContainer path={`${hrefPrefix}/${id}`}>
+      <div className={styles.card}>
+        <div className={styles.mainSection}>
+          <div className={styles.image}>
+            {!!mainImage && (
+              <Image src={mainImage} alt="clinic" layout="fill" objectFit="contain" />
+            )}
           </div>
-          <div className={styles.desktopBottomSection}>
-            <BottomSection />
+          <div className={styles.generalCartContent}>
+            <div className={styles.header}>
+              <Typography component="h3">{name}</Typography>
+              <Rating rating={rating || 0} reviewsCount={reviewsCount} />
+            </div>
+            <div className={styles.desktopBottomSection}>
+              <BottomSection />
+            </div>
           </div>
         </div>
-      </div>
-      <div className={styles.mobileBottomSection}>
-        <BottomSection />
-      </div>
-      {services && (
-        <div className={styles.services}>
-          {services.map(service => {
-            if (!service) return null;
+        <div className={styles.mobileBottomSection}>
+          <BottomSection />
+        </div>
+        {services && (
+          <div className={styles.services}>
+            {services.map(service => {
+              if (!service) return null;
 
-            const { name, id, price, discountPrice, serviceType, doctors } = service;
+              const { name, id, price, discountPrice, serviceType, doctors } = service;
 
-            if (serviceType === ServiceType.Consultations) {
-              return <ConsultationItems key={id} doctors={doctors} serviceId={id} />;
-            }
-
-            return (
-              <div key={id} className={styles.service}>
-                <Typography component="p">{name}</Typography>
-                <div className={styles.buyInfo}>
-                  <div className={styles.price}>
-                    <PriceBlock firstPrice={price} secondPrice={discountPrice} />
+              if (serviceType === ServiceType.Consultations) {
+                return (
+                  <div key={id} className={styles.consultationItems}>
+                    <ConsultationItems doctors={doctors} serviceId={id} />
                   </div>
-                  <AddToBagButton buttonType="secondary" serviceId={id} />
+                );
+              }
+
+              return (
+                <div key={id} className={styles.service}>
+                  <Typography component="p">{name}</Typography>
+                  <div className={styles.buyInfo}>
+                    <div className={styles.price}>
+                      <PriceBlock firstPrice={price} secondPrice={discountPrice} />
+                    </div>
+                    <AddToBagButton buttonType="secondary" serviceId={id} />
+                  </div>
                 </div>
-              </div>
-            );
-          })}
-        </div>
-      )}
-    </div>
+              );
+            })}
+          </div>
+        )}
+      </div>
+    </GeneralClinicCartContainer>
   );
 };

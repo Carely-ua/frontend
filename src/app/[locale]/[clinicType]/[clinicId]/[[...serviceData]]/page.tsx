@@ -17,14 +17,14 @@ const ServicesSection = async ({ params }: ClinicParams) => {
   const categoryId = params.serviceData?.[1];
   const clinicType = getClinicType(params.clinicType);
 
-  const showServicesPanel = clinicType === ClinicType.Clinic;
+  const isClinic = clinicType === ClinicType.Clinic;
 
   const { data } = await getClinicServices(params.clinicId, serviceType);
-  const baseUrl = `/clinics/${params.clinicId}/${serviceType}`;
+  const baseUrl = `/${isClinic ? 'clinics' : 'labs'}/${params.clinicId}/${serviceType}`;
 
   return (
     <>
-      {showServicesPanel && (
+      {isClinic && (
         <ClinicServicesNavigation clinicId={params.clinicId} serviceType={serviceType} />
       )}
       {data.getServices && (

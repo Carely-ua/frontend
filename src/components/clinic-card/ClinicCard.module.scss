@@ -5,6 +5,7 @@
   border: 1px solid $light-grey;
   margin-bottom: $gap-xlg;
   padding: $gap-md;
+  cursor: pointer;
 
   @include tablet {
     padding: $gap-xlg;
@@ -28,7 +29,7 @@
   
     @include tablet {
       border-bottom: 0;
-      margin-bottom: 0;
+      margin-bottom: $gap-md;
     }
   }
 }
@@ -152,7 +153,7 @@
   align-items: center;
   justify-content: space-between;
   gap: $gap-md;
-  margin-top: customGap(7);
+  margin-top: $gap-xlg;
 
   @include tablet {
     margin-top: 0;
@@ -161,6 +162,7 @@
 
   button {
     max-width: 105px;
+    text-wrap: nowrap;
   }
 }
 
@@ -198,5 +200,13 @@
 
   @include tablet {
     display: none;
+  }
+}
+
+.consultationItems {
+  & > div {
+    padding-top: $gap-xlg;
+    margin-top: $gap-xlg;
+    border-top: 1px solid $light-grey;
   }
 }
