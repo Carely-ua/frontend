@@ -2,16 +2,47 @@
 
 .row {
   display: flex;
-  align-items: center;
+  align-items: end;
+
+  @include tablet {
+    align-items: center;
+  }
 
   & > * {
-    flex: 1;
-    flex: 15%;
-    &:nth-child(3) {
-      flex: 40%;
+    flex: 100% 0;
+    flex-shrink: 0;
+
+    @include tablet {
+      flex: 15% 1;
+      flex-shrink: 1;
     }
+
+    &:nth-child(3) {
+      flex: 50% 0;
+      flex-shrink: 0;
+
+      @include tablet {
+        flex: 40%;
+      }
+    }
+
+    &:nth-child(4) {
+      flex: 50% 0;
+      flex-shrink: 0;
+
+      @include tablet {
+        flex: 15% 1;
+      }
+    }
+
     &:first-child {
-      flex: 30%;
+      flex: 100% 0;
+      flex-shrink: 0;
+
+      @include tablet {
+        flex: 30% 1;
+        flex-shrink: 1;
+      }
     }
     &:last-child {
       flex: 50px;
@@ -22,6 +53,11 @@
 .head {
   margin-bottom: $gap-md;
   padding: 0 $gap-md;
+  display: none;
+
+  @include tablet {
+    display: flex;
+  }
 }
 
 .item {
@@ -29,11 +65,22 @@
   border-radius: 20px;
   border: 1px solid $light-grey;
   margin-bottom: $gap-xlg;
+  flex-wrap: wrap;
+  position: relative;
+
+  @include tablet {
+    flex-wrap: nowrap
+  }
 }
 
 .clinicInfo {
   display: flex;
   align-items: center;
+  margin-bottom: $gap-md;
+
+  @include tablet {
+    margin-bottom: 0;
+  }
 }
 
 .image {
@@ -45,6 +92,18 @@
 
   img {
     object-fit: cover;
+  }
+}
+
+.deleteButtonContainer {
+  position: absolute;
+  top: 11px;
+  right: 6px;
+
+  @include tablet {
+    top: initial;
+    right: initial;
+    position: relative;
   }
 }
 
@@ -83,6 +142,11 @@
   display: flex;
   align-items: center;
   gap: $gap-md;
+  margin-bottom: $gap-md;
+
+  @include tablet {
+    margin-bottom: 0;
+  }
 
   &Icon {
     width: 32px;
@@ -97,6 +161,34 @@
       path {
         color: $white;
         fill: $white;
+      }
+    }
+  }
+}
+
+.priceBlock {
+  p {
+    text-transform: capitalize;
+
+    @include tablet {
+      text-transform: none;
+    }
+  }
+
+  span {
+    display: none;
+
+    @include tablet {
+      display: inline;
+    }
+  }
+
+  div {
+    div {
+      justify-content: flex-end;
+
+      @include tablet {
+        justify-content: flex-start;
       }
     }
   }

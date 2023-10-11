@@ -14,7 +14,7 @@ export const PriceBlock: FC<PriceBlock> = ({ firstPrice, secondPrice, flexStart 
     <div>
       <div className={classNames(styles.priceItem, { [styles.priceItemStart]: flexStart })}>
         <Typography component="p" color="dark-grey">
-          Ціна в клініці
+          <span>Ціна </span>в клініці
         </Typography>
         <Typography component="h4" weight="medium">
           {firstPrice} грн
@@ -22,7 +22,7 @@ export const PriceBlock: FC<PriceBlock> = ({ firstPrice, secondPrice, flexStart 
       </div>
       <div className={classNames(styles.priceItem, { [styles.priceItemStart]: flexStart })}>
         <Typography component="p" color="dark-grey">
-          Ціна з Carely
+          <span>Ціна </span>з Carely
         </Typography>
         <Typography component="h4" color="secondary" weight="medium">
           {secondPrice} грн

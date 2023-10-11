@@ -78,8 +78,10 @@ const CartItem: FC<CartTypes.CartItem> = ({ id, service, doctor }) => {
         <Typography component="p">{titles[serviceType]}</Typography>
       </div>
       <Typography component="p">{name}</Typography>
-      <PriceBlock flexStart firstPrice={price} secondPrice={discountPrice} />
-      <div>
+      <div className={styles.priceBlock}>
+        <PriceBlock flexStart firstPrice={price} secondPrice={discountPrice} />
+      </div>
+      <div className={styles.deleteButtonContainer}>
         <button onClick={deleteCartItem} className={styles.deleteButton}>
           <SVG.Cross width={24} height={24} />
         </button>
