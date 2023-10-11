@@ -14,6 +14,7 @@ import { ServiceType } from '@/utils/graphql/__generated__/types';
 import { useModalContext } from '@/utils/client';
 import { PriceBlock } from '../price-block';
 import { SVG } from '../svg';
+import { Breadcrumbs } from '../breadcrumbs';
 import styles from './Cart.module.scss';
 
 const titles = {
@@ -48,7 +49,9 @@ const CartItem: FC<CartTypes.CartItem> = ({ id, service, doctor }) => {
   const image = isConsultation ? doctor?.image : clinic?.mainImage;
   const Icon = icons[serviceType];
   const clinicType = clinic?.clinicType || 'clinic';
-  const pathForImageLink = isConsultation ? '/' : `/${CLINIC_TYPES[clinicType]}/${clinic?.id}`;
+  const clinicPath = `/${CLINIC_TYPES[clinicType]}/${clinic?.id}`;
+  const doctorPath = `/doctor/${doctor?.id}`;
+  const pathForImageLink = isConsultation ? doctorPath : clinicPath;
 
   return (
     <div className={classNames(styles.row, styles.item)}>
@@ -59,11 +62,11 @@ const CartItem: FC<CartTypes.CartItem> = ({ id, service, doctor }) => {
           </Link>
         </div>
         <div>
-          <Link href="/" className={styles.link}>
+          <Link href={clinicPath} className={styles.link}>
             <Typography component="h4">{clinic?.name}</Typography>
           </Link>
           {isConsultation && (
-            <Link href="/" className={styles.link}>
+            <Link href={doctorPath} className={styles.link}>
               <Typography component="p" color="dark-grey">
                 {doctor?.name}
               </Typography>
@@ -111,6 +114,7 @@ export const Cart = () => {
 
   return (
     <div>
+      <Breadcrumbs breadcrumbs={[{ label: 'Корзина', path: '/' }]} />
       <div className={styles.table}>
         <div className={classNames(styles.row, styles.head)}>
           <Typography component="p" color="secondary">
