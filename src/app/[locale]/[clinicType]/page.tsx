@@ -17,6 +17,7 @@ const CLINIC_TYPES = {
 
 const Clinics: FC<ClinicsProps> = ({ clinicType, clinics, hrefPrefix }) => {
   const t = useTranslations(clinicType);
+  const icon = clinicType === 'clinic' ? 'Clinic' : 'Lab';
 
   if (clinics.length <= 0) return null;
 
@@ -26,7 +27,7 @@ const Clinics: FC<ClinicsProps> = ({ clinicType, clinics, hrefPrefix }) => {
       hrefPrefix={hrefPrefix}
       clinics={clinics}
       title={t('title')}
-      icon="Clinic"
+      icon={icon}
     />
   );
 };

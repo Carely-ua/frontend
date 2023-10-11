@@ -1,4 +1,3 @@
-import { useTranslations } from 'next-intl';
 import { FC } from 'react';
 import { Search, SearchProps } from '@/components';
 import { getClinicsWithServices } from '@/services';
@@ -17,10 +16,11 @@ const path = {
 interface ServicePageProps extends SearchProps {}
 
 const ServicePage: FC<ServicePageProps> = ({ clinics, hrefPrefix }) => {
-  const t = useTranslations('clinic');
-
   //@ts-ignore
   const serviceType = clinics[0]?.services?.[0]?.serviceType;
+  console.log('serviceType23', serviceType);
+  const title = serviceType === 'analyse' ? 'Аналізи у Вінниці' : 'Діагностика у Вінниці';
+  const icon = serviceType === 'analyse' ? 'Analyze' : 'Diagnostic';
 
   return (
     <Search
@@ -33,8 +33,8 @@ const ServicePage: FC<ServicePageProps> = ({ clinics, hrefPrefix }) => {
       onlyGeneralCard
       hrefPrefix={hrefPrefix}
       clinics={clinics}
-      title={t('title')}
-      icon="Clinic"
+      title={title}
+      icon={icon}
     />
   );
 };

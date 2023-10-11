@@ -4,8 +4,17 @@
   border-radius: 20px;
   background: linear-gradient(134deg, $primary 0%, $secondary 100%);
   padding: customGap(3);
+  margin-bottom: customGap(10);
+
+  @include tablet {
+    padding: $gap-xlg $gap-lg $gap-xlg customGap(10);
+    margin-bottom: customGap(18);
+  }
+}
+
+.pageSearchWithInput {
   height: 150px;
-  margin-bottom: customGap(18);
+  padding: customGap(3);
 
   @include tablet {
     padding: $gap-xlg $gap-lg 0 customGap(10);

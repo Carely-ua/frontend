@@ -1,7 +1,11 @@
 @use '@/scss/abstracts' as *;
 
 .breadcrumbs {
-  margin-bottom: customGap(10);
+  margin-bottom: $gap-xlg;
+
+  @include tablet {
+    margin-bottom: customGap(10);
+  }
 }
 
 .item {

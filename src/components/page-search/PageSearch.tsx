@@ -1,4 +1,5 @@
 import { ChangeEvent, FC } from 'react';
+import classNames from 'classnames';
 import { Typography } from '@/ui-kit';
 import { SearchInput, SearchInputProps } from '../search-input';
 import { SectionIcon, SectionIconProps } from '../section-icon';
@@ -12,7 +13,10 @@ export interface PageSearchProps
 
 export const PageSearch: FC<PageSearchProps> = ({ icon, title, searchHandler, items }) => {
   return (
-    <div className={styles.pageSearch}>
+    <div
+      className={classNames(styles.pageSearch, {
+        [styles.pageSearchWithInput]: !!searchHandler,
+      })}>
       <div className={styles.topSection}>
         <Typography component="h2" color="white">
           {title}

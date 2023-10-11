@@ -12,7 +12,7 @@ const DoctorPage = async ({ params }: DoctorPageProps) => {
 
   return (
     <>
-      <PageSearch title="Консультації у Вінниці" icon="Clinic" />
+      <PageSearch title="Консультації у Вінниці" icon="Doctor" />
       <DoctorProfile doctor={doctor} service={service} />
     </>
   );

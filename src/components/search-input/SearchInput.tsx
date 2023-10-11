@@ -21,17 +21,23 @@ const SuggestionList: FC<SuggestionList> = ({ items = [] }) => {
 
   return (
     <div className={styles.suggestionList}>
-      {items.map(({ title, id, type }) => (
-        <div
-          onMouseDown={() => clickHandler(`/${type}/${id}`)}
-          className={styles.suggestionListItem}
-          key={id}>
-          <Typography component="p" color="dark-grey">
-            {title}
-          </Typography>
-          <SVG.Arrow />
-        </div>
-      ))}
+      {items.map(item => {
+        if (!item) return null;
+
+        const { title, id, type } = item;
+
+        return (
+          <div
+            onMouseDown={() => clickHandler(`/${type}/${id}`)}
+            className={styles.suggestionListItem}
+            key={id}>
+            <Typography component="p" color="dark-grey">
+              {title}
+            </Typography>
+            <SVG.Arrow />
+          </div>
+        );
+      })}
     </div>
   );
 };

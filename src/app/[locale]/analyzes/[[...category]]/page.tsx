@@ -14,7 +14,7 @@ const Analyzes: FC<AnalyzesProps> = ({ categories, categoryId }) => {
 
   return (
     <>
-      <PageSearch title={t('title')} icon="Lab" />
+      <PageSearch title={t('title')} icon="Analyze" />
       <Breadcrumbs breadcrumbs={[{ label: 'Аналізи', path: '/' }]} />
       <ServicePanel
         baseUrl="/analyzes"

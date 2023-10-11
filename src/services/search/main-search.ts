@@ -4,7 +4,7 @@ import { useDebounce } from 'usehooks-ts';
 import { ClinicType } from '@/utils/graphql/__generated__/types';
 import { MainSearchDocument, MainSearchQuery } from './graphql/__generated__/MainSearch';
 
-export type SearchItems = Array<{ title: string; id: string; type: string }>;
+export type SearchItems = Array<{ title: string; id: string; type: string } | undefined>;
 
 const generateSearchItems = (data: MainSearchQuery['mainSearch']) => {
   const items: SearchItems = [];

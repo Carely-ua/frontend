@@ -18,8 +18,8 @@ const ServicePage: FC<ServicePageProps> = ({ clinics, hrefPrefix }) => {
       onlyGeneralCard
       hrefPrefix={hrefPrefix}
       clinics={clinics}
-      title={t('title')}
-      icon="Clinic"
+      title="Консультації у Вінниці"
+      icon="Doctor"
     />
   );
 };
