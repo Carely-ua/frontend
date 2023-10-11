@@ -17,6 +17,7 @@ const containerStyle = {
 
 interface ClinicMainInfoProps extends RatingProps, ClinicExtraInfoProps, MapItemProps {
   name: string;
+  phone: string;
 }
 
 export const ClinicMainInfo: FC<ClinicMainInfoProps> = ({
@@ -28,6 +29,7 @@ export const ClinicMainInfo: FC<ClinicMainInfoProps> = ({
   address,
   workingTime,
   mapCoordinates,
+  phone,
 }) => {
   const mapData = useMemo(
     () => ({
@@ -47,7 +49,7 @@ export const ClinicMainInfo: FC<ClinicMainInfoProps> = ({
         </div>
         <div className={styles.clinicInfo}>
           <div className={styles.topSection}>
-            <PhoneButton />
+            <PhoneButton phones={[phone]} />
             <Rating rating={rating} reviewsCount={reviewsCount} />
           </div>
           <Typography className={styles.name} component="h2">

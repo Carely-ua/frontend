@@ -25,6 +25,7 @@ export const ClinicCard: FC<ClinicCardProps> = ({
   reviewsCount,
   workingTime = defaultWorkingHours,
   specializations,
+  phone,
 }) => {
   const specializationsArray = specializations?.map(item => item?.title);
 
@@ -61,7 +62,7 @@ export const ClinicCard: FC<ClinicCardProps> = ({
       <div className={styles.bottomSection}>
         <ClinicExtraInfo address={address} workingTime={workingTime} />
         <div className={styles.bottomSectionItem}>
-          <PhoneButton />
+          <PhoneButton phones={[phone]} />
           <Link className={styles.link} href={`/${hrefPrefix}/${id}`}>
             <Button>Детальніше</Button>
           </Link>

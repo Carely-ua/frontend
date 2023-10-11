@@ -4,6 +4,8 @@
   border-radius: 50%;
   background-color: $secondary;
   width: 44px;
+  flex: 44px 0;
+  flex-shrink: 0;
   height: 44px;
   display: flex;
   align-items: center;

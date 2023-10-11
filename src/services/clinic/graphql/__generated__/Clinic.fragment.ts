@@ -12,6 +12,7 @@ export type ClinicFragment = {
   clinicType: Types.ClinicType;
   reviewsCount?: number | null;
   workingTime?: string | null;
+  phone: string;
   mapCoordinates: { __typename?: 'MapCoordinates'; lat: number; lng: number };
 };
 
@@ -34,6 +35,7 @@ export const ClinicFragmentDoc = {
           { kind: 'Field', name: { kind: 'Name', value: 'clinicType' } },
           { kind: 'Field', name: { kind: 'Name', value: 'reviewsCount' } },
           { kind: 'Field', name: { kind: 'Name', value: 'workingTime' } },
+          { kind: 'Field', name: { kind: 'Name', value: 'phone' } },
           {
             kind: 'Field',
             name: { kind: 'Name', value: 'mapCoordinates' },

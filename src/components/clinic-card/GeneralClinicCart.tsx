@@ -27,12 +27,13 @@ export const GeneralClinicCart: FC<ClinicCardProps> = ({
   reviewsCount,
   workingTime,
   services,
+  phone,
 }) => {
   const BottomSection = () => (
     <div className={styles.bottomSection}>
       <ClinicExtraInfo address={address} workingTime={workingTime} />
       <div className={styles.bottomSectionItem}>
-        <PhoneButton />
+        <PhoneButton phones={[phone]} />
         <Link className={styles.link} href={`${hrefPrefix}/${id}`}>
           <Button>Детальніше</Button>
         </Link>

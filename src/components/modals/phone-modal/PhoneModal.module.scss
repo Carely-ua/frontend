@@ -1,0 +1,21 @@
+@use '@/scss/abstracts' as *;
+
+.modal {
+  width: calc(100vw - 40px);
+  margin: 0 auto;
+  border-radius: 20px;
+  background: linear-gradient(134deg, $primary 0%, $secondary 100%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  padding: customGap(13) customGap(10) customGap(10); 
+
+  @include tablet {
+    padding: $gap-xlg 0 0;
+    margin: 0;
+    width: 450px;
+    height: 280px;
+  }
+}

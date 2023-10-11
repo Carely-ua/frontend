@@ -7,6 +7,7 @@ import { ServiceWasNotAddedModal } from './service-was-not-added-modal';
 import { LogoutModal } from './logout-modal';
 import { AddReviewModal } from './add-review-modal';
 import { AlertModal } from './alert-modal';
+import { PhoneModal } from './phone-modal/PhoneModal';
 
 export const modals = {
   AddToBagAuthModal,
@@ -17,6 +18,7 @@ export const modals = {
   LogoutModal,
   AddReviewModal,
   AlertModal,
+  PhoneModal,
 };
 
 export type ModalId = keyof typeof modals;

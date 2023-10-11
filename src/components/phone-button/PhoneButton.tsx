@@ -1,12 +1,19 @@
 'use client';
 
+import { FC } from 'react';
+import { useModalContext } from '@/utils/client';
 import { SVG } from '../svg';
 import styles from './PhoneButton.module.scss';
 
-export const PhoneButton = () => {
+interface PhoneButtonProps {
+  phones: string[];
+}
+
+export const PhoneButton: FC<PhoneButtonProps> = ({ phones }) => {
+  const { openModal } = useModalContext();
+
   const pressHandler = () => {
-    //TODO: implement popup for it
-    console.log('pressHandler');
+    openModal('PhoneModal', { phones });
   };
 
   return (

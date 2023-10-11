@@ -101,6 +101,11 @@
     display: flex;
     align-items: center;
     gap: $gap-md;
+    padding-top: $gap-sm;
+
+    @include tablet {
+      padding-top: 0;
+    }
   }
 }
 

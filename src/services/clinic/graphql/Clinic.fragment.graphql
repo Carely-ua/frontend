@@ -8,6 +8,7 @@ fragment Clinic on Clinic {
   clinicType
   reviewsCount
   workingTime
+  phone
   mapCoordinates {
     lat
     lng

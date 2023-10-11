@@ -18,6 +18,7 @@ export type GetClinicsQuery = {
     clinicType: Types.ClinicType;
     reviewsCount?: number | null;
     workingTime?: string | null;
+    phone: string;
     specializations?: Array<{
       __typename?: 'Specialization';
       id: string;
@@ -94,6 +95,7 @@ export const GetClinicsDocument = {
           { kind: 'Field', name: { kind: 'Name', value: 'clinicType' } },
           { kind: 'Field', name: { kind: 'Name', value: 'reviewsCount' } },
           { kind: 'Field', name: { kind: 'Name', value: 'workingTime' } },
+          { kind: 'Field', name: { kind: 'Name', value: 'phone' } },
           {
             kind: 'Field',
             name: { kind: 'Name', value: 'mapCoordinates' },
