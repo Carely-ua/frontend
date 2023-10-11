@@ -25,8 +25,15 @@ export type GetDoctorPageQuery = {
       rating?: number | null;
       reviewsCount?: number | null;
       address: string;
+      phone: string;
       workingTime?: string | null;
       mapCoordinates: { __typename?: 'MapCoordinates'; lat: number; lng: number };
+      reviews?: Array<{
+        __typename?: 'Review';
+        id: string;
+        text: string;
+        rate?: number | null;
+      } | null> | null;
     } | null;
   } | null;
   service?: {
@@ -98,6 +105,7 @@ export const GetDoctorPageDocument = {
                       { kind: 'Field', name: { kind: 'Name', value: 'rating' } },
                       { kind: 'Field', name: { kind: 'Name', value: 'reviewsCount' } },
                       { kind: 'Field', name: { kind: 'Name', value: 'address' } },
+                      { kind: 'Field', name: { kind: 'Name', value: 'phone' } },
                       { kind: 'Field', name: { kind: 'Name', value: 'workingTime' } },
                       {
                         kind: 'Field',
@@ -107,6 +115,18 @@ export const GetDoctorPageDocument = {
                           selections: [
                             { kind: 'Field', name: { kind: 'Name', value: 'lat' } },
                             { kind: 'Field', name: { kind: 'Name', value: 'lng' } },
+                          ],
+                        },
+                      },
+                      {
+                        kind: 'Field',
+                        name: { kind: 'Name', value: 'reviews' },
+                        selectionSet: {
+                          kind: 'SelectionSet',
+                          selections: [
+                            { kind: 'Field', name: { kind: 'Name', value: 'id' } },
+                            { kind: 'Field', name: { kind: 'Name', value: 'text' } },
+                            { kind: 'Field', name: { kind: 'Name', value: 'rate' } },
                           ],
                         },
                       },

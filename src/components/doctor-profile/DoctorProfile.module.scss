@@ -3,9 +3,13 @@
 .wrapper {
   display: flex;
   gap: $gap-xlg;
+  margin-bottom: customGap(10);
 
-  & > div {
-    flex: 50% 0 0;
+  @include tablet {
+    margin-bottom: customGap(20);
+    & > div {
+      flex: 50% 0 0;
+    }
   }
 }
 
@@ -18,7 +22,7 @@
 }
 
 .clinicCard {
-  & > div {
+  & > div > div{
     border: none;
     margin-bottom: 0;
 
@@ -33,5 +37,15 @@
 .doctorInfo {
   & > div {
     padding: $gap-xlg $gap-xlg 0 $gap-xlg;
+    border: 1px solid $light-grey;
+    border-radius: 20px;
+  }
+}
+
+.map {
+  display: none;
+
+  @include tablet {
+    display: block;
   }
 }
