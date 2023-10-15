@@ -7,7 +7,7 @@ export interface TypographyProps {
   children: ReactNode;
   id?: string;
   className?: string;
-  color?: 'primary' | 'secondary' | 'white' | 'dark-grey';
+  color?: 'primary' | 'secondary' | 'white' | 'dark-grey' | 'dangerous';
   weight?: 'bold' | 'normal' | 'medium';
   gutterBottom?: 'xs' | 'sm' | 'md' | 'lg' | 'xlg';
   onClick?(): void;

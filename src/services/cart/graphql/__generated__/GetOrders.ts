@@ -16,6 +16,7 @@ export type GetOrdersQuery = {
       number?: number | null;
       endDate?: any | null;
       createdAt?: any | null;
+      status?: Types.OrderStatus | null;
       doctor?: {
         __typename?: 'Doctor';
         id: string;
@@ -70,6 +71,7 @@ export const GetOrdersDocument = {
                       { kind: 'Field', name: { kind: 'Name', value: 'number' } },
                       { kind: 'Field', name: { kind: 'Name', value: 'endDate' } },
                       { kind: 'Field', name: { kind: 'Name', value: 'createdAt' } },
+                      { kind: 'Field', name: { kind: 'Name', value: 'status' } },
                       {
                         kind: 'Field',
                         name: { kind: 'Name', value: 'doctor' },

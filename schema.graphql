@@ -173,7 +173,7 @@ type OrderItem {
   order: Order
   doctor: Doctor
   service: Service
-  status: OrderStatus!
+  status: OrderStatus
   createdAt: Date
   endDate: Date
   number: Int
@@ -242,10 +242,8 @@ enum ClinicType {
 }
 enum OrderStatus {
   done
-  waitingPayment
-  confirmedPayment
-  clinicApprovalPending
-  confirmedByClinic
+  active
+  unActive
 }
 enum ServiceType {
   analyse

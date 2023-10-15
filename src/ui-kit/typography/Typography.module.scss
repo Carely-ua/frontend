@@ -74,6 +74,10 @@
     color: $dark-grey;
   }
 
+  &--dangerous {
+    color: $dangerous;
+  }
+
   //font weight
   &--bold {
     font-weight: 700;

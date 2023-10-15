@@ -494,15 +494,13 @@ export type OrderItem = {
   orderId?: Maybe<Scalars['String']['output']>;
   service?: Maybe<Service>;
   serviceId?: Maybe<Scalars['String']['output']>;
-  status: OrderStatus;
+  status?: Maybe<OrderStatus>;
 };
 
 export enum OrderStatus {
-  ClinicApprovalPending = 'clinicApprovalPending',
-  ConfirmedByClinic = 'confirmedByClinic',
-  ConfirmedPayment = 'confirmedPayment',
+  Active = 'active',
   Done = 'done',
-  WaitingPayment = 'waitingPayment',
+  UnActive = 'unActive',
 }
 
 export type Query = {

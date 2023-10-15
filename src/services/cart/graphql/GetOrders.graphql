@@ -8,6 +8,7 @@ query GetOrders {
       number
       endDate
       createdAt
+      status
       doctor {
         id
         name

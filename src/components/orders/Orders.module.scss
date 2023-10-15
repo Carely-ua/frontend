@@ -80,3 +80,63 @@
   flex: 275px 0;
   flex-shrink: 0;
 }
+
+.status {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: $gap-sm;
+  margin-bottom: $gap-sm;
+
+  span {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: inline-block;
+    border: 2px solid #7D7D7D;
+  }
+
+  &Active {
+    span {
+      background-color: $primary;
+    }
+  }
+
+  &Done {
+    span {
+      background-color: $light-grey;
+    }
+  }
+
+  &UnActive {
+    span {
+      background-color: $dangerous;
+    }
+  }
+}
+
+.statusButton {
+  width: 186px;
+}
+
+.mainSectionItem {
+  display: flex;
+  align-items: flex-start;
+  gap: $gap-md;
+  justify-content: space-between;
+}
+
+.priceBlock {
+  display: flex;
+  align-items: center;
+  gap: $gap-xs;
+  
+  h5 {
+    white-space: nowrap;
+    position: relative;
+
+    &:first-child {
+      text-decoration: line-through;
+    }
+  }
+}
