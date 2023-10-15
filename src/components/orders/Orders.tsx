@@ -62,6 +62,20 @@ const OrderItem: FC<CartTypes.OrderItem> = ({
     : '';
   const mainSectionText = isConsultation ? service.clinic?.name : service?.name;
 
+  const serviceInfo = (
+    <div className={styles.mainSectionItem}>
+      <Typography component="p">{mainSectionText}</Typography>
+      <div className={styles.priceBlock}>
+        <Typography component="h5" color="dark-grey">
+          {service?.price}
+        </Typography>
+        <Typography component="h5" color="secondary">
+          {service?.discountPrice} грн
+        </Typography>
+      </div>
+    </div>
+  );
+
   return (
     <div className={styles.voucher}>
       <div className={classNames(styles.block, styles.blockCenter, styles.serviceTypeContainer)}>
@@ -85,22 +99,13 @@ const OrderItem: FC<CartTypes.OrderItem> = ({
               </Typography>
             </div>
           </div>
-          <div className={styles.mainSectionItem}>
-            <Typography component="p">{mainSectionText}</Typography>
-            <div className={styles.priceBlock}>
-              <Typography component="h5" color="dark-grey">
-                {service?.price}
-              </Typography>
-              <Typography component="h5" color="secondary">
-                {service?.discountPrice} грн
-              </Typography>
-            </div>
-          </div>
+          <div className={styles.serviceInfoDesktop}>{serviceInfo}</div>
         </div>
       </div>
+      <div className={styles.serviceInfoMobile}>{serviceInfo}</div>
       <div className={classNames(styles.block, styles.blockCenter)}>
         <div>
-          <Typography component="p" color="secondary" gutterBottom="sm">
+          <Typography component="p" color="secondary" className={styles.blockTitle}>
             № ваучера
           </Typography>
           <Typography component="h5" weight="medium">
@@ -110,7 +115,7 @@ const OrderItem: FC<CartTypes.OrderItem> = ({
       </div>
       <div className={classNames(styles.block, styles.blockCenter)}>
         <div>
-          <Typography component="p" color="secondary" gutterBottom="sm">
+          <Typography component="p" color="secondary" className={styles.blockTitle}>
             Дата створенняя
           </Typography>
           <Typography component="h5" weight="medium">
@@ -120,10 +125,13 @@ const OrderItem: FC<CartTypes.OrderItem> = ({
       </div>
       <div className={classNames(styles.block, styles.blockCenter)}>
         <div>
-          <Typography component="p" color="secondary" gutterBottom="sm">
+          <Typography component="p" color="secondary" className={styles.blockTitle}>
             Термін дії
           </Typography>
-          <Typography component="h5" weight="medium" color="dangerous">
+          <Typography
+            component="h5"
+            weight="medium"
+            color={status === OrderStatus.UnActive ? 'dangerous' : 'black'}>
             {formatDate(endDate)}
           </Typography>
         </div>

@@ -12,8 +12,14 @@
   border-radius: 20px;
   border: 1px solid $light-grey;
   margin-bottom: $gap-xlg;
-  padding: $gap-md 0;
+  padding: $gap-md;
   display: flex;
+  flex-wrap: wrap;
+
+  @include tablet {
+    padding: $gap-md 0;
+    flex-wrap: nowrap;
+  }
 }
 
 .block {
@@ -21,20 +27,41 @@
   align-items: center;
   justify-content: center;
   flex: 100% 1 1;
-  padding: 0 $gap-md;
 
-  &:not(:last-child) {
-    border-right: 1px solid $dark-grey;
+  @include tablet {
+    padding: 0 $gap-md;
+    border-left: 1px solid $grey;
   }
 
   &Center {
     & > div {
       text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      margin-bottom: $gap-md;
+
+      @include tablet {
+        margin-bottom: 0;
+        width: auto;
+        display: block;
+      }
     }
   }
 }
 
 .serviceType {
+  display: flex;
+  flex-direction: column;
+  gap: $gap-xs;
+
+  @include tablet {
+    display: block;
+    flex-direction: row;
+    gap: 0;
+  }
+
   svg {
     path {
       color: $primary;
@@ -44,15 +71,29 @@
 }
 
 .serviceTypeContainer {
-  flex: 120px 0;
+  flex: 115px 0;
   flex-shrink: 0;
+  height: 116px;
+  border-bottom: 1px solid $grey;
+  border-right: 1px solid $grey;
+
+  @include tablet {
+    flex: 120px 0;
+    flex-shrink: 0;
+    height: auto;
+    border-bottom: none;
+    border-right: none;
+  }
 }
 
 .mainInfo {
   display: flex;
   gap: $gap-md;
   align-items: center;
-  margin-bottom: $gap-md;
+
+  @include tablet {
+    margin-bottom: $gap-md;
+  }
 }
 
 .image {
@@ -62,6 +103,11 @@
   flex-shrink: 0;
   height: 48px;
   overflow: hidden;
+  display: none;
+
+  @include tablet {
+    display: block;
+  }
 
   img {
     width: 100%;
@@ -72,13 +118,41 @@
 
 .mainSection {
   justify-content: flex-start;
-  flex: 450px 1;
+  flex: calc(100% - 115px) 0;
   flex-shrink: 0;
+  border-bottom: 1px solid $grey;
+  padding: 0 $gap-md;
+
+  @include tablet {
+    border-bottom: 0;
+    flex: 450px 1;
+    flex-shrink: 0;
+  }
 }
 
 .statusBlock {
-  flex: 275px 0;
+  flex: 100% 0;
   flex-shrink: 0;
+  border-top: 1px solid $grey;
+  padding-top: $gap-md;
+
+  & > div {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+
+    @include tablet {
+      display: block;
+      width: auto;
+    }   
+  }
+
+  @include tablet {
+    flex: 275px 0;
+    flex-shrink: 0;
+    border-top: none;
+  }
 }
 
 .status {
@@ -86,7 +160,10 @@
   justify-content: center;
   align-items: center;
   gap: $gap-sm;
-  margin-bottom: $gap-sm;
+
+  @include tablet {
+    margin-bottom: $gap-sm;
+  }
 
   span {
     width: 24px;
@@ -138,5 +215,31 @@
     &:first-child {
       text-decoration: line-through;
     }
+  }
+}
+
+.serviceInfo {
+  &Mobile {
+    width: 100%;
+    padding: $gap-md 0;
+    border-bottom: 1px solid $grey;
+    margin-bottom: $gap-md;
+    @include tablet {
+      display: none;
+    }
+  }
+
+  &Desktop {
+    display: none;
+
+    @include tablet {
+      display: block;
+    }
+  }
+}
+
+.blockTitle {
+  @include tablet {
+    margin-bottom: $gap-sm !important;
   }
 }

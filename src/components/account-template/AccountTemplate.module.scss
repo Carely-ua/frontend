@@ -1,8 +1,18 @@
 @use '@/scss/abstracts' as *;
 
 .accountTemplate {
-  display: flex;
-  gap: $gap-xlg;
+  @include tablet {
+    display: flex;
+    gap: $gap-xlg;
+  }
+}
+
+.accountNavigation {
+  margin-bottom: customGap(10);
+
+  @include tablet {
+    margin-bottom: 0;
+  }
 }
 
 .content {
