@@ -5,7 +5,15 @@ const nextConfig = {
     serverActions: true,
   },
   images: {
-    domains: ['d1csarkz8obe9u.cloudfront.net', 'img.freepik.com'],
+    domains: [
+      'd1csarkz8obe9u.cloudfront.net',
+      'img.freepik.com',
+      'scontent.fiev13-1.fna.fbcdn.net',
+      'www.neuromed.ua',
+      'medilux.ua',
+      'www.salutem.ua',
+      'medok.vn.ua',
+    ],
   },
   async redirects() {
     return [
