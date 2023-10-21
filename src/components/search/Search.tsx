@@ -61,7 +61,7 @@ export const Search: FC<SearchProps> = ({
       {isCardActive ? (
         <div className={styles.mobileMap}>
           {/* @ts-ignore */}
-          <Map data={clinics} />
+          <Map data={clinics} hrefPrefix={hrefPrefix} />
         </div>
       ) : (
         <div>
