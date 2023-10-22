@@ -18,7 +18,7 @@ export const Rating: FC<RatingProps> = ({ rating = 0, reviewsCount }) => {
         </Typography>
       </div>
       {reviewsCount !== null && reviewsCount !== undefined && (
-        <Typography component="p" color="secondary">
+        <Typography component="p" color="secondary" className={styles.text}>
           {reviewsCount} відгуків
         </Typography>
       )}
