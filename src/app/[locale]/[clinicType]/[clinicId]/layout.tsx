@@ -23,7 +23,6 @@ const ClinicLayout: FC<ClinicLayoutProps> = async ({ children, params }) => {
 
   checkClinicType(clinicType);
   const { data } = await getClinic(clinicId);
-  console.log('data', data);
 
   if (!data.clinic) return '...error';
 

@@ -15,6 +15,7 @@ export const AddToBagButton: FC<AddToBagButtonProps> = ({ buttonType, serviceId,
   const addToCartHandler = async (e: SyntheticEvent<any>) => {
     e.stopPropagation();
     await addToCart({ serviceId, doctorId });
+    console.log('product added successfully');
   };
 
   return (

@@ -4,6 +4,7 @@ import classNames from 'classnames';
 import Image from 'next/image';
 import { FC } from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { useSession } from 'next-auth/react';
 import { Button, Typography } from '@/ui-kit';
 import { CartTypes } from '@/services';
@@ -98,14 +99,17 @@ export const Cart = () => {
   const { createOrder } = useCreateOrder();
   const { data: session } = useSession();
   const { openModal } = useModalContext();
+  const router = useRouter();
 
   const createOrderHandler = async () => {
     if (!session?.user.token) {
-      openModal('AddToBagAuthModal', { successSignInHandler: () => null });
+      openModal('AddToBagAuthModal');
       return;
     }
 
     await createOrder();
+    router.push('/account/orders');
+    console.log('Order created successfully1');
   };
 
   if (!data) return null;

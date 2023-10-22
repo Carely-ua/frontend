@@ -10,14 +10,14 @@
   box-shadow:
   0px 5px 20px 0px rgba(0, 88, 193, 0.1),
   0px 2px 8px 0px rgba(0, 113, 83, 0.04);
-}
 
-.header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: $gap-sm;
-  background-color: $white;
+  .header {
+    padding: $gap-sm;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: $white;
+  }
 }
 
 .section {

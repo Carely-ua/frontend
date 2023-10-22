@@ -18,7 +18,6 @@ export const AddToBagAuthModal: ModalComponent<AddToBagAuthModalProps> = ({
 
   const closeHandler = () => {
     handleClose();
-    // openModal('ServiceWasNotAddedModal');
   };
 
   return (

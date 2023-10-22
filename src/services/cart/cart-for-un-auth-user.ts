@@ -31,7 +31,7 @@ export const useCartForUnAuthUser = () => {
     [getCartIds],
   );
 
-  const clearIds = useCallback(async () => {
+  const clearIds = useCallback(() => {
     localStorage.removeItem(CART_IDS);
   }, []);
 

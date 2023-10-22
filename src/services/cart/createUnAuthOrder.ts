@@ -11,8 +11,9 @@ export const useLinkCartItems = () => {
 
   const linkCartItems = useCallback(async () => {
     const ids = getCartIds();
+    const itemAmount = ids.length;
 
-    if (ids.length === 0) return;
+    if (itemAmount === 0) return 0;
     await _linkCartItemToUser({
       variables: {
         ids,
@@ -24,6 +25,8 @@ export const useLinkCartItems = () => {
       },
     });
     clearIds();
+
+    return itemAmount;
   }, [_linkCartItemToUser, clearIds, getCartIds, session?.user?.token]);
 
   return { linkCartItems };
