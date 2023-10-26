@@ -1,5 +1,6 @@
 import { signOut } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
+import { useApolloClient } from '@apollo/client';
 import { Button, Typography } from '@/ui-kit';
 import { CloseButton } from '@/components/close-button';
 import { ModalComponent } from '..';
@@ -8,11 +9,14 @@ import styles from './LogoutModal.module.scss';
 
 export const LogoutModal: ModalComponent = ({ handleClose, open }) => {
   const router = useRouter();
+  const client = useApolloClient();
 
   const logoutHandler = async () => {
     await signOut({ redirect: false });
+    await client.resetStore();
     handleClose();
     router.push('/');
+    router.refresh();
   };
 
   return (

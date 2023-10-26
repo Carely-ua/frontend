@@ -175,6 +175,13 @@ interface OrdersProps {
 }
 
 export const Orders: FC<OrdersProps> = ({ orders }) => {
+  if (orders.length === 0)
+    return (
+      <Typography component="h3" className={styles.message}>
+        У вас поки немає жодного замовлення
+      </Typography>
+    );
+
   return (
     <div>
       {orders.map(order => {
