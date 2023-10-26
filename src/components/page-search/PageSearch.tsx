@@ -7,11 +7,11 @@ import styles from './PageSearch.module.scss';
 
 export interface PageSearchProps
   extends SectionIconProps,
-    Pick<SearchInputProps, 'searchHandler' | 'items'> {
+    Pick<SearchInputProps, 'searchHandler' | 'items' | 'loading'> {
   title: string;
 }
 
-export const PageSearch: FC<PageSearchProps> = ({ icon, title, searchHandler, items }) => {
+export const PageSearch: FC<PageSearchProps> = ({ icon, title, searchHandler, items, loading }) => {
   return (
     <div
       className={classNames(styles.pageSearch, {
@@ -31,6 +31,7 @@ export const PageSearch: FC<PageSearchProps> = ({ icon, title, searchHandler, it
             placeholder="Введіть назву клініки"
             searchHandler={searchHandler}
             items={items}
+            loading={loading}
           />
         </div>
       )}

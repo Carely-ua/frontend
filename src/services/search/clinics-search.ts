@@ -24,7 +24,7 @@ export const useClinicsSearch = () => {
   const [value, setValue] = useState('');
   const debouncedValue = useDebounce(value, 500);
 
-  const [search, { data, previousData }] = useLazyQuery(SearchClinicsDocument, {
+  const [search, { data, previousData, loading }] = useLazyQuery(SearchClinicsDocument, {
     variables: {
       filters: {},
     },
@@ -42,5 +42,5 @@ export const useClinicsSearch = () => {
     search({ variables: { filters: { name: debouncedValue } } });
   }, [debouncedValue, search]);
 
-  return { searchItems, searchHandler };
+  return { searchItems, searchHandler, loading };
 };

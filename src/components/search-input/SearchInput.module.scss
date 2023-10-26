@@ -99,15 +99,17 @@
       border-bottom: 1px solid $light-grey;
     }
 
-    &:hover {
-      p {
-        color: $primary;
-      }
-
-      svg {
-        path {
+    &WithHover {
+      &:hover {
+        p {
           color: $primary;
-          fill: $primary;
+        }
+  
+        svg {
+          path {
+            color: $primary;
+            fill: $primary;
+          }
         }
       }
     }

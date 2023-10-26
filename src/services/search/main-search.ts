@@ -42,7 +42,7 @@ export const useMainSearch = () => {
   const [value, setValue] = useState('');
   const debouncedValue = useDebounce(value, 500);
 
-  const [search, { data, previousData }] = useLazyQuery(MainSearchDocument, {
+  const [search, { data, previousData, loading }] = useLazyQuery(MainSearchDocument, {
     variables: {
       filters: {},
     },
@@ -60,5 +60,5 @@ export const useMainSearch = () => {
     search({ variables: { filters: { name: debouncedValue } } });
   }, [debouncedValue, search]);
 
-  return { searchItems, searchHandler };
+  return { searchItems, searchHandler, loading };
 };

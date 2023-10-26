@@ -12,13 +12,14 @@ interface SearchBlockProps {
 }
 
 export const SearchBlock: FC<SearchBlockProps> = ({ isFooter }) => {
-  const { searchHandler, searchItems } = useMainSearch();
+  const { searchHandler, searchItems, loading } = useMainSearch();
 
   return (
     <div className={styles.searchBlock}>
       <SearchNavigation />
       <div className={classNames({ [styles.searchInput]: isFooter })}>
         <SearchInput
+          loading={loading}
           rightIcon="Search"
           placeholder="Наприклад, аналіз на COVID"
           searchHandler={searchHandler}

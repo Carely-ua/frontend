@@ -52,7 +52,7 @@ export const Search: FC<SearchProps> = ({
     return setIsCardActive(prev => !prev);
   };
 
-  const { searchHandler, searchItems } = useClinicsSearch();
+  const { searchHandler, searchItems, loading } = useClinicsSearch();
 
   if (clinics.length <= 0) return null;
 
@@ -65,7 +65,13 @@ export const Search: FC<SearchProps> = ({
         </div>
       ) : (
         <div>
-          <PageSearch title={title} icon={icon} searchHandler={searchHandler} items={searchItems} />
+          <PageSearch
+            title={title}
+            icon={icon}
+            searchHandler={searchHandler}
+            items={searchItems}
+            loading={loading}
+          />
           <Breadcrumbs breadcrumbs={breadcrumbs} />
           <div id="Search" className={styles.wrapper}>
             <div className={styles.item}>
