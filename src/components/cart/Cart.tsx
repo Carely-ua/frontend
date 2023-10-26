@@ -119,33 +119,37 @@ export const Cart = () => {
   return (
     <div>
       <Breadcrumbs breadcrumbs={[{ label: 'Корзина', path: '/' }]} />
-      <div className={styles.table}>
-        <div className={classNames(styles.row, styles.head)}>
-          <Typography component="p" color="secondary">
-            Заклад
-          </Typography>
-          <Typography component="p" color="secondary">
-            Вид послуги
-          </Typography>
-          <Typography component="p" color="secondary">
-            Назва послуги
-          </Typography>
-          <Typography component="p" color="secondary">
-            Ціна
-          </Typography>
-          <div />
-        </div>
-        {cartItems?.map(item => {
-          if (!item) return null;
+      {cartItems?.length === 0 ? (
+        <Typography component="h3">Кошик наразі порожній</Typography>
+      ) : (
+        <div className={styles.table}>
+          <div className={classNames(styles.row, styles.head)}>
+            <Typography component="p" color="secondary">
+              Заклад
+            </Typography>
+            <Typography component="p" color="secondary">
+              Вид послуги
+            </Typography>
+            <Typography component="p" color="secondary">
+              Назва послуги
+            </Typography>
+            <Typography component="p" color="secondary">
+              Ціна
+            </Typography>
+            <div />
+          </div>
+          {cartItems?.map(item => {
+            if (!item) return null;
 
-          return <CartItem key={item.id} {...item} />;
-        })}
-        <div className={styles.cartInfo}>
-          <div className={styles.cartInfoItem}>
-            <Button onClick={createOrderHandler}>Оформити бронювання</Button>
+            return <CartItem key={item.id} {...item} />;
+          })}
+          <div className={styles.cartInfo}>
+            <div className={styles.cartInfoItem}>
+              <Button onClick={createOrderHandler}>Оформити бронювання</Button>
+            </div>
           </div>
         </div>
-      </div>
+      )}
     </div>
   );
 };

@@ -84,7 +84,8 @@
 }
 
 .image {
-  width: 60px;
+  flex: 60px 0;
+  flex-shrink: 0;
   height: 60px;
   border-radius: 50%;
   overflow: hidden;
