@@ -1,6 +1,7 @@
 import { FC, ReactNode } from 'react';
 import { ModalProvider } from './modal-provider';
 import { AuthProvider, CustomAuthProvider } from './auth-provider';
+import { SnackbarProvider } from './snackbar-provider';
 
 interface AppProviderProps {
   children: ReactNode;
@@ -9,9 +10,11 @@ interface AppProviderProps {
 export const AppProvider: FC<AppProviderProps> = ({ children }) => {
   return (
     <AuthProvider>
-      <ModalProvider>
-        <CustomAuthProvider>{children}</CustomAuthProvider>
-      </ModalProvider>
+      <SnackbarProvider>
+        <ModalProvider>
+          <CustomAuthProvider>{children}</CustomAuthProvider>
+        </ModalProvider>
+      </SnackbarProvider>
     </AuthProvider>
   );
 };
