@@ -7,12 +7,14 @@ import styles from './Input.module.scss';
 interface InputCustomProps {
   label?: string;
   error?: string;
+  buttonText?: string;
+  onButtonPress?(): void;
 }
 
 export type InputProps = InputMUIProps & InputCustomProps;
 
 export const Input = forwardRef<HTMLDivElement, InputProps>(function CustomInput(
-  { label, error, className, ...props },
+  { label, error, className, onButtonPress, buttonText, ...props },
   ref,
 ) {
   return (
@@ -22,7 +24,16 @@ export const Input = forwardRef<HTMLDivElement, InputProps>(function CustomInput
           {label}
         </Typography>
       )}
-      <InputMUI className={classNames(styles.input, className)} {...props} ref={ref} />
+      <div className={styles.inputContainer}>
+        <InputMUI className={classNames(styles.input, className)} {...props} ref={ref} />
+        {!!onButtonPress && (
+          <button className={styles.button} onClick={onButtonPress}>
+            <Typography component="p" color="white">
+              {buttonText}
+            </Typography>
+          </button>
+        )}
+      </div>
       {!!error && <Typography component="p">{error}</Typography>}
     </div>
   );

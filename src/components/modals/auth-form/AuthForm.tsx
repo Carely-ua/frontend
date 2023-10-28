@@ -37,9 +37,9 @@ export interface AuthFormProps {
 
 export const AuthForm: FC<AuthFormProps> = ({ successSignInHandler }) => {
   const submitHandler = async (values: Values) => {
-    await signIn('credentials', {
+    const res = await signIn('credentials', {
       phone: values.phone,
-      code: values.code,
+      code: values.code.replace('-', ''),
       redirect: false,
     });
     successSignInHandler?.();

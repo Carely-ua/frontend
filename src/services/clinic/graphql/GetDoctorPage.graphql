@@ -8,6 +8,7 @@ query GetDoctorPage($filtersForDoctor: DoctorFilterInputType!, $filtersForServic
     title
     experience
     description
+    id
     clinic {
       mainImage
       id

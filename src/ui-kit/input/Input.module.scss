@@ -20,3 +20,24 @@
 .label {
   margin-bottom: customGap(2.5);
 }
+
+.inputContainer {
+  position: relative,
+}
+
+.button {
+  border-radius: 40px;
+  background-color: $secondary;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  position: absolute;
+  top: 7px;
+  right: 10px;
+  height: 30px;
+  width: 135px;
+
+  &:hover {
+    background-color: $primary;
+  }
+}

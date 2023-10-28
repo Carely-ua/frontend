@@ -299,6 +299,7 @@ export type Mutation = {
   linkCartItemToUser?: Maybe<Array<Maybe<CartItem>>>;
   register?: Maybe<Scalars['Boolean']['output']>;
   sendSms?: Maybe<Scalars['String']['output']>;
+  setAsUsedOrderItem?: Maybe<OrderItem>;
   signIn?: Maybe<Scalars['String']['output']>;
   subTitleService: Scalars['Boolean']['output'];
   updateCategory?: Maybe<Category>;
@@ -432,6 +433,10 @@ export type MutationRegisterArgs = {
 
 export type MutationSendSmsArgs = {
   phone: Scalars['String']['input'];
+};
+
+export type MutationSetAsUsedOrderItemArgs = {
+  orderItemId?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type MutationSignInArgs = {

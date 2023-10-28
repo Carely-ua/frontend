@@ -17,6 +17,7 @@ export type GetDoctorPageQuery = {
     tags?: Array<string | null> | null;
     title?: string | null;
     experience?: number | null;
+    id: string;
     clinic?: {
       __typename?: 'Clinic';
       mainImage?: string | null;
@@ -93,6 +94,7 @@ export const GetDoctorPageDocument = {
                 { kind: 'Field', name: { kind: 'Name', value: 'title' } },
                 { kind: 'Field', name: { kind: 'Name', value: 'experience' } },
                 { kind: 'Field', name: { kind: 'Name', value: 'description' } },
+                { kind: 'Field', name: { kind: 'Name', value: 'id' } },
                 {
                   kind: 'Field',
                   name: { kind: 'Name', value: 'clinic' },

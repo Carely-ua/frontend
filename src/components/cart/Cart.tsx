@@ -2,7 +2,7 @@
 
 import classNames from 'classnames';
 import Image from 'next/image';
-import { FC } from 'react';
+import { FC, useCallback } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useSession } from 'next-auth/react';
@@ -101,15 +101,19 @@ export const Cart = () => {
   const { openModal } = useModalContext();
   const router = useRouter();
 
+  const orderSuccessfullyCreated = useCallback(() => {
+    openModal('AlertModal', { message: `Замовлення успішно створенно` });
+  }, [openModal]);
+
   const createOrderHandler = async () => {
     if (!session?.user.token) {
-      openModal('AddToBagAuthModal');
+      openModal('AddToBagAuthModal', { successSignInHandler: orderSuccessfullyCreated });
       return;
     }
 
-    await createOrder();
+    const { data } = await createOrder();
     router.push('/account/orders');
-    console.log('Order created successfully1');
+    orderSuccessfullyCreated();
   };
 
   if (!data) return null;

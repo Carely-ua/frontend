@@ -1,0 +1,3 @@
+mutation SendCode($phone: String!) {
+  sendSms(phone: $phone)
+}

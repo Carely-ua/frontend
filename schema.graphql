@@ -37,6 +37,7 @@ type Mutation {
   destroyDoctorService(doctorId: ID!, serviceId: ID!): Boolean!
   createOrder: Order
   activateOrderItem(orderItemId: String): OrderItem
+  setAsUsedOrderItem(orderItemId: String): OrderItem
   createReview(input: ReviewCreateInputType!): Review
   destroyReview(id: ID!): Boolean!
   createService(input: ServiceCreateInputType!): Service

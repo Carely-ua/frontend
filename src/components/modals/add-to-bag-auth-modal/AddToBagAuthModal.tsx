@@ -13,7 +13,6 @@ export const AddToBagAuthModal: ModalComponent<AddToBagAuthModalProps> = ({
 }) => {
   const successSignInHandler = async () => {
     await modalProps?.successSignInHandler();
-    handleClose();
   };
 
   const closeHandler = () => {
