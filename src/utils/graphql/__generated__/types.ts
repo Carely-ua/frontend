@@ -21,6 +21,11 @@ export type Scalars = {
   Upload: { input: any; output: any };
 };
 
+export type CallInput = {
+  doctorId?: InputMaybe<Scalars['String']['input']>;
+  serviceId: Scalars['String']['input'];
+};
+
 export type CartItem = {
   __typename?: 'CartItem';
   amount?: Maybe<Scalars['Float']['output']>;
@@ -181,8 +186,10 @@ export type ClinicUpdateInputType = {
 
 export type Doctor = {
   __typename?: 'Doctor';
+  associations?: Maybe<Scalars['String']['output']>;
   clinic?: Maybe<Clinic>;
   clinicId: Scalars['String']['output'];
+  conferences?: Maybe<Scalars['String']['output']>;
   description: Scalars['String']['output'];
   discountPrice?: Maybe<Scalars['Float']['output']>;
   experience?: Maybe<Scalars['Float']['output']>;
@@ -191,9 +198,11 @@ export type Doctor = {
   name: Scalars['String']['output'];
   phone: Scalars['String']['output'];
   price?: Maybe<Scalars['Float']['output']>;
+  profActivity?: Maybe<Scalars['String']['output']>;
   rating?: Maybe<Scalars['Float']['output']>;
   reviews?: Maybe<Array<Maybe<Review>>>;
   reviewsCount?: Maybe<Scalars['Float']['output']>;
+  scientificWorks?: Maybe<Scalars['String']['output']>;
   services?: Maybe<Array<Maybe<Service>>>;
   tags?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
   title?: Maybe<Scalars['String']['output']>;
@@ -297,6 +306,7 @@ export type Mutation = {
   doctorsService: Scalars['Boolean']['output'];
   editUser?: Maybe<User>;
   linkCartItemToUser?: Maybe<Array<Maybe<CartItem>>>;
+  orderCall?: Maybe<Scalars['Boolean']['output']>;
   register?: Maybe<Scalars['Boolean']['output']>;
   sendSms?: Maybe<Scalars['String']['output']>;
   setAsUsedOrderItem?: Maybe<OrderItem>;
@@ -424,6 +434,10 @@ export type MutationEditUserArgs = {
 
 export type MutationLinkCartItemToUserArgs = {
   ids?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+};
+
+export type MutationOrderCallArgs = {
+  input?: InputMaybe<CallInput>;
 };
 
 export type MutationRegisterArgs = {
@@ -649,6 +663,7 @@ export type ServiceFilterInputType = {
   city?: InputMaybe<Scalars['String']['input']>;
   clinicId?: InputMaybe<Scalars['String']['input']>;
   description?: InputMaybe<Scalars['String']['input']>;
+  doctorId?: InputMaybe<Scalars['String']['input']>;
   id?: InputMaybe<Scalars['ID']['input']>;
   name?: InputMaybe<Scalars['String']['input']>;
   serviceType?: InputMaybe<ServiceType>;

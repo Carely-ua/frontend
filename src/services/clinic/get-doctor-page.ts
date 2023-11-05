@@ -5,14 +5,12 @@ export const getDoctorPage = async (doctorId: string, serviceId: string) => {
   const { data } = await query({
     query: GetDoctorPageDocument,
     variables: {
-      filtersForDoctor: {
-        id: doctorId,
-      },
-      filtersForService: {
+      filters: {
+        doctorId,
         id: serviceId,
       },
     },
   });
 
-  return { doctor: data.doctor, service: data.service };
+  return { data };
 };

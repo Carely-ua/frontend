@@ -1,14 +1,21 @@
-query GetDoctorPage($filtersForDoctor: DoctorFilterInputType!, $filtersForService: ServiceFilterInputType!) {
-  doctor(filters: $filtersForDoctor) {
-    name
-    description
-    image
-    rating
-    tags
-    title
-    experience
-    description
+query GetDoctorPage($filters: ServiceFilterInputType!) {
+  service(filters: $filters) {
     id
+    price
+    discountPrice
+    doctors {
+      name
+      description
+      image
+      rating
+      tags
+      title
+      experience
+      description
+      id
+      price
+      discountPrice
+    }
     clinic {
       mainImage
       id
@@ -28,10 +35,5 @@ query GetDoctorPage($filtersForDoctor: DoctorFilterInputType!, $filtersForServic
         rate
       }
     }
-  }
-  service(filters: $filtersForService) {
-    id
-    price
-    discountPrice
   }
 }

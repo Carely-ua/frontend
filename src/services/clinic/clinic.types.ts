@@ -11,5 +11,5 @@ export type ClinicWithServices = ClinicsWithServices[number];
 export type ClinicServices = NonNullable<ClinicWithServices>['services'];
 export type Reviews = NonNullable<GetClinicQuery['clinic']>['reviews'];
 export type Review = NonNullable<NonNullable<Reviews>[number]>;
-export type Doctor = GetDoctorPageQuery['doctor'];
+export type Doctor = GetDoctorPageQuery[];
 export type Service = GetDoctorPageQuery['service'];

@@ -1,6 +1,6 @@
 import { FC, useMemo } from 'react';
-import { ClinicTypes } from '@/services';
 import { Typography } from '@/ui-kit';
+import { GetDoctorPageQuery } from '@/services/clinic/graphql/__generated__/GetDoctorPage';
 import { ConsultationItem } from '../consultation-items';
 import { Map } from '../map';
 import { GeneralClinicCart } from '../clinic-card';
@@ -8,19 +8,14 @@ import { Reviews } from '../reviews';
 import styles from './DoctorProfile.module.scss';
 
 interface DoctorProfileProps {
-  doctor: ClinicTypes.Doctor;
-  service: ClinicTypes.Service;
+  data: GetDoctorPageQuery;
 }
 
-export const DoctorProfile: FC<DoctorProfileProps> = ({ doctor, service }) => {
-  const {
-    rating,
-    id: clinicId,
-    mainImage,
-    mapCoordinates,
-    reviews,
-    reviewsCount,
-  } = doctor?.clinic || {};
+export const DoctorProfile: FC<DoctorProfileProps> = ({ data }) => {
+  const { id, doctors, clinic } = data.service || {};
+
+  const doctor = doctors?.[0];
+  const { rating, id: clinicId, mainImage, mapCoordinates, reviews, reviewsCount } = clinic || {};
 
   const mapData = useMemo(
     () => ({
@@ -32,21 +27,24 @@ export const DoctorProfile: FC<DoctorProfileProps> = ({ doctor, service }) => {
     [rating, clinicId, mainImage, mapCoordinates],
   );
 
-  if (!doctor || !service) return null;
-  const { id, price, discountPrice } = service;
+  if (!doctor) return null;
 
   return (
     <>
       <div className={styles.wrapper}>
         <div className={styles.doctorInfo}>
-          <ConsultationItem serviceId={id} {...doctor} discountPrice={discountPrice} price={price}>
+          <ConsultationItem
+            serviceId={id || ''}
+            {...doctor}
+            discountPrice={doctor.discountPrice}
+            price={doctor.price}>
             <>
               <Typography component="h5" className={styles.description}>
                 {doctor.description}
               </Typography>
-              {!!doctor.clinic && (
+              {!!clinic && (
                 <div className={styles.clinicCard}>
-                  <GeneralClinicCart hrefPrefix="/clinics" {...doctor.clinic} />
+                  <GeneralClinicCart hrefPrefix="/clinics" {...clinic} />
                 </div>
               )}
             </>

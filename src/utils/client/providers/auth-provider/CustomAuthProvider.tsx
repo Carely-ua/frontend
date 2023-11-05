@@ -27,7 +27,6 @@ export const CustomAuthProvider: FC<CustomAuthProviderProps> = ({ children }) =>
         if (itemAmount > 0) {
           await createOrder();
           router.push('/account/orders');
-          console.log('Order created successfully2');
         }
       }
     })();

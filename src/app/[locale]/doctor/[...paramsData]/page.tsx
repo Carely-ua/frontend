@@ -8,12 +8,12 @@ interface DoctorPageProps {
 }
 
 const DoctorPage = async ({ params }: DoctorPageProps) => {
-  const { doctor, service } = await getDoctorPage(...params.paramsData);
+  const { data } = await getDoctorPage(...params.paramsData);
 
   return (
     <>
       <PageSearch title="Консультації у Вінниці" icon="Doctor" />
-      <DoctorProfile doctor={doctor} service={service} />
+      <DoctorProfile data={data} />
     </>
   );
 };

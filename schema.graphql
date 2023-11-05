@@ -38,6 +38,7 @@ type Mutation {
   createOrder: Order
   activateOrderItem(orderItemId: String): OrderItem
   setAsUsedOrderItem(orderItemId: String): OrderItem
+  orderCall(input: CallInput): Boolean
   createReview(input: ReviewCreateInputType!): Review
   destroyReview(id: ID!): Boolean!
   createService(input: ServiceCreateInputType!): Service
@@ -160,6 +161,10 @@ type Doctor {
   experience: Float
   services: [Service]
   reviews: [Review]
+  profActivity: String
+  conferences: String
+  associations: String
+  scientificWorks: String
 }
 type DoctorService {
   price: Float
@@ -382,6 +387,10 @@ input createDoctorService {
   price: Float
   discountPrice: Float
 }
+input CallInput {
+  serviceId: String!
+  doctorId: String
+}
 input ReviewCreateInputType {
   serviceId: String
   doctorId: String
@@ -396,6 +405,7 @@ input ServiceFilterInputType {
   name: String
   description: String
   id: ID
+  doctorId: String
   clinicId: String
   categoryId: String
   categorySubTitleId: String

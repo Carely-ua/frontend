@@ -2,22 +2,29 @@ import { TypedDocumentNode as DocumentNode } from '@graphql-typed-document-node/
 import * as Types from '../../../../utils/graphql/__generated__/types';
 
 export type GetDoctorPageQueryVariables = Types.Exact<{
-  filtersForDoctor: Types.DoctorFilterInputType;
-  filtersForService: Types.ServiceFilterInputType;
+  filters: Types.ServiceFilterInputType;
 }>;
 
 export type GetDoctorPageQuery = {
   __typename?: 'Query';
-  doctor?: {
-    __typename?: 'Doctor';
-    name: string;
-    description: string;
-    image: string;
-    rating?: number | null;
-    tags?: Array<string | null> | null;
-    title?: string | null;
-    experience?: number | null;
+  service?: {
+    __typename?: 'Service';
     id: string;
+    price?: number | null;
+    discountPrice?: number | null;
+    doctors?: Array<{
+      __typename?: 'Doctor';
+      name: string;
+      description: string;
+      image: string;
+      rating?: number | null;
+      tags?: Array<string | null> | null;
+      title?: string | null;
+      experience?: number | null;
+      id: string;
+      price?: number | null;
+      discountPrice?: number | null;
+    } | null> | null;
     clinic?: {
       __typename?: 'Clinic';
       mainImage?: string | null;
@@ -37,12 +44,6 @@ export type GetDoctorPageQuery = {
       } | null> | null;
     } | null;
   } | null;
-  service?: {
-    __typename?: 'Service';
-    id: string;
-    price?: number | null;
-    discountPrice?: number | null;
-  } | null;
 };
 
 export const GetDoctorPageDocument = {
@@ -55,15 +56,7 @@ export const GetDoctorPageDocument = {
       variableDefinitions: [
         {
           kind: 'VariableDefinition',
-          variable: { kind: 'Variable', name: { kind: 'Name', value: 'filtersForDoctor' } },
-          type: {
-            kind: 'NonNullType',
-            type: { kind: 'NamedType', name: { kind: 'Name', value: 'DoctorFilterInputType' } },
-          },
-        },
-        {
-          kind: 'VariableDefinition',
-          variable: { kind: 'Variable', name: { kind: 'Name', value: 'filtersForService' } },
+          variable: { kind: 'Variable', name: { kind: 'Name', value: 'filters' } },
           type: {
             kind: 'NonNullType',
             type: { kind: 'NamedType', name: { kind: 'Name', value: 'ServiceFilterInputType' } },
@@ -75,26 +68,40 @@ export const GetDoctorPageDocument = {
         selections: [
           {
             kind: 'Field',
-            name: { kind: 'Name', value: 'doctor' },
+            name: { kind: 'Name', value: 'service' },
             arguments: [
               {
                 kind: 'Argument',
                 name: { kind: 'Name', value: 'filters' },
-                value: { kind: 'Variable', name: { kind: 'Name', value: 'filtersForDoctor' } },
+                value: { kind: 'Variable', name: { kind: 'Name', value: 'filters' } },
               },
             ],
             selectionSet: {
               kind: 'SelectionSet',
               selections: [
-                { kind: 'Field', name: { kind: 'Name', value: 'name' } },
-                { kind: 'Field', name: { kind: 'Name', value: 'description' } },
-                { kind: 'Field', name: { kind: 'Name', value: 'image' } },
-                { kind: 'Field', name: { kind: 'Name', value: 'rating' } },
-                { kind: 'Field', name: { kind: 'Name', value: 'tags' } },
-                { kind: 'Field', name: { kind: 'Name', value: 'title' } },
-                { kind: 'Field', name: { kind: 'Name', value: 'experience' } },
-                { kind: 'Field', name: { kind: 'Name', value: 'description' } },
                 { kind: 'Field', name: { kind: 'Name', value: 'id' } },
+                { kind: 'Field', name: { kind: 'Name', value: 'price' } },
+                { kind: 'Field', name: { kind: 'Name', value: 'discountPrice' } },
+                {
+                  kind: 'Field',
+                  name: { kind: 'Name', value: 'doctors' },
+                  selectionSet: {
+                    kind: 'SelectionSet',
+                    selections: [
+                      { kind: 'Field', name: { kind: 'Name', value: 'name' } },
+                      { kind: 'Field', name: { kind: 'Name', value: 'description' } },
+                      { kind: 'Field', name: { kind: 'Name', value: 'image' } },
+                      { kind: 'Field', name: { kind: 'Name', value: 'rating' } },
+                      { kind: 'Field', name: { kind: 'Name', value: 'tags' } },
+                      { kind: 'Field', name: { kind: 'Name', value: 'title' } },
+                      { kind: 'Field', name: { kind: 'Name', value: 'experience' } },
+                      { kind: 'Field', name: { kind: 'Name', value: 'description' } },
+                      { kind: 'Field', name: { kind: 'Name', value: 'id' } },
+                      { kind: 'Field', name: { kind: 'Name', value: 'price' } },
+                      { kind: 'Field', name: { kind: 'Name', value: 'discountPrice' } },
+                    ],
+                  },
+                },
                 {
                   kind: 'Field',
                   name: { kind: 'Name', value: 'clinic' },
@@ -135,25 +142,6 @@ export const GetDoctorPageDocument = {
                     ],
                   },
                 },
-              ],
-            },
-          },
-          {
-            kind: 'Field',
-            name: { kind: 'Name', value: 'service' },
-            arguments: [
-              {
-                kind: 'Argument',
-                name: { kind: 'Name', value: 'filters' },
-                value: { kind: 'Variable', name: { kind: 'Name', value: 'filtersForService' } },
-              },
-            ],
-            selectionSet: {
-              kind: 'SelectionSet',
-              selections: [
-                { kind: 'Field', name: { kind: 'Name', value: 'id' } },
-                { kind: 'Field', name: { kind: 'Name', value: 'price' } },
-                { kind: 'Field', name: { kind: 'Name', value: 'discountPrice' } },
               ],
             },
           },
