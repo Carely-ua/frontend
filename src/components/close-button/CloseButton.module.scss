@@ -1,8 +1,6 @@
 @use '@/scss/abstracts' as *;
 
 .closeButton {
-  width: 40px;
-  height: 40px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -14,4 +12,10 @@
   right: 12px;
   top: 12px;
   z-index: 5;
+  padding: $gap-xs;
+
+  svg {
+    width: 32px;
+    height: 32px;
+  }
 }

@@ -9,7 +9,7 @@ interface CloseButtonProps {
 export const CloseButton: FC<CloseButtonProps> = ({ handleClose }) => {
   return (
     <button onClick={handleClose} className={styles.closeButton}>
-      <SVG.Close width="32" height="32" />
+      <SVG.Close />
     </button>
   );
 };

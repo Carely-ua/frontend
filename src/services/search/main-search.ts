@@ -31,7 +31,7 @@ const generateSearchItems = (data: MainSearchQuery['mainSearch']) => {
 
       const { id, title } = item;
 
-      items.push({ id, title, type: 'services' });
+      items.push({ id, title, type: 'consultations' });
     });
   }
 
