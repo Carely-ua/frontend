@@ -53,12 +53,12 @@ export const MainBanner = () => {
         </div>
         <div className={styles.imageContainer}>
           <div className={styles.image}>
-            <Image
+            {/* <Image
               src="/images/oxford-medical.png"
               alt="decoration"
               layout="fill"
               objectFit="cover"
-            />
+            /> */}
           </div>
         </div>
         <div className={styles.decoration}>
