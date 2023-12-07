@@ -15,6 +15,10 @@ query GetDoctorPage($filters: ServiceFilterInputType!) {
       id
       price
       discountPrice
+      profActivity
+      conferences
+      associations
+      scientificWorks
     }
     clinic {
       mainImage

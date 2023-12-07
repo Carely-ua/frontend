@@ -24,6 +24,10 @@ export type GetDoctorPageQuery = {
       id: string;
       price?: number | null;
       discountPrice?: number | null;
+      profActivity?: string | null;
+      conferences?: string | null;
+      associations?: string | null;
+      scientificWorks?: string | null;
     } | null> | null;
     clinic?: {
       __typename?: 'Clinic';
@@ -99,6 +103,10 @@ export const GetDoctorPageDocument = {
                       { kind: 'Field', name: { kind: 'Name', value: 'id' } },
                       { kind: 'Field', name: { kind: 'Name', value: 'price' } },
                       { kind: 'Field', name: { kind: 'Name', value: 'discountPrice' } },
+                      { kind: 'Field', name: { kind: 'Name', value: 'profActivity' } },
+                      { kind: 'Field', name: { kind: 'Name', value: 'conferences' } },
+                      { kind: 'Field', name: { kind: 'Name', value: 'associations' } },
+                      { kind: 'Field', name: { kind: 'Name', value: 'scientificWorks' } },
                     ],
                   },
                 },

@@ -37,7 +37,11 @@ export const DoctorProfile: FC<DoctorProfileProps> = ({ data }) => {
             serviceId={id || ''}
             {...doctor}
             discountPrice={doctor.discountPrice}
-            price={doctor.price}>
+            price={doctor.price}
+            profActivity={doctor.profActivity}
+            conferences={doctor.conferences}
+            associations={doctor.associations}
+            scientificWorks={doctor.scientificWorks}>
             <>
               <Typography component="h5" className={styles.description}>
                 {doctor.description}
