@@ -34,16 +34,11 @@ export const DoctorProfile: FC<DoctorProfileProps> = ({ data }) => {
       <div className={styles.wrapper}>
         <div className={styles.doctorInfo}>
           <ConsultationItem serviceId={id || ''} {...doctor}>
-            <>
-              <Typography component="h5" className={styles.description}>
-                {doctor.description}
-              </Typography>
-              {!!clinic && (
-                <div className={styles.clinicCard}>
-                  <GeneralClinicCart hrefPrefix="/clinics" {...clinic} />
-                </div>
-              )}
-            </>
+            {!!clinic && (
+              <div className={styles.clinicCard}>
+                <GeneralClinicCart hrefPrefix="/clinics" {...clinic} />
+              </div>
+            )}
           </ConsultationItem>
         </div>
         <div className={styles.map}>
