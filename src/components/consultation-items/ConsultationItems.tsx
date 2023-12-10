@@ -20,9 +20,8 @@ interface ConsultationItemProps extends ServicesTypes.Doctor {
 }
 
 type DoctorInfoItem = {
-  title: string | null | undefined;
-  description: string | null | undefined;
-  id: number;
+  title?: string | null;
+  description?: string | null;
 };
 
 export const ConsultationItem: FC<ConsultationItemProps> = ({
@@ -42,76 +41,73 @@ export const ConsultationItem: FC<ConsultationItemProps> = ({
   scientificWorks,
 }) => {
   const arr: DoctorInfoItem[] = [
-    { title: 'Професійна діяльність', description: profActivity, id: Math.random() },
-    { title: 'Стажування, конференції, семінари', description: conferences, id: Math.random() },
-    { title: 'Членство в асоціаціях', description: associations, id: Math.random() },
-    { title: 'Наукові роботи та патенти', description: scientificWorks, id: Math.random() },
+    { title: 'Професійна діяльність', description: profActivity },
+    { title: 'Стажування, конференції, семінари', description: conferences },
+    { title: 'Членство в асоціаціях', description: associations },
+    { title: 'Наукові роботи та патенти', description: scientificWorks },
   ];
   return (
     <ConsultationItemContainer>
-      <div className={styles.docInfoWrapper}>
-        <div className={styles.consultationItem}>
-          <Link href={`/doctor/${id}/${serviceId}`} className={styles.doctorImage}>
-            <Image src={image} layout="fill" objectFit="cover" alt="doctor" />
+      <div className={styles.consultationItem}>
+        <Link href={`/doctor/${id}/${serviceId}`} className={styles.doctorImage}>
+          <Image src={image} layout="fill" objectFit="cover" alt="doctor" />
+        </Link>
+        <div className={styles.mainInfo}>
+          <div className={styles.mobileRating}>
+            <Rating />
+          </div>
+          <Link href={`/doctor/${id}/${serviceId}`} className={styles.doctorName}>
+            <Typography component="h3" gutterBottom="md">
+              {name}
+            </Typography>
           </Link>
-          <div className={styles.mainInfo}>
-            <div className={styles.mobileRating}>
-              <Rating />
-            </div>
-            <Link href={`/doctor/${id}/${serviceId}`} className={styles.doctorName}>
-              <Typography component="h3" gutterBottom="md">
-                {name}
-              </Typography>
-            </Link>
-            {!!tags && (
-              <Typography component="h4" gutterBottom="md">
-                {tags.join(', ')}
-              </Typography>
-            )}
-            {!!title && (
-              <div className={styles.extraInfoItem}>
-                <div className={styles.extraInfoItemIcon}>
-                  <SVG.DoctorMan />
-                </div>
-                <Typography component="p" color="dark-grey">
-                  {title}
-                </Typography>
-              </div>
-            )}
+          {!!tags && (
+            <Typography component="h4" gutterBottom="md">
+              {tags.join(', ')}
+            </Typography>
+          )}
+          {!!title && (
             <div className={styles.extraInfoItem}>
               <div className={styles.extraInfoItemIcon}>
-                <SVG.Portfolio />
+                <SVG.DoctorMan />
               </div>
               <Typography component="p" color="dark-grey">
-                {experience} років досвіду
+                {title}
               </Typography>
-              <p>{scientificWorks}</p>
             </div>
+          )}
+          <div className={styles.extraInfoItem}>
+            <div className={styles.extraInfoItemIcon}>
+              <SVG.Portfolio />
+            </div>
+            <Typography component="p" color="dark-grey">
+              {experience} років досвіду
+            </Typography>
           </div>
-          <div className={styles.priceInfo}>
-            <div className={styles.rating}>
-              <Rating />
-            </div>
-            <div className={styles.price}>
-              <PriceBlock firstPrice={price} secondPrice={discountPrice} />
-            </div>
-            <AddToBagButton serviceId={serviceId} doctorId={id} />
+        </div>
+        <div className={styles.priceInfo}>
+          <div className={styles.rating}>
+            <Rating />
           </div>
+          <div className={styles.price}>
+            <PriceBlock firstPrice={price} secondPrice={discountPrice} />
+          </div>
+          <AddToBagButton serviceId={serviceId} doctorId={id} />
         </div>
       </div>
       {children}
-      {arr.some(item => item.description) && (
-        <ul className={styles.docInfoList}>
-          {arr.map(({ title, description, id }) => {
-            return description ? (
-              <li key={id}>
-                <Typography component={'h3'}>{title}</Typography>
-                <Typography component={'p'}>{description}</Typography>
+      <ul className={styles.docInfoList}>
+        {arr.map(({ title, description }, index) => {
+          return (
+            !!description && (
+              <li key={index}>
+                <Typography component="h3">{title}</Typography>
+                <Typography component="p">{description}</Typography>
               </li>
-            ) : null;
-          })}
-        </ul>
-      )}
+            )
+          );
+        })}
+      </ul>
     </ConsultationItemContainer>
   );
 };

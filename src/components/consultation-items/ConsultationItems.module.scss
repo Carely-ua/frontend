@@ -104,19 +104,13 @@
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: $gap-xlg;
   margin: 0;
-  padding: 20px 0px 20px 0px;
+  padding: $gap-xlg 0px $gap-xlg 0px;
 }
 .docInfoList > li {
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 10px;
-}
-
-.docInfoWrapper {
-  display: flex;
-  flex-direction: column;
-  gap: 23px;
+  gap: $gap-xs;
 }

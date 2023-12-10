@@ -33,15 +33,7 @@ export const DoctorProfile: FC<DoctorProfileProps> = ({ data }) => {
     <>
       <div className={styles.wrapper}>
         <div className={styles.doctorInfo}>
-          <ConsultationItem
-            serviceId={id || ''}
-            {...doctor}
-            discountPrice={doctor.discountPrice}
-            price={doctor.price}
-            profActivity={doctor.profActivity}
-            conferences={doctor.conferences}
-            associations={doctor.associations}
-            scientificWorks={doctor.scientificWorks}>
+          <ConsultationItem serviceId={id || ''} {...doctor}>
             <>
               <Typography component="h5" className={styles.description}>
                 {doctor.description}
