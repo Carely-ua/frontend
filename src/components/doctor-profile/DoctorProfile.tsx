@@ -33,21 +33,12 @@ export const DoctorProfile: FC<DoctorProfileProps> = ({ data }) => {
     <>
       <div className={styles.wrapper}>
         <div className={styles.doctorInfo}>
-          <ConsultationItem
-            serviceId={id || ''}
-            {...doctor}
-            discountPrice={doctor.discountPrice}
-            price={doctor.price}>
-            <>
-              <Typography component="h5" className={styles.description}>
-                {doctor.description}
-              </Typography>
-              {!!clinic && (
-                <div className={styles.clinicCard}>
-                  <GeneralClinicCart hrefPrefix="/clinics" {...clinic} />
-                </div>
-              )}
-            </>
+          <ConsultationItem serviceId={id || ''} {...doctor}>
+            {!!clinic && (
+              <div className={styles.clinicCard}>
+                <GeneralClinicCart hrefPrefix="/clinics" {...clinic} />
+              </div>
+            )}
           </ConsultationItem>
         </div>
         <div className={styles.map}>

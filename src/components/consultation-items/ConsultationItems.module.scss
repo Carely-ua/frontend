@@ -1,4 +1,3 @@
-
 @use '@/scss/abstracts' as *;
 
 .consultationItem {
@@ -32,7 +31,7 @@
   align-items: center;
   gap: $gap-xs;
   margin-bottom: $gap-md;
-  
+
   &Icon {
     border-radius: 4px;
     width: 24px;
@@ -41,7 +40,7 @@
     align-items: center;
     justify-content: center;
     border-radius: 4px;
-    background: rgb($primary, 0.20);
+    background: rgb($primary, 0.2);
   }
 }
 
@@ -99,4 +98,19 @@
 
 .doctorName {
   text-decoration: none;
+}
+
+.docInfoList {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: $gap-xlg;
+  margin: 0;
+  padding: $gap-xlg 0px $gap-xlg 0px;
+}
+.docInfoList > li {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: $gap-xs;
 }

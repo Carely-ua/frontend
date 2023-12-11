@@ -13,7 +13,16 @@ import { ConsultationItemContainer } from './ConsultationItemContainer';
 interface ConsultationItemProps extends ServicesTypes.Doctor {
   serviceId: string;
   children?: ReactNode;
+  profActivity?: string | null;
+  conferences?: string | null;
+  associations?: string | null;
+  scientificWorks?: string | null;
 }
+
+type DoctorInfoItem = {
+  title?: string | null;
+  description?: string | null;
+};
 
 export const ConsultationItem: FC<ConsultationItemProps> = ({
   name,
@@ -26,7 +35,17 @@ export const ConsultationItem: FC<ConsultationItemProps> = ({
   tags,
   title,
   children,
+  profActivity,
+  conferences,
+  associations,
+  scientificWorks,
 }) => {
+  const arr: DoctorInfoItem[] = [
+    { title: 'Професійна діяльність', description: profActivity },
+    { title: 'Стажування, конференції, семінари', description: conferences },
+    { title: 'Членство в асоціаціях', description: associations },
+    { title: 'Наукові роботи та патенти', description: scientificWorks },
+  ];
   return (
     <ConsultationItemContainer>
       <div className={styles.consultationItem}>
@@ -77,6 +96,20 @@ export const ConsultationItem: FC<ConsultationItemProps> = ({
         </div>
       </div>
       {children}
+      {arr.some(item => item.description) && (
+        <ul className={styles.docInfoList}>
+          {arr.map(({ title, description }, index) => {
+            return (
+              !!description && (
+                <li key={index}>
+                  <Typography component="h3">{title}</Typography>
+                  <Typography component="p">{description}</Typography>
+                </li>
+              )
+            );
+          })}
+        </ul>
+      )}
     </ConsultationItemContainer>
   );
 };
