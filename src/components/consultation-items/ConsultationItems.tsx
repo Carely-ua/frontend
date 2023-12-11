@@ -96,18 +96,20 @@ export const ConsultationItem: FC<ConsultationItemProps> = ({
         </div>
       </div>
       {children}
-      <ul className={styles.docInfoList}>
-        {arr.map(({ title, description }, index) => {
-          return (
-            !!description && (
-              <li key={index}>
-                <Typography component="h3">{title}</Typography>
-                <Typography component="p">{description}</Typography>
-              </li>
-            )
-          );
-        })}
-      </ul>
+      {arr.some(item => item.description) && (
+        <ul className={styles.docInfoList}>
+          {arr.map(({ title, description }, index) => {
+            return (
+              !!description && (
+                <li key={index}>
+                  <Typography component="h3">{title}</Typography>
+                  <Typography component="p">{description}</Typography>
+                </li>
+              )
+            );
+          })}
+        </ul>
+      )}
     </ConsultationItemContainer>
   );
 };
