@@ -1,0 +1,57 @@
+@use '@/scss/abstracts' as *;
+
+.container {
+  width: 100%;
+  padding: 0px 30px 0px 30px;
+
+  @media screen and (min-width: 768px) {
+    padding: 0px 100px 0px 100px;
+  }
+}
+
+.title {
+  font-family: Roboto, sans-serif;
+  font-weight: 500;
+  font-size: 28px;
+  line-height: 28px;
+  margin-bottom: $gap-md;
+
+  & + p {
+    margin-bottom: $gap-xlg;
+  }
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: $gap-xlg;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.subTitle {
+  font-family: Roboto, sans-serif;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 28px;
+  margin-bottom: $gap-md;
+}
+
+.item {
+  & :not(:last-child) {
+    margin-bottom: $gap-md;
+  }
+}
+
+// .list {
+//   display: flex;
+//   flex-direction: column;
+//   gap: $gap-md;
+//   margin: 0;
+//   padding: 0px $gap-xlg 0px $gap-xlg;
+
+//   & li {
+//     line-height: 24px;
+//   }
+// }

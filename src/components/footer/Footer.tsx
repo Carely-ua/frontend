@@ -8,9 +8,9 @@ import styles from './Footer.module.scss';
 
 const links = [
   { href: '/', label: 'Services' },
-  { href: '/', label: 'AboutUs' },
-  { href: '/', label: 'Rating' },
-  { href: '/', label: 'Partners' },
+  { href: '/about', label: 'AboutUs' },
+  { href: '/rating', label: 'Rating' },
+  { href: '/partners', label: 'Partners' },
   { href: '/', label: 'CorporateProgram' },
   { href: '/', label: 'Rules' },
 ];
