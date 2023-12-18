@@ -1,10 +1,12 @@
-import { Typography } from '@mui/material';
+import { Typography } from '@/ui-kit';
+import { Breadcrumbs } from '@/components';
 import styles from './Partners.module.scss';
 
 const Partners = () => {
   return (
-    <div className={styles.container}>
-      <Typography className={styles.title} component="h1">
+    <div>
+      <Breadcrumbs breadcrumbs={[{ label: 'Партнерам', path: '/' }]} />
+      <Typography className={styles.title} component="h3">
         Стати партнером Carely може будь-яка клініка чи лабораторія. Для цього просто залиште заявку
         і ми зареєструємо вашу компанію на платформі!
       </Typography>

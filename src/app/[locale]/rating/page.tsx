@@ -1,10 +1,12 @@
-import { Typography } from '@mui/material';
+import { Typography } from '@/ui-kit';
+import { Breadcrumbs } from '@/components';
 import styles from './Rating.module.scss';
 
 const Rating = () => {
   return (
-    <div className={styles.container}>
-      <Typography className={styles.title} component="h1">
+    <div>
+      <Breadcrumbs breadcrumbs={[{ label: 'Рейтинг', path: '/' }]} />
+      <Typography className={styles.title} component="h3">
         Як обрати кращу клініку чи лабораторію?
       </Typography>
       <Typography component="p">

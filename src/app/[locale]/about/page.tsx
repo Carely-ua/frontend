@@ -1,15 +1,17 @@
-import { Typography } from '@mui/material';
+import { Typography } from '@/ui-kit';
+import { Breadcrumbs } from '@/components';
 import styles from './About.module.scss';
 
 const About = () => {
   return (
     <div className={styles.container}>
-      <Typography className={styles.title} component="h1">
+      <Breadcrumbs breadcrumbs={[{ label: 'Про нас', path: '/' }]} />
+      <Typography className={styles.title} component="h3">
         Carely - сучасний інструмент для вибору найкращого лікування! Carely - це сучасний проєкт
         для тих, хто хоче усвідомлено піклуватись про своє здоров&#39;я та лікування.
       </Typography>
       <div className={styles.wrapper}>
-        <Typography className={styles.subTitle} component="p">
+        <Typography className={styles.subTitle} component="h3">
           На сайті Carely ви можете:
         </Typography>
         <ul className={styles.list}>
