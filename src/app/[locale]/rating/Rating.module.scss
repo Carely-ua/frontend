@@ -1,13 +1,5 @@
 @use '@/scss/abstracts' as *;
 
-.title {
-  margin-bottom: $gap-md;
-
-  & + p {
-    margin-bottom: $gap-xlg;
-  }
-}
-
 .list {
   display: flex;
   flex-direction: column;
@@ -15,10 +7,6 @@
   list-style: none;
   margin: 0;
   padding: 0;
-}
-
-.subTitle {
-  margin-bottom: $gap-md;
 }
 
 .item {

@@ -4,25 +4,25 @@ import styles from './About.module.scss';
 
 const About = () => {
   return (
-    <div className={styles.container}>
+    <div className={styles.wrapper}>
       <Breadcrumbs breadcrumbs={[{ label: 'Про нас', path: '/' }]} />
-      <Typography className={styles.title} component="h3">
+      <Typography gutterBottom="md" component="h3">
         Carely - сучасний інструмент для вибору найкращого лікування! Carely - це сучасний проєкт
         для тих, хто хоче усвідомлено піклуватись про своє здоров&#39;я та лікування.
       </Typography>
-      <div className={styles.wrapper}>
-        <Typography className={styles.subTitle} component="h3">
+      <div>
+        <Typography className={styles.subTitle} gutterBottom="md" component="h3">
           На сайті Carely ви можете:
         </Typography>
-        <ul className={styles.list}>
-          <li>Знайти лікаря і записатися на прийом</li>
-          <li>Записатися на обстеження у клініку</li>
-          <li>Обрати найкращу лабораторію</li>
-          <li>Отримати послугу зі знижкою</li>
-        </ul>
+        <Typography component="ul" className={styles.list}>
+          <Typography component="li">Знайти лікаря і записатися на прийом</Typography>
+          <Typography component="li">Записатися на обстеження у клініку</Typography>
+          <Typography component="li">Обрати найкращу лабораторію</Typography>
+          <Typography component="li">Отримати послугу зі знижкою</Typography>
+        </Typography>
       </div>
-      <div className={styles.wrapper}>
-        <Typography className={styles.subTitle} component="h3">
+      <div>
+        <Typography className={styles.subTitle} gutterBottom="md" component="h3">
           А навіщо мені користуватись Carely?
         </Typography>
         <Typography component="p">
@@ -37,35 +37,35 @@ const About = () => {
           закладі.
         </Typography>
       </div>
-      <div className={styles.wrapper}>
-        <Typography className={styles.subTitle} component="h3">
+      <div>
+        <Typography gutterBottom="md" component="h3">
           А ще Carely - це зручно!{' '}
         </Typography>
-        <ul className={styles.list}>
-          <li>
+        <Typography component="ul" className={styles.list}>
+          <Typography component="li">
             Спеціальні пропозиції: Carely надає можливість придбати медичну послугу зі знижкою.
-          </li>
-          <li>
+          </Typography>
+          <Typography component="li">
             Все поруч: Лікарі, клініки, діагностика, аналізи, ліки в вашому приватному кабінеті
             Carely - ви ніколи нічого не загубите і не пропустите.
-          </li>
-          <li>
+          </Typography>
+          <Typography component="li">
             Обґрунтований вибір: Ви можете обрати найкращий варіант медичного закладу спираючись на
             безліч параметрів: від його розміщення, до реальних відгуків.
-          </li>
-          <li>
+          </Typography>
+          <Typography component="li">
             Чесний рейтинг: Всі відгуки від справжніх пацієнтів, адже ми проводимо подвійну
             перевірку!
-          </li>
-          <li>
+          </Typography>
+          <Typography component="li">
             Електронний ваучер: Коли ви бронюєте послугу чи прийом у лікаря, Carely надає вам
             електронний ваучер для пред&#39;явлення у медичному закладі.
-          </li>
-          <li>
+          </Typography>
+          <Typography component="li">
             Для вас це безоплатно: Carely не бере оплату за свої послуги у пацієнтів! Ви оплачуєте
             тільки вартість лікування у клініці чи лабораторії.
-          </li>
-        </ul>
+          </Typography>
+        </Typography>
       </div>
     </div>
   );

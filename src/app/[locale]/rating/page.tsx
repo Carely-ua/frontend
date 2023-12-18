@@ -6,17 +6,17 @@ const Rating = () => {
   return (
     <div>
       <Breadcrumbs breadcrumbs={[{ label: 'Рейтинг', path: '/' }]} />
-      <Typography className={styles.title} component="h3">
+      <Typography gutterBottom="md" component="h3">
         Як обрати кращу клініку чи лабораторію?
       </Typography>
-      <Typography component="p">
+      <Typography gutterBottom="xlg" component="p">
         Звичайно, всі намагаються обирати заклади поблизу від дому чи роботи, але як бути впевненим,
         що там вам нададуть найкраще лікування? Це питання вирішити дуже просто - зверніть увагу на
         рейтинг медичного закладу на нашому сайті!
       </Typography>
-      <ul className={styles.list}>
-        <li>
-          <Typography className={styles.subTitle} component="h3">
+      <Typography component="ul" className={styles.list}>
+        <Typography component="li">
+          <Typography gutterBottom="md" component="h3">
             Чому рейтингу можна довіряти?
           </Typography>
           <Typography component="p">
@@ -25,9 +25,9 @@ const Rating = () => {
             двосторонню аутентифікацію кожного користувача перед тим, як опублікувати його відгук і
             внести зміни у рейтинг закладу лікування.{' '}
           </Typography>
-        </li>
-        <li className={styles.item}>
-          <Typography className={styles.subTitle} component="h3">
+        </Typography>
+        <Typography className={styles.item} component="li">
+          <Typography gutterBottom="md" component="h3">
             Як це працює?
           </Typography>
           <Typography component="p">
@@ -41,9 +41,9 @@ const Rating = () => {
             електронний ваучер у медзакладі, у нього відкривається можливість залишити реальний
             відгук і поставити оцінку обслуговуванню.
           </Typography>
-        </li>
-        <li className={styles.item}>
-          <Typography className={styles.subTitle} component="h3">
+        </Typography>
+        <Typography className={styles.item} component="li">
+          <Typography gutterBottom="md" component="h3">
             Так ось навіщо ви наполягаєте на відгуках!
           </Typography>
           <Typography component="p">
@@ -55,8 +55,8 @@ const Rating = () => {
             Будь ласка, залишайте відгуки обмірковано і справедливо, допомагайте іншим людям подбати
             про своє здоров&#39;я!
           </Typography>
-        </li>
-      </ul>
+        </Typography>
+      </Typography>
     </div>
   );
 };

@@ -1,18 +1,10 @@
 @use '@/scss/abstracts' as *;
 
-.container {
+.wrapper {
   width: 100%;
   display: flex;
   flex-direction: column;
   gap: $gap-xlg;
-}
-
-.title {
-  margin-bottom: $gap-md;
-}
-
-.subTitle {
-  margin-bottom: $gap-md;
 }
 
 .list {
