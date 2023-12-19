@@ -10,8 +10,8 @@ const Partners = () => {
         Стати партнером Carely може будь-яка клініка чи лабораторія. Для цього просто залиште заявку
         і ми зареєструємо вашу компанію на платформі!
       </Typography>
-      <Typography component="ul" className={styles.list}>
-        <Typography component="li">
+      <ul className={styles.list}>
+        <li>
           <Typography gutterBottom="xs" component="h3">
             Carely - це новий канал реклами
           </Typography>
@@ -19,8 +19,8 @@ const Partners = () => {
             Завдяки розміщенню вашого медичного закладу на платформі, ви отримаєте максимально
             якісний канал реклами! Адже ви платите тільки за реальних пацієнтів.
           </Typography>
-        </Typography>
-        <Typography component="li">
+        </li>
+        <li>
           <Typography gutterBottom="xs" component="h3">
             Carely - приведе нових пацієнтів
           </Typography>
@@ -28,8 +28,8 @@ const Partners = () => {
             У містах України зараз дуже багато внутрішньо переміщених осіб. Які не мають у кого
             запитати поради чи рекомендації. Carely - приведе вам цих пацієнтів.
           </Typography>
-        </Typography>
-        <Typography component="li">
+        </li>
+        <li>
           <Typography gutterBottom="xs" component="h3">
             Carely - це вклад у репутацію закладу
           </Typography>
@@ -37,8 +37,8 @@ const Partners = () => {
             Абсолютно чесний рейтинг, який створюють пацієнти виключно після відвідування клініки
             гарантує вам репутацію, на яку не можуть впливати сторонні люди.
           </Typography>
-        </Typography>
-        <Typography component="li">
+        </li>
+        <li>
           <Typography gutterBottom="xs" component="h3">
             Carely - це зручність
           </Typography>
@@ -47,8 +47,8 @@ const Partners = () => {
             потрібно буде витрачати на це час. Займайтесь тим, що ви вмієте найкраще - лікуйте, а ми
             потурбуємось, щоб пацієнти вас знайшли!
           </Typography>
-        </Typography>
-        <Typography component="li">
+        </li>
+        <li>
           <Typography gutterBottom="xs" component="h3">
             Carely - це підтримка
           </Typography>
@@ -56,8 +56,8 @@ const Partners = () => {
             Якщо вам потрібно змінити інформацію, вартість послуг чи додати лікаря - зверніться до
             нашої служби підтримки і ми все зробимо максимально швидко!
           </Typography>
-        </Typography>
-      </Typography>
+        </li>
+      </ul>
     </div>
   );
 };

@@ -14,8 +14,8 @@ const Rating = () => {
         що там вам нададуть найкраще лікування? Це питання вирішити дуже просто - зверніть увагу на
         рейтинг медичного закладу на нашому сайті!
       </Typography>
-      <Typography component="ul" className={styles.list}>
-        <Typography component="li">
+      <ul className={styles.list}>
+        <li>
           <Typography gutterBottom="md" component="h3">
             Чому рейтингу можна довіряти?
           </Typography>
@@ -25,8 +25,8 @@ const Rating = () => {
             двосторонню аутентифікацію кожного користувача перед тим, як опублікувати його відгук і
             внести зміни у рейтинг закладу лікування.{' '}
           </Typography>
-        </Typography>
-        <Typography className={styles.item} component="li">
+        </li>
+        <li>
           <Typography gutterBottom="md" component="h3">
             Як це працює?
           </Typography>
@@ -41,8 +41,8 @@ const Rating = () => {
             електронний ваучер у медзакладі, у нього відкривається можливість залишити реальний
             відгук і поставити оцінку обслуговуванню.
           </Typography>
-        </Typography>
-        <Typography className={styles.item} component="li">
+        </li>
+        <li className={styles.item}>
           <Typography gutterBottom="md" component="h3">
             Так ось навіщо ви наполягаєте на відгуках!
           </Typography>
@@ -55,8 +55,8 @@ const Rating = () => {
             Будь ласка, залишайте відгуки обмірковано і справедливо, допомагайте іншим людям подбати
             про своє здоров&#39;я!
           </Typography>
-        </Typography>
-      </Typography>
+        </li>
+      </ul>
     </div>
   );
 };

@@ -14,12 +14,20 @@ const About = () => {
         <Typography className={styles.subTitle} gutterBottom="md" component="h3">
           На сайті Carely ви можете:
         </Typography>
-        <Typography component="ul" className={styles.list}>
-          <Typography component="li">Знайти лікаря і записатися на прийом</Typography>
-          <Typography component="li">Записатися на обстеження у клініку</Typography>
-          <Typography component="li">Обрати найкращу лабораторію</Typography>
-          <Typography component="li">Отримати послугу зі знижкою</Typography>
-        </Typography>
+        <ul className={styles.list}>
+          <li>
+            <Typography component="p">Знайти лікаря і записатися на прийом</Typography>
+          </li>
+          <li>
+            <Typography component="p">Записатися на обстеження у клініку</Typography>
+          </li>
+          <li>
+            <Typography component="p">Обрати найкращу лабораторію</Typography>
+          </li>
+          <li>
+            <Typography component="p">Отримати послугу зі знижкою</Typography>
+          </li>
+        </ul>
       </div>
       <div>
         <Typography className={styles.subTitle} gutterBottom="md" component="h3">
@@ -39,33 +47,45 @@ const About = () => {
       </div>
       <div>
         <Typography gutterBottom="md" component="h3">
-          А ще Carely - це зручно!{' '}
+          А ще Carely - це зручно!
         </Typography>
-        <Typography component="ul" className={styles.list}>
-          <Typography component="li">
-            Спеціальні пропозиції: Carely надає можливість придбати медичну послугу зі знижкою.
-          </Typography>
-          <Typography component="li">
-            Все поруч: Лікарі, клініки, діагностика, аналізи, ліки в вашому приватному кабінеті
-            Carely - ви ніколи нічого не загубите і не пропустите.
-          </Typography>
-          <Typography component="li">
-            Обґрунтований вибір: Ви можете обрати найкращий варіант медичного закладу спираючись на
-            безліч параметрів: від його розміщення, до реальних відгуків.
-          </Typography>
-          <Typography component="li">
-            Чесний рейтинг: Всі відгуки від справжніх пацієнтів, адже ми проводимо подвійну
-            перевірку!
-          </Typography>
-          <Typography component="li">
-            Електронний ваучер: Коли ви бронюєте послугу чи прийом у лікаря, Carely надає вам
-            електронний ваучер для пред&#39;явлення у медичному закладі.
-          </Typography>
-          <Typography component="li">
-            Для вас це безоплатно: Carely не бере оплату за свої послуги у пацієнтів! Ви оплачуєте
-            тільки вартість лікування у клініці чи лабораторії.
-          </Typography>
-        </Typography>
+        <ul className={styles.list}>
+          <li>
+            <Typography component="p">
+              Спеціальні пропозиції: Carely надає можливість придбати медичну послугу зі знижкою.
+            </Typography>
+          </li>
+          <li>
+            <Typography component="p">
+              Все поруч: Лікарі, клініки, діагностика, аналізи, ліки в вашому приватному кабінеті
+              Carely - ви ніколи нічого не загубите і не пропустите.
+            </Typography>
+          </li>
+          <li>
+            <Typography component="p">
+              Обґрунтований вибір: Ви можете обрати найкращий варіант медичного закладу спираючись
+              на безліч параметрів: від його розміщення, до реальних відгуків.
+            </Typography>
+          </li>
+          <li>
+            <Typography component="p">
+              Чесний рейтинг: Всі відгуки від справжніх пацієнтів, адже ми проводимо подвійну
+              перевірку!
+            </Typography>
+          </li>
+          <li>
+            <Typography component="p">
+              Електронний ваучер: Коли ви бронюєте послугу чи прийом у лікаря, Carely надає вам
+              електронний ваучер для пред&#39;явлення у медичному закладі.
+            </Typography>
+          </li>
+          <li>
+            <Typography component="p">
+              Для вас це безоплатно: Carely не бере оплату за свої послуги у пацієнтів! Ви оплачуєте
+              тільки вартість лікування у клініці чи лабораторії.
+            </Typography>
+          </li>
+        </ul>
       </div>
     </div>
   );
