@@ -7,11 +7,9 @@ import { Navigation } from '../navigation';
 import styles from './Footer.module.scss';
 
 const links = [
-  { href: '/', label: 'Services' },
   { href: '/about', label: 'AboutUs' },
   { href: '/rating', label: 'Rating' },
   { href: '/partners', label: 'Partners' },
-  { href: '/', label: 'CorporateProgram' },
   { href: '/', label: 'Rules' },
 ];
 

@@ -4,7 +4,7 @@ import styles from './Partners.module.scss';
 
 const Partners = () => {
   return (
-    <div>
+    <>
       <Breadcrumbs breadcrumbs={[{ label: 'Партнерам', path: '/' }]} />
       <Typography gutterBottom="xlg" component="h3">
         Стати партнером Carely може будь-яка клініка чи лабораторія. Для цього просто залиште заявку
@@ -58,7 +58,7 @@ const Partners = () => {
           </Typography>
         </li>
       </ul>
-    </div>
+    </>
   );
 };
 
