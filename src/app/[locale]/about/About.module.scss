@@ -1,0 +1,16 @@
+@use '@/scss/abstracts' as *;
+
+.wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: $gap-xlg;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: $gap-md;
+  margin: 0;
+  padding: 0px $gap-xlg 0px $gap-xlg;
+}

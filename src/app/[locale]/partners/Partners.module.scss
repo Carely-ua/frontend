@@ -1,0 +1,10 @@
+@use '@/scss/abstracts' as *;
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
