@@ -7,6 +7,8 @@ query GetUnAuthCart($ids: [ID]) {
         id
         name
         image
+        price
+        discountPrice
       }
       service {
         id

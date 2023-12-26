@@ -23,6 +23,8 @@ export type GetOrdersQuery = {
         name: string;
         tags?: Array<string | null> | null;
         image: string;
+        price?: number | null;
+        discountPrice?: number | null;
       } | null;
       service?: {
         __typename?: 'Service';
@@ -82,6 +84,8 @@ export const GetOrdersDocument = {
                             { kind: 'Field', name: { kind: 'Name', value: 'name' } },
                             { kind: 'Field', name: { kind: 'Name', value: 'tags' } },
                             { kind: 'Field', name: { kind: 'Name', value: 'image' } },
+                            { kind: 'Field', name: { kind: 'Name', value: 'price' } },
+                            { kind: 'Field', name: { kind: 'Name', value: 'discountPrice' } },
                           ],
                         },
                       },
