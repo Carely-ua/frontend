@@ -85,8 +85,8 @@ const CartItem: FC<CartTypes.CartItem> = ({ id, service, doctor }) => {
       <div className={styles.priceBlock}>
         <PriceBlock
           flexStart
-          firstPrice={doctor?.price ? doctor.price : price}
-          secondPrice={doctor?.discountPrice ? doctor.discountPrice : discountPrice}
+          firstPrice={doctor?.price ?? price}
+          secondPrice={doctor?.discountPrice ?? discountPrice}
         />
       </div>
       <div className={styles.deleteButtonContainer}>

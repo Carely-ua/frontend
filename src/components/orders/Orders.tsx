@@ -67,10 +67,10 @@ const OrderItem: FC<CartTypes.OrderItem> = ({
       <Typography component="p">{mainSectionText}</Typography>
       <div className={styles.priceBlock}>
         <Typography component="h5" color="dark-grey">
-          {doctor?.price ? doctor.price : service?.price}
+          {doctor?.price ?? service?.price}
         </Typography>
         <Typography component="h5" color="secondary">
-          {doctor?.discountPrice ? doctor.discountPrice : service?.discountPrice} грн
+          {doctor?.discountPrice ?? service?.price} грн
         </Typography>
       </div>
     </div>
