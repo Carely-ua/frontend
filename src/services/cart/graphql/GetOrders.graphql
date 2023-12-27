@@ -18,6 +18,7 @@ query GetOrders {
         discountPrice
       }
       service {
+        id
         serviceType
         name
         price

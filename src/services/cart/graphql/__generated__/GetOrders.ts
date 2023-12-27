@@ -28,6 +28,7 @@ export type GetOrdersQuery = {
       } | null;
       service?: {
         __typename?: 'Service';
+        id: string;
         serviceType: Types.ServiceType;
         name: string;
         price?: number | null;
@@ -95,6 +96,7 @@ export const GetOrdersDocument = {
                         selectionSet: {
                           kind: 'SelectionSet',
                           selections: [
+                            { kind: 'Field', name: { kind: 'Name', value: 'id' } },
                             { kind: 'Field', name: { kind: 'Name', value: 'serviceType' } },
                             { kind: 'Field', name: { kind: 'Name', value: 'name' } },
                             { kind: 'Field', name: { kind: 'Name', value: 'price' } },

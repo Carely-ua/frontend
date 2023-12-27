@@ -17,7 +17,6 @@ export type GetDoctorPageQuery = {
       name: string;
       description: string;
       image: string;
-      rating?: number | null;
       tags?: Array<string | null> | null;
       title?: string | null;
       experience?: number | null;
@@ -28,24 +27,24 @@ export type GetDoctorPageQuery = {
       conferences?: string | null;
       associations?: string | null;
       scientificWorks?: string | null;
-    } | null> | null;
-    clinic?: {
-      __typename?: 'Clinic';
-      mainImage?: string | null;
-      id: string;
-      name: string;
-      rating?: number | null;
       reviewsCount?: number | null;
-      address: string;
-      phone: string;
-      workingTime?: string | null;
-      mapCoordinates: { __typename?: 'MapCoordinates'; lat: number; lng: number };
+      rating?: number | null;
       reviews?: Array<{
         __typename?: 'Review';
         id: string;
         text: string;
         rate?: number | null;
       } | null> | null;
+    } | null> | null;
+    clinic?: {
+      __typename?: 'Clinic';
+      mainImage?: string | null;
+      id: string;
+      name: string;
+      address: string;
+      phone: string;
+      workingTime?: string | null;
+      mapCoordinates: { __typename?: 'MapCoordinates'; lat: number; lng: number };
     } | null;
   } | null;
 };
@@ -95,7 +94,6 @@ export const GetDoctorPageDocument = {
                       { kind: 'Field', name: { kind: 'Name', value: 'name' } },
                       { kind: 'Field', name: { kind: 'Name', value: 'description' } },
                       { kind: 'Field', name: { kind: 'Name', value: 'image' } },
-                      { kind: 'Field', name: { kind: 'Name', value: 'rating' } },
                       { kind: 'Field', name: { kind: 'Name', value: 'tags' } },
                       { kind: 'Field', name: { kind: 'Name', value: 'title' } },
                       { kind: 'Field', name: { kind: 'Name', value: 'experience' } },
@@ -107,6 +105,20 @@ export const GetDoctorPageDocument = {
                       { kind: 'Field', name: { kind: 'Name', value: 'conferences' } },
                       { kind: 'Field', name: { kind: 'Name', value: 'associations' } },
                       { kind: 'Field', name: { kind: 'Name', value: 'scientificWorks' } },
+                      { kind: 'Field', name: { kind: 'Name', value: 'reviewsCount' } },
+                      { kind: 'Field', name: { kind: 'Name', value: 'rating' } },
+                      {
+                        kind: 'Field',
+                        name: { kind: 'Name', value: 'reviews' },
+                        selectionSet: {
+                          kind: 'SelectionSet',
+                          selections: [
+                            { kind: 'Field', name: { kind: 'Name', value: 'id' } },
+                            { kind: 'Field', name: { kind: 'Name', value: 'text' } },
+                            { kind: 'Field', name: { kind: 'Name', value: 'rate' } },
+                          ],
+                        },
+                      },
                     ],
                   },
                 },
@@ -119,8 +131,6 @@ export const GetDoctorPageDocument = {
                       { kind: 'Field', name: { kind: 'Name', value: 'mainImage' } },
                       { kind: 'Field', name: { kind: 'Name', value: 'id' } },
                       { kind: 'Field', name: { kind: 'Name', value: 'name' } },
-                      { kind: 'Field', name: { kind: 'Name', value: 'rating' } },
-                      { kind: 'Field', name: { kind: 'Name', value: 'reviewsCount' } },
                       { kind: 'Field', name: { kind: 'Name', value: 'address' } },
                       { kind: 'Field', name: { kind: 'Name', value: 'phone' } },
                       { kind: 'Field', name: { kind: 'Name', value: 'workingTime' } },
@@ -132,18 +142,6 @@ export const GetDoctorPageDocument = {
                           selections: [
                             { kind: 'Field', name: { kind: 'Name', value: 'lat' } },
                             { kind: 'Field', name: { kind: 'Name', value: 'lng' } },
-                          ],
-                        },
-                      },
-                      {
-                        kind: 'Field',
-                        name: { kind: 'Name', value: 'reviews' },
-                        selectionSet: {
-                          kind: 'SelectionSet',
-                          selections: [
-                            { kind: 'Field', name: { kind: 'Name', value: 'id' } },
-                            { kind: 'Field', name: { kind: 'Name', value: 'text' } },
-                            { kind: 'Field', name: { kind: 'Name', value: 'rate' } },
                           ],
                         },
                       },

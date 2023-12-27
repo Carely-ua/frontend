@@ -7,7 +7,6 @@ query GetDoctorPage($filters: ServiceFilterInputType!) {
       name
       description
       image
-      rating
       tags
       title
       experience
@@ -19,24 +18,24 @@ query GetDoctorPage($filters: ServiceFilterInputType!) {
       conferences
       associations
       scientificWorks
+      reviewsCount
+      rating
+      reviews {
+        id
+        text
+        rate
+      }
     }
     clinic {
       mainImage
       id
       name
-      rating
-      reviewsCount
       address
       phone
       workingTime
       mapCoordinates {
         lat
         lng
-      }
-      reviews {
-        id
-        text
-        rate
       }
     }
   }

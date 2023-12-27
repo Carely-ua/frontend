@@ -21,6 +21,7 @@ query GetServices($filters: ServiceFilterInputType!) {
         id
         name
         rating
+        reviewsCount
         image
         tags
         experience

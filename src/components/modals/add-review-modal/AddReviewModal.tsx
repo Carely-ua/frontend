@@ -31,10 +31,11 @@ export const AddReviewModal: ModalComponent<AddReviewModalProps> = ({
   const { register, handleSubmit, setValue } = useForm<Inputs>();
 
   const onSubmit: SubmitHandler<Inputs> = async values => {
-    //TODO use real values
+    if (!serviceId || !clinicId) return;
+
     await createReview({
-      serviceId: '803cff65-8e38-4559-a3fb-d0c32ebc0844',
-      clinicId: 'b939e10e-1e8c-4871-85d8-1f049c243852',
+      serviceId,
+      clinicId,
       text: values.review,
       rating: values.rating,
       ...(doctorId ? { doctorId } : {}),

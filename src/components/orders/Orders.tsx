@@ -145,7 +145,13 @@ const OrderItem: FC<CartTypes.OrderItem> = ({
                 <Typography component="p">{statusData[status].title}</Typography>
               </div>
               <div className={styles.statusButton}>
-                <OrderButton status={status} buttonText={statusData[status].buttonText} />
+                <OrderButton
+                  serviceId={service?.id}
+                  status={status}
+                  buttonText={statusData[status].buttonText}
+                  doctorId={doctor?.id}
+                  clinicId={service?.clinic?.id}
+                />
               </div>
             </>
           )}
@@ -155,11 +161,11 @@ const OrderItem: FC<CartTypes.OrderItem> = ({
   );
 };
 
-const Order: FC<CartTypes.Order> = ({ id, orderItems }) => {
+const Order: FC<CartTypes.Order> = ({ orderItems, number }) => {
   return (
     <div className={styles.order}>
-      <Typography component="h3" key={id}>
-        Замовлення №{id}
+      <Typography component="h3" key={number}>
+        Замовлення №{number}
       </Typography>
       {orderItems.map(item => {
         if (!item) return null;

@@ -34,6 +34,7 @@ export type GetServicesQuery = {
         id: string;
         name: string;
         rating?: number | null;
+        reviewsCount?: number | null;
         image: string;
         tags?: Array<string | null> | null;
         experience?: number | null;
@@ -123,6 +124,7 @@ export const GetServicesDocument = {
                             { kind: 'Field', name: { kind: 'Name', value: 'id' } },
                             { kind: 'Field', name: { kind: 'Name', value: 'name' } },
                             { kind: 'Field', name: { kind: 'Name', value: 'rating' } },
+                            { kind: 'Field', name: { kind: 'Name', value: 'reviewsCount' } },
                             { kind: 'Field', name: { kind: 'Name', value: 'image' } },
                             { kind: 'Field', name: { kind: 'Name', value: 'tags' } },
                             { kind: 'Field', name: { kind: 'Name', value: 'experience' } },

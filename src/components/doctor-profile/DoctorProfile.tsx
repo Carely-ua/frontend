@@ -15,16 +15,16 @@ export const DoctorProfile: FC<DoctorProfileProps> = ({ data }) => {
   const { id, doctors, clinic } = data.service || {};
 
   const doctor = doctors?.[0];
-  const { rating, id: clinicId, mainImage, mapCoordinates, reviews, reviewsCount } = clinic || {};
+  const { id: clinicId, mainImage, mapCoordinates } = clinic || {};
 
   const mapData = useMemo(
     () => ({
-      rating,
+      rating: doctor?.rating,
       id: clinicId,
       mainImage,
       mapCoordinates,
     }),
-    [rating, clinicId, mainImage, mapCoordinates],
+    [doctor?.rating, clinicId, mainImage, mapCoordinates],
   );
 
   if (!doctor) return null;
@@ -46,7 +46,7 @@ export const DoctorProfile: FC<DoctorProfileProps> = ({ data }) => {
           <Map data={mapData} />
         </div>
       </div>
-      <Reviews rating={rating} reviews={reviews} reviewsCount={reviewsCount} />
+      <Reviews rating={doctor.rating} reviews={doctor.reviews} reviewsCount={doctor.reviewsCount} />
     </>
   );
 };

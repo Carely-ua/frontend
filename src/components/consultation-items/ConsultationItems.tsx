@@ -39,6 +39,8 @@ export const ConsultationItem: FC<ConsultationItemProps> = ({
   conferences,
   associations,
   scientificWorks,
+  rating,
+  reviewsCount,
 }) => {
   const arr: DoctorInfoItem[] = [
     { title: 'Професійна діяльність', description: profActivity },
@@ -87,7 +89,7 @@ export const ConsultationItem: FC<ConsultationItemProps> = ({
         </div>
         <div className={styles.priceInfo}>
           <div className={styles.rating}>
-            <Rating />
+            <Rating rating={rating} reviewsCount={reviewsCount} />
           </div>
           <div className={styles.price}>
             <PriceBlock firstPrice={price} secondPrice={discountPrice} />
