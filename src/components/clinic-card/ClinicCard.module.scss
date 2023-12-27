@@ -22,15 +22,20 @@
       display: block;
     }
   }
-  
+
   &WithBorder {
     border-bottom: 1px solid $grey;
     margin-bottom: customGap(2.5);
-  
+
     @include tablet {
       border-bottom: 0;
       margin-bottom: $gap-md;
     }
+  }
+
+  @include tablet {
+    border-bottom: 1px solid $light-grey;
+    padding-bottom: 20px;
   }
 }
 
@@ -39,10 +44,6 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-
-  @include tablet {
-    border-bottom: 1px solid $light-grey;
-  }
 }
 
 .generalCartContent {
@@ -54,8 +55,8 @@
 
 .image {
   flex-basis: 80px;
-	flex-grow: 0;
-	flex-shrink: 0;
+  flex-grow: 0;
+  flex-shrink: 0;
   height: 80px;
   margin-right: customGap(2.5);
   border-radius: 10px;
@@ -92,17 +93,27 @@
 }
 
 .bottomSection {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
   @include tablet {
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
-    align-items: flex-end;
+    gap: 30px;
+  }
+
+  & > div:not(:last-child) {
+    padding-bottom: 20px;
+    border-bottom: 1px solid $light-grey;
   }
 
   &Item {
     display: flex;
-    align-items: center;
     gap: $gap-md;
     padding-top: $gap-sm;
+    justify-content: flex-end;
 
     @include tablet {
       padding-top: 0;
@@ -145,6 +156,12 @@
 
   &:last-child {
     padding-bottom: 0;
+  }
+}
+
+.buttonWrapper {
+  @include tablet {
+    display: flex;
   }
 }
 

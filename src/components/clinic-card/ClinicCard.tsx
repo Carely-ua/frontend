@@ -16,6 +16,21 @@ interface ClinicCardProps extends NonNullable<ClinicTypes.Clinic> {
   hrefPrefix: string;
 }
 
+const arr = [
+  {
+    add: '21009, м. Вінниця, вул. Замостянська, 13',
+    work: 'пн-пт 09.00 – 19.00 сб 09.00 – 17.00 нд 09.00 – 15.00',
+  },
+  {
+    add: '21009, м. Вінниця, вул. Замостянська, 13',
+    work: 'пн-пт 09.00 – 19.00 сб 09.00 – 17.00 нд 09.00 – 15.00',
+  },
+  {
+    add: '21009, м. Вінниця, вул. Замостянська, 13',
+    work: 'пн-пт 09.00 – 19.00 сб 09.00 – 17.00 нд 09.00 – 15.00',
+  },
+];
+
 export const ClinicCard: FC<ClinicCardProps> = ({
   hrefPrefix,
   id,
@@ -49,13 +64,21 @@ export const ClinicCard: FC<ClinicCardProps> = ({
           <Typography component="p" gutterBottom="md" className={styles.label}>
             Медичний центр
           </Typography>
-          <Typography
-            component="p"
-            color="dark-grey"
-            gutterBottom="md"
-            className={styles.specializations}>
-            {specializationsArray?.join(', ')}
-          </Typography>
+          <div className={styles.buttonWrapper}>
+            <Typography
+              component="p"
+              color="dark-grey"
+              gutterBottom="md"
+              className={styles.specializations}>
+              {specializationsArray?.join(', ')}
+            </Typography>
+          </div>
+          <div className={styles.bottomSectionItem}>
+            <PhoneButton phones={[phone]} />
+            <Link className={styles.link} href={`/${hrefPrefix}/${id}`}>
+              <Button>Детальніше</Button>
+            </Link>
+          </div>
         </div>
       </div>
       <Typography
@@ -66,13 +89,9 @@ export const ClinicCard: FC<ClinicCardProps> = ({
         {specializationsArray?.join(', ')}
       </Typography>
       <div className={styles.bottomSection}>
-        <ClinicExtraInfo address={address} workingTime={workingTime} />
-        <div className={styles.bottomSectionItem}>
-          <PhoneButton phones={[phone]} />
-          <Link className={styles.link} href={`/${hrefPrefix}/${id}`}>
-            <Button>Детальніше</Button>
-          </Link>
-        </div>
+        {arr.map((item, index) => {
+          return <ClinicExtraInfo key={index} address={item.add} workingTime={item.work} />;
+        })}
       </div>
     </div>
   );

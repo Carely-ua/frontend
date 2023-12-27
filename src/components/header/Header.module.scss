@@ -8,11 +8,11 @@
   position: relative;
   z-index: 10;
   box-shadow:
-  0px 5px 20px 0px rgba(0, 88, 193, 0.1),
-  0px 2px 8px 0px rgba(0, 113, 83, 0.04);
+    0px 5px 20px 0px rgba(0, 88, 193, 0.1),
+    0px 2px 8px 0px rgba(0, 113, 83, 0.04);
 
   .header {
-    padding: $gap-sm;
+    padding: $gap-sm 100px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -141,7 +141,7 @@
   top: 0;
   left: 0;
   z-index: 7;
-  background: rgb($black, 0.50);
+  background: rgb($black, 0.5);
 
   @include laptop {
     display: none;
