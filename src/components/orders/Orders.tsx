@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import classNames from 'classnames';
 import { FC } from 'react';
+import Link from 'next/link';
 import { Button, Typography } from '@/ui-kit';
 import { CartTypes } from '@/services';
 import { formatDate } from '@/utils';
@@ -64,9 +65,19 @@ const OrderItem: FC<CartTypes.OrderItem> = ({
     : '';
   const mainSectionText = isConsultation ? service.clinic?.name : service?.name;
 
+  const mainLink =
+    serviceType === 'Консультації' ? `/doctor/${doctor?.id}` : `/clinics/${service?.clinic?.id}`;
+  const serviceLink = `/clinics/${service?.clinic?.id}`;
+
   const serviceInfo = (
     <div className={styles.mainSectionItem}>
-      <Typography component="p">{mainSectionText}</Typography>
+      {serviceType === 'Консультації' ? (
+        <Link href={serviceLink} className={styles.link}>
+          <Typography component="p">{mainSectionText}</Typography>
+        </Link>
+      ) : (
+        <Typography component="p">{mainSectionText}</Typography>
+      )}
       <div className={styles.priceBlock}>
         <Typography component="h5" color="dark-grey">
           {doctor?.price ?? service?.price}
@@ -92,10 +103,14 @@ const OrderItem: FC<CartTypes.OrderItem> = ({
         <div>
           <div className={styles.mainInfo}>
             <div className={classNames(styles.image, { [styles.clinicImage]: !isConsultation })}>
-              <Image src={image || ''} width={46} height={46} alt={'clinic'} />
+              <Link href={mainLink} className={styles.link}>
+                <Image src={image || ''} width={46} height={46} alt={'clinic'} />
+              </Link>
             </div>
             <div>
-              <Typography component="h5">{mainSectionTitle}</Typography>
+              <Link href={mainLink} className={styles.link}>
+                <Typography component="h5">{mainSectionTitle}</Typography>
+              </Link>
               <Typography component="p" color="dark-grey">
                 {mainSectionSubTitle}
               </Typography>

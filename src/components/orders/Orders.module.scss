@@ -1,5 +1,9 @@
 @use '@/scss/abstracts' as *;
 
+.link {
+  text-decoration: none;
+}
+
 .order {
   margin-bottom: customGap(10);
 
@@ -153,7 +157,7 @@
     @include tablet {
       display: block;
       width: auto;
-    }   
+    }
   }
 
   @include tablet {
@@ -178,7 +182,7 @@
     height: 24px;
     border-radius: 50%;
     display: inline-block;
-    border: 2px solid #7D7D7D;
+    border: 2px solid #7d7d7d;
   }
 
   &Active {
@@ -215,7 +219,7 @@
   display: flex;
   align-items: center;
   gap: $gap-xs;
-  
+
   h5 {
     white-space: nowrap;
     position: relative;
