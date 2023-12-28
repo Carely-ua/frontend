@@ -22,7 +22,6 @@ export * from './main-banner';
 export * from './section-icon';
 export * from './account-navigation';
 export * from './account-template';
-export * from './client-services';
 export * from './consultation-navigation';
 export * from './cart';
 export * from './add-to-bag-button';

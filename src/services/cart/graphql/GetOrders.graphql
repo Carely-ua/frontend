@@ -5,6 +5,7 @@ query GetOrders {
     createdAt
     orderItems {
       id
+      reviewed
       number
       endDate
       createdAt

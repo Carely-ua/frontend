@@ -11,6 +11,8 @@ interface OrderButtonProps {
   serviceId?: string;
   doctorId?: string;
   clinicId?: string;
+  orderItemId?: string;
+  reviewed?: boolean | null;
 }
 
 export const OrderButton: FC<OrderButtonProps> = ({
@@ -19,6 +21,8 @@ export const OrderButton: FC<OrderButtonProps> = ({
   serviceId,
   doctorId,
   clinicId,
+  orderItemId,
+  reviewed,
 }) => {
   const { openModal } = useModalContext();
 
@@ -30,11 +34,16 @@ export const OrderButton: FC<OrderButtonProps> = ({
         serviceId,
         doctorId,
         clinicId,
+        orderItemId,
       });
     } else {
       console.log('unActive');
     }
   };
+
+  if (status === OrderStatus.Done && reviewed) {
+    return null;
+  }
 
   return (
     <Button onClick={onClickHandler} buttonType="secondary">

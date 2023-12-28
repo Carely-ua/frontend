@@ -11,6 +11,7 @@ export interface AddReviewModalProps {
   serviceId: string;
   doctorId?: string;
   clinicId: string;
+  orderItemId: string;
 }
 
 type Inputs = {
@@ -26,16 +27,17 @@ export const AddReviewModal: ModalComponent<AddReviewModalProps> = ({
 }) => {
   const t = useTranslations('AddReviewModal');
   const { createReview } = useCreateReview();
-  const { serviceId, doctorId, clinicId } = modalProps || {};
+  const { serviceId, doctorId, clinicId, orderItemId } = modalProps || {};
 
   const { register, handleSubmit, setValue } = useForm<Inputs>();
 
   const onSubmit: SubmitHandler<Inputs> = async values => {
-    if (!serviceId || !clinicId) return;
+    if (!serviceId || !clinicId || !orderItemId) return;
 
     await createReview({
       serviceId,
       clinicId,
+      orderItemId,
       text: values.review,
       rating: values.rating,
       ...(doctorId ? { doctorId } : {}),

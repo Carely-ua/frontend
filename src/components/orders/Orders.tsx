@@ -46,6 +46,8 @@ const OrderItem: FC<CartTypes.OrderItem> = ({
   number,
   doctor,
   status,
+  id,
+  reviewed,
 }) => {
   const isConsultation = service?.serviceType === ServiceType.Consultations;
   const isLab = service?.clinic?.clinicType === ClinicType.Laboratory;
@@ -151,6 +153,8 @@ const OrderItem: FC<CartTypes.OrderItem> = ({
                   buttonText={statusData[status].buttonText}
                   doctorId={doctor?.id}
                   clinicId={service?.clinic?.id}
+                  orderItemId={id}
+                  reviewed={reviewed}
                 />
               </div>
             </>
