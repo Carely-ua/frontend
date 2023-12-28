@@ -3,18 +3,22 @@ export type InputMaybe<T> = Maybe<T>;
 export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
 export type MakeOptional<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]?: Maybe<T[SubKey]> };
 export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]: Maybe<T[SubKey]> };
-export type MakeEmpty<T extends { [key: string]: unknown }, K extends keyof T> = { [_ in K]?: never };
-export type Incremental<T> = T | { [P in keyof T]?: P extends ' $fragmentName' | '__typename' ? T[P] : never };
+export type MakeEmpty<T extends { [key: string]: unknown }, K extends keyof T> = {
+  [_ in K]?: never;
+};
+export type Incremental<T> =
+  | T
+  | { [P in keyof T]?: P extends ' $fragmentName' | '__typename' ? T[P] : never };
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
-  ID: { input: string; output: string; }
-  String: { input: string; output: string; }
-  Boolean: { input: boolean; output: boolean; }
-  Int: { input: number; output: number; }
-  Float: { input: number; output: number; }
-  Date: { input: any; output: any; }
-  JSON: { input: any; output: any; }
-  Upload: { input: any; output: any; }
+  ID: { input: string; output: string };
+  String: { input: string; output: string };
+  Boolean: { input: boolean; output: boolean };
+  Int: { input: number; output: number };
+  Float: { input: number; output: number };
+  Date: { input: any; output: any };
+  JSON: { input: any; output: any };
+  Upload: { input: any; output: any };
 };
 
 export type CallInput = {
@@ -124,7 +128,6 @@ export type Clinic = {
   workingTime?: Maybe<Scalars['String']['output']>;
 };
 
-
 export type ClinicServicesWithCategoriesArgs = {
   input?: InputMaybe<ServiceFilterInputType>;
 };
@@ -165,7 +168,7 @@ export type ClinicSearch = {
 
 export enum ClinicType {
   Clinic = 'clinic',
-  Laboratory = 'laboratory'
+  Laboratory = 'laboratory',
 }
 
 export type ClinicUpdateInputType = {
@@ -319,210 +322,169 @@ export type Mutation = {
   verifySms: Scalars['Boolean']['output'];
 };
 
-
 export type MutationActivateOrderItemArgs = {
   orderItemId?: InputMaybe<Scalars['String']['input']>;
 };
-
 
 export type MutationAuthArgs = {
   login: Scalars['String']['input'];
   password: Scalars['String']['input'];
 };
 
-
 export type MutationCreateCartItemArgs = {
   input: CartItemCreateInputType;
 };
-
 
 export type MutationCreateCartItemUnAuthArgs = {
   input: CartItemCreateInputType;
 };
 
-
 export type MutationCreateCategoryArgs = {
   input: CategoryCreateInputType;
 };
-
 
 export type MutationCreateCategorySubTitleArgs = {
   input: CategorySubTitleCreateInputType;
 };
 
-
 export type MutationCreateClinicArgs = {
   input: ClinicCreateInputType;
 };
-
 
 export type MutationCreateDoctorArgs = {
   input: DoctorCreateInputType;
 };
 
-
 export type MutationCreateDoctorsServiceArgs = {
   input?: InputMaybe<CreateDoctorService>;
 };
-
 
 export type MutationCreateReviewArgs = {
   input: ReviewCreateInputType;
 };
 
-
 export type MutationCreateServiceArgs = {
   input: ServiceCreateInputType;
 };
-
 
 export type MutationCreateSpecClinicArgs = {
   input?: InputMaybe<SpecClinicCreateInputType>;
 };
 
-
 export type MutationCreateSpecializationArgs = {
   input: SpecializationCreateInputType;
 };
-
 
 export type MutationCreateSubTitleServiceArgs = {
   input?: InputMaybe<CreateSubTitleService>;
 };
 
-
 export type MutationDestroyCartItemArgs = {
   id: Scalars['ID']['input'];
 };
-
 
 export type MutationDestroyCategoryArgs = {
   id: Scalars['ID']['input'];
 };
 
-
 export type MutationDestroyCategorySubTitleArgs = {
   id: Scalars['ID']['input'];
 };
-
 
 export type MutationDestroyClinicArgs = {
   id: Scalars['ID']['input'];
 };
 
-
 export type MutationDestroyDoctorArgs = {
   id: Scalars['ID']['input'];
 };
-
 
 export type MutationDestroyDoctorServiceArgs = {
   doctorId: Scalars['ID']['input'];
   serviceId: Scalars['ID']['input'];
 };
 
-
 export type MutationDestroyReviewArgs = {
   id: Scalars['ID']['input'];
 };
-
 
 export type MutationDestroyServiceArgs = {
   id: Scalars['ID']['input'];
 };
 
-
 export type MutationDestroySpecClinicArgs = {
   input?: InputMaybe<SpecClinicCreateInputType>;
 };
 
-
 export type MutationDestroySpecializationArgs = {
   id: Scalars['ID']['input'];
 };
-
 
 export type MutationDestroySubTitleServiceArgs = {
   serviceId: Scalars['ID']['input'];
   subTitleId: Scalars['ID']['input'];
 };
 
-
 export type MutationDoctorsServiceArgs = {
   input?: InputMaybe<CreateDoctorService>;
 };
-
 
 export type MutationDoneOrderItemArgs = {
   orderItemNumber?: InputMaybe<Scalars['Int']['input']>;
 };
 
-
 export type MutationEditUserArgs = {
   input?: InputMaybe<EditUser>;
 };
-
 
 export type MutationLinkCartItemToUserArgs = {
   ids?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
 };
 
-
 export type MutationOrderCallArgs = {
   input?: InputMaybe<CallInput>;
 };
-
 
 export type MutationRegisterArgs = {
   login: Scalars['String']['input'];
   password: Scalars['String']['input'];
 };
 
-
 export type MutationSendSmsArgs = {
   phone: Scalars['String']['input'];
 };
-
 
 export type MutationSignInArgs = {
   input: SignInInput;
 };
 
-
 export type MutationSubTitleServiceArgs = {
   input?: InputMaybe<CreateSubTitleService>;
 };
-
 
 export type MutationUpdateCategoryArgs = {
   input: CategoryUpdateInputType;
 };
 
-
 export type MutationUpdateCategorySubTitleArgs = {
   input: CategorySubTitleUpdateInputType;
 };
-
 
 export type MutationUpdateClinicArgs = {
   input: ClinicUpdateInputType;
 };
 
-
 export type MutationUpdateDoctorArgs = {
   input: DoctorUpdateInputType;
 };
-
 
 export type MutationUpdateServiceArgs = {
   input: ServiceUpdateInputType;
 };
 
-
 export type MutationUpdateSpecializationArgs = {
   input: SpecializationUpdateInputType;
 };
-
 
 export type MutationVerifySmsArgs = {
   code: Scalars['String']['input'];
@@ -560,7 +522,7 @@ export type OrderItem = {
 export enum OrderStatus {
   Active = 'active',
   Done = 'done',
-  UnActive = 'unActive'
+  UnActive = 'unActive',
 }
 
 export type Query = {
@@ -588,76 +550,61 @@ export type Query = {
   user?: Maybe<User>;
 };
 
-
 export type QueryCartUnAuthArgs = {
   ids?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
 };
-
 
 export type QueryCategoryArgs = {
   filters: CategoryFilterInputType;
 };
 
-
 export type QueryCategorySubTitleArgs = {
   filters: CategorySubTitleFilterInputType;
 };
-
 
 export type QueryClinicArgs = {
   filters: ClinicFilterInputType;
 };
 
-
 export type QueryDoctorArgs = {
   filters: DoctorFilterInputType;
 };
-
 
 export type QueryGetCategoriesArgs = {
   filters: ServiceFilterInputType;
 };
 
-
 export type QueryGetCategorySubTitlesArgs = {
   filters: CategorySubTitleFilterInputType;
 };
-
 
 export type QueryGetClinicsArgs = {
   filters: ClinicFilterInputType;
 };
 
-
 export type QueryGetDoctorsArgs = {
   filters: DoctorFilterInputType;
 };
-
 
 export type QueryGetServicesArgs = {
   filters: ServiceFilterInputType;
 };
 
-
 export type QueryGetSpecializationsArgs = {
   filters?: InputMaybe<SpecializationFilterInputType>;
 };
-
 
 export type QueryMainSearchArgs = {
   filters?: InputMaybe<MainSearchInputType>;
 };
 
-
 export type QueryOrderArgs = {
   id: Scalars['ID']['input'];
 };
 
-
 export type QuerySearchClinicsArgs = {
   filters: ClinicFilterInputType;
 };
-
 
 export type QueryServiceArgs = {
   filters: ServiceFilterInputType;
@@ -731,7 +678,7 @@ export type ServiceFilterInputType = {
 export enum ServiceType {
   Analyse = 'analyse',
   Consultations = 'consultations',
-  Diagnostic = 'diagnostic'
+  Diagnostic = 'diagnostic',
 }
 
 export type ServiceUpdateInputType = {
@@ -747,7 +694,7 @@ export type ServiceUpdateInputType = {
 
 export enum Sex {
   Female = 'female',
-  Male = 'male'
+  Male = 'male',
 }
 
 export type SignInInput = {
