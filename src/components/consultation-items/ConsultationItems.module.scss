@@ -1,5 +1,16 @@
 @use '@/scss/abstracts' as *;
 
+.Link {
+  text-decoration: none;
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+
+  @include tablet {
+    flex-wrap: nowrap;
+  }
+}
+
 .consultationItem {
   display: flex;
   flex-wrap: wrap;

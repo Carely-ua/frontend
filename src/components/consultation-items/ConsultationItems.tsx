@@ -1,6 +1,6 @@
 import { FC, ReactNode, SyntheticEvent } from 'react';
-import Image from 'next/image';
 import Link from 'next/link';
+import Image from 'next/image';
 import { ServicesTypes } from '@/services';
 import { Typography } from '@/ui-kit';
 import { Rating } from '../rating';
@@ -48,45 +48,48 @@ export const ConsultationItem: FC<ConsultationItemProps> = ({
     { title: 'Членство в асоціаціях', description: associations },
     { title: 'Наукові роботи та патенти', description: scientificWorks },
   ];
+
   return (
     <ConsultationItemContainer>
       <div className={styles.consultationItem}>
-        <Link href={`/doctor/${id}/${serviceId}`} className={styles.doctorImage}>
-          <Image src={image} layout="fill" objectFit="cover" alt="doctor" />
-        </Link>
-        <div className={styles.mainInfo}>
-          <div className={styles.mobileRating}>
-            <Rating />
-          </div>
-          <Link href={`/doctor/${id}/${serviceId}`} className={styles.doctorName}>
-            <Typography component="h3" gutterBottom="md">
-              {name}
-            </Typography>
+        <Link href={`/doctor/${id}/${serviceId}`} className={styles.Link}>
+          <Link href={`/doctor/${id}/${serviceId}`} className={styles.doctorImage}>
+            <Image src={image} layout="fill" objectFit="cover" alt="doctor" />
           </Link>
-          {!!tags && (
-            <Typography component="h4" gutterBottom="md">
-              {tags.join(', ')}
-            </Typography>
-          )}
-          {!!title && (
+          <div className={styles.mainInfo}>
+            <div className={styles.mobileRating}>
+              <Rating />
+            </div>
+            <Link href={`/doctor/${id}/${serviceId}`} className={styles.doctorName}>
+              <Typography component="h3" gutterBottom="md">
+                {name}
+              </Typography>
+            </Link>
+            {!!tags && (
+              <Typography component="h4" gutterBottom="md">
+                {tags.join(', ')}
+              </Typography>
+            )}
+            {!!title && (
+              <div className={styles.extraInfoItem}>
+                <div className={styles.extraInfoItemIcon}>
+                  <SVG.DoctorMan />
+                </div>
+                <Typography component="p" color="dark-grey">
+                  {title}
+                </Typography>
+              </div>
+            )}
             <div className={styles.extraInfoItem}>
               <div className={styles.extraInfoItemIcon}>
-                <SVG.DoctorMan />
+                <SVG.Portfolio />
               </div>
               <Typography component="p" color="dark-grey">
-                {title}
+                {experience} років досвіду
               </Typography>
             </div>
-          )}
-          <div className={styles.extraInfoItem}>
-            <div className={styles.extraInfoItemIcon}>
-              <SVG.Portfolio />
-            </div>
-            <Typography component="p" color="dark-grey">
-              {experience} років досвіду
-            </Typography>
           </div>
-        </div>
+        </Link>
         <div className={styles.priceInfo}>
           <div className={styles.rating}>
             <Rating rating={rating} reviewsCount={reviewsCount} />
