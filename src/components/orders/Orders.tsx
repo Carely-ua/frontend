@@ -91,7 +91,7 @@ const OrderItem: FC<CartTypes.OrderItem> = ({
       <div className={classNames(styles.block, styles.mainSection)}>
         <div>
           <div className={styles.mainInfo}>
-            <div className={styles.image}>
+            <div className={classNames(styles.image, { [styles.clinicImage]: !isConsultation })}>
               <Image src={image || ''} width={46} height={46} alt={'clinic'} />
             </div>
             <div>
