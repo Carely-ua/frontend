@@ -51,20 +51,20 @@ export const ConsultationItem: FC<ConsultationItemProps> = ({
 
   return (
     <ConsultationItemContainer>
-      <div className={styles.consultationItem}>
-        <Link href={`/doctor/${id}/${serviceId}`} className={styles.Link}>
-          <Link href={`/doctor/${id}/${serviceId}`} className={styles.doctorImage}>
+      <Link href={`/doctor/${id}/${serviceId}`} className={styles.link}>
+        <div className={styles.consultationItem}>
+          <div className={styles.doctorImage}>
             <Image src={image} layout="fill" objectFit="cover" alt="doctor" />
-          </Link>
+          </div>
           <div className={styles.mainInfo}>
             <div className={styles.mobileRating}>
               <Rating />
             </div>
-            <Link href={`/doctor/${id}/${serviceId}`} className={styles.doctorName}>
+            <div className={styles.doctorName}>
               <Typography component="h3" gutterBottom="md">
                 {name}
               </Typography>
-            </Link>
+            </div>
             {!!tags && (
               <Typography component="h4" gutterBottom="md">
                 {tags.join(', ')}
@@ -89,32 +89,32 @@ export const ConsultationItem: FC<ConsultationItemProps> = ({
               </Typography>
             </div>
           </div>
-        </Link>
-        <div className={styles.priceInfo}>
-          <div className={styles.rating}>
-            <Rating rating={rating} reviewsCount={reviewsCount} />
+          <div className={styles.priceInfo}>
+            <div className={styles.rating}>
+              <Rating rating={rating} reviewsCount={reviewsCount} />
+            </div>
+            <div className={styles.price}>
+              <PriceBlock firstPrice={price} secondPrice={discountPrice} />
+            </div>
+            <AddToBagButton serviceId={serviceId} doctorId={id} />
           </div>
-          <div className={styles.price}>
-            <PriceBlock firstPrice={price} secondPrice={discountPrice} />
-          </div>
-          <AddToBagButton serviceId={serviceId} doctorId={id} />
         </div>
-      </div>
-      {children}
-      {arr.some(item => item.description) && (
-        <ul className={styles.docInfoList}>
-          {arr.map(({ title, description }, index) => {
-            return (
-              !!description && (
-                <li key={index}>
-                  <Typography component="h3">{title}</Typography>
-                  <Typography component="p">{description}</Typography>
-                </li>
-              )
-            );
-          })}
-        </ul>
-      )}
+        {children}
+        {arr.some(item => item.description) && (
+          <ul className={styles.docInfoList}>
+            {arr.map(({ title, description }, index) => {
+              return (
+                !!description && (
+                  <li key={index}>
+                    <Typography component="h3">{title}</Typography>
+                    <Typography component="p">{description}</Typography>
+                  </li>
+                )
+              );
+            })}
+          </ul>
+        )}
+      </Link>
     </ConsultationItemContainer>
   );
 };
