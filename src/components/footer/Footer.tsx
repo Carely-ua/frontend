@@ -4,6 +4,7 @@ import { useTranslations } from 'next-intl';
 import { Typography } from '@/ui-kit';
 import { Logo } from '../logo';
 import { Navigation } from '../navigation';
+import { SVG } from '../svg';
 import styles from './Footer.module.scss';
 
 const links = [
@@ -13,6 +14,30 @@ const links = [
   { href: '/', label: 'Rules' },
 ];
 
+const INSTAGRAM_LINK = 'https://www.instagram.com/carely.ua';
+const FACEBOOK_LINK =
+  'https://www.facebook.com/people/Carely-%D0%B2%D1%81%D1%96-%D0%BA%D0%BB%D1%96%D0%BD%D1%96%D0%BA%D0%B8-%D1%82%D0%B2%D0%BE%D0%B3%D0%BE-%D0%BC%D1%96%D1%81%D1%82%D0%B0/61552903588089';
+
+const Social = () => {
+  const t = useTranslations('Footer');
+
+  return (
+    <div>
+      <Typography component="p" color="dark-grey" gutterBottom="xlg">
+        {t('Social')}
+      </Typography>
+      <div className={styles.socialIcons}>
+        <a target="_blank" href={INSTAGRAM_LINK} className={styles.socialIcon}>
+          <SVG.Instagram width={34} height={34} />
+        </a>
+        <a target="_blank" href={FACEBOOK_LINK} className={styles.socialIcon}>
+          <SVG.Facebook width={34} height={34} />
+        </a>
+      </div>
+    </div>
+  );
+};
+
 const Payments = () => {
   const t = useTranslations('Footer');
 
@@ -21,24 +46,7 @@ const Payments = () => {
       <div className={styles.logo}>
         <Logo />
       </div>
-      <div>
-        <Typography component="p" color="dark-grey">
-          {t('Payments')}
-        </Typography>
-        <div className={styles.payments}>
-          <div className={styles.masterCard}>
-            <Image
-              src="/images/master-card.svg"
-              alt="master-card"
-              layout="fill"
-              objectFit="contain"
-            />
-          </div>
-          <div className={styles.visa}>
-            <Image src="/images/visa.svg" alt="visa" layout="fill" objectFit="contain" />
-          </div>
-        </div>
-      </div>
+      <Social />
     </div>
   );
 };
@@ -79,18 +87,6 @@ const Contacts = () => {
       </Typography>
       <Typography component="h5" weight="medium" gutterBottom="xlg">
         carely@mail.com
-      </Typography>
-    </div>
-  );
-};
-
-const Social = () => {
-  const t = useTranslations('Footer');
-
-  return (
-    <div>
-      <Typography component="p" color="dark-grey" gutterBottom="xlg">
-        {t('Social')}
       </Typography>
     </div>
   );
