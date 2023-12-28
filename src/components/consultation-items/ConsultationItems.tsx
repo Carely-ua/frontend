@@ -1,5 +1,6 @@
 import { FC, ReactNode, SyntheticEvent } from 'react';
-import Link from 'next/link';
+
+import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import { ServicesTypes } from '@/services';
 import { Typography } from '@/ui-kit';
@@ -9,6 +10,7 @@ import { PriceBlock } from '../price-block';
 import { AddToBagButton } from '../add-to-bag-button';
 import styles from './ConsultationItems.module.scss';
 import { ConsultationItemContainer } from './ConsultationItemContainer';
+const Link = dynamic(() => import('next/link'), { ssr: false });
 
 interface ConsultationItemProps extends ServicesTypes.Doctor {
   serviceId: string;
@@ -51,7 +53,7 @@ export const ConsultationItem: FC<ConsultationItemProps> = ({
 
   return (
     <ConsultationItemContainer>
-      <Link href={`/doctor/${id}/${serviceId}`} className={styles.link}>
+      <Link suppressHydrationWarning href={`/doctor/${id}/${serviceId}`} className={styles.link}>
         <div className={styles.consultationItem}>
           <div className={styles.doctorImage}>
             <Image src={image} layout="fill" objectFit="cover" alt="doctor" />
