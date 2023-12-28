@@ -112,6 +112,7 @@ export type Clinic = {
   description: Scalars['String']['output'];
   doctors?: Maybe<Array<Maybe<Doctor>>>;
   email: Scalars['String']['output'];
+  hasAnalyse?: Maybe<Scalars['Boolean']['output']>;
   id: Scalars['ID']['output'];
   images?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
   mainImage?: Maybe<Scalars['String']['output']>;
@@ -304,12 +305,12 @@ export type Mutation = {
   destroySpecialization: Scalars['Boolean']['output'];
   destroySubTitleService: Scalars['Boolean']['output'];
   doctorsService: Scalars['Boolean']['output'];
+  doneOrderItem?: Maybe<OrderItem>;
   editUser?: Maybe<User>;
   linkCartItemToUser?: Maybe<Array<Maybe<CartItem>>>;
   orderCall?: Maybe<Scalars['Boolean']['output']>;
   register?: Maybe<Scalars['Boolean']['output']>;
   sendSms?: Maybe<Scalars['String']['output']>;
-  setAsUsedOrderItem?: Maybe<OrderItem>;
   signIn?: Maybe<Scalars['String']['output']>;
   subTitleService: Scalars['Boolean']['output'];
   updateCategory?: Maybe<Category>;
@@ -428,6 +429,10 @@ export type MutationDoctorsServiceArgs = {
   input?: InputMaybe<CreateDoctorService>;
 };
 
+export type MutationDoneOrderItemArgs = {
+  orderItemNumber?: InputMaybe<Scalars['Int']['input']>;
+};
+
 export type MutationEditUserArgs = {
   input?: InputMaybe<EditUser>;
 };
@@ -447,10 +452,6 @@ export type MutationRegisterArgs = {
 
 export type MutationSendSmsArgs = {
   phone: Scalars['String']['input'];
-};
-
-export type MutationSetAsUsedOrderItemArgs = {
-  orderItemId?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type MutationSignInArgs = {
@@ -503,6 +504,7 @@ export type Order = {
 export type OrderItem = {
   __typename?: 'OrderItem';
   amount: Scalars['Float']['output'];
+  clinicId?: Maybe<Scalars['String']['output']>;
   createdAt?: Maybe<Scalars['Date']['output']>;
   doctor?: Maybe<Doctor>;
   doctorId?: Maybe<Scalars['String']['output']>;
@@ -511,6 +513,7 @@ export type OrderItem = {
   number?: Maybe<Scalars['Int']['output']>;
   order?: Maybe<Order>;
   orderId?: Maybe<Scalars['String']['output']>;
+  reviewed?: Maybe<Scalars['Boolean']['output']>;
   service?: Maybe<Service>;
   serviceId?: Maybe<Scalars['String']['output']>;
   status?: Maybe<OrderStatus>;
@@ -534,6 +537,7 @@ export type Query = {
   getCategorySubTitles?: Maybe<Array<Maybe<CategoriesSubTitle>>>;
   getClinics?: Maybe<Array<Maybe<Clinic>>>;
   getDoctors?: Maybe<Array<Maybe<Doctor>>>;
+  getDoneOrderItems?: Maybe<Array<Maybe<OrderItem>>>;
   getServices?: Maybe<Array<Maybe<Category>>>;
   getSpecializations?: Maybe<Array<Maybe<Specialization>>>;
   health: Scalars['Boolean']['output'];
@@ -625,6 +629,7 @@ export type Review = {
 export type ReviewCreateInputType = {
   clinicId?: InputMaybe<Scalars['String']['input']>;
   doctorId?: InputMaybe<Scalars['String']['input']>;
+  orderItemId?: InputMaybe<Scalars['String']['input']>;
   rating?: InputMaybe<Scalars['Float']['input']>;
   serviceId?: InputMaybe<Scalars['String']['input']>;
   text: Scalars['String']['input'];

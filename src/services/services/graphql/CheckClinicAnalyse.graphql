@@ -1,0 +1,5 @@
+query CheckClinicAnalyse($filters: ClinicFilterInputType!) {
+  clinic(filters: $filters) {
+    hasAnalyse
+  }
+}

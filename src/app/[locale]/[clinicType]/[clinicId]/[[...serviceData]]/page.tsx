@@ -1,5 +1,6 @@
+import { redirect } from 'next/navigation';
 import { ClinicServicesNavigation, ServicePanel } from '@/components';
-import { getClinicServices } from '@/services';
+import { checkClinicAnalyse, getClinicServices } from '@/services';
 import { getClinicType } from '@/utils';
 //TODO fix this import;
 import { ClinicType, ServiceType } from '@/utils/graphql/__generated__/types';
@@ -13,7 +14,10 @@ interface ClinicParams {
 }
 
 const ServicesSection = async ({ params }: ClinicParams) => {
-  const serviceType = params.serviceData?.[0] || ServiceType.Analyse;
+  const { clinic } = await checkClinicAnalyse(params.clinicId);
+  const serviceType =
+    params.serviceData?.[0] ||
+    (clinic?.hasAnalyse ? ServiceType.Analyse : ServiceType.Consultations);
   const categoryId = params.serviceData?.[1];
   const clinicType = getClinicType(params.clinicType);
 
@@ -25,7 +29,11 @@ const ServicesSection = async ({ params }: ClinicParams) => {
   return (
     <>
       {isClinic && (
-        <ClinicServicesNavigation clinicId={params.clinicId} serviceType={serviceType} />
+        <ClinicServicesNavigation
+          hideAnalyse={!clinic?.hasAnalyse}
+          clinicId={params.clinicId}
+          serviceType={serviceType}
+        />
       )}
       {data.getServices && (
         <ServicePanel

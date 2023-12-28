@@ -8,6 +8,7 @@ import styles from './ClinicServicesNavigation.module.scss';
 interface ClinicServicesNavigationProps {
   clinicId: string;
   serviceType: any;
+  hideAnalyse: boolean;
 }
 
 const NavigationItems = [
@@ -28,10 +29,13 @@ const NavigationItems = [
 export const ClinicServicesNavigation: FC<ClinicServicesNavigationProps> = ({
   clinicId,
   serviceType,
+  hideAnalyse,
 }) => {
   return (
     <div className={styles.items}>
       {NavigationItems.map(({ title, id }) => {
+        if (hideAnalyse && id === ServiceType.Analyse) return null;
+
         const isActive = serviceType === id;
 
         return (
