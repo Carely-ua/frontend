@@ -18,14 +18,17 @@ interface ClinicCardProps extends NonNullable<ClinicTypes.Clinic> {
 
 const arr = [
   {
+    specialization: 'Specialization',
     add: '21009, м. Вінниця, вул. Замостянська, 13',
     work: 'пн-пт 09.00 – 19.00 сб 09.00 – 17.00 нд 09.00 – 15.00',
   },
   {
+    specialization: 'Specialization',
     add: '21009, м. Вінниця, вул. Замостянська, 13',
     work: 'пн-пт 09.00 – 19.00 сб 09.00 – 17.00 нд 09.00 – 15.00',
   },
   {
+    specialization: 'Specialization',
     add: '21009, м. Вінниця, вул. Замостянська, 13',
     work: 'пн-пт 09.00 – 19.00 сб 09.00 – 17.00 нд 09.00 – 15.00',
   },
@@ -90,7 +93,16 @@ export const ClinicCard: FC<ClinicCardProps> = ({
       </Typography>
       <div className={styles.bottomSection}>
         {arr.map((item, index) => {
-          return <ClinicExtraInfo key={index} address={item.add} workingTime={item.work} />;
+          return (
+            <>
+              <ClinicExtraInfo
+                key={index}
+                specialization={item.specialization}
+                address={item.add}
+                workingTime={item.work}
+              />
+            </>
+          );
         })}
       </div>
     </div>

@@ -12,6 +12,19 @@
   }
 }
 
+.extraInfoWrapper {
+  display: flex;
+  flex-direction: column;
+
+  & > div {
+    padding: 20px 0px;
+  }
+
+  & > div:not(:last-child) {
+    border-bottom: 1px solid $light-grey;
+  }
+}
+
 .mainSection {
   display: flex;
 

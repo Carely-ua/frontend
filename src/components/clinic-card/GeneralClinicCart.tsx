@@ -18,6 +18,24 @@ interface ClinicCardProps extends Omit<NonNullable<ClinicTypes.Clinic>, 'clinicT
   services?: ClinicTypes.ClinicServices;
 }
 
+const arr = [
+  {
+    specialization: 'Specialization',
+    add: '21009, м. Вінниця, вул. Замостянська, 13',
+    work: 'пн-пт 09.00 – 19.00 сб 09.00 – 17.00 нд 09.00 – 15.00',
+  },
+  {
+    specialization: 'Specialization',
+    add: '21009, м. Вінниця, вул. Замостянська, 13',
+    work: 'пн-пт 09.00 – 19.00 сб 09.00 – 17.00 нд 09.00 – 15.00',
+  },
+  {
+    specialization: 'Specialization',
+    add: '21009, м. Вінниця, вул. Замостянська, 13',
+    work: 'пн-пт 09.00 – 19.00 сб 09.00 – 17.00 нд 09.00 – 15.00',
+  },
+];
+
 export const GeneralClinicCart: FC<ClinicCardProps> = ({
   hrefPrefix,
   id,
@@ -31,15 +49,16 @@ export const GeneralClinicCart: FC<ClinicCardProps> = ({
   phone,
 }) => {
   const BottomSection = () => (
-    <div className={styles.bottomSection}>
-      <ClinicExtraInfo address={address} workingTime={workingTime} />
-      <div className={styles.bottomSectionItem}>
-        <PhoneButton phones={[phone]} />
-        <Link className={styles.link} href={`${hrefPrefix}/${id}`}>
-          <Button>Детальніше</Button>
-        </Link>
+    <>
+      <div className={styles.bottomSection}>
+        <div className={styles.bottomSectionItem}>
+          <PhoneButton phones={[phone]} />
+          <Link className={styles.link} href={`${hrefPrefix}/${id}`}>
+            <Button>Детальніше</Button>
+          </Link>
+        </div>
       </div>
-    </div>
+    </>
   );
 
   return (
@@ -60,6 +79,18 @@ export const GeneralClinicCart: FC<ClinicCardProps> = ({
               <BottomSection />
             </div>
           </div>
+        </div>
+        <div className={styles.extraInfoWrapper}>
+          {arr.map((item, index) => {
+            return (
+              <ClinicExtraInfo
+                key={index}
+                specialization={item.specialization}
+                address={item.add}
+                workingTime={item.work}
+              />
+            );
+          })}
         </div>
         <div className={styles.mobileBottomSection}>
           <BottomSection />
