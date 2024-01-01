@@ -15,7 +15,7 @@ export const AddToBagButton: FC<AddToBagButtonProps> = ({ buttonType, serviceId,
   const { enqueueSnackbar } = useSnackbar();
 
   const addToCartHandler = async (e: SyntheticEvent<any>) => {
-    e.stopPropagation();
+    e.preventDefault();
     await addToCart({ serviceId, doctorId });
     enqueueSnackbar('Послуга успішно додана в кошик', { variant: 'snackbar' });
   };
