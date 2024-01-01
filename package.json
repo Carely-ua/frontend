@@ -11,7 +11,7 @@
     "lint:ci": "npm run lint && npm run lint:ts",
     "prettier": "prettier",
     "fetch-schema": "npx rover graph introspect https://backend.carely.com.ua/graphql > schema.graphql",
-    "generate": "graphql-codegen"
+    "generate": "graphql-codegen && npm run lint -- --fix"
   },
   "dependencies": {
     "@apollo/client": "^3.8.0-rc.1",
