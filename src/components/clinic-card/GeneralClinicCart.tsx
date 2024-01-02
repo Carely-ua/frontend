@@ -47,7 +47,10 @@ export const GeneralClinicCart: FC<ClinicCardProps> = ({
   workingTime,
   services,
   phone,
+  specializations,
 }) => {
+  let specializationsArray = specializations?.map(item => item?.title);
+
   const BottomSection = () => (
     <>
       <div className={styles.bottomSection}>
@@ -75,9 +78,43 @@ export const GeneralClinicCart: FC<ClinicCardProps> = ({
               <Typography component="h3">{name}</Typography>
               <Rating rating={rating || 0} reviewsCount={reviewsCount} />
             </div>
+            <div className={styles.infoWrapper}>
+              {hrefPrefix === 'clinics' && (
+                <Typography component="p" gutterBottom="md" className={styles.label}>
+                  Медичний центр
+                </Typography>
+              )}
+              <Typography
+                component="p"
+                color="dark-grey"
+                gutterBottom="md"
+                className={styles.specializations}>
+                {specializationsArray?.join(', ')}
+              </Typography>
+              <div className={styles.mobileBottomSection}>
+                <BottomSection />
+              </div>
+            </div>
             <div className={styles.desktopBottomSection}>
               <BottomSection />
             </div>
+          </div>
+        </div>
+        <div className={styles.infoWrapperMobile}>
+          {hrefPrefix === 'clinics' && (
+            <Typography component="p" gutterBottom="md" className={styles.label}>
+              Медичний центр
+            </Typography>
+          )}
+          <Typography
+            component="p"
+            color="dark-grey"
+            gutterBottom="md"
+            className={styles.specializations}>
+            {specializationsArray?.join(', ')}
+          </Typography>
+          <div className={styles.mobileBottomSection}>
+            <BottomSection />
           </div>
         </div>
         <div className={styles.extraInfoWrapper}>
@@ -92,9 +129,7 @@ export const GeneralClinicCart: FC<ClinicCardProps> = ({
             );
           })}
         </div>
-        <div className={styles.mobileBottomSection}>
-          <BottomSection />
-        </div>
+
         {services && (
           <div className={styles.services}>
             {services.map(service => {

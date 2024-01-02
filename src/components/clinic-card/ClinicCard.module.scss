@@ -27,9 +27,14 @@
 
 .mainSection {
   display: flex;
+  margin-bottom: $gap-xlg;
+
+  @include tablet {
+    margin-bottom: 0;
+  }
 
   .specializations {
-    display: none;
+    display: block;
 
     @include tablet {
       display: block;
@@ -137,7 +142,6 @@
 .link {
   display: inline-block;
   width: 100%;
-  margin-top: $gap-md;
 
   @include tablet {
     width: 160px;
@@ -224,11 +228,10 @@
 }
 
 .mobileBottomSection {
-  margin-top: $gap-xlg;
-  padding-top: $gap-xlg;
-  border-top: 1px solid $light-grey;
+  margin-top: $gap-md;
 
   @include tablet {
+    margin-top: 0;
     display: none;
   }
 }
@@ -238,5 +241,20 @@
     padding-top: $gap-xlg;
     margin-top: $gap-xlg;
     border-top: 1px solid $light-grey;
+  }
+}
+
+.infoWrapper {
+  display: none;
+  @include tablet {
+    display: block;
+  }
+}
+
+.infoWrapperMobile {
+  border-bottom: 1px solid $light-grey;
+  padding-bottom: 20px;
+  @include tablet {
+    display: none;
   }
 }
