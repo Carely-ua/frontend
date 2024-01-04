@@ -1,5 +1,6 @@
 import Rating from '@mui/material/Rating';
 import { useTranslations } from 'next-intl';
+import Image from 'next/image';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { Button, Textarea, Typography } from '@/ui-kit';
 import { useCreateReview } from '@/services/review';
@@ -12,6 +13,9 @@ export interface AddReviewModalProps {
   doctorId?: string;
   clinicId: string;
   orderItemId: string;
+  name?: string;
+  title?: string;
+  img?: string;
 }
 
 type Inputs = {
@@ -27,7 +31,7 @@ export const AddReviewModal: ModalComponent<AddReviewModalProps> = ({
 }) => {
   const t = useTranslations('AddReviewModal');
   const { createReview } = useCreateReview();
-  const { serviceId, doctorId, clinicId, orderItemId } = modalProps || {};
+  const { serviceId, doctorId, clinicId, orderItemId, name, title, img } = modalProps || {};
 
   const { register, handleSubmit, setValue } = useForm<Inputs>();
 
@@ -52,6 +56,19 @@ export const AddReviewModal: ModalComponent<AddReviewModalProps> = ({
           <Typography component="h2" color="white">
             {t('title')}
           </Typography>
+        </div>
+        <div className={styles.serviceInfo}>
+          <div className={styles.serviceInfoWrapper}>
+            <Image className={styles.image} src={img || ''} width={60} height={60} alt={'clinic'} />
+            <div className={styles.info}>
+              <Typography className={styles.title} component="h5">
+                {title}
+              </Typography>
+              <Typography className={styles.name} component="p">
+                {name}
+              </Typography>
+            </div>
+          </div>
         </div>
         <form className={styles.content} onSubmit={handleSubmit(onSubmit)}>
           <div className={styles.ratingBlock}>

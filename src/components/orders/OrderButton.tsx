@@ -13,6 +13,9 @@ interface OrderButtonProps {
   clinicId?: string;
   orderItemId?: string;
   reviewed?: boolean | null;
+  name?: string;
+  img?: string | null;
+  title?: string;
 }
 
 export const OrderButton: FC<OrderButtonProps> = ({
@@ -23,6 +26,9 @@ export const OrderButton: FC<OrderButtonProps> = ({
   clinicId,
   orderItemId,
   reviewed,
+  name,
+  title,
+  img,
 }) => {
   const { openModal } = useModalContext();
 
@@ -35,6 +41,9 @@ export const OrderButton: FC<OrderButtonProps> = ({
         doctorId,
         clinicId,
         orderItemId,
+        name,
+        img,
+        title,
       });
     } else {
       console.log('unActive');
