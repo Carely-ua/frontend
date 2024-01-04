@@ -16,6 +16,7 @@ type Query {
   clinic(filters: ClinicFilterInputType!): Clinic
   getClinics(filters: ClinicFilterInputType!): [Clinic]
   searchClinics(filters: ClinicFilterInputType!): ClinicSearch!
+  getClinicDepartments(filters: ClinicDepartmentFilterInputType): [ClinicDepartment]
   getSpecializations(filters: SpecializationFilterInputType): [Specialization]
   health: Boolean!
   doctor(filters: DoctorFilterInputType!): Doctor
@@ -32,6 +33,7 @@ type Mutation {
   register(login: String!, password: String!): Boolean
   auth(login: String!, password: String!): String
   doneOrderItem(orderItemNumber: Int): OrderItem
+  cancelOrderItem(orderItemNumber: Int!, adminComment: String!): OrderItem
   createCartItem(input: CartItemCreateInputType!): CartItem
   createCartItemUnAuth(input: CartItemCreateInputType!): CartItem
   linkCartItemToUser(ids: [ID]): [CartItem]
@@ -48,6 +50,11 @@ type Mutation {
   createClinic(input: ClinicCreateInputType!): Clinic
   updateClinic(input: ClinicUpdateInputType!): Clinic
   destroyClinic(id: ID!): Boolean!
+  createClinicDepartment(input: ClinicDepartmentCreateInputType!): ClinicDepartment
+  updateClinicDepartment(input: ClinicDepartmentUpdateInputType!): ClinicDepartment
+  destroyClinicDepartment(id: ID!): Boolean!
+  createSpecClinicDepartment(input: SpecClinicCreateDepartmentInputType): Boolean!
+  destroySpecClinicDepartment(input: SpecClinicCreateDepartmentInputType): Boolean!
   createSpecClinic(input: SpecClinicCreateInputType): Boolean!
   destroySpecClinic(input: SpecClinicCreateInputType): Boolean!
   createSpecialization(input: SpecializationCreateInputType!): Specialization
@@ -116,6 +123,7 @@ type Clinic {
   name: String!
   email: String!
   address: String!
+  clinicDepartments: [ClinicDepartment]
   phone: String!
   workingTime: String
   hasAnalyse: Boolean
@@ -136,6 +144,20 @@ type Clinic {
 type ClinicSearch {
   clinics: [Clinic]
   specializations: [Specialization]
+}
+type ClinicDepartment {
+  id: ID!
+  title: String
+  workingTime: String
+  address: String
+  mapCoordinates: MapCoordinates
+  departmentSpecializations: [Specialization]
+  clinicId: ID!
+  clinic: Clinic
+}
+type SpecializationClinicDepartments {
+  clinicDepartmentId: ID!
+  clinicId: ID!
 }
 type SpecializationClinicService {
   specializationId: ID!
@@ -180,6 +202,9 @@ type OrderItem {
   doctorId: String
   order: Order
   clinicId: String
+  adminComment: String
+  doneAt: Date
+  cancelledAt: Date
   reviewed: Boolean
   doctor: Doctor
   service: Service
@@ -253,6 +278,7 @@ enum ClinicType {
 enum OrderStatus {
   done
   active
+  cancelled
   unActive
 }
 enum ServiceType {
@@ -342,6 +368,29 @@ input ClinicUpdateInputType {
   description: String
   image: String
   rating: Float
+}
+input ClinicDepartmentFilterInputType {
+  title: String
+  id: ID
+  clinicId: ID
+}
+input ClinicDepartmentCreateInputType {
+  title: String
+  workingTime: String
+  address: String
+  clinicId: ID!
+  mapCoordinates: MapCoordinatesInput
+}
+input ClinicDepartmentUpdateInputType {
+  id: ID!
+  title: String
+  workingTime: String
+  address: String
+  mapCoordinates: MapCoordinatesInput
+}
+input SpecClinicCreateDepartmentInputType {
+  clinicDepartment: ID!
+  clinicId: ID!
 }
 input SpecClinicCreateInputType {
   specializationId: ID!

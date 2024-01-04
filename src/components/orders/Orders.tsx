@@ -38,6 +38,11 @@ const statusData = {
     buttonText: 'Активувати знову',
     styles: styles.statusUnActive,
   },
+  [OrderStatus.Cancelled]: {
+    title: 'Cкасовано',
+    buttonText: '',
+    styles: styles.statusCancelled,
+  },
 };
 
 const OrderItem: FC<CartTypes.OrderItem> = ({
@@ -50,6 +55,7 @@ const OrderItem: FC<CartTypes.OrderItem> = ({
   id,
   reviewed,
 }) => {
+  console.log('status', status);
   const isConsultation = service?.serviceType === ServiceType.Consultations;
   const isLab = service?.clinic?.clinicType === ClinicType.Laboratory;
 
@@ -157,21 +163,23 @@ const OrderItem: FC<CartTypes.OrderItem> = ({
         <div>
           {!!status && (
             <>
-              <div className={classNames(styles.status, statusData[status].styles)}>
+              <div className={classNames(styles.status, statusData[status]?.styles)}>
                 <span />
-                <Typography component="p">{statusData[status].title}</Typography>
+                <Typography component="p">{statusData[status]?.title}</Typography>
               </div>
-              <div className={styles.statusButton}>
-                <OrderButton
-                  serviceId={service?.id}
-                  status={status}
-                  buttonText={statusData[status].buttonText}
-                  doctorId={doctor?.id}
-                  clinicId={service?.clinic?.id}
-                  orderItemId={id}
-                  reviewed={reviewed}
-                />
-              </div>
+              {!!statusData[status]?.buttonText && (
+                <div className={styles.statusButton}>
+                  <OrderButton
+                    serviceId={service?.id}
+                    status={status}
+                    buttonText={statusData[status]?.buttonText}
+                    doctorId={doctor?.id}
+                    clinicId={service?.clinic?.id}
+                    orderItemId={id}
+                    reviewed={reviewed}
+                  />
+                </div>
+              )}
             </>
           )}
         </div>

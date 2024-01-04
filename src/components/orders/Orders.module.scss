@@ -197,7 +197,7 @@
     }
   }
 
-  &UnActive {
+  &UnActive, &Cancelled {
     span {
       background-color: $dangerous;
     }
