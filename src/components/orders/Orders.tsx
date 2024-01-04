@@ -55,7 +55,6 @@ const OrderItem: FC<CartTypes.OrderItem> = ({
   id,
   reviewed,
 }) => {
-  console.log('status', status);
   const isConsultation = service?.serviceType === ServiceType.Consultations;
   const isLab = service?.clinic?.clinicType === ClinicType.Laboratory;
 

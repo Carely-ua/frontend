@@ -22,10 +22,16 @@
 
 .ratingBlock {
   margin-bottom: customGap(10);
-
+  
   svg {
     width: 32px;
     height: 32px;
+  }
+
+  span {
+    @include desktop {
+      zoom: 122%;
+    }
   }
 }
 
