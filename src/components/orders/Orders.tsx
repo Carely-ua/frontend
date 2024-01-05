@@ -179,6 +179,7 @@ const OrderItem: FC<CartTypes.OrderItem> = ({
                     name={mainSectionText}
                     img={image}
                     title={mainSectionTitle}
+                    isConsultation={isConsultation}
                   />
                 </div>
               )}

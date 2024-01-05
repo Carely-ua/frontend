@@ -13,7 +13,12 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 $gap-xlg 0 customGap(12);
+  padding: 0 customGap(4.5) 0 customGap(7.5);
+  position: relative;
+
+  & > button {
+    top: unset;
+  }
 }
 
 .content {
@@ -27,7 +32,7 @@
 .serviceInfoWrapper {
   padding-bottom: $gap-xlg;
   display: flex;
-  gap: 10px;
+  gap: customGap(2.5);
   border-bottom: 1px solid $light-grey;
 }
 
@@ -36,27 +41,21 @@
   flex-direction: column;
   gap: 5px;
   justify-content: center;
-}
 
-.title {
-  font-size: 18px;
-  font-weight: 400;
-  line-height: 24px;
-}
-
-.name {
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 24px;
+  & > .name {
+    color: #7d7d7d;
+  }
 }
 
 .image {
   border-radius: 50%;
+  border: 1.5px solid #dedede;
 }
 
 .ratingBlock {
   margin-bottom: customGap(10);
-  
+  position: relative;
+
   svg {
     width: 32px;
     height: 32px;
@@ -76,4 +75,9 @@
 .textarea {
   height: 180px !important;
   resize: none;
+}
+
+.error {
+  position: absolute;
+  color: $dangerous;
 }

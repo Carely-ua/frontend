@@ -1,9 +1,11 @@
 import Rating from '@mui/material/Rating';
+import { useState } from 'react';
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { Button, Textarea, Typography } from '@/ui-kit';
 import { useCreateReview } from '@/services/review';
+import { CloseButton } from '@/components/close-button';
 import { Modal } from '../modal';
 import { ModalComponent } from '..';
 import styles from './AddReviewModal.module.scss';
@@ -16,6 +18,7 @@ export interface AddReviewModalProps {
   name?: string;
   title?: string;
   img?: string;
+  isConsultation?: boolean;
 }
 
 type Inputs = {
@@ -29,24 +32,30 @@ export const AddReviewModal: ModalComponent<AddReviewModalProps> = ({
   open,
   openModal,
 }) => {
+  const [error, setError] = useState(false);
   const t = useTranslations('AddReviewModal');
   const { createReview } = useCreateReview();
-  const { serviceId, doctorId, clinicId, orderItemId, name, title, img } = modalProps || {};
+  const { serviceId, doctorId, clinicId, orderItemId, name, title, img, isConsultation } =
+    modalProps || {};
 
   const { register, handleSubmit, setValue } = useForm<Inputs>();
 
   const onSubmit: SubmitHandler<Inputs> = async values => {
     if (!serviceId || !clinicId || !orderItemId) return;
 
-    await createReview({
-      serviceId,
-      clinicId,
-      orderItemId,
-      text: values.review,
-      rating: values.rating,
-      ...(doctorId ? { doctorId } : {}),
-    });
-    openModal('AlertModal', { message: 'Ваш відгук успішно створений' });
+    if (!!values.rating === false) {
+      setError(true);
+    } else {
+      await createReview({
+        serviceId,
+        clinicId,
+        orderItemId,
+        text: values.review,
+        rating: values.rating,
+        ...(doctorId ? { doctorId } : {}),
+      });
+      openModal('AlertModal', { message: 'Ваш відгук успішно створений' });
+    }
   };
 
   return (
@@ -56,16 +65,19 @@ export const AddReviewModal: ModalComponent<AddReviewModalProps> = ({
           <Typography component="h2" color="white">
             {t('title')}
           </Typography>
+          <CloseButton handleClose={handleClose} />
         </div>
         <div className={styles.serviceInfo}>
           <div className={styles.serviceInfoWrapper}>
             <Image className={styles.image} src={img || ''} width={60} height={60} alt={'clinic'} />
             <div className={styles.info}>
               <Typography className={styles.title} component="h5">
-                {title}
+                {isConsultation ? name : title}
               </Typography>
-              <Typography className={styles.name} component="p">
-                {name}
+              <Typography
+                className={isConsultation ? styles.name : styles.serviceName}
+                component="p">
+                {isConsultation ? title : name}
               </Typography>
             </div>
           </div>
@@ -78,9 +90,15 @@ export const AddReviewModal: ModalComponent<AddReviewModalProps> = ({
             <Rating
               onChange={(_, newValue) => {
                 setValue('rating', newValue);
+                setError(!newValue);
               }}
               size="large"
             />
+            {error && (
+              <Typography component="p" className={styles.error}>
+                Error
+              </Typography>
+            )}
           </div>
           <div className={styles.review}>
             <Typography component="p" gutterBottom="xlg">
