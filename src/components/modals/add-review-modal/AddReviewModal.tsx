@@ -7,6 +7,7 @@ import { Button, Textarea, Typography } from '@/ui-kit';
 import { useCreateReview } from '@/services/review';
 import { CloseButton } from '@/components/close-button';
 import { Modal } from '../modal';
+import IMG from '../../svg/alert.svg';
 import { ModalComponent } from '..';
 import styles from './AddReviewModal.module.scss';
 
@@ -95,9 +96,12 @@ export const AddReviewModal: ModalComponent<AddReviewModalProps> = ({
               size="large"
             />
             {error && (
-              <Typography component="p" className={styles.error}>
-                Error
-              </Typography>
+              <div className={styles.alertWrapper}>
+                <IMG className={styles.alertIcon} width={18} height={18} />
+                <Typography component="p" className={styles.alert}>
+                  Поле обов&#39;язкове до заповнювання
+                </Typography>
+              </div>
             )}
           </div>
           <div className={styles.review}>
