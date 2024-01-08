@@ -80,13 +80,7 @@ const Contacts = () => {
         {t('Contacts')}
       </Typography>
       <Typography component="h5" weight="medium" gutterBottom="xlg">
-        068 000 11 22
-      </Typography>
-      <Typography component="h5" weight="medium" gutterBottom="xlg">
-        068 000 11 22
-      </Typography>
-      <Typography component="h5" weight="medium" gutterBottom="xlg">
-        carely@mail.com
+        carely.ua@gmail.com
       </Typography>
     </div>
   );
