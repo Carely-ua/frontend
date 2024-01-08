@@ -1,1 +1,0 @@
-export { SuccessAddedToCartModal } from './SuccessAddedToCartModal';
