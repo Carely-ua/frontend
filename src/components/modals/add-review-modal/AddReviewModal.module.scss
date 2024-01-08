@@ -39,17 +39,17 @@
 .info {
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  gap: $gap-xs;
   justify-content: center;
-
-  & > .name {
-    color: #7d7d7d;
-  }
 }
 
 .image {
   border-radius: 50%;
-  border: 1.5px solid #dedede;
+  border: 1.5px solid $light-grey;
+}
+
+.clinicImage {
+  object-fit: contain;
 }
 
 .ratingBlock {

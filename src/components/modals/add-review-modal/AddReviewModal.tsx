@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 import { useForm, SubmitHandler } from 'react-hook-form';
+import classNames from 'classnames';
 import { Button, Textarea, Typography } from '@/ui-kit';
 import { useCreateReview } from '@/services/review';
 import { CloseButton } from '@/components/close-button';
@@ -70,14 +71,16 @@ export const AddReviewModal: ModalComponent<AddReviewModalProps> = ({
         </div>
         <div className={styles.serviceInfo}>
           <div className={styles.serviceInfoWrapper}>
-            <Image className={styles.image} src={img || ''} width={60} height={60} alt={'clinic'} />
+            <Image
+              className={classNames(styles.image, { [styles.clinicImage]: !isConsultation })}
+              src={img || ''}
+              width={60}
+              height={60}
+              alt={'clinic'}
+            />
             <div className={styles.info}>
-              <Typography className={styles.title} component="h5">
-                {isConsultation ? name : title}
-              </Typography>
-              <Typography
-                className={isConsultation ? styles.name : styles.serviceName}
-                component="p">
+              <Typography component="h5">{isConsultation ? name : title}</Typography>
+              <Typography component="p" color="dark-grey">
                 {isConsultation ? title : name}
               </Typography>
             </div>
@@ -99,7 +102,7 @@ export const AddReviewModal: ModalComponent<AddReviewModalProps> = ({
               <div className={styles.alertWrapper}>
                 <IMG className={styles.alertIcon} width={18} height={18} />
                 <Typography component="p" className={styles.alert}>
-                  Поле обов&#39;язкове до заповнювання
+                  Поле обов&#39;язкове до заповнення
                 </Typography>
               </div>
             )}
