@@ -135,6 +135,10 @@
   border-bottom: 1px solid $grey;
   padding: 0 $gap-md;
 
+  & > div {
+    width: 100%;
+  }
+
   @include tablet {
     border-bottom: 0;
     flex: 450px 1;
