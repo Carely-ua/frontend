@@ -176,6 +176,10 @@ const OrderItem: FC<CartTypes.OrderItem> = ({
                     clinicId={service?.clinic?.id}
                     orderItemId={id}
                     reviewed={reviewed}
+                    name={mainSectionText}
+                    img={image}
+                    title={mainSectionTitle}
+                    isConsultation={isConsultation}
                   />
                 </div>
               )}

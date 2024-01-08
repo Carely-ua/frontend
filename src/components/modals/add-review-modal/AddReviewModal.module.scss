@@ -1,7 +1,7 @@
 @use '@/scss/abstracts' as *;
 
 .addReviewModal {
-  width: 560px; 
+  width: 560px;
   border-radius: 20px;
   background-color: $white;
 }
@@ -13,19 +13,57 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 $gap-xlg 0 customGap(12);
+  padding: 0 customGap(4.5) 0 customGap(7.5);
+  position: relative;
+
+  & > button {
+    top: unset;
+  }
 }
 
 .content {
   padding: customGap(10) customGap(7) customGap(10);
 }
 
+.serviceInfo {
+  padding: $gap-xlg customGap(7.5) 0px customGap(7.5);
+}
+
+.serviceInfoWrapper {
+  padding-bottom: $gap-xlg;
+  display: flex;
+  gap: customGap(2.5);
+  border-bottom: 1px solid $light-grey;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: $gap-xs;
+  justify-content: center;
+}
+
+.image {
+  border-radius: 50%;
+  border: 1.5px solid $light-grey;
+}
+
+.clinicImage {
+  object-fit: contain;
+}
+
 .ratingBlock {
   margin-bottom: customGap(10);
-  
+  position: relative;
+
   svg {
     width: 32px;
     height: 32px;
+  }
+
+  svg.alertIcon {
+    width: 18px;
+    height: 18px;
   }
 
   span {
@@ -42,4 +80,15 @@
 .textarea {
   height: 180px !important;
   resize: none;
+}
+
+.alertWrapper {
+  display: flex;
+  position: absolute;
+  align-items: center;
+  gap: 5px;
+}
+
+.alert {
+  color: $dangerous;
 }
