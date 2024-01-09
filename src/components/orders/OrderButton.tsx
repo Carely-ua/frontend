@@ -17,6 +17,7 @@ interface OrderButtonProps {
   img?: string | null;
   title?: string;
   isConsultation?: boolean;
+  phones: Array<string>;
 }
 
 export const OrderButton: FC<OrderButtonProps> = ({
@@ -31,12 +32,13 @@ export const OrderButton: FC<OrderButtonProps> = ({
   title,
   img,
   isConsultation,
+  phones,
 }) => {
   const { openModal } = useModalContext();
 
   const onClickHandler = () => {
     if (status === OrderStatus.Active) {
-      console.log('Active');
+      openModal('PhoneModal', { phones });
     } else if (status === OrderStatus.Done) {
       openModal('AddReviewModal', {
         serviceId,

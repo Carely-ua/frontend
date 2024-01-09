@@ -40,6 +40,7 @@ export type GetOrdersQuery = {
           mainImage?: string | null;
           clinicType: Types.ClinicType;
           name: string;
+          phone: string;
         } | null;
       } | null;
     }>;
@@ -113,6 +114,7 @@ export const GetOrdersDocument = {
                                   { kind: 'Field', name: { kind: 'Name', value: 'mainImage' } },
                                   { kind: 'Field', name: { kind: 'Name', value: 'clinicType' } },
                                   { kind: 'Field', name: { kind: 'Name', value: 'name' } },
+                                  { kind: 'Field', name: { kind: 'Name', value: 'phone' } },
                                 ],
                               },
                             },
