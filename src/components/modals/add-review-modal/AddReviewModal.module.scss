@@ -1,9 +1,13 @@
 @use '@/scss/abstracts' as *;
 
 .addReviewModal {
-  width: 560px;
-  border-radius: 20px;
+  width: 320px;
   background-color: $white;
+  border-radius: 20px;
+
+  @include tablet {
+    width: 560px;
+  }
 }
 
 .header {
@@ -80,6 +84,10 @@
 .textarea {
   height: 180px !important;
   resize: none;
+}
+
+.textareaAlert {
+  border-color: $dangerous;
 }
 
 .alertWrapper {

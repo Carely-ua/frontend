@@ -1,6 +1,7 @@
 import Rating from '@mui/material/Rating';
-import { useState } from 'react';
+import { use, useState } from 'react';
 import { useTranslations } from 'next-intl';
+import classNames from 'classnames';
 import Image from 'next/image';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { Button, Textarea, Typography } from '@/ui-kit';
@@ -34,18 +35,26 @@ export const AddReviewModal: ModalComponent<AddReviewModalProps> = ({
   openModal,
 }) => {
   const [error, setError] = useState(false);
+  const [textErr, setTextErr] = useState(false);
   const t = useTranslations('AddReviewModal');
   const { createReview } = useCreateReview();
   const { serviceId, doctorId, clinicId, orderItemId, name, title, img, isConsultation } =
     modalProps || {};
 
-  const { register, handleSubmit, setValue } = useForm<Inputs>();
+  const {
+    register,
+    handleSubmit,
+    setValue,
+    formState: { errors },
+  } = useForm<Inputs>();
 
   const onSubmit: SubmitHandler<Inputs> = async values => {
     if (!serviceId || !clinicId || !orderItemId) return;
 
     if (!!values.rating === false) {
       setError(true);
+    } else if (!!values.review === false) {
+      setTextErr(true);
     } else {
       await createReview({
         serviceId,
@@ -99,7 +108,7 @@ export const AddReviewModal: ModalComponent<AddReviewModalProps> = ({
               <div className={styles.alertWrapper}>
                 <IMG className={styles.alertIcon} width={18} height={18} />
                 <Typography component="p" className={styles.alert}>
-                  Поле обов&#39;язкове до заповнювання
+                  Error
                 </Typography>
               </div>
             )}
@@ -108,7 +117,22 @@ export const AddReviewModal: ModalComponent<AddReviewModalProps> = ({
             <Typography component="p" gutterBottom="xlg">
               {t('reviewLabel')}
             </Typography>
-            <Textarea {...register('review')} className={styles.textarea} />
+            <Textarea
+              onInput={e => {
+                const text = e.target as HTMLInputElement;
+                setTextErr(!text);
+              }}
+              {...register('review')}
+              className={classNames(styles.textarea, textErr && styles.textareaAlert)}
+            />
+            {textErr && (
+              <div className={styles.alertWrapper}>
+                <IMG className={styles.alertIcon} width={18} height={18} />
+                <Typography component="p" className={styles.alert}>
+                  Error
+                </Typography>
+              </div>
+            )}
           </div>
           <Button type="submit">{t('button')}</Button>
         </form>
