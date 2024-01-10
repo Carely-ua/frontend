@@ -11,7 +11,7 @@ const links = [
   { href: '/about', label: 'AboutUs' },
   { href: '/rating', label: 'Rating' },
   { href: '/partners', label: 'Partners' },
-  { href: '/', label: 'Rules' },
+  { href: '/userAgreement', label: 'Rules' },
 ];
 
 const INSTAGRAM_LINK = 'https://www.instagram.com/carely.ua';
@@ -114,7 +114,6 @@ export const Footer = () => {
           </div>
           <SecondaryNavigation />
           <Contacts />
-          {/* <Social /> */}
         </div>
 
         <Copyright />
