@@ -7,7 +7,7 @@ import { GetUnAuthCartDocument } from './graphql/__generated__/GetUnAuthCart';
 import { useCartForUnAuthUser } from './cart-for-un-auth-user';
 
 export const useGetCart = () => {
-  const { data: session } = useSession();
+  const { data: session, status } = useSession();
   const { getCartIds } = useCartForUnAuthUser();
   const [getCart, { data: authCartData }] = useLazyQuery(GetCartDocument);
   const [_getUnAuthCart, { data: unAuthCartData, previousData }] =
@@ -15,9 +15,9 @@ export const useGetCart = () => {
 
   const token = session?.user?.token;
 
-  const getUnAuthCart = useCallback(() => {
+  const getUnAuthCart = useCallback(async () => {
     const ids = getCartIds();
-    _getUnAuthCart({ variables: { ids } });
+    await _getUnAuthCart({ variables: { ids } });
   }, [_getUnAuthCart, getCartIds]);
 
   useEffect(() => {
@@ -26,9 +26,11 @@ export const useGetCart = () => {
     return () => window.removeEventListener('storage', getUnAuthCart);
   }, [getCartIds, getUnAuthCart]);
 
-  useEffect(() => {
+  const getCartHandler = useCallback(async () => {
+    if (status === 'loading') return;
+
     if (token) {
-      getCart({
+      await getCart({
         context: {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -36,9 +38,13 @@ export const useGetCart = () => {
         },
       });
     } else {
-      getUnAuthCart();
+      await getUnAuthCart();
     }
-  }, [getCart, getCartIds, getUnAuthCart, token]);
+  }, [getCart, getUnAuthCart, status, token]);
+
+  useEffect(() => {
+    getCartHandler();
+  }, [getCartHandler]);
 
   return {
     data: token ? authCartData?.cart : unAuthCartData?.cartUnAuth || previousData?.cartUnAuth,
