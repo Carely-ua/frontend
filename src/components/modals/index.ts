@@ -5,8 +5,10 @@ import { LogoutModal } from './logout-modal';
 import { AddReviewModal } from './add-review-modal';
 import { AlertModal } from './alert-modal';
 import { PhoneModal } from './phone-modal/PhoneModal';
+import { AddToBagAuthModal } from './add-to-bag-auth-modal';
 
 export const modals = {
+  AddToBagAuthModal,
   AuthModal,
   SuccessAuthModal,
   LogoutModal,
