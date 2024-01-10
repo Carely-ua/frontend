@@ -52,14 +52,14 @@ export const MainBanner = () => {
           </Typography>
         </div>
         <div className={styles.imageContainer}>
-          <div className={styles.image}>
-            {/* <Image
-              src="/images/oxford-medical.png"
+          <Link className={styles.image} href="/clinics/8fd92b3a-17b1-4387-b59e-d334b4ee47b2">
+            <Image
+              src="/images/logo_for_banner.png"
               alt="decoration"
               layout="fill"
               objectFit="cover"
-            /> */}
-          </div>
+            />
+          </Link>
         </div>
         <div className={styles.decoration}>
           <div>
