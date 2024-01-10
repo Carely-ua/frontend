@@ -35,7 +35,7 @@ const statusData = {
   },
   [OrderStatus.UnActive]: {
     title: 'Неактивний',
-    buttonText: 'Активувати знову',
+    buttonText: 'Замовити повторно',
     styles: styles.statusUnActive,
   },
   [OrderStatus.Cancelled]: {

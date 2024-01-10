@@ -12,12 +12,10 @@ interface AddToBagButtonProps extends Pick<ButtonProps, 'buttonType'> {
 
 export const AddToBagButton: FC<AddToBagButtonProps> = ({ buttonType, serviceId, doctorId }) => {
   const { addToCart } = useAddToCart();
-  const { enqueueSnackbar } = useSnackbar();
 
   const addToCartHandler = async (e: SyntheticEvent<any>) => {
     e.preventDefault();
     await addToCart({ serviceId, doctorId });
-    enqueueSnackbar('Послуга успішно додана в кошик', { variant: 'snackbar' });
   };
 
   return (

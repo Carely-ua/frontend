@@ -4,6 +4,7 @@ import { FC } from 'react';
 import { Button } from '@/ui-kit';
 import { OrderStatus } from '@/utils/graphql/__generated__/types';
 import { useModalContext } from '@/utils/client';
+import { useAddToCart } from '@/services/cart/add-to-cart';
 
 interface OrderButtonProps {
   status: OrderStatus;
@@ -35,6 +36,7 @@ export const OrderButton: FC<OrderButtonProps> = ({
   phones,
 }) => {
   const { openModal } = useModalContext();
+  const { addToCart } = useAddToCart();
 
   const onClickHandler = () => {
     if (status === OrderStatus.Active) {
@@ -50,8 +52,8 @@ export const OrderButton: FC<OrderButtonProps> = ({
         title,
         isConsultation,
       });
-    } else {
-      console.log('unActive');
+    } else if (status === OrderStatus.UnActive) {
+      addToCart({ serviceId, doctorId });
     }
   };
 
