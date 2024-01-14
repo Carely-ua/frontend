@@ -26,6 +26,7 @@ import Phone from './phone.svg';
 import CheckMark from './check-mark.svg';
 import Instagram from './instagram.svg';
 import Facebook from './facebook.svg';
+import Alert from './alert.svg';
 
 const SVGObject = {
   Arrow,
@@ -55,6 +56,7 @@ const SVGObject = {
   CheckMark,
   Instagram,
   Facebook,
+  Alert,
 };
 
 export type SVGNameType = keyof typeof SVGObject;
