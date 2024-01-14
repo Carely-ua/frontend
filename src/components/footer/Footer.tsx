@@ -94,7 +94,7 @@ const Copyright = () => {
       <Typography component="h5" color="dark-grey">
         {t('text')}
       </Typography>
-      <Link href="/" className={styles.copyrightLink}>
+      <Link href="/privacyPolicy" className={styles.copyrightLink}>
         <Typography component="h5" color="dark-grey">
           {t('link')}
         </Typography>
