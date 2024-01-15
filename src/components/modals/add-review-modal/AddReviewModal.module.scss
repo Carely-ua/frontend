@@ -1,9 +1,15 @@
 @use '@/scss/abstracts' as *;
 
 .addReviewModal {
-  width: 560px;
-  border-radius: 20px;
+  width: calc(100% - 40px);
+  margin: 0 20px;
   background-color: $white;
+  border-radius: 20px;
+
+  @include tablet {
+    margin: 0;
+    width: 560px;
+  }
 }
 
 .header {
@@ -22,11 +28,19 @@
 }
 
 .content {
-  padding: customGap(10) customGap(7) customGap(10);
+  padding: $gap-xlg $gap-lg;
+
+  @include tablet {
+    padding: customGap(10) customGap(8) customGap(10);
+  }
 }
 
 .serviceInfo {
-  padding: $gap-xlg customGap(7.5) 0px customGap(7.5);
+  padding: $gap-xlg $gap-lg 0px;
+
+  @include tablet {
+    padding: $gap-xlg customGap(8) 0px customGap(8);
+  }
 }
 
 .serviceInfoWrapper {
@@ -80,6 +94,10 @@
 .textarea {
   height: 180px !important;
   resize: none;
+}
+
+.textareaAlert {
+  border-color: $dangerous;
 }
 
 .alertWrapper {
