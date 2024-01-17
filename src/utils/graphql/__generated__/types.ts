@@ -280,6 +280,12 @@ export type DoctorUpdateInputType = {
   rating?: InputMaybe<Scalars['Float']['input']>;
 };
 
+export type DoneOrderItemResponse = {
+  __typename?: 'DoneOrderItemResponse';
+  message?: Maybe<Scalars['String']['output']>;
+  orderItem?: Maybe<OrderItem>;
+};
+
 export type EditUser = {
   birthday?: InputMaybe<Scalars['String']['input']>;
   email?: InputMaybe<Scalars['String']['input']>;
@@ -345,7 +351,7 @@ export type Mutation = {
   destroySpecialization: Scalars['Boolean']['output'];
   destroySubTitleService: Scalars['Boolean']['output'];
   doctorsService: Scalars['Boolean']['output'];
-  doneOrderItem?: Maybe<OrderItem>;
+  doneOrderItem?: Maybe<DoneOrderItemResponse>;
   editUser?: Maybe<User>;
   linkCartItemToUser?: Maybe<Array<Maybe<CartItem>>>;
   orderCall?: Maybe<Scalars['Boolean']['output']>;
