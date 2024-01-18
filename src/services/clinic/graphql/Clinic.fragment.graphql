@@ -13,4 +13,17 @@ fragment Clinic on Clinic {
     lat
     lng
   }
+  clinicDepartments {
+    id
+    title
+    workingTime
+    address
+    departmentSpecializations {
+      title
+    }
+    mapCoordinates {
+      lat
+      lng
+    }
+  }
 }

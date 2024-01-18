@@ -48,8 +48,11 @@ export const GeneralClinicCart: FC<ClinicCardProps> = ({
   services,
   phone,
   specializations,
+  clinicDepartments,
 }) => {
-  let specializationsArray = specializations?.map(item => item?.title);
+  const specializationsArray = specializations?.map(item => item?.title);
+
+  const isClinic = hrefPrefix === 'clinics';
 
   const BottomSection = () => (
     <>
@@ -79,7 +82,7 @@ export const GeneralClinicCart: FC<ClinicCardProps> = ({
               <Rating rating={rating || 0} reviewsCount={reviewsCount} />
             </div>
             <div className={styles.infoWrapper}>
-              {hrefPrefix === 'clinics' && (
+              {isClinic && (
                 <Typography component="p" gutterBottom="md" className={styles.label}>
                   Медичний центр
                 </Typography>
@@ -101,7 +104,7 @@ export const GeneralClinicCart: FC<ClinicCardProps> = ({
           </div>
         </div>
         <div className={styles.infoWrapperMobile}>
-          {hrefPrefix === 'clinics' && (
+          {isClinic && (
             <Typography component="p" gutterBottom="md" className={styles.label}>
               Медичний центр
             </Typography>
@@ -118,13 +121,13 @@ export const GeneralClinicCart: FC<ClinicCardProps> = ({
           </div>
         </div>
         <div className={styles.extraInfoWrapper}>
-          {arr.map((item, index) => {
+          {clinicDepartments?.map(item => {
             return (
               <ClinicExtraInfo
-                key={index}
-                specialization={item.specialization}
-                address={item.add}
-                workingTime={item.work}
+                key={item?.id}
+                departmentSpecializations={item?.departmentSpecializations}
+                address={item?.address}
+                workingTime={item?.workingTime}
               />
             );
           })}

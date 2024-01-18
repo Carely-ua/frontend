@@ -4,21 +4,25 @@ import { SVG } from '../svg';
 import styles from './ClinicExtraInfo.module.scss';
 
 export interface ClinicExtraInfoProps {
-  specialization?: string;
-  address: string;
+  departmentSpecializations?: Array<{
+    __typename?: 'Specialization';
+    title: string;
+  } | null> | null;
+  address?: string | null;
   workingTime?: string | null;
 }
 
 export const ClinicExtraInfo: FC<ClinicExtraInfoProps> = ({
   address,
   workingTime,
-  specialization,
+  departmentSpecializations,
 }) => {
+  const specialization = departmentSpecializations?.map(item => item?.title);
   return (
     <div>
       {!!specialization && (
         <Typography className={styles.specialization} component="p" gutterBottom="sm">
-          {specialization}
+          {specialization.join(', ')}
         </Typography>
       )}
       <div className={styles.extraInfo}>

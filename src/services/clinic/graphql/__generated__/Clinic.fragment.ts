@@ -14,6 +14,18 @@ export type ClinicFragment = {
   workingTime?: string | null;
   phone: string;
   mapCoordinates: { __typename?: 'MapCoordinates'; lat: number; lng: number };
+  clinicDepartments?: Array<{
+    __typename?: 'ClinicDepartment';
+    id: string;
+    title?: string | null;
+    workingTime?: string | null;
+    address?: string | null;
+    departmentSpecializations?: Array<{
+      __typename?: 'Specialization';
+      title: string;
+    } | null> | null;
+    mapCoordinates?: { __typename?: 'MapCoordinates'; lat: number; lng: number } | null;
+  } | null> | null;
 };
 
 export const ClinicFragmentDoc = {
@@ -44,6 +56,38 @@ export const ClinicFragmentDoc = {
               selections: [
                 { kind: 'Field', name: { kind: 'Name', value: 'lat' } },
                 { kind: 'Field', name: { kind: 'Name', value: 'lng' } },
+              ],
+            },
+          },
+          {
+            kind: 'Field',
+            name: { kind: 'Name', value: 'clinicDepartments' },
+            selectionSet: {
+              kind: 'SelectionSet',
+              selections: [
+                { kind: 'Field', name: { kind: 'Name', value: 'id' } },
+                { kind: 'Field', name: { kind: 'Name', value: 'title' } },
+                { kind: 'Field', name: { kind: 'Name', value: 'workingTime' } },
+                { kind: 'Field', name: { kind: 'Name', value: 'address' } },
+                {
+                  kind: 'Field',
+                  name: { kind: 'Name', value: 'departmentSpecializations' },
+                  selectionSet: {
+                    kind: 'SelectionSet',
+                    selections: [{ kind: 'Field', name: { kind: 'Name', value: 'title' } }],
+                  },
+                },
+                {
+                  kind: 'Field',
+                  name: { kind: 'Name', value: 'mapCoordinates' },
+                  selectionSet: {
+                    kind: 'SelectionSet',
+                    selections: [
+                      { kind: 'Field', name: { kind: 'Name', value: 'lat' } },
+                      { kind: 'Field', name: { kind: 'Name', value: 'lng' } },
+                    ],
+                  },
+                },
               ],
             },
           },

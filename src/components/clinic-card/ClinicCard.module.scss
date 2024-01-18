@@ -17,7 +17,7 @@
   flex-direction: column;
 
   & > div {
-    padding: 20px 0px;
+    padding: $gap-xlg 0px;
   }
 
   & > div:not(:last-child) {
@@ -53,7 +53,7 @@
 
   @include tablet {
     border-bottom: 1px solid $light-grey;
-    padding-bottom: 20px;
+    padding-bottom: $gap-xlg;
   }
 }
 
@@ -113,17 +113,17 @@
 .bottomSection {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: $gap-xlg;
 
   @include tablet {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    gap: 30px;
+    gap: customGap(8);
   }
 
   & > div:not(:last-child) {
-    padding-bottom: 20px;
+    padding-bottom: $gap-xlg;
     border-bottom: 1px solid $light-grey;
   }
 
