@@ -20,7 +20,9 @@ export const AuthModalTemplate: FC<AuthModalTemplate> = ({
 }) => {
   return (
     <div className={styles.modal}>
-      <CloseButton handleClose={handleClose} />
+      <div className={styles.closeButton}>
+        <CloseButton handleClose={handleClose} />
+      </div>
       <div className={classNames(styles.section, styles.contentSection)}>
         <Typography component="h2" color="white" gutterBottom="md">
           {title}

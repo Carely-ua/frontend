@@ -7,19 +7,10 @@ import classNames from 'classnames';
 import { Button, Textarea, Typography } from '@/ui-kit';
 import { useCreateReview } from '@/services/review';
 import { CloseButton } from '@/components/close-button';
-import { SVG } from '@/components/svg';
+import { ErrorMessage } from '@/ui-kit/input/Input';
 import { Modal } from '../modal';
 import { ModalComponent } from '..';
 import styles from './AddReviewModal.module.scss';
-
-const ErrorMessage = () => (
-  <div className={styles.alertWrapper}>
-    <SVG.Alert className={styles.alertIcon} width={18} height={18} />
-    <Typography component="p" className={styles.alert}>
-      Поле обов&#39;язкове до заповнення
-    </Typography>
-  </div>
-);
 
 export interface AddReviewModalProps {
   serviceId: string;
@@ -43,7 +34,6 @@ export const AddReviewModal: ModalComponent<AddReviewModalProps> = ({
   open,
   openModal,
 }) => {
-  const [error, setError] = useState(false);
   const [textErr, setTextErr] = useState(false);
   const t = useTranslations('AddReviewModal');
   const { createReview } = useCreateReview();
@@ -110,7 +100,7 @@ export const AddReviewModal: ModalComponent<AddReviewModalProps> = ({
                 <Rating size="large" name={'rating'} onChange={onChange} value={Number(value)} />
               )}
             />
-            {errors.rating && <ErrorMessage />}
+            {errors.rating && <ErrorMessage text="Поле обов&#39;язкове для заповнення" />}
           </div>
           <div className={styles.review}>
             <Typography component="p" gutterBottom="xlg">
@@ -124,7 +114,7 @@ export const AddReviewModal: ModalComponent<AddReviewModalProps> = ({
               {...register('review', { required: true })}
               className={classNames(styles.textarea, textErr && styles.textareaAlert)}
             />
-            {errors.review && <ErrorMessage />}
+            {errors.review && <ErrorMessage text="Поле обов&#39;язкове для заповнення" />}
           </div>
           <Button type="submit">{t('button')}</Button>
         </form>

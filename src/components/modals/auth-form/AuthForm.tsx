@@ -1,6 +1,6 @@
 'use client';
 
-import { FC } from 'react';
+import { FC, useState } from 'react';
 import { Form, FormikProps, Formik } from 'formik';
 import { object, string } from 'yup';
 import { signIn } from 'next-auth/react';
@@ -36,13 +36,20 @@ export interface AuthFormProps {
 }
 
 export const AuthForm: FC<AuthFormProps> = ({ successSignInHandler }) => {
+  const [codeError, setCodeError] = useState('');
+
   const submitHandler = async (values: Values) => {
+    setCodeError('');
     const res = await signIn('credentials', {
       phone: values.phone,
       code: values.code.replace('-', ''),
       redirect: false,
     });
-    successSignInHandler?.();
+    if (res?.error) {
+      setCodeError('Код не співпадає');
+    } else {
+      successSignInHandler?.();
+    }
   };
 
   return (
@@ -56,7 +63,7 @@ export const AuthForm: FC<AuthFormProps> = ({ successSignInHandler }) => {
             <Form>
               <div className={styles.inputs}>
                 <PhoneInput name="phone" label="Телефон" />
-                <SmsCodeInput name="code" label="Код з SMS" />
+                <SmsCodeInput inputError={codeError} name="code" label="Код з SMS" />
               </div>
               <Button onClick={() => handleSubmit()}>Підтвердити</Button>
             </Form>

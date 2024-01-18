@@ -14,10 +14,12 @@
     width: 740px;
     height: 474px;
 
-    svg {
-      path {
-        color: $dark-grey;
-        fill: $dark-grey;
+    .closeButton {
+      svg {
+        path {
+          color: $dark-grey;
+          fill: $dark-grey;
+        }
       }
     }
   }

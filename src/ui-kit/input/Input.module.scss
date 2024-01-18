@@ -40,4 +40,22 @@
   &:hover {
     background-color: $primary;
   }
+
+  &:disabled {
+    &:hover {
+      background-color: $secondary;
+    }  
+  }
+}
+
+.alertWrapper {
+  display: flex;
+  margin-top: $gap-sm;
+  align-items: center;
+  gap: 5px;
+
+  svg.alertIcon {
+    width: 18px;
+    height: 18px;
+  }
 }
