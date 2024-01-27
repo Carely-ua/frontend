@@ -13,11 +13,15 @@
   }
 }
 
+.specialization {
+  color: #7d7d7d;
+}
+
 .icon {
   width: 24px;
   height: 24px;
   border-radius: 4px;
-  background: rgb($primary, 0.20);
+  background: rgb($primary, 0.2);
   display: flex;
   justify-content: center;
   align-items: center;

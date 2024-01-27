@@ -43,18 +43,27 @@ export const ClinicMainInfo: FC<ClinicMainInfoProps> = ({
 
   return (
     <div className={styles.clinicMainInfo}>
-      <div className={styles.item}>
-        <div className={styles.image}>
-          {!!mainImage && <Image src={mainImage} alt="clinic" layout="fill" objectFit="contain" />}
-        </div>
-        <div className={styles.clinicInfo}>
-          <div className={styles.topSection}>
-            <PhoneButton phones={[phone]} />
-            <Rating rating={rating} reviewsCount={reviewsCount} />
+      <div className={styles.itemWrapper}>
+        <div className={styles.item}>
+          <div className={styles.image}>
+            {!!mainImage && (
+              <Image src={mainImage} alt="clinic" layout="fill" objectFit="contain" />
+            )}
           </div>
-          <Typography className={styles.name} component="h2">
-            {name}
-          </Typography>
+          <div className={styles.clinicInfo}>
+            <div className={styles.topSection}>
+              <Rating rating={rating} reviewsCount={reviewsCount} />
+            </div>
+            <div className={styles.nameWrapper}>
+              <Typography className={styles.name} component="h2">
+                {name}
+              </Typography>
+              <PhoneButton phones={[phone]} />
+            </div>
+          </div>
+        </div>
+        <div className={styles.extraInfo}>
+          <ClinicExtraInfo address={address} workingTime={workingTime} />
           <ClinicExtraInfo address={address} workingTime={workingTime} />
         </div>
       </div>

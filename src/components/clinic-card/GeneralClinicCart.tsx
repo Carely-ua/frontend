@@ -18,6 +18,24 @@ interface ClinicCardProps extends Omit<NonNullable<ClinicTypes.Clinic>, 'clinicT
   services?: ClinicTypes.ClinicServices;
 }
 
+const arr = [
+  {
+    specialization: 'Specialization',
+    add: '21009, м. Вінниця, вул. Замостянська, 13',
+    work: 'пн-пт 09.00 – 19.00 сб 09.00 – 17.00 нд 09.00 – 15.00',
+  },
+  {
+    specialization: 'Specialization',
+    add: '21009, м. Вінниця, вул. Замостянська, 13',
+    work: 'пн-пт 09.00 – 19.00 сб 09.00 – 17.00 нд 09.00 – 15.00',
+  },
+  {
+    specialization: 'Specialization',
+    add: '21009, м. Вінниця, вул. Замостянська, 13',
+    work: 'пн-пт 09.00 – 19.00 сб 09.00 – 17.00 нд 09.00 – 15.00',
+  },
+];
+
 export const GeneralClinicCart: FC<ClinicCardProps> = ({
   hrefPrefix,
   id,
@@ -29,17 +47,24 @@ export const GeneralClinicCart: FC<ClinicCardProps> = ({
   workingTime,
   services,
   phone,
+  specializations,
+  clinicDepartments,
 }) => {
+  const specializationsArray = specializations?.map(item => item?.title);
+
+  const isClinic = hrefPrefix === 'clinics';
+
   const BottomSection = () => (
-    <div className={styles.bottomSection}>
-      <ClinicExtraInfo address={address} workingTime={workingTime} />
-      <div className={styles.bottomSectionItem}>
-        <PhoneButton phones={[phone]} />
-        <Link className={styles.link} href={`${hrefPrefix}/${id}`}>
-          <Button>Детальніше</Button>
-        </Link>
+    <>
+      <div className={styles.bottomSection}>
+        <div className={styles.bottomSectionItem}>
+          <PhoneButton phones={[phone]} />
+          <Link className={styles.link} href={`${hrefPrefix}/${id}`}>
+            <Button>Детальніше</Button>
+          </Link>
+        </div>
       </div>
-    </div>
+    </>
   );
 
   return (
@@ -56,14 +81,58 @@ export const GeneralClinicCart: FC<ClinicCardProps> = ({
               <Typography component="h3">{name}</Typography>
               <Rating rating={rating || 0} reviewsCount={reviewsCount} />
             </div>
+            <div className={styles.infoWrapper}>
+              {isClinic && (
+                <Typography component="p" gutterBottom="md" className={styles.label}>
+                  Медичний центр
+                </Typography>
+              )}
+              <Typography
+                component="p"
+                color="dark-grey"
+                gutterBottom="md"
+                className={styles.specializations}>
+                {specializationsArray?.join(', ')}
+              </Typography>
+              <div className={styles.mobileBottomSection}>
+                <BottomSection />
+              </div>
+            </div>
             <div className={styles.desktopBottomSection}>
               <BottomSection />
             </div>
           </div>
         </div>
-        <div className={styles.mobileBottomSection}>
-          <BottomSection />
+        <div className={styles.infoWrapperMobile}>
+          {isClinic && (
+            <Typography component="p" gutterBottom="md" className={styles.label}>
+              Медичний центр
+            </Typography>
+          )}
+          <Typography
+            component="p"
+            color="dark-grey"
+            gutterBottom="md"
+            className={styles.specializations}>
+            {specializationsArray?.join(', ')}
+          </Typography>
+          <div className={styles.mobileBottomSection}>
+            <BottomSection />
+          </div>
         </div>
+        <div className={styles.extraInfoWrapper}>
+          {clinicDepartments?.map(item => {
+            return (
+              <ClinicExtraInfo
+                key={item?.id}
+                departmentSpecializations={item?.departmentSpecializations}
+                address={item?.address}
+                workingTime={item?.workingTime}
+              />
+            );
+          })}
+        </div>
+
         {services && (
           <div className={styles.services}>
             {services.map(service => {

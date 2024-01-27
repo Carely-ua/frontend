@@ -7,7 +7,7 @@
   box-sizing: border-box;
 }
 
-*::-webkit-scrollbar{
+*::-webkit-scrollbar {
   display: none;
 }
 
@@ -35,7 +35,7 @@
   }
 }
 
-a[href^=tel] {
-  text-decoration:inherit;
+a[href^='tel'] {
+  text-decoration: inherit;
   color: inherit;
 }

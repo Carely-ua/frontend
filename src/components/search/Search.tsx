@@ -6,7 +6,7 @@ import { ClinicTypes } from '@/services';
 import { ClinicType } from '@/utils/graphql/__generated__/types';
 import { Typography } from '@/ui-kit';
 import { useClinicsSearch } from '@/services/search';
-import { ClinicCard, GeneralClinicCart } from '../clinic-card';
+import { GeneralClinicCart } from '../clinic-card';
 import { Map } from '../map';
 import { SVG } from '../svg';
 import { PageSearch, PageSearchProps } from '../page-search';
@@ -77,11 +77,6 @@ export const Search: FC<SearchProps> = ({
             <div className={styles.item}>
               {clinics.map(clinic => {
                 if (!clinic) return null;
-
-                if (clinic.clinicType === ClinicType.Clinic && !onlyGeneralCard) {
-                  return <ClinicCard hrefPrefix={hrefPrefix} key={clinic.id} {...clinic} />;
-                }
-
                 return <GeneralClinicCart hrefPrefix={hrefPrefix} key={clinic.id} {...clinic} />;
               })}
             </div>

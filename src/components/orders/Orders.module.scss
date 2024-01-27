@@ -140,6 +140,9 @@
   }
 
   @include tablet {
+    & > div {
+      width: 100%;
+    }
     border-bottom: 0;
     flex: 450px 1;
     flex-shrink: 0;
