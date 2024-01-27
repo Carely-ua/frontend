@@ -40,7 +40,7 @@ export type GetOrdersQuery = {
           mainImage?: string | null;
           clinicType: Types.ClinicType;
           name: string;
-          phone: string;
+          phone?: Array<string | null> | null;
         } | null;
       } | null;
     }>;

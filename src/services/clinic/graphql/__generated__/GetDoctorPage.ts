@@ -19,7 +19,7 @@ export type GetDoctorPageQuery = {
       image: string;
       tags?: Array<string | null> | null;
       title?: string | null;
-      experience?: number | null;
+      experience?: string | null;
       id: string;
       price?: number | null;
       discountPrice?: number | null;
@@ -41,10 +41,13 @@ export type GetDoctorPageQuery = {
       mainImage?: string | null;
       id: string;
       name: string;
-      address: string;
-      phone: string;
-      workingTime?: string | null;
-      mapCoordinates: { __typename?: 'MapCoordinates'; lat: number; lng: number };
+      phone?: Array<string | null> | null;
+      clinicDepartments?: Array<{
+        __typename?: 'ClinicDepartment';
+        address?: string | null;
+        workingTime?: string | null;
+        mapCoordinates?: { __typename?: 'MapCoordinates'; lat: number; lng: number } | null;
+      } | null> | null;
     } | null;
   } | null;
 };
@@ -131,17 +134,26 @@ export const GetDoctorPageDocument = {
                       { kind: 'Field', name: { kind: 'Name', value: 'mainImage' } },
                       { kind: 'Field', name: { kind: 'Name', value: 'id' } },
                       { kind: 'Field', name: { kind: 'Name', value: 'name' } },
-                      { kind: 'Field', name: { kind: 'Name', value: 'address' } },
                       { kind: 'Field', name: { kind: 'Name', value: 'phone' } },
-                      { kind: 'Field', name: { kind: 'Name', value: 'workingTime' } },
                       {
                         kind: 'Field',
-                        name: { kind: 'Name', value: 'mapCoordinates' },
+                        name: { kind: 'Name', value: 'clinicDepartments' },
                         selectionSet: {
                           kind: 'SelectionSet',
                           selections: [
-                            { kind: 'Field', name: { kind: 'Name', value: 'lat' } },
-                            { kind: 'Field', name: { kind: 'Name', value: 'lng' } },
+                            { kind: 'Field', name: { kind: 'Name', value: 'address' } },
+                            { kind: 'Field', name: { kind: 'Name', value: 'workingTime' } },
+                            {
+                              kind: 'Field',
+                              name: { kind: 'Name', value: 'mapCoordinates' },
+                              selectionSet: {
+                                kind: 'SelectionSet',
+                                selections: [
+                                  { kind: 'Field', name: { kind: 'Name', value: 'lat' } },
+                                  { kind: 'Field', name: { kind: 'Name', value: 'lng' } },
+                                ],
+                              },
+                            },
                           ],
                         },
                       },

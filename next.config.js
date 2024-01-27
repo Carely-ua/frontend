@@ -13,6 +13,7 @@ const nextConfig = {
       'medilux.ua',
       'www.salutem.ua',
       'medok.vn.ua',
+      'upload.wikimedia.org',
     ],
   },
   async redirects() {

@@ -1,9 +1,6 @@
 query GetClinics($filters: ClinicFilterInputType!) {
   getClinics(filters: $filters) {
     ...Clinic
-    specializations {
-      id
-      title
-    }
+    specializations
   }
 }

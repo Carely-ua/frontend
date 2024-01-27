@@ -30,12 +30,14 @@ query GetDoctorPage($filters: ServiceFilterInputType!) {
       mainImage
       id
       name
-      address
       phone
-      workingTime
-      mapCoordinates {
-        lat
-        lng
+      clinicDepartments {
+        address
+        workingTime
+        mapCoordinates {
+          lat
+          lng
+        }
       }
     }
   }

@@ -21,7 +21,6 @@ type Query {
   getClinics(filters: ClinicFilterInputType!): [Clinic]
   searchClinics(filters: ClinicFilterInputType!): ClinicSearch!
   getClinicDepartments(filters: ClinicDepartmentFilterInputType): [ClinicDepartment]
-  getSpecializations(filters: SpecializationFilterInputType): [Specialization]
   health: Boolean!
   doctor(filters: DoctorFilterInputType!): Doctor
   getDoctors(filters: DoctorFilterInputType!): [Doctor]
@@ -57,13 +56,6 @@ type Mutation {
   createClinicDepartment(input: ClinicDepartmentCreateInputType!): ClinicDepartment
   updateClinicDepartment(input: ClinicDepartmentUpdateInputType!): ClinicDepartment
   destroyClinicDepartment(id: ID!): Boolean!
-  createSpecClinicDepartment(input: SpecClinicCreateDepartmentInputType): Boolean!
-  destroySpecClinicDepartment(input: SpecClinicCreateDepartmentInputType): Boolean!
-  createSpecClinic(input: SpecClinicCreateInputType): Boolean!
-  destroySpecClinic(input: SpecClinicCreateInputType): Boolean!
-  createSpecialization(input: SpecializationCreateInputType!): Specialization
-  updateSpecialization(input: SpecializationUpdateInputType!): Specialization
-  destroySpecialization(id: ID!): Boolean!
   createDoctor(input: DoctorCreateInputType!): Doctor
   updateDoctor(input: DoctorUpdateInputType!): Doctor
   destroyDoctor(id: ID!): Boolean!
@@ -126,13 +118,10 @@ type Clinic {
   id: ID!
   name: String!
   email: String!
-  address: String!
   clinicDepartments: [ClinicDepartment]
-  phone: String!
-  workingTime: String
+  phone: [String]
   hasAnalyse: Boolean
   reviewsCount: Float
-  mapCoordinates: MapCoordinates!
   clinicType: ClinicType!
   city: String!
   description: String!
@@ -143,11 +132,11 @@ type Clinic {
   doctors: [Doctor]
   servicesWithCategories(input: ServiceFilterInputType): [Category]!
   reviews: [Review]
-  specializations: [Specialization]
+  specializations: [String]
 }
 type ClinicSearch {
   clinics: [Clinic]
-  specializations: [Specialization]
+  specializations: [String]
 }
 type ClinicDepartment {
   id: ID!
@@ -155,26 +144,12 @@ type ClinicDepartment {
   workingTime: String
   address: String
   mapCoordinates: MapCoordinates
-  departmentSpecializations: [Specialization]
+  specializations: [String]
   clinicId: ID!
   clinic: Clinic
 }
-type SpecializationClinicDepartments {
-  clinicDepartmentId: ID!
-  clinicId: ID!
-}
-type SpecializationClinicService {
-  specializationId: ID!
-  clinicId: ID!
-}
-type Specialization {
-  id: ID!
-  title: String!
-  clinics: [Clinic]
-}
 type Doctor {
   id: ID!
-  phone: String!
   name: String!
   description: String!
   image: String!
@@ -186,7 +161,7 @@ type Doctor {
   clinic: Clinic
   reviewsCount: Float
   tags: [String]
-  experience: Float
+  experience: String
   services: [Service]
   reviews: [Review]
   profActivity: String
@@ -336,41 +311,36 @@ input MapCoordinatesInput {
 }
 input ClinicFilterInputType {
   city: String
-  address: String
   name: String
-  workingTime: String
-  mapCoordinates: MapCoordinatesInput
   id: ID
   clinicType: ClinicType
-  specializationIds: [String]
+  specializations: [String]
   categoryId: String
   categorySubTitleId: String
 }
 input ClinicCreateInputType {
   name: String!
   email: String!
-  address: String!
-  phone: String!
-  workingTime: String!
-  mapCoordinates: MapCoordinatesInput!
+  phone: [String]!
   clinicType: ClinicType!
   city: String!
   description: String!
-  images: [String]
-  mainImage: String
+  specializations: [String]
+  images: [String]!
+  mainImage: String!
   rating: Float
 }
 input ClinicUpdateInputType {
   id: ID!
   name: String
   email: String
-  address: String
-  phone: String
-  mapCoordinates: MapCoordinatesInput
+  phone: [String]
   clinicType: ClinicType
   city: String
   description: String
-  image: String
+  specializations: [String]
+  images: [String]
+  mainImage: String
   rating: Float
 }
 input ClinicDepartmentFilterInputType {
@@ -392,25 +362,6 @@ input ClinicDepartmentUpdateInputType {
   address: String
   mapCoordinates: MapCoordinatesInput
 }
-input SpecClinicCreateDepartmentInputType {
-  clinicDepartment: ID!
-  clinicId: ID!
-}
-input SpecClinicCreateInputType {
-  specializationId: ID!
-  clinicId: ID!
-}
-input SpecializationFilterInputType {
-  title: String
-  id: ID
-}
-input SpecializationCreateInputType {
-  title: String!
-}
-input SpecializationUpdateInputType {
-  id: ID!
-  title: String
-}
 input DoctorFilterInputType {
   name: String
   id: ID
@@ -421,22 +372,29 @@ input DoctorFilterInputType {
 input DoctorCreateInputType {
   name: String!
   experience: String
-  phone: String!
   title: String
   clinicId: String!
   tags: [String]
   description: String!
   image: String!
   rating: Float
+  scientificWorks: String
+  profActivity: String
+  conferences: String
+  associations: String
 }
 input DoctorUpdateInputType {
   id: ID!
   name: String
-  phone: String
   clinicId: String
   description: String
   image: String
   rating: Float
+  scientificWorks: String
+  experience: String
+  profActivity: String
+  conferences: String
+  associations: String
 }
 input createDoctorService {
   doctorId: ID!

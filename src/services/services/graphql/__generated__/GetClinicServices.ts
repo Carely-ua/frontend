@@ -37,7 +37,7 @@ export type GetServicesQuery = {
         reviewsCount?: number | null;
         image: string;
         tags?: Array<string | null> | null;
-        experience?: number | null;
+        experience?: string | null;
         price?: number | null;
         discountPrice?: number | null;
         title?: string | null;

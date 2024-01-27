@@ -14,11 +14,7 @@ export type SearchClinicsQuery = {
       id: string;
       name: string;
       clinicType: Types.ClinicType;
-      specializations?: Array<{
-        __typename?: 'Specialization';
-        id: string;
-        title: string;
-      } | null> | null;
+      specializations?: Array<string | null> | null;
     } | null> | null;
   };
 };
@@ -65,17 +61,7 @@ export const SearchClinicsDocument = {
                       { kind: 'Field', name: { kind: 'Name', value: 'id' } },
                       { kind: 'Field', name: { kind: 'Name', value: 'name' } },
                       { kind: 'Field', name: { kind: 'Name', value: 'clinicType' } },
-                      {
-                        kind: 'Field',
-                        name: { kind: 'Name', value: 'specializations' },
-                        selectionSet: {
-                          kind: 'SelectionSet',
-                          selections: [
-                            { kind: 'Field', name: { kind: 'Name', value: 'id' } },
-                            { kind: 'Field', name: { kind: 'Name', value: 'title' } },
-                          ],
-                        },
-                      },
+                      { kind: 'Field', name: { kind: 'Name', value: 'specializations' } },
                     ],
                   },
                 },

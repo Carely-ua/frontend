@@ -2,25 +2,17 @@ fragment Clinic on Clinic {
   id
   name
   rating
-  address
   mainImage
   images
   clinicType
   reviewsCount
-  workingTime
   phone
-  mapCoordinates {
-    lat
-    lng
-  }
   clinicDepartments {
     id
     title
     workingTime
     address
-    departmentSpecializations {
-      title
-    }
+    specializations
     mapCoordinates {
       lat
       lng

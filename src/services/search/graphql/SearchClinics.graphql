@@ -4,10 +4,7 @@ query SearchClinics($filters: ClinicFilterInputType!) {
       id
       name
       clinicType
-      specializations {
-        id
-        title
-			}
+      specializations
     }
   }
 }

@@ -13,30 +13,24 @@ export type GetClinicQuery = {
     id: string;
     name: string;
     rating?: number | null;
-    address: string;
     mainImage?: string | null;
     images?: Array<string | null> | null;
     clinicType: Types.ClinicType;
     reviewsCount?: number | null;
-    workingTime?: string | null;
-    phone: string;
+    phone?: Array<string | null> | null;
     reviews?: Array<{
       __typename?: 'Review';
       id: string;
       text: string;
       rate?: number | null;
     } | null> | null;
-    mapCoordinates: { __typename?: 'MapCoordinates'; lat: number; lng: number };
     clinicDepartments?: Array<{
       __typename?: 'ClinicDepartment';
       id: string;
       title?: string | null;
       workingTime?: string | null;
       address?: string | null;
-      departmentSpecializations?: Array<{
-        __typename?: 'Specialization';
-        title: string;
-      } | null> | null;
+      specializations?: Array<string | null> | null;
       mapCoordinates?: { __typename?: 'MapCoordinates'; lat: number; lng: number } | null;
     } | null> | null;
   } | null;
@@ -105,24 +99,11 @@ export const GetClinicDocument = {
           { kind: 'Field', name: { kind: 'Name', value: 'id' } },
           { kind: 'Field', name: { kind: 'Name', value: 'name' } },
           { kind: 'Field', name: { kind: 'Name', value: 'rating' } },
-          { kind: 'Field', name: { kind: 'Name', value: 'address' } },
           { kind: 'Field', name: { kind: 'Name', value: 'mainImage' } },
           { kind: 'Field', name: { kind: 'Name', value: 'images' } },
           { kind: 'Field', name: { kind: 'Name', value: 'clinicType' } },
           { kind: 'Field', name: { kind: 'Name', value: 'reviewsCount' } },
-          { kind: 'Field', name: { kind: 'Name', value: 'workingTime' } },
           { kind: 'Field', name: { kind: 'Name', value: 'phone' } },
-          {
-            kind: 'Field',
-            name: { kind: 'Name', value: 'mapCoordinates' },
-            selectionSet: {
-              kind: 'SelectionSet',
-              selections: [
-                { kind: 'Field', name: { kind: 'Name', value: 'lat' } },
-                { kind: 'Field', name: { kind: 'Name', value: 'lng' } },
-              ],
-            },
-          },
           {
             kind: 'Field',
             name: { kind: 'Name', value: 'clinicDepartments' },
@@ -133,14 +114,7 @@ export const GetClinicDocument = {
                 { kind: 'Field', name: { kind: 'Name', value: 'title' } },
                 { kind: 'Field', name: { kind: 'Name', value: 'workingTime' } },
                 { kind: 'Field', name: { kind: 'Name', value: 'address' } },
-                {
-                  kind: 'Field',
-                  name: { kind: 'Name', value: 'departmentSpecializations' },
-                  selectionSet: {
-                    kind: 'SelectionSet',
-                    selections: [{ kind: 'Field', name: { kind: 'Name', value: 'title' } }],
-                  },
-                },
+                { kind: 'Field', name: { kind: 'Name', value: 'specializations' } },
                 {
                   kind: 'Field',
                   name: { kind: 'Name', value: 'mapCoordinates' },
