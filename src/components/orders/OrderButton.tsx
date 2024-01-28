@@ -18,7 +18,7 @@ interface OrderButtonProps {
   img?: string | null;
   title?: string;
   isConsultation?: boolean;
-  phones: Array<string>;
+  phones: Array<string | null>;
 }
 
 export const OrderButton: FC<OrderButtonProps> = ({

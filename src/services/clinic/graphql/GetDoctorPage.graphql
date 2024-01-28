@@ -32,8 +32,11 @@ query GetDoctorPage($filters: ServiceFilterInputType!) {
       name
       phone
       clinicDepartments {
-        address
+        id
+        title
         workingTime
+        address
+        specializations
         mapCoordinates {
           lat
           lng

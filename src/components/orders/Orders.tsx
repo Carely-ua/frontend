@@ -180,7 +180,7 @@ const OrderItem: FC<CartTypes.OrderItem> = ({
                     img={image}
                     title={mainSectionTitle}
                     isConsultation={isConsultation}
-                    phones={service?.clinic?.phone ? [service?.clinic?.phone] : []}
+                    phones={service?.clinic?.phone || []}
                   />
                 </div>
               )}

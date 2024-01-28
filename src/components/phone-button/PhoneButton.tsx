@@ -6,7 +6,7 @@ import { SVG } from '../svg';
 import styles from './PhoneButton.module.scss';
 
 interface PhoneButtonProps {
-  phones: string[];
+  phones: (string | null)[];
 }
 
 export const PhoneButton: FC<PhoneButtonProps> = ({ phones }) => {

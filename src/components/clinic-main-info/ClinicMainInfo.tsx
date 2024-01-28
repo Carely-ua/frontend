@@ -4,8 +4,9 @@ import { FC, useMemo } from 'react';
 import Image from 'next/image';
 import { Typography } from '@/ui-kit';
 import { isMobileScreen } from '@/utils';
+import { ClinicTypes } from '@/services';
 import { Rating, RatingProps } from '../rating';
-import { ClinicExtraInfo, ClinicExtraInfoProps } from '../clinic-extra-info';
+import { ClinicExtraInfo } from '../clinic-extra-info';
 import { Map, MapItemProps } from '../map';
 import { PhoneButton } from '../phone-button';
 import styles from './ClinicMainInfo.module.scss';
@@ -15,20 +16,18 @@ const containerStyle = {
   height: isMobileScreen() ? '108px' : '270px',
 };
 
-interface ClinicMainInfoProps extends RatingProps, ClinicExtraInfoProps, MapItemProps {
+interface ClinicMainInfoProps extends RatingProps, MapItemProps {
   name: string;
   phone: string;
 }
 
-export const ClinicMainInfo: FC<ClinicMainInfoProps> = ({
+export const ClinicMainInfo: FC<ClinicTypes.ClinicPageData> = ({
   mainImage,
   id,
   rating,
   reviewsCount,
   name,
-  address,
-  workingTime,
-  mapCoordinates,
+  clinicDepartments,
   phone,
 }) => {
   const mapData = useMemo(
@@ -36,9 +35,9 @@ export const ClinicMainInfo: FC<ClinicMainInfoProps> = ({
       rating,
       id,
       mainImage,
-      mapCoordinates,
+      // mapCoordinates,
     }),
-    [rating, id, mainImage, mapCoordinates],
+    [rating, id, mainImage],
   );
 
   return (
@@ -58,13 +57,16 @@ export const ClinicMainInfo: FC<ClinicMainInfoProps> = ({
               <Typography className={styles.name} component="h2">
                 {name}
               </Typography>
-              <PhoneButton phones={[phone]} />
+              <PhoneButton phones={phone || []} />
             </div>
           </div>
         </div>
         <div className={styles.extraInfo}>
-          <ClinicExtraInfo address={address} workingTime={workingTime} />
-          <ClinicExtraInfo address={address} workingTime={workingTime} />
+          {clinicDepartments?.map(department => {
+            if (!department) return null;
+
+            return <ClinicExtraInfo key={department.id} {...department} />;
+          })}
         </div>
       </div>
       <div className={styles.item}>

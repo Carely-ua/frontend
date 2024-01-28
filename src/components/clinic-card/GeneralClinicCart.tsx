@@ -18,47 +18,25 @@ interface ClinicCardProps extends Omit<NonNullable<ClinicTypes.Clinic>, 'clinicT
   services?: ClinicTypes.ClinicServices;
 }
 
-const arr = [
-  {
-    specialization: 'Specialization',
-    add: '21009, м. Вінниця, вул. Замостянська, 13',
-    work: 'пн-пт 09.00 – 19.00 сб 09.00 – 17.00 нд 09.00 – 15.00',
-  },
-  {
-    specialization: 'Specialization',
-    add: '21009, м. Вінниця, вул. Замостянська, 13',
-    work: 'пн-пт 09.00 – 19.00 сб 09.00 – 17.00 нд 09.00 – 15.00',
-  },
-  {
-    specialization: 'Specialization',
-    add: '21009, м. Вінниця, вул. Замостянська, 13',
-    work: 'пн-пт 09.00 – 19.00 сб 09.00 – 17.00 нд 09.00 – 15.00',
-  },
-];
-
 export const GeneralClinicCart: FC<ClinicCardProps> = ({
   hrefPrefix,
   id,
   name,
-  address,
   rating,
   mainImage,
   reviewsCount,
-  workingTime,
   services,
   phone,
   specializations,
   clinicDepartments,
 }) => {
-  const specializationsArray = specializations?.map(item => item?.title);
-
   const isClinic = hrefPrefix === 'clinics';
 
   const BottomSection = () => (
     <>
       <div className={styles.bottomSection}>
         <div className={styles.bottomSectionItem}>
-          <PhoneButton phones={[phone]} />
+          <PhoneButton phones={phone || []} />
           <Link className={styles.link} href={`${hrefPrefix}/${id}`}>
             <Button>Детальніше</Button>
           </Link>
@@ -92,7 +70,7 @@ export const GeneralClinicCart: FC<ClinicCardProps> = ({
                 color="dark-grey"
                 gutterBottom="md"
                 className={styles.specializations}>
-                {specializationsArray?.join(', ')}
+                {specializations?.join(', ')}
               </Typography>
               <div className={styles.mobileBottomSection}>
                 <BottomSection />
@@ -114,7 +92,7 @@ export const GeneralClinicCart: FC<ClinicCardProps> = ({
             color="dark-grey"
             gutterBottom="md"
             className={styles.specializations}>
-            {specializationsArray?.join(', ')}
+            {specializations?.join(', ')}
           </Typography>
           <div className={styles.mobileBottomSection}>
             <BottomSection />
@@ -122,14 +100,8 @@ export const GeneralClinicCart: FC<ClinicCardProps> = ({
         </div>
         <div className={styles.extraInfoWrapper}>
           {clinicDepartments?.map(item => {
-            return (
-              <ClinicExtraInfo
-                key={item?.id}
-                departmentSpecializations={item?.departmentSpecializations}
-                address={item?.address}
-                workingTime={item?.workingTime}
-              />
-            );
+            if (!item) return null;
+            return <ClinicExtraInfo key={item?.id} {...item} />;
           })}
         </div>
 

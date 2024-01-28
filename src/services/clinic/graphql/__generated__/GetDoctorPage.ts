@@ -44,8 +44,11 @@ export type GetDoctorPageQuery = {
       phone?: Array<string | null> | null;
       clinicDepartments?: Array<{
         __typename?: 'ClinicDepartment';
-        address?: string | null;
+        id: string;
+        title?: string | null;
         workingTime?: string | null;
+        address?: string | null;
+        specializations?: Array<string | null> | null;
         mapCoordinates?: { __typename?: 'MapCoordinates'; lat: number; lng: number } | null;
       } | null> | null;
     } | null;
@@ -141,8 +144,11 @@ export const GetDoctorPageDocument = {
                         selectionSet: {
                           kind: 'SelectionSet',
                           selections: [
-                            { kind: 'Field', name: { kind: 'Name', value: 'address' } },
+                            { kind: 'Field', name: { kind: 'Name', value: 'id' } },
+                            { kind: 'Field', name: { kind: 'Name', value: 'title' } },
                             { kind: 'Field', name: { kind: 'Name', value: 'workingTime' } },
+                            { kind: 'Field', name: { kind: 'Name', value: 'address' } },
+                            { kind: 'Field', name: { kind: 'Name', value: 'specializations' } },
                             {
                               kind: 'Field',
                               name: { kind: 'Name', value: 'mapCoordinates' },
