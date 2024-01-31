@@ -159,6 +159,7 @@ export type ClinicDepartmentCreateInputType = {
   address?: InputMaybe<Scalars['String']['input']>;
   clinicId: Scalars['ID']['input'];
   mapCoordinates?: InputMaybe<MapCoordinatesInput>;
+  specializations?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   title?: InputMaybe<Scalars['String']['input']>;
   workingTime?: InputMaybe<Scalars['String']['input']>;
 };
@@ -173,6 +174,7 @@ export type ClinicDepartmentUpdateInputType = {
   address?: InputMaybe<Scalars['String']['input']>;
   id: Scalars['ID']['input'];
   mapCoordinates?: InputMaybe<MapCoordinatesInput>;
+  specializations?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   title?: InputMaybe<Scalars['String']['input']>;
   workingTime?: InputMaybe<Scalars['String']['input']>;
 };
@@ -261,7 +263,9 @@ export type DoctorFilterInputType = {
 export type DoctorService = {
   __typename?: 'DoctorService';
   discountPrice?: Maybe<Scalars['Float']['output']>;
+  doctorId: Scalars['ID']['output'];
   price?: Maybe<Scalars['Float']['output']>;
+  serviceId: Scalars['ID']['output'];
 };
 
 export type DoctorUpdateInputType = {
@@ -276,6 +280,7 @@ export type DoctorUpdateInputType = {
   profActivity?: InputMaybe<Scalars['String']['input']>;
   rating?: InputMaybe<Scalars['Float']['input']>;
   scientificWorks?: InputMaybe<Scalars['String']['input']>;
+  tags?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 };
 
 export type DoneOrderItemResponse = {
@@ -327,7 +332,7 @@ export type Mutation = {
   createClinic?: Maybe<Clinic>;
   createClinicDepartment?: Maybe<ClinicDepartment>;
   createDoctor?: Maybe<Doctor>;
-  createDoctorsService: Scalars['Boolean']['output'];
+  createDoctorsService: DoctorService;
   createOrder?: Maybe<Order>;
   createReview?: Maybe<Review>;
   createService?: Maybe<Service>;

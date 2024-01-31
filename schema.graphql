@@ -59,7 +59,7 @@ type Mutation {
   createDoctor(input: DoctorCreateInputType!): Doctor
   updateDoctor(input: DoctorUpdateInputType!): Doctor
   destroyDoctor(id: ID!): Boolean!
-  createDoctorsService(input: createDoctorService): Boolean!
+  createDoctorsService(input: createDoctorService): DoctorService!
   doctorsService(input: createDoctorService): Boolean!
   destroyDoctorService(doctorId: ID!, serviceId: ID!): Boolean!
   createOrder: Order
@@ -172,6 +172,8 @@ type Doctor {
 type DoctorService {
   price: Float
   discountPrice: Float
+  doctorId: ID!
+  serviceId: ID!
 }
 type OrderItem {
   id: ID!
@@ -354,6 +356,7 @@ input ClinicDepartmentCreateInputType {
   address: String
   clinicId: ID!
   mapCoordinates: MapCoordinatesInput
+  specializations: [String]
 }
 input ClinicDepartmentUpdateInputType {
   id: ID!
@@ -361,6 +364,7 @@ input ClinicDepartmentUpdateInputType {
   workingTime: String
   address: String
   mapCoordinates: MapCoordinatesInput
+  specializations: [String]
 }
 input DoctorFilterInputType {
   name: String
@@ -395,6 +399,7 @@ input DoctorUpdateInputType {
   profActivity: String
   conferences: String
   associations: String
+  tags: [String]
 }
 input createDoctorService {
   doctorId: ID!

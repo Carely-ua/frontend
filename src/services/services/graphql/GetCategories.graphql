@@ -1,5 +1,15 @@
 query GetCategories($filters: ServiceFilterInputType!) {
   getCategories(filters: $filters) {
-    ...Category
+    id
+    title
+    subTitles {
+      id 
+      title
+      services {
+        id 
+        name
+        price
+      }
+    }
   }
 }
