@@ -20,7 +20,7 @@ export const ClinicExtraInfo: FC<ClinicTypes.Department> = ({
         <span className={styles.icon}>
           <SVG.Location width="16" height="16" />
         </span>
-        <Typography component="p">{address}</Typography>T
+        <Typography component="p">{address}</Typography>
       </div>
       <div className={styles.extraInfo}>
         <span className={styles.icon}>

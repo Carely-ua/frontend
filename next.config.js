@@ -14,6 +14,7 @@ const nextConfig = {
       'www.salutem.ua',
       'medok.vn.ua',
       'upload.wikimedia.org',
+      'spinex.ua',
     ],
   },
   async redirects() {

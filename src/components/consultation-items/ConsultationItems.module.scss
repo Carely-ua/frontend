@@ -120,6 +120,10 @@
   gap: $gap-xlg;
   margin: 0;
   padding: $gap-xlg 0px $gap-xlg 0px;
+
+  p {
+    white-space: pre-wrap
+  }
 }
 .docInfoList > li {
   list-style: none;

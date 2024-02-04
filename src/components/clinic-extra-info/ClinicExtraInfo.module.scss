@@ -7,10 +7,6 @@
   &:not(:last-child) {
     margin-bottom: $gap-sm;
   }
-
-  p {
-    max-width: 320px;
-  }
 }
 
 .specialization {
