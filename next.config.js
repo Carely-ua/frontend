@@ -15,6 +15,9 @@ const nextConfig = {
       'medok.vn.ua',
       'upload.wikimedia.org',
       'spinex.ua',
+      'gormonia.com',
+      'imeda.vn.ua',
+      'kardiomed-plus.vn.ua',
     ],
   },
   async redirects() {
